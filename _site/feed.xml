@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
-		<title>Kiko</title>
-		<link>//kiko.gfjaru.com</link>
-		<atom:link href="//kiko.gfjaru.com/feed.xml" rel="self" type="application/rss+xml" />
+		<title>Coup de Grace</title>
+		<link>//slahser.coding.me</link>
+		<atom:link href="//slahser.coding.me/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
 				<title>Example content</title>
@@ -122,8 +122,8 @@
 &lt;p&gt;Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
 </description>
 				<pubDate>Sun, 09 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//kiko.gfjaru.com/2015/08/09/example-content/</link>
-				<guid isPermaLink="true">//kiko.gfjaru.com/2015/08/09/example-content/</guid>
+				<link>//slahser.coding.me/2015/08/09/example-content/</link>
+				<guid isPermaLink="true">//slahser.coding.me/2015/08/09/example-content/</guid>
 			</item>
 		
 			<item>
@@ -210,8 +210,8 @@
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-b932316efa865824.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;JPEG 图像-72F558E34124-1.jpeg&quot; /&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//kiko.gfjaru.com/2015/08/08/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</link>
-				<guid isPermaLink="true">//kiko.gfjaru.com/2015/08/08/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</guid>
+				<link>//slahser.coding.me/2015/08/08/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</link>
+				<guid isPermaLink="true">//slahser.coding.me/2015/08/08/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</guid>
 			</item>
 		
 			<item>
@@ -227,8 +227,8 @@
 &lt;p&gt;It’s an immensely useful tool. Find out more by &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;visiting the project on GitHub&lt;/a&gt;.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//kiko.gfjaru.com/2015/08/08/whats-jekyll/</link>
-				<guid isPermaLink="true">//kiko.gfjaru.com/2015/08/08/whats-jekyll/</guid>
+				<link>//slahser.coding.me/2015/08/08/whats-jekyll/</link>
+				<guid isPermaLink="true">//slahser.coding.me/2015/08/08/whats-jekyll/</guid>
 			</item>
 		
 			<item>
@@ -293,8 +293,8 @@
 &lt;p&gt;done.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//kiko.gfjaru.com/2015/08/08/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</link>
-				<guid isPermaLink="true">//kiko.gfjaru.com/2015/08/08/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</guid>
+				<link>//slahser.coding.me/2015/08/08/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</link>
+				<guid isPermaLink="true">//slahser.coding.me/2015/08/08/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</guid>
 			</item>
 		
 			<item>
@@ -320,8 +320,8 @@
 &lt;p&gt;顺便这是第一篇我配合ifttt发布的博文.notification刚收到了就放心了&lt;/p&gt;
 </description>
 				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//kiko.gfjaru.com/2015/08/08/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</link>
-				<guid isPermaLink="true">//kiko.gfjaru.com/2015/08/08/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</guid>
+				<link>//slahser.coding.me/2015/08/08/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</link>
+				<guid isPermaLink="true">//slahser.coding.me/2015/08/08/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</guid>
 			</item>
 		
 			<item>
@@ -350,8 +350,8 @@
 &lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-f6f9e481ffb30b26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 </description>
 				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//kiko.gfjaru.com/2015/08/08/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</link>
-				<guid isPermaLink="true">//kiko.gfjaru.com/2015/08/08/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</guid>
+				<link>//slahser.coding.me/2015/08/08/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</link>
+				<guid isPermaLink="true">//slahser.coding.me/2015/08/08/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</guid>
 			</item>
 		
 	</channel>
