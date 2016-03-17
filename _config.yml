@@ -3,17 +3,14 @@
 # # # # # # # #
 
 # Basic
-name:               "Kiko"
-description:        "a clean, lightweight and minimalistic blog theme for jekyll"
+name:               "Coup de Grace"
+description:        "A divine strike, S1ahs3r honors his opponent by choosing them for death."
 
 # jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
-url:                "//kiko.gfjaru.com"
-author:             "gfjaru"
+url:                "//slahser/coding.me"
+author:             "S1ahs3r"
 twitter:
-  username:         "gfjaru"
-#facebook:
-#  app_id:           1234
-#    publisher:      1234
+  username:         "S1ahs3r"
 
 # URL
 baseurl:            ""
