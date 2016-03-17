@@ -9,7 +9,7 @@ twitter:
   username:         "S1ahs3r"
 
 # URL
-baseurl:            "/"
+baseurl:            ""
 #baseurl:            "" #For Root Domain
 permalink:          /:year/:month/:day/:title/
 
