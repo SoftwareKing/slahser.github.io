@@ -1,7 +1,3 @@
-# # # # # # # #
-#   K i k o   #
-# # # # # # # #
-
 # Basic
 name:               "Coup de Grace"
 description:        "A divine strike, S1ahs3r honors his opponent by choosing them for death."
@@ -13,7 +9,7 @@ twitter:
   username:         "S1ahs3r"
 
 # URL
-baseurl:            ""
+baseurl:            "/"
 #baseurl:            "" #For Root Domain
 permalink:          /:year/:month/:day/:title/
 
