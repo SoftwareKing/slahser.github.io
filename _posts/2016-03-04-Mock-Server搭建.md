@@ -1,5 +1,7 @@
 前端项目的mock server改天介绍,今天写下基于[moco](https://github.com/dreamhead/moco)的简易mock server搭建.
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png) 
+
+
 ### intro
 
 传统的mock server我们要写个war包放入容器中启动或者启动一个node server.每当发生改动还需要进行重启.
