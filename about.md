@@ -3,6 +3,9 @@ title: About
 permalink: /about/
 ---
 
-<p class="lead"><a href="http://github.com/gfjaru/Kiko">Kiko</a> is a theme for <a href="http://jekyllrb.com">Jekyll</a>, the static site generator.</p>
+## S1ahs3r
 
-Kiko is simple, lightweight theme. It's designed and developed by [@gfjaru](https://twitter.com/gfjaru).
+- [weibo](http://weibo.com/s1ahs3r)
+- [github](https://github.com/Slahser)
+- [twitter](https://twitter.com/S1ahs3r)
+- [mailto](mailto:skyslahser@gmail.com)

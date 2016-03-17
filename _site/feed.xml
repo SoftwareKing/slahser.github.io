@@ -2,8 +2,745 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
 	<channel>
 		<title>Coup de Grace</title>
-		<link>//slahser/coding.me</link>
-		<atom:link href="//slahser/coding.me/feed.xml" rel="self" type="application/rss+xml" />
+		<link>//slahser.github.io</link>
+		<atom:link href="//slahser.github.io/feed.xml" rel="self" type="application/rss+xml" />
+		
+			<item>
+				<title>Mock Server搭建</title>
+        <description>&lt;p&gt;前端项目的mock server改天介绍,今天写下基于&lt;a href=&quot;https://github.com/dreamhead/moco&quot;&gt;moco&lt;/a&gt;的简易mock server搭建.
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png&quot; alt=&quot;&quot; /&gt;
+### intro&lt;/p&gt;
+
+&lt;p&gt;传统的mock server我们要写个war包放入容器中启动或者启动一个node server.每当发生改动还需要进行重启.&lt;/p&gt;
+
+&lt;p&gt;moco当初吸引我在github上点出star就是因为它的优点:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可繁可简,简易形式启动仅需启动一个jar包与一个配置文件&lt;/li&gt;
+  &lt;li&gt;热部署,修改配置文件无需重启应用,更新配置速度可观.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;usage&quot;&gt;usage&lt;/h3&gt;
+
+&lt;p&gt;简洁搭建如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下载&lt;a href=&quot;https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar&quot;&gt;moco-runner-0.10.2-standalone.jar&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;编写配置文件**.json置于同级目录(实例tt.json)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;文件中需要编写request/response对,具体配置项可以看&lt;a href=&quot;https://github.com/dreamhead/moco/blob/master/moco-doc/apis.md&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;示例内容(一个网站的手撕鬼子模拟):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[                                                                                                                                                    
+    {                                                                                                                                                
+    &quot;request&quot; :                                                                                                                                      
+        {                                                                                                                                            
+        &quot;uri&quot; : &quot;/system/resource/creategjjcheckimg.jsp&quot;,                                                                                            
+        &quot;queries&quot; :                                                                                                                                  
+            {                                                                                                                                        
+            &quot;random&quot; : &quot;2&quot;                                                                                                                           
+            }                                                                                                                                        
+        },                                                                                                                                           
+    &quot;response&quot; :                                                                                                                                     
+        {                                                                                                                                            
+        &quot;status&quot; : 200,                                                                                                                              
+        &quot;file&quot; : &quot;vc.png&quot;                                                                                                                            
+        }                                                                                                                                            
+    },                                                                                                                                               
+    {                                                                                                                                                
+    &quot;request&quot; :                                                                                                                                      
+        {                                                                                                                                            
+        &quot;uri&quot; : &quot;/gjjcx_dl.jsp&quot;,                                                                                                                     
+        &quot;queries&quot; :                                                                                                                                  
+            {                                                                                                                                        
+            &quot;urltype&quot; : &quot;tree.TreeTempUrl&quot;,                                                                                                          
+            &quot;wbtreeid&quot; : &quot;1172&quot;                                                                                                                      
+            }                                                                                                                                        
+        },                                                                                                                                           
+    &quot;response&quot; :                                                                                                                                     
+        {                                                                                                                                            
+        &quot;status&quot; : 200,                                                                                                                              
+        &quot;text&quot; : &quot;已登录&quot;                                                                                                                               
+        }                                                                                                                                            
+    },                         
+    {                                                                                                                       
+    &quot;request&quot; :                                                                                                             
+        {                                                                                                                   
+        &quot;uri&quot; : &quot;/gjjcx_gjjxxcx.jsp&quot;,                                                                                       
+        &quot;queries&quot; :                                                                                                         
+            {                                                                                                               
+            &quot;urltype&quot; : &quot;tree.TreeTempUrl&quot;,                                                                                 
+            &quot;wbtreeid&quot; : &quot;1178&quot;                                                                                             
+            }                                                                                                               
+        },                                                                                                                  
+    &quot;response&quot; :                                                                                                            
+        {                                                                                                                   
+        &quot;status&quot; : 200,                                                                                                     
+        &quot;file&quot; :                                                                                                            
+           {                                                                                                                
+            &quot;name&quot; : &quot;xian1.response&quot;,                                                                                      
+            &quot;charset&quot; : &quot;UTF-8&quot;                                                                                             
+            }                                                                                                               
+        }                                                                                                                   
+    },                                                                                                                      
+    {                                                                                                                       
+    &quot;request&quot; :                                                                                                             
+        {                                                                                                                   
+        &quot;uri&quot; : &quot;/gjjcx_gjjmxcx.jsp&quot;,                                                                                       
+        &quot;queries&quot; :                                                                                                         
+            {                                                                                                               
+            &quot;urltype&quot; : &quot;tree.TreeTempUrl&quot;,                                                                                 
+            &quot;wbtreeid&quot; : &quot;1177&quot;                                                                                             
+            }                                                                                                               
+        },                                                                                                                  
+    &quot;response&quot; :                                                                                                            
+        { 
+        &quot;headers&quot;:                                                                                                          
+            {                                                                                                               
+              &quot;content-type&quot; : &quot;text/html&quot;                                                                                  
+            },                                                                                                              
+        &quot;status&quot; : 200,                                                                                                     
+        &quot;file&quot; :                                                                                                            
+           {                                                                                                                
+            &quot;name&quot; : &quot;xian2.response&quot;,                                                                                      
+            &quot;charset&quot; : &quot;UTF-8&quot;                                                                                             
+            }                                                                                                               
+        }                                                                                                                   
+    }                                                                                                                       
+]  
+      
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;放置非必要资源文件于统计目录,供request/response内容过大设置文件content或者返回attachment/image内容时使用.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目录结构如图:
+ &lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-05%20at%2000.23.25.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;启动runner:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;java -jar moco-runner-&amp;lt;version&amp;gt;-standalone.jar http -p 9999[其他端口也ok] -c tt.json&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;配置后台运行,在上条命令后加上 &amp;amp; 符号即可.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;访问host:port/配置 路径进行访问. 
+enjoy it!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;for Sa6r1na.&lt;/p&gt;
+</description>
+				<pubDate>Fri, 04 Mar 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/03/04/Mock-Server%E6%90%AD%E5%BB%BA/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/03/04/Mock-Server%E6%90%AD%E5%BB%BA/</guid>
+			</item>
+		
+			<item>
+				<title>树莓派上硬件监控 Cayenne</title>
+        <description>&lt;p&gt;手头有个树莓派,除了备份本博客博文之外一直也没啥大用处,俗称吃灰.&lt;/p&gt;
+
+&lt;p&gt;前些日子玩了下Resin.io,改日分享.&lt;/p&gt;
+
+&lt;p&gt;今天说说偶然发现的硬件监控玩物–&lt;a href=&quot;https://www.cayenne-mydevices.com&quot;&gt;Cayenne&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-03%20at%2002.21.04.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;特点:&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;无需刷系统,安装Agent即可&lt;/li&gt;
+  &lt;li&gt;网页端,App端双端支持&lt;/li&gt;
+  &lt;li&gt;功能上
+    &lt;ul&gt;
+      &lt;li&gt;查看资源使用率&lt;/li&gt;
+      &lt;li&gt;查看针脚使用情况&lt;/li&gt;
+      &lt;li&gt;设置trigger&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;效果&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-03%20at%2002.05.13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;安装:&lt;/h3&gt;
+
+&lt;p&gt;硬件:树莓派,几代无所谓,系统不能是Raspberry OS lite.&lt;/p&gt;
+
+&lt;p&gt;翻墙执行以下
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+wget --content-disposition https://cayenne.mydevices.com/dl/sy9i322rmo
+sudo sh rpi_sy9i322rmo.sh
+&lt;/code&gt;
+会经历大概几分钟的安装,之后树莓派会重启.&lt;/p&gt;
+
+&lt;p&gt;网页会随时同步安装状态,整个安装过程大概十分钟.&lt;/p&gt;
+
+&lt;p&gt;安装了Environment,Agent和Driver之类的东西.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;在线功能&lt;/h3&gt;
+
+&lt;p&gt;同理仪表盘
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-03%20at%2002.05.13.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;设备概况
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-03%20at%2002.05.24.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;针脚使用
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-03%20at%2002.05.28.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;trigger设置界面&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-03%20at%2002.05.36.png&quot; alt=&quot;&quot; /&gt;
+### APP功能&lt;/p&gt;
+
+&lt;p&gt;图表,包括几个维度的图表,每个图表具有不同的展现形式:数字,仪表盘,实时chart.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3535.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;中间其他部分同在线仪表盘&lt;/p&gt;
+
+&lt;p&gt;trigger触发后的邮件内容
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3543.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Wed, 02 Mar 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E7%A1%AC%E4%BB%B6%E7%9B%91%E6%8E%A7-Cayenne/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/03/02/%E6%A0%91%E8%8E%93%E6%B4%BE%E4%B8%8A%E7%A1%AC%E4%BB%B6%E7%9B%91%E6%8E%A7-Cayenne/</guid>
+			</item>
+		
+			<item>
+				<title>Arcanist用法简介</title>
+        <description>&lt;p&gt;这是Phabricator配套的Code Review工具,需要配合本地clt使用.&lt;/p&gt;
+
+&lt;p&gt;搜索引擎查了几回合实在不太好找到简洁明了的中文文档,姑且写一下.(这一套工具配起来真的挺糟心的…)&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;安装&lt;/h3&gt;
+&lt;p&gt;&lt;del&gt;第一种:&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;del&gt;
+brew tap homebrew/php
+brew install arcanist
+arc help
+&lt;/del&gt;&lt;/p&gt;
+
+&lt;p&gt;第一种方法因为无法执行arc upgrade暂时舍弃.&lt;/p&gt;
+
+&lt;p&gt;第二种:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install node
+npm install -g arcanist
+arc help
+arc upgrade //Required
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;注册&lt;/h3&gt;
+
+&lt;p&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;arc install-certificate http://[host].com:[port]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;访问http://[host].com:[port]/conduit/token/&lt;br /&gt;
+或者http://[host].com:[port]/conduit/login/&lt;/p&gt;
+
+&lt;p&gt;遵照terminal提示访问地址(有的同事显示不一样,可能是机器cookie问题)&lt;/p&gt;
+
+&lt;p&gt;粘贴token进入terminal&lt;/p&gt;
+
+&lt;p&gt;done.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-29%20at%2011.14.22.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;本地配置文件所在位置&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.arcrc&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;配置&lt;/h3&gt;
+
+&lt;p&gt;设置用户默认配置&lt;code class=&quot;highlighter-rouge&quot;&gt;arc set-config default http://[host].com:[port]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;正常的流程需要在项目根目录新建.arcconfig文件填入相应配置,JSON格式.
+可选部分欢迎查看&lt;a href=&quot;https://secure.phabricator.com/book/phabricator/article/arcanist/&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;phabricator.uri&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://[host].com:[port]&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;project_id&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;[ID]&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;不添加这个而文件也可以,不过功能有很多限制:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-29%20at%2014.41.38.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;流程&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本部分来自&lt;a href=&quot;https://github.com/Hujiang-FE/arcanist&quot;&gt;arcanist&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout -b feature_xxx&lt;/code&gt; — 创建一个新分支，并修改代码&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git add . &amp;amp;&amp;amp; git commit -m tt&lt;/code&gt; — 将该提交的都提交上去&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;arc diff [last_commit]&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;此命令会将 last_commit 到最新的 commit 之间的改动的所有代码发送到 phabricator 平台，并创建一个 revision；&lt;/li&gt;
+      &lt;li&gt;如果没有指定 last_commit，则会使用 master 分支来作为 last_commit 的起点。&lt;/li&gt;
+      &lt;li&gt;运行命令后会弹出一个编辑面板，在此面板中你需要指定 reviewers，即指定一个或多个给你 review code 的人&lt;/li&gt;
+      &lt;li&gt;如果指定了多个 reviewers，则其中任何一个 review 通过就可以，不用全部 review 通过&lt;/li&gt;
+      &lt;li&gt;另外编辑面板中也有一个 test plan 选项，国外人一般每个项目都有测试，所以此项是必填的，如果没有测试，我们只需要随便设置一个字段即可，比如设置成 &lt;code class=&quot;highlighter-rouge&quot;&gt;no&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;skip&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;如果觉得指派reviewer的用法不太方便,可以执行&lt;code class=&quot;highlighter-rouge&quot;&gt;arc diff --preview&lt;/code&gt;根据生成的diff页面进入配置,生成revision.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;以上操作之后，系统会发送邮件通知 reviewers 去 review 你的代码，你也可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;arc list&lt;/code&gt; 来查看当前 review 的状态&lt;/li&gt;
+  &lt;li&gt;后续
+    &lt;ul&gt;
+      &lt;li&gt;如果 review 没有通过，你需要在原来的基础上修改，修改完并 commit 之后需要执行 &lt;code class=&quot;highlighter-rouge&quot;&gt;arc diff [last_commit] --update D(id)&lt;/code&gt; 继续 review&lt;/li&gt;
+      &lt;li&gt;如果 review 通过了，只需要运行 &lt;code class=&quot;highlighter-rouge&quot;&gt;arc land --onto some_branch&lt;/code&gt;， arc 会将你当前分支合并到 master 上，并删除当前分支&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;更多详情可以查看&lt;a href=&quot;https://phab.enlightenment.org/w/arcanist/&quot;&gt;英文文档&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+				<pubDate>Mon, 29 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/29/Arcanist%E7%94%A8%E6%B3%95%E7%AE%80%E4%BB%8B/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/29/Arcanist%E7%94%A8%E6%B3%95%E7%AE%80%E4%BB%8B/</guid>
+			</item>
+		
+			<item>
+				<title>关于osx的quicklook</title>
+        <description>&lt;p&gt;OSX上QuickLook功能就是空格键的预览,一个按键可以预览&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;图片大小&lt;/li&gt;
+  &lt;li&gt;csv内容&lt;/li&gt;
+  &lt;li&gt;omnigraffle内容&lt;/li&gt;
+  &lt;li&gt;格式化json后内容&lt;/li&gt;
+  &lt;li&gt;markdown渲染后内容&lt;/li&gt;
+  &lt;li&gt;压缩文件内容结构(包括jar包)&lt;/li&gt;
+  &lt;li&gt;等等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;用法:搜索下图示中内容,下载,放入以下两处之一:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;~/Library/Quick Look&lt;/li&gt;
+  &lt;li&gt;/Library/Quick Look&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-28%20at%2000.49.06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-28%20at%2000.48.46.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Sat, 27 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/27/%E5%85%B3%E4%BA%8EOSX%E7%9A%84QuickLook/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/27/%E5%85%B3%E4%BA%8EOSX%E7%9A%84QuickLook/</guid>
+			</item>
+		
+			<item>
+				<title>Switchhost!与appledns</title>
+        <description>&lt;h3 id=&quot;switchhost&quot;&gt;SwitchHost!&lt;/h3&gt;
+&lt;p&gt;很久很久以前,切系统host要么是系统自带Location要么是GasMask…&lt;/p&gt;
+
+&lt;p&gt;也有人会说我用Alfred Workflow…OSX已经更新到如今,无论如何我也不再用Alfred跟LaunchBar了.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/oldj/SwitchHosts&quot;&gt;SwitchHost!&lt;/a&gt;基于 &lt;a href=&quot;http://macgapproject.github.io&quot;&gt;MacGap&lt;/a&gt; 开发，同时使用了 &lt;a href=&quot;http://vuejs.org/&quot;&gt;Vue.js&lt;/a&gt; 以及 &lt;a href=&quot;http://codemirror.net/&quot;&gt;CodeMirror&lt;/a&gt; 等框架/库。&lt;/p&gt;
+
+&lt;p&gt;SwitchHosts! 的数据文件在 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.SwitchHosts&lt;/code&gt; 目录下，其中 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.SwitchHosts/data.json&lt;/code&gt; 是 hosts 数据文件，&lt;code class=&quot;highlighter-rouge&quot;&gt;~/.SwitchHosts/prefereces.json&lt;/code&gt; 是配置信息。&lt;/p&gt;
+
+&lt;p&gt;优点:好看,基本功能不缺.&lt;/p&gt;
+
+&lt;p&gt;缺点:你可能看着Monitor里面进程不太爽.&lt;/p&gt;
+
+&lt;p&gt;可以改进的点:如果有人维护开源的Host列表就好了.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-28%20at%2000.23.59.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;appledns&quot;&gt;AppleDNS&lt;/h3&gt;
+
+&lt;p&gt;效果:App Store,Apple Music加速十分显著.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/gongjianhui/AppleDNS&quot;&gt;AppleDNS&lt;/a&gt;来自网友的黑科技,浙江地区请下载我的配置文件导入SwitchHost!就行了.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/file/switchhost.json&quot;&gt;AppleDNS配置文件&lt;/a&gt;&lt;/p&gt;
+</description>
+				<pubDate>Sat, 27 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/27/SwitchHost!%E4%B8%8EAppleDNS/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/27/SwitchHost!%E4%B8%8EAppleDNS/</guid>
+			</item>
+		
+			<item>
+				<title>Airmail及day One 2(osx &amp; Ios)主观体验</title>
+        <description>&lt;p&gt;前情提要:&lt;/p&gt;
+
+&lt;p&gt;最近微博上大批装逼犯开始喷Airmail for ios,真想不明白用个App居然能用出来戾气…&lt;/p&gt;
+
+&lt;p&gt;总结一下:&lt;/p&gt;
+
+&lt;p&gt;这两款软件我都是重度用户,双端我都有购买.感想就是不够精致但绝对够用,痛点给你解决的明明白白的,痒点还能搔一搔的.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.38.38.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2994.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;本文还会顺带评论本文截图用到的OSX上两款标注App:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;JieTu&lt;/li&gt;
+  &lt;li&gt;Sketch&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.48.49.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;简评: 前者完爆了后者.&lt;/p&gt;
+
+&lt;p&gt;###Airmail&lt;/p&gt;
+
+&lt;p&gt;不同邮箱可以用不同颜色标识 
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/:Users:Slahser:Desktop:Screen%20Shot%202016-02-16%20at%2000.59.06.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2992.PNG&quot; alt=&quot;&quot; /&gt;
+特色的Snooze功能,可以在手机跟电脑间同步提醒(重复接收一次指定邮件).
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.59.43.png&quot; alt=&quot;&quot; /&gt;
+支持handoff. 
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.51.48.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;所有邮箱配置可以从iCloud同步,任何地方配置过就不再需要重新配置,即使你重装/换设备.&lt;/p&gt;
+
+&lt;p&gt;###Day One 2&lt;/p&gt;
+
+&lt;p&gt;一直把自己当做Journal App,可是貌似大家都把它当做日记软件&lt;/p&gt;
+
+&lt;p&gt;新版去掉了iCloud同步,只保留了软件同步服务,估计以后会收费吧.目前够用,速度可以.&lt;/p&gt;
+
+&lt;p&gt;之前一直诟病的单篇日记不能添加多张图片也已经解决.&lt;/p&gt;
+
+&lt;p&gt;这是我在iOS上用的最顺手的日记App,也是至今记了一年多&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/ttttttt00002.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;新建页面
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.39.59.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;日记日历
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2989.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;地图记忆,偶尔不准.
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2990.PNG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;done.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 15 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/15/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/15/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</guid>
+			</item>
+		
+			<item>
+				<title>参加一手paste 2 Beta体验</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-13%20at%2015.21.40.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;几天前的事儿了,申请地址:&lt;a href=&quot;http://pasteapp.me/beta&quot;&gt;paste 2 beta&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;你会收到邮件,也可以直接拿我的下方的三个邀请码去激活&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-13%20at%2015.25.51.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;官方宣称的新特性:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-13%20at%2015.23.51.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;不过我并不关心..用下来的确更方便了,特征是不用跳到新页面,有了页面导航类似的功能,任何app界面都可以调出,一代里面用起来诡异的几个点都改进了.发必买.&lt;/p&gt;
+
+&lt;p&gt;配合Unclutter我的Mac鬼畜了起来.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-13%20at%2015.17.42.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;顺便这是第一篇我配合ifttt发布的博文.notification刚收到了就放心了&lt;/p&gt;
+</description>
+				<pubDate>Sat, 13 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/13/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/13/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</guid>
+			</item>
+		
+			<item>
+				<title>修复spf13 Vim内vim Airline插件错误</title>
+        <description>&lt;p&gt;最近vim-airline有所更新,&lt;a href=&quot;http://vim.spf13.com&quot;&gt;spf13-vim&lt;/a&gt;内的代码着色插件提示缺失,下面我们手动修复一下.&lt;/p&gt;
+
+&lt;p&gt;ps:使用spf13-vim需要with lua的vim依赖,请如下安装:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; brew install vim --with-lua &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;因为此前的vim-color-solarized插件换了仓库,而github上作者还没更新,我们需要修改如下文件:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;  vim ~/.vimrc.bundles &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2023.03.18.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;如图修改121,122行.&lt;/p&gt;
+
+&lt;p&gt;而后更新spf13-vim&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt; curl http://j.mp/spf13-vim3 -L -o - | sh &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;done.&lt;/p&gt;
+</description>
+				<pubDate>Tue, 09 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/09/%E4%BF%AE%E5%A4%8Dspf13-vim%E5%86%85vim-airline%E6%8F%92%E4%BB%B6%E9%94%99%E8%AF%AF/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/09/%E4%BF%AE%E5%A4%8Dspf13-vim%E5%86%85vim-airline%E6%8F%92%E4%BB%B6%E9%94%99%E8%AF%AF/</guid>
+			</item>
+		
+			<item>
+				<title>Oh My Fish下架后的选择</title>
+        <description>&lt;p&gt;今天oh-my-fish因为license问题github上的repo被删除了,不知道以后会不会获得更新..于是今天我替换到了&lt;a href=&quot;https://github.com/fisherman/fisherman&quot;&gt;fisherman&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;ps:貌似举报oh-my-fish问题的就是fisherman的作者…&lt;/p&gt;
+
+&lt;p&gt;删除omf&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;omf erase &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;安装fisher&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;curl -L install.fisherman.sh | fish&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;搜索所有插件,必装款如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fisher search
+fisher install legacy
+fisher install &amp;lt;自己选个主题吧&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2023.14.44.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另外,z的配置,改天更新吧.&lt;/p&gt;
+
+&lt;p&gt;想想还是今天写了吧..&lt;/p&gt;
+
+&lt;p&gt;下载zip&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/sjl/z-fish&quot;&gt;z-fish&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# INSTALL:
+#   * put something like this in your  config.fish:
+#     . /path/to/z.fish
+#   * put something like this in your fish_prompt function:
+#       z --add &quot;$PWD&quot;
+#   * cd around for a while to build up the db
+#   * PROFIT!!
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;图中文件在这里:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2023.24.35.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;另外如果不喜欢默认的欢迎信息的话,可以修改这个文件:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2023.27.29.png&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2023.27.21.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;舒爽的环境:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-13%20at%2018.25.12.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Tue, 09 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/09/oh-my-fish%E4%B8%8B%E6%9E%B6%E5%90%8E%E7%9A%84%E9%80%89%E6%8B%A9/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/09/oh-my-fish%E4%B8%8B%E6%9E%B6%E5%90%8E%E7%9A%84%E9%80%89%E6%8B%A9/</guid>
+			</item>
+		
+			<item>
+				<title>Osx图标手动适配darkmode</title>
+        <description>&lt;p&gt;尽管Yosemite距今已经好多年了,但很多依然有些app依然没有适配dark mode状态栏.&lt;/p&gt;
+
+&lt;p&gt;下面是利用系统工具进行操作,使得你的系统状态栏获得除了Bartender隐藏之外的另一种解决方案:&lt;/p&gt;
+
+&lt;p&gt;效果图(举例APP Eudic lightseek&amp;amp;Caffeine):&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.44.32.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第一步:找到App&amp;gt;resources内图标文件&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.48.25.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.48.37.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;再比如麻烦一点的欧陆词典的状态栏快捷查询&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.48.55.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.49.22.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.49.36.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第二步:&lt;/p&gt;
+
+&lt;p&gt;将内含icon文件有Preview.app打开,选择tools里Adjust Color
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.49.46.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.49.54.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;第三步:&lt;/p&gt;
+
+&lt;p&gt;调整下图中最上方左右可拖动控件,交换位置.保存.重启应用.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.50.01.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Tue, 09 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/09/OSX%E5%9B%BE%E6%A0%87%E6%89%8B%E5%8A%A8%E9%80%82%E9%85%8DDarkMode/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/09/OSX%E5%9B%BE%E6%A0%87%E6%89%8B%E5%8A%A8%E9%80%82%E9%85%8DDarkMode/</guid>
+			</item>
+		
+			<item>
+				<title>设备&amp;玩物一览[持续更新]</title>
+        <description>&lt;p&gt;下图型号:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;rMBP late2013 :生产力,还能坚持到今年early2016.&lt;/li&gt;
+  &lt;li&gt;Raindesign 底座 :值&lt;/li&gt;
+  &lt;li&gt;Filco Minila Air 奶酪绿 :退烧倒数第三把&lt;/li&gt;
+  &lt;li&gt;小米金属鼠标垫 :性价比&lt;/li&gt;
+  &lt;li&gt;Microsoft Designer :习惯就好&lt;/li&gt;
+  &lt;li&gt;希捷500GB 时光机: 聊胜于无&lt;/li&gt;
+  &lt;li&gt;Transend 拓展卡: 近水&lt;/li&gt;
+  &lt;li&gt;范优奇定制椅子:舒服,不知道HM什么感觉.&lt;/li&gt;
+  &lt;li&gt;曼秀雷敦爆款眼药水 :不如日产参天,但是依赖性小很多&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2212.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;列一下我眼里的新手套装:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MBA高配&lt;/li&gt;
+  &lt;li&gt;HHKB有刻&lt;/li&gt;
+  &lt;li&gt;U2414H&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;本着买高型号的低配电子产品原则:
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-05%20at%2015.02.16.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;明显言过其实的美国神州拓展屏幕U2414H
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-05%20at%2015.02.26.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Grid It噱头大于实用
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2711.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;哦..这个是退烧倒数第二把
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_1075.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;平衡杆的手感明显要比卫星轴强一点
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2716.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;打油小当家AES,不知道二色的奶酪绿什么感觉
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_1736.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;老骥伏枥,给老婆用了,国产轴之前的那批KeyCool,如图是刚给她换完杀马特帽儿
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2547.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;老婆那儿的翻页小时钟跟小黄鸭.对,就是鸭
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2718.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Gunnar防蓝光眼镜(夹片)&lt;/p&gt;
+
+&lt;p&gt;值不值:值&lt;/p&gt;
+
+&lt;p&gt;沉不沉:沉&lt;/p&gt;
+
+&lt;p&gt;有用没:有,至少我的眼睛干涩好多了&lt;/p&gt;
+
+&lt;p&gt;最近我的眼睛鼻贴掉了..一直没戴&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2972.JPG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;pill box&lt;/p&gt;
+
+&lt;p&gt;手头玩物,买回来发现没什么装的..只是觉得挺可爱的&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2996.JPG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3001.JPG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SONY MDR-XB450AP&lt;/p&gt;
+
+&lt;p&gt;对于我这种常年歌单里没有人声的人来说,这个耳机的低音真是够用了.&lt;/p&gt;
+
+&lt;p&gt;赶上半价买的,暗爽.
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2998.JPG&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最近又添了一把Code Keyboard ,于是把之前的minila 送给老婆了… 
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/1761442-b49442ff5f04619c.jpeg&quot; alt=&quot;JPEG 图像-7CB8137033CA-1.jpeg&quot; /&gt; 
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/1761442-b932316efa865824.jpeg&quot; alt=&quot;JPEG 图像-72F558E34124-1.jpeg&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Fri, 05 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/05/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/05/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</guid>
+			</item>
+		
+			<item>
+				<title>几年来第二次重装,姑且列一下app出来</title>
+        <description>&lt;p&gt;昨天错误的操作了一手,/usr/local不见了…瞬间无法工作.&lt;/p&gt;
+
+&lt;p&gt;时光机也不争气起来,Restore一些层次深的目录回来提示一些莫名其妙的东西,姑且重装一次,此处再次嘲讽&lt;a href=&quot;http://baike.baidu.com/subview/1677862/8337331.htm#viewPageContent&quot;&gt;Time Machine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;抹盘,重装,两个小时.一片荒凉啊.&lt;/p&gt;
+
+&lt;p&gt;ps:El Capitan第一次进去激活的时候还是不要选用iCloud账户登录了,事后会给你一个中文名账户,别问我为什么知道…&lt;/p&gt;
+
+&lt;p&gt;惊喜的是几近报废的&lt;a href=&quot;http://item.jd.com/1552422.html&quot;&gt;Designer&lt;/a&gt;奇迹般的恢复正常了,之前以为单位的Wi-Fi影响的.看来是错怪了.&lt;/p&gt;
+
+&lt;p&gt;光速恢复到可以写代码的状态,安装了如下软件.&lt;/p&gt;
+
+&lt;p&gt;其他的容器啊,语言环境啊,玩物啊..再说吧再说吧…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-f0d88b5fba92dcc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;apps1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-3f37080adabedd2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;apps1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-78c99b00a693b23c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;apps1&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;重装后的显著成果
+&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-f6f9e481ffb30b26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Fri, 05 Feb 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/02/05/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/02/05/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</guid>
+			</item>
+		
+			<item>
+				<title>可能性与动机</title>
+        <description>&lt;p&gt;最近得知了一个消息&lt;/p&gt;
+
+&lt;p&gt;于是获得了无限的可能性与动机&lt;/p&gt;
+
+&lt;p&gt;开心.&lt;/p&gt;
+
+&lt;p&gt;再顺便摘一段微信吐槽:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;想起来一句大概一年前看到的话:写代码的一般几句话就能从交流里听出来对方比自己强还是弱,但是比自己强的究竟强多少是听不出来的.就是这么个歧视逆差吸引着一批一批的人流向一些公司.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我也听得出来,我也听不出来,总之还是普通人啊.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-01%20at%2001.26.19.png&quot; alt=&quot;tt&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Thu, 28 Jan 2016 00:00:00 +0800</pubDate>
+				<link>//slahser.github.io/2016/01/28/%E5%8F%AF%E8%83%BD%E6%80%A7%E4%B8%8E%E5%8A%A8%E6%9C%BA/</link>
+				<guid isPermaLink="true">//slahser.github.io/2016/01/28/%E5%8F%AF%E8%83%BD%E6%80%A7%E4%B8%8E%E5%8A%A8%E6%9C%BA/</guid>
+			</item>
 		
 			<item>
 				<title>Example content</title>
@@ -122,236 +859,8 @@
 &lt;p&gt;Nullam quis risus eget urna mollis ornare vel eu leo.&lt;/p&gt;
 </description>
 				<pubDate>Sun, 09 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//slahser/coding.me/2015/08/09/example-content/</link>
-				<guid isPermaLink="true">//slahser/coding.me/2015/08/09/example-content/</guid>
-			</item>
-		
-			<item>
-				<title>设备&amp;玩物一览[持续更新]</title>
-        <description>&lt;p&gt;下图型号:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;rMBP late2013 :生产力,还能坚持到今年early2016.&lt;/li&gt;
-  &lt;li&gt;Raindesign 底座 :值&lt;/li&gt;
-  &lt;li&gt;Filco Minila Air 奶酪绿 :退烧倒数第三把&lt;/li&gt;
-  &lt;li&gt;小米金属鼠标垫 :性价比&lt;/li&gt;
-  &lt;li&gt;Microsoft Designer :习惯就好&lt;/li&gt;
-  &lt;li&gt;希捷500GB 时光机: 聊胜于无&lt;/li&gt;
-  &lt;li&gt;Transend 拓展卡: 近水&lt;/li&gt;
-  &lt;li&gt;范优奇定制椅子:舒服,不知道HM什么感觉.&lt;/li&gt;
-  &lt;li&gt;曼秀雷敦爆款眼药水 :不如日产参天,但是依赖性小很多&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-1067b211ce1ff4bf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;列一下我眼里的新手套装:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;MBA高配&lt;/li&gt;
-  &lt;li&gt;HHKB有刻&lt;/li&gt;
-  &lt;li&gt;U2414H&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;本着买高型号的低配电子产品原则:
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-539b4a08b028ccb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;明显言过其实的美国神州拓展屏幕U2414H
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-2aeeedb0d2daa481.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Grid It噱头大于实用
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-a98333e89aaf29ff.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;哦..这个是退烧倒数第二把
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-f44803b23646c8d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;平衡杆的手感明显要比卫星轴强一点
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-598f80d0ad155c70.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;打油小当家AES,不知道二色的奶酪绿什么感觉
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-1c1a95049d1fddb4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;老骥伏枥,给老婆用了,国产轴之前的那批KeyCool,如图是刚给她换完杀马特帽儿
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-bdf248bde87e15ab.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;老婆那儿的翻页小时钟跟小黄鸭.对,就是鸭
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-23c14715f75cf23a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Gunnar防蓝光眼镜(夹片)&lt;/p&gt;
-
-&lt;p&gt;值不值:值&lt;/p&gt;
-
-&lt;p&gt;沉不沉:沉&lt;/p&gt;
-
-&lt;p&gt;有用没:有,至少我的眼睛干涩好多了&lt;/p&gt;
-
-&lt;p&gt;最近我的眼睛鼻贴掉了..一直没戴&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-3a51c9f12b044edc.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;pill box&lt;/p&gt;
-
-&lt;p&gt;手头玩物,买回来发现没什么装的..只是觉得挺可爱的&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-fecfec4d3e9bfbac.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-29f666bd0e098a24.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;SONY MDR-XB450AP&lt;/p&gt;
-
-&lt;p&gt;对于我这种常年歌单里没有人声的人来说,这个耳机的低音真是够用了.&lt;/p&gt;
-
-&lt;p&gt;赶上半价买的,暗爽.
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-8ef940a0e8893f17.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;最近又添了一把Code Keyboard ,于是把之前的minila 送给老婆了…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-b49442ff5f04619c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;JPEG 图像-7CB8137033CA-1.jpeg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-b932316efa865824.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;JPEG 图像-72F558E34124-1.jpeg&quot; /&gt;&lt;/p&gt;
-</description>
-				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//slahser/coding.me/2015/08/08/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</link>
-				<guid isPermaLink="true">//slahser/coding.me/2015/08/08/%E8%AE%BE%E5%A4%87&%E7%8E%A9%E7%89%A9%E4%B8%80%E8%A7%88-%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0/</guid>
-			</item>
-		
-			<item>
-				<title>Whats Jekyll?</title>
-        <description>&lt;p class=&quot;lead&quot;&gt; &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; is a static site generator, an open-source tool for creating simple yet powerful websites of all shapes and sizes.&lt;/p&gt;
-
-&lt;p&gt;From &lt;a href=&quot;https://github.com/jekyll/jekyll/blob/master/README.markdown&quot;&gt;the project’s readme&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Jekyll is a simple, blog aware, static site generator. It takes a template directory […] and spits out a complete, static website suitable for serving with Apache or your favorite web server. This is also the engine behind GitHub Pages, which you can use to host your project’s page or blog right here from GitHub.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It’s an immensely useful tool. Find out more by &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;visiting the project on GitHub&lt;/a&gt;.&lt;/p&gt;
-</description>
-				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//slahser/coding.me/2015/08/08/whats-jekyll/</link>
-				<guid isPermaLink="true">//slahser/coding.me/2015/08/08/whats-jekyll/</guid>
-			</item>
-		
-			<item>
-				<title>Airmail及day One 2(osx &amp; Ios)主观体验</title>
-        <description>&lt;p&gt;前情提要:&lt;/p&gt;
-
-&lt;p&gt;最近微博上大批装逼犯开始喷Airmail for ios,真想不明白用个App居然能用出来戾气…&lt;/p&gt;
-
-&lt;p&gt;总结一下:&lt;/p&gt;
-
-&lt;p&gt;这两款软件我都是重度用户,双端我都有购买.感想就是不够精致但绝对够用,痛点给你解决的明明白白的,痒点还能搔一搔的.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-186b844dc318ca52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-ad67c65fbbce2b12.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;本文还会顺带评论本文截图用到的OSX上两款标注App:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;JieTu&lt;/li&gt;
-  &lt;li&gt;Sketch&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-a14f5dae04525e15.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;简评: 前者完爆了后者.&lt;/p&gt;
-
-&lt;p&gt;###Airmail&lt;/p&gt;
-
-&lt;p&gt;不同邮箱可以用不同颜色标识 
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-dfd1cd19114c2292.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-1c61dadf2bef2e64.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
-特色的Snooze功能,可以在手机跟电脑间同步提醒(重复接收一次指定邮件).
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-fd88dda56f1e66b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;
-支持handoff. 
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-e19a7e731f451dd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;所有邮箱配置可以从iCloud同步,任何地方配置过就不再需要重新配置,即使你重装/换设备.&lt;/p&gt;
-
-&lt;p&gt;###Day One 2&lt;/p&gt;
-
-&lt;p&gt;一直把自己当做Journal App,可是貌似大家都把它当做日记软件&lt;/p&gt;
-
-&lt;p&gt;新版去掉了iCloud同步,只保留了软件同步服务,估计以后会收费吧.目前够用,速度可以.&lt;/p&gt;
-
-&lt;p&gt;之前一直诟病的单篇日记不能添加多张图片也已经解决.&lt;/p&gt;
-
-&lt;p&gt;这是我在iOS上用的最顺手的日记App,也是至今记了一年多&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-09dc60b1a7688577.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;新建页面
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-39700c625cd911db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;日记日历
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-3eef082904781540.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;地图记忆,偶尔不准.
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-6b01f9b8a4d399a8.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;done.&lt;/p&gt;
-</description>
-				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//slahser/coding.me/2015/08/08/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</link>
-				<guid isPermaLink="true">//slahser/coding.me/2015/08/08/Airmail%E5%8F%8ADay-One-2(OSX-&-iOS)%E4%B8%BB%E8%A7%82%E4%BD%93%E9%AA%8C/</guid>
-			</item>
-		
-			<item>
-				<title> 参加一手paste 2 Beta体验</title>
-        <description>&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-46489cba305638cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;几天前的事儿了,申请地址:&lt;a href=&quot;http://pasteapp.me/beta&quot;&gt;paste 2 beta&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;你会收到邮件,也可以直接拿我的下方的三个邀请码去激活&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-c382cc1ebb0da36d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;官方宣称的新特性:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-0da84c1d05e327c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;不过我并不关心..用下来的确更方便了,特征是不用跳到新页面,有了页面导航类似的功能,任何app界面都可以调出,一代里面用起来诡异的几个点都改进了.发必买.&lt;/p&gt;
-
-&lt;p&gt;配合Unclutter我的Mac鬼畜了起来.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-cb07eb48e57fa56d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;顺便这是第一篇我配合ifttt发布的博文.notification刚收到了就放心了&lt;/p&gt;
-</description>
-				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//slahser/coding.me/2015/08/08/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</link>
-				<guid isPermaLink="true">//slahser/coding.me/2015/08/08/%E5%8F%82%E5%8A%A0%E4%B8%80%E6%89%8BPaste-2-Beta%E4%BD%93%E9%AA%8C/</guid>
-			</item>
-		
-			<item>
-				<title> 几年来第二次重装,姑且列一下app出来</title>
-        <description>&lt;p&gt;昨天错误的操作了一手,/usr/local不见了…瞬间无法工作.&lt;/p&gt;
-
-&lt;p&gt;时光机也不争气起来,Restore一些层次深的目录回来提示一些莫名其妙的东西,姑且重装一次,此处再次嘲讽&lt;a href=&quot;http://baike.baidu.com/subview/1677862/8337331.htm#viewPageContent&quot;&gt;Time Machine&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;抹盘,重装,两个小时.一片荒凉啊.&lt;/p&gt;
-
-&lt;p&gt;ps:El Capitan第一次进去激活的时候还是不要选用iCloud账户登录了,事后会给你一个中文名账户,别问我为什么知道…&lt;/p&gt;
-
-&lt;p&gt;惊喜的是几近报废的&lt;a href=&quot;http://item.jd.com/1552422.html&quot;&gt;Designer&lt;/a&gt;奇迹般的恢复正常了,之前以为单位的Wi-Fi影响的.看来是错怪了.&lt;/p&gt;
-
-&lt;p&gt;光速恢复到可以写代码的状态,安装了如下软件.&lt;/p&gt;
-
-&lt;p&gt;其他的容器啊,语言环境啊,玩物啊..再说吧再说吧…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-f0d88b5fba92dcc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;apps1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-3f37080adabedd2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;apps1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-78c99b00a693b23c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;apps1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;重装后的显著成果
-&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1761442-f6f9e481ffb30b26.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-</description>
-				<pubDate>Sat, 08 Aug 2015 00:00:00 +0800</pubDate>
-				<link>//slahser/coding.me/2015/08/08/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</link>
-				<guid isPermaLink="true">//slahser/coding.me/2015/08/08/%E5%87%A0%E5%B9%B4%E6%9D%A5%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%87%8D%E8%A3%85,%E5%A7%91%E4%B8%94%E5%88%97%E4%B8%80%E4%B8%8BApp%E5%87%BA%E6%9D%A5/</guid>
+				<link>//slahser.github.io/2015/08/09/example-content/</link>
+				<guid isPermaLink="true">//slahser.github.io/2015/08/09/example-content/</guid>
 			</item>
 		
 	</channel>
