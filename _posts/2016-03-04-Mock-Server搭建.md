@@ -1,4 +1,5 @@
-前端项目的mock server改天介绍,今天写下基于[moco](https://github.com/dreamhead/moco)的简易mock server搭建.
+前端项目的mock server改天介绍,今天写下基于[moco](https://github.com/dreamhead/moco)的简易mock server搭建. 
+
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png) 
 
 
@@ -15,8 +16,9 @@ moco当初吸引我在github上点出star就是因为它的优点:
 
 简洁搭建如下: 
 
-* 下载[moco-runner-0.10.2-standalone.jar](https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar) 
-* 编写配置文件**.json置于同级目录(实例tt.json) 
+* OSX下可以 `brew install moco`
+* 或者下载[moco-runner-0.10.2-standalone.jar](https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar) 
+* 编写配置文件**.json置于某处(实例tt.json) 
 
 文件中需要编写request/response对,具体配置项可以看[这里](https://github.com/dreamhead/moco/blob/master/moco-doc/apis.md) 
 
@@ -110,11 +112,12 @@ moco当初吸引我在github上点出star就是因为它的优点:
 
 * 启动runner:
 
-  `java -jar moco-runner-<version>-standalone.jar http -p 9999[其他端口也ok] -c tt.json`
+  `java -jar moco-runner-<version>-standalone.jar http -p [port-like-9999] -c [json-path-like-tt.json]`
 
  > 配置后台运行,在上条命令后加上 & 符号即可.
 
 * 访问host:port/配置 路径进行访问. 
+
 enjoy it!
 
 
