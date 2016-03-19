@@ -4,7 +4,7 @@
 
 效果图(举例APP Eudic lightseek&Caffeine):
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.44.32.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2022.44.32.png?imageView2/2/h/600)
 
 第一步:找到App>resources内图标文件
 

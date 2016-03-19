@@ -6,7 +6,7 @@
 
 这两款软件我都是重度用户,双端我都有购买.感想就是不够精致但绝对够用,痛点给你解决的明明白白的,痒点还能搔一搔的. 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.38.38.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.38.38.png?imageView2/2/h/600)
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2994.PNG?imageView2/2/h/600)
 
@@ -15,7 +15,7 @@
 - JieTu
 - Sketch
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.48.49.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.48.49.png?imageView2/2/h/600)
 
 简评: 前者完爆了后者.
 
