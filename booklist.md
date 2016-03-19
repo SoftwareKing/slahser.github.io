@@ -1,0 +1,65 @@
+---
+title: booklist
+permalink: /booklist/
+---
+
+## 书单
+
+- [✓]{: style="color: green"}java8函数式编程
+- [✓]{: style="color: green"}第一本docker书
+- [✓]{: style="color: green"}写给大忙人看的java se 8
+- [✓]{: style="color: green"}maven实战
+- [✓]{: style="color: green"}spring技术内幕
+- [x]{: style="color: red"}swift ios 应用开发实战
+- [~]{: style="color: yellow"}redis设计与实现
+- [✓]{: style="color: green"}java虚拟机精讲
+- [✓]{: style="color: green"}深入理解scala
+- [✓]{: style="color: green"}java特种兵
+- [✓]{: style="color: green"}图解tcp/ip
+- [✓]{: style="color: green"}nosql精粹
+- [✓]{: style="color: green"}快学scala
+- [✓]{: style="color: green"}实战java虚拟机
+- [~]{: style="color: yellow"}大规模分布式存储系统原理解析与架构实战
+- [✓]{: style="color: green"}redis实战
+- [~]{: style="color: yellow"}rabbitmq实战
+- [✓]{: style="color: green"}netty权威指南
+- [~]{: style="color: yellow"}flume构建高可用可扩展的海量日志采集系统
+- [✓]{: style="color: green"}实战gradle
+- [✓]{: style="color: green"}图解http
+- [✓]{: style="color: green"}linux私房菜基础学习篇
+- [x]{: style="color: red"}linux私房菜服务器架设篇
+- [✓]{: style="color: green"}大话设计模式
+- [✓]{: style="color: green"}大话数据结构
+- [✓]{: style="color: green"}大话软件测试
+- [✓]{: style="color: green"}编程之美
+- [✓]{: style="color: green"}mysql必知必会
+- [✓]{: style="color: green"}编程之法
+- [✓]{: style="color: green"}programming in scala
+- [~]{: style="color: yellow"}java 技术手册
+- [x]{: style="color: red"}大型分布式网站架构设计与实战
+- [✓]{: style="color: green"}java并发编程的艺术
+- [x]{: style="color: red"}java高并发程序设计
+- [x]{: style="color: red"}分布式服务框架原理与实战
+- [x]{: style="color: red"}hadoop实战
+- [x]{: style="color: red"}linux内核设计的艺术
+- [x]{: style="color: red"}mongodb实战
+- [x]{: style="color: red"}ruby元编程
+- [✓]{: style="color: green"}编写高质量代码:改善python程序的91个建议
+- [x]{: style="color: red"}深入理解bootstrap
+- [✓]{: style="color: green"}编写高质量代码:改善java程序的151个建议
+- [✓]{: style="color: green"}spring技术内幕
+- [x]{: style="color: red"}自己动手写网络爬虫
+- [✓]{: style="color: green"}深入理解java7
+- [✓]{: style="color: green"}深入java虚拟机
+- [✓]{: style="color: green"}深入理解java虚拟机
+- [x]{: style="color: red"}node入门
+- [✓]{: style="color: green"}nodejs开发指南
+- [✓]{: style="color: green"}java编程思想
+- [✓]{: style="color: green"}java并发编程实践
+- [✓]{: style="color: green"}scala by example
+- [✓]{: style="color: green"}akka in action
+- [✓]{: style="color: green"}spring in action
+- [x]{: style="color: red"}build a swift app
+- [x]{: style="color: red"}learn ios design
+- [✓]{: style="color: green"}写给大家看的设计书
+

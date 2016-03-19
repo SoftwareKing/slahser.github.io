@@ -3,7 +3,7 @@ name:               "Coup de Grace"
 description:        "A divine strike, S1ahs3r honors his opponent by choosing them for death."
 
 # jekyll-seo-tag, see: http://www.rubydoc.info/gems/jekyll-seo-tag/1.2.0
-url:                "//slahser.github.io"
+url:                "https://www.slahser.com"
 author:             "S1ahs3r"
 twitter:
   username:         "S1ahs3r"
@@ -18,10 +18,10 @@ markdown:           kramdown
 
 # Navigation
 nav:
-  - name:           "About"
-    href:           "//slahser.github.io/about"
-  - name:           "Tt"
-    href:           "//github.com/Slahser"
+  - name:           "about"
+    href:           "https://www.slahser.com/about"
+  - name:           "booklist"
+    href:           "https://www.slahser.com/booklist"
 
 # Sass
 sass:
