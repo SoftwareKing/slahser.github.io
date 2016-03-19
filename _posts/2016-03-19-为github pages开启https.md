@@ -4,7 +4,7 @@
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2018.14.58.png)
 
-文中链接在 [这里](https://kloudsec.com/github-pages)
+图中链接在[这里](https://kloudsec.com/github-pages)
 
 特色功能是如下: 
 
@@ -12,17 +12,25 @@
 - 免费的cdn
 - 其他的kcloudsec插件,比如定期的快照,防xss等等.
 
-按如下链接填入前两阶信息,会生成两段dns解析配置,如下图新建两条解析记录
+按如下链接填入前两阶信息,会生成两段dns解析配置 
+
+如下图新建两条解析记录
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.51.08.png)
 
-稍等片刻,访问你的`https://host` 可以发现一切已经准备停当了.功能稍后介绍,先说说升级之后jekyll的调整
+稍等片刻,访问你的`https://host` 可以发现一切已经准备停当了. 
+
+功能稍后介绍,先说说升级之后jekyll的调整:
 
 - 博客的url要调整
-- 样式文件中`//`形式简写的部分,某些必要的要加上协议`http/https://` .
+- 样式文件中`//`形式简写的部分,某些必要的要加上协议`[http/https]://` .
+- 页面底纹两种方案
+    * 换成base64方式
+    * 换成支持https的图床
 - 目前发现国内的google fonts镜像在启用https之后,会访问不到.而360的反代不支持https,所以我启用了[极客族的cdn](https://cdn.geekzu.org),请从博文列表搜索相关查看.
 
-功能如下:
+功能如下: 
+
 ### 测速 
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.48.20.png)
