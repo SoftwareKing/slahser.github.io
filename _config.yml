@@ -18,10 +18,10 @@ markdown:           kramdown
 
 # Navigation
 nav:
-  - name:           "about"
-    href:           "https://www.slahser.com/about"
   - name:           "booklist"
     href:           "https://www.slahser.com/booklist"
+  - name:           "about"
+    href:           "https://www.slahser.com/about"
 
 # Sass
 sass:
