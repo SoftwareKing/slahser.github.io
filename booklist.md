@@ -3,8 +3,6 @@ title: booklist
 permalink: /booklist/
 ---
 
-## 书单
-
 - <span style="color: green">[✓]</span>java8函数式编程
 - <span style="color: green">[✓]</span>第一本docker书
 - <span style="color: green">[✓]</span>写给大忙人看的java se 8
