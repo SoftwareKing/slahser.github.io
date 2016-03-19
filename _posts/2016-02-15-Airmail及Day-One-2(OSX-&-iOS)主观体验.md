@@ -8,7 +8,7 @@
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.38.38.png)
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2994.PNG)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2994.PNG?imageView2/2/h/600)
 
 本文还会顺带评论本文截图用到的OSX上两款标注App:
 
@@ -22,14 +22,17 @@
 ###Airmail
 
 不同邮箱可以用不同颜色标识 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/:Users:Slahser:Desktop:Screen%20Shot%202016-02-16%20at%2000.59.06.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/:Users:Slahser:Desktop:Screen%20Shot%202016-02-16%20at%2000.59.06.png?imageView2/2/h/600)
 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2992.PNG)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2992.PNG?imageView2/2/h/600) 
+
 特色的Snooze功能,可以在手机跟电脑间同步提醒(重复接收一次指定邮件).
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.59.43.png)
-支持handoff. 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.51.48.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.59.43.png?imageView2/2/h/600) 
+
+支持handoff.  
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.51.48.png?imageView2/2/h/300)
 
 所有邮箱配置可以从iCloud同步,任何地方配置过就不再需要重新配置,即使你重装/换设备.
 
@@ -43,15 +46,18 @@
 
 这是我在iOS上用的最顺手的日记App,也是至今记了一年多
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/ttttttt00002.png)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/ttttttt00002.png?imageView2/2/h/600)
 
-新建页面
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.39.59.png)
+新建页面 
 
-日记日历
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2989.PNG)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.39.59.png?imageView2/2/h/500)
 
-地图记忆,偶尔不准.
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2990.PNG)
+日记日历 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2989.PNG?imageView2/2/h/600)
+
+地图记忆,偶尔不准. 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2990.PNG?imageView2/2/h/600)
 
 done.
