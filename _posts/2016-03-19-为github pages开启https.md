@@ -6,7 +6,8 @@
 
 文中链接在 [这里](https://kloudsec.com/github-pages)
 
-特色功能是如下:
+特色功能是如下: 
+
 - 一键开启https
 - 免费的cdn
 - 其他的kcloudsec插件,比如定期的快照,防xss等等.
@@ -19,7 +20,7 @@
 
 - 博客的url要调整
 - 样式文件中`//`形式简写的部分,某些必要的要加上协议`http/https://` .
-- 目前发现国内的google font镜像在启用https之后,会访问不到.
+- 目前发现国内的google fonts镜像在启用https之后,会访问不到.而360的反代不支持https,所以我启用了[极客族的cdn](https://cdn.geekzu.org),请从博文列表搜索相关查看.
 
 功能如下:
 ### 测速 
