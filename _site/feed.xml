@@ -6,6 +6,72 @@
 		<atom:link href="https://www.slahser.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>关于支持https的cdn</title>
+        <description>&lt;p&gt;书接上文,给博客开启了https之后发现了诸多问题,最起码google fonts的360反代已经不好用了.&lt;/p&gt;
+
+&lt;p&gt;于是逼乎一下,你就知道.偶然得知有&lt;a href=&quot;http://www.geekzu.cn&quot;&gt;极客族&lt;/a&gt;这么个网站,他们提供了&lt;a href=&quot;https://cdn.geekzu.org&quot;&gt;支持https的cdn服务&lt;/a&gt;,类型多种多样.&lt;/p&gt;
+
+&lt;p&gt;特点:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用多个厂商的CDN服务，真正达到全球分发 
+  *（部分CDN厂商：腾讯云CDN、阿里云CDN、云端网络、360、快网、Google PSS等）&lt;/li&gt;
+  &lt;li&gt;多地部署服务器：安徽、香港、韩国、新加坡、旧金山、洛杉矶等地区均设立节点&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;前后端多机热备，即使down掉多台机器，我们的服务仍然可以保证较高的可用性&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;使用GlobalSign AlphaSSL SHA256 WildCard证书来保护您加载资源的安全&lt;/li&gt;
+  &lt;li&gt;禁止SSL v3（意味着不兼容IE6）&lt;/li&gt;
+  &lt;li&gt;使用SPDY技术&lt;/li&gt;
+  &lt;li&gt;使用SNI技术（意味着部分非主流系统及部分浏览器，如windows xp、IE6/7将提示证书错误）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;技术实现在&lt;a href=&quot;https://www.geekzu.cn/archives/cloudxns-cdn.html&quot;&gt;这里&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;谷歌字体&lt;/h3&gt;
+
+&lt;p&gt;源地址：//fonts.googleapis.com
+替换为：//fonts.geekzu.org&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;谷歌前端库&lt;/h3&gt;
+
+&lt;p&gt;源地址：//ajax.googleapis.com
+替换为：http://fdn.geekzu.org/ajax
+替换为：//sdn.geekzu.org/ajax&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;谷歌字体文件&lt;/h3&gt;
+
+&lt;p&gt;源地址：//fonts.gstatic.com
+替换为：http://fdn.geekzu.org/g-fonts
+替换为：//sdn.geekzu.org/g-fonts&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;谷歌字体文件&lt;/h3&gt;
+
+&lt;p&gt;源地址：//themes.googleusercontent.com
+替换为：http://fdn.geekzu.org/g-themes
+替换为：//sdn.geekzu.org/g-themes&lt;/p&gt;
+
+&lt;h3 id=&quot;gravatar&quot;&gt;Gravatar全球头像&lt;/h3&gt;
+
+&lt;p&gt;源地址：http://www.gravatar.com/avatar
+源地址：http://0.gravatar.com/avatar
+源地址：http://1.gravartar.com/avatar
+源地址：http://2.gravartar.com/avatar
+替换为：http://fdn.geekzu.org/avatar&lt;/p&gt;
+
+&lt;h3 id=&quot;gravatarssl&quot;&gt;Gravatar全球头像SSL版&lt;/h3&gt;
+
+&lt;p&gt;源地址：//secure.gravatar.com/avatar
+替换为：//sdn.geekzu.org/avatar&lt;/p&gt;
+
+&lt;p&gt;捐助链接在&lt;a href=&quot;http://cdn.geekzu.org/donate.html&quot;&gt;这里&lt;/a&gt;.&lt;/p&gt;
+</description>
+				<pubDate>Sat, 19 Mar 2016 00:00:00 +0800</pubDate>
+				<link>https://www.slahser.com/2016/03/19/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%8C%81https%E7%9A%84CDN/</link>
+				<guid isPermaLink="true">https://www.slahser.com/2016/03/19/%E5%85%B3%E4%BA%8E%E6%94%AF%E6%8C%81https%E7%9A%84CDN/</guid>
+			</item>
+		
+			<item>
 				<title>为github pages开启https</title>
         <description>&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2018.16.27.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -13,7 +79,7 @@
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2018.14.58.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;文中链接在 &lt;a href=&quot;https://kloudsec.com/github-pages&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;图中链接在&lt;a href=&quot;https://kloudsec.com/github-pages&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;特色功能是如下:&lt;/p&gt;
 
@@ -23,40 +89,51 @@
   &lt;li&gt;其他的kcloudsec插件,比如定期的快照,防xss等等.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;按如下链接填入前两阶信息,会生成两段dns解析配置,如下图新建两条解析记录&lt;/p&gt;
+&lt;p&gt;按如下链接填入前两阶信息,会生成两段dns解析配置&lt;/p&gt;
+
+&lt;p&gt;如下图新建两条解析记录&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.51.08.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;稍等片刻,访问你的&lt;code class=&quot;highlighter-rouge&quot;&gt;https://host&lt;/code&gt; 可以发现一切已经准备停当了.功能稍后介绍,先说说升级之后jekyll的调整&lt;/p&gt;
+&lt;p&gt;稍等片刻,访问你的&lt;code class=&quot;highlighter-rouge&quot;&gt;https://host&lt;/code&gt; 可以发现一切已经准备停当了.&lt;/p&gt;
+
+&lt;p&gt;功能稍后介绍,先说说升级之后jekyll的调整:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;博客的url要调整&lt;/li&gt;
-  &lt;li&gt;样式文件中&lt;code class=&quot;highlighter-rouge&quot;&gt;//&lt;/code&gt;形式简写的部分,某些必要的要加上协议&lt;code class=&quot;highlighter-rouge&quot;&gt;http/https://&lt;/code&gt; .&lt;/li&gt;
+  &lt;li&gt;样式文件中&lt;code class=&quot;highlighter-rouge&quot;&gt;//&lt;/code&gt;形式简写的部分,某些必要的要加上协议&lt;code class=&quot;highlighter-rouge&quot;&gt;[http/https]://&lt;/code&gt; .&lt;/li&gt;
+  &lt;li&gt;页面底纹两种方案
+    &lt;ul&gt;
+      &lt;li&gt;换成base64方式&lt;/li&gt;
+      &lt;li&gt;换成支持https的图床&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;目前发现国内的google fonts镜像在启用https之后,会访问不到.而360的反代不支持https,所以我启用了&lt;a href=&quot;https://cdn.geekzu.org&quot;&gt;极客族的cdn&lt;/a&gt;,请从博文列表搜索相关查看.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;功能如下:
-### 测速&lt;/p&gt;
+&lt;p&gt;功能如下:&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;测速&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.48.20.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section&quot;&gt;网站可用性.提供离线快照&lt;/h3&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;网站可用性.提供离线快照&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.48.35.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-1&quot;&gt;网站防护&lt;/h3&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;网站防护&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.48.53.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;section-2&quot;&gt;其余特色插件&lt;/h3&gt;
+&lt;h3 id=&quot;section-3&quot;&gt;其余特色插件&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2019.49.29.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;done.&lt;/p&gt;
 </description>
 				<pubDate>Sat, 19 Mar 2016 00:00:00 +0800</pubDate>
-				<link>https://www.slahser.com/2016/03/19/%E4%B8%BAgithub-pages%E5%BC%80%E5%90%AFhttps/</link>
-				<guid isPermaLink="true">https://www.slahser.com/2016/03/19/%E4%B8%BAgithub-pages%E5%BC%80%E5%90%AFhttps/</guid>
+				<link>https://www.slahser.com/2016/03/19/%E4%B8%BAGithub-Pages%E5%BC%80%E5%90%AFhttps/</link>
+				<guid isPermaLink="true">https://www.slahser.com/2016/03/19/%E4%B8%BAGithub-Pages%E5%BC%80%E5%90%AFhttps/</guid>
 			</item>
 		
 			<item>
