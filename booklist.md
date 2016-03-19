@@ -11,7 +11,7 @@ permalink: /booklist/
 - <span style="color: green">[✓]</span>maven实战
 - <span style="color: green">[✓]</span>spring技术内幕
 - <span style="color: red">[x]</span>swift ios 应用开发实战
-- <span style="color: yellow>[~]</span>redis设计与实现
+- <span style="color: yellow">[~]</span>redis设计与实现
 - <span style="color: green">[✓]</span>java虚拟机精讲
 - <span style="color: green">[✓]</span>深入理解scala
 - <span style="color: green">[✓]</span>java特种兵
@@ -19,11 +19,11 @@ permalink: /booklist/
 - <span style="color: green">[✓]</span>nosql精粹
 - <span style="color: green">[✓]</span>快学scala
 - <span style="color: green">[✓]</span>实战java虚拟机
-- <span style="color: yellow>[~]</span>大规模分布式存储系统原理解析与架构实战
+- <span style="color: yellow">[~]</span>大规模分布式存储系统原理解析与架构实战
 - <span style="color: green">[✓]</span>redis实战
-- <span style="color: yellow>[~]</span>rabbitmq实战
+- <span style="color: yellow">[~]</span>rabbitmq实战
 - <span style="color: green">[✓]</span>netty权威指南
-- <span style="color: yellow>[~]</span>flume构建高可用可扩展的海量日志采集系统
+- <span style="color: yellow">[~]</span>flume构建高可用可扩展的海量日志采集系统
 - <span style="color: green">[✓]</span>实战gradle
 - <span style="color: green">[✓]</span>图解http
 - <span style="color: green">[✓]</span>linux私房菜基础学习篇
@@ -35,7 +35,7 @@ permalink: /booklist/
 - <span style="color: green">[✓]</span>mysql必知必会
 - <span style="color: green">[✓]</span>编程之法
 - <span style="color: green">[✓]</span>programming in scala
-- <span style="color: yellow>[~]</span>java 技术手册
+- <span style="color: yellow">[~]</span>java 技术手册
 - <span style="color: red">[x]</span>大型分布式网站架构设计与实战
 - <span style="color: green">[✓]</span>java并发编程的艺术
 - <span style="color: red">[x]</span>java高并发程序设计
