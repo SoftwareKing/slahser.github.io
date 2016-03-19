@@ -150,7 +150,7 @@
 			</item>
 		
 			<item>
-				<title>Mock Server搭建</title>
+				<title>Mock server搭建</title>
         <description>&lt;p&gt;前端项目的mock server改天介绍,今天写下基于&lt;a href=&quot;https://github.com/dreamhead/moco&quot;&gt;moco&lt;/a&gt;的简易mock server搭建.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -628,7 +628,7 @@ arc upgrade //Required
 			</item>
 		
 			<item>
-				<title>修复spf13 Vim内vim Airline插件错误</title>
+				<title>修复spf13 vim内vim airline插件错误</title>
         <description>&lt;p&gt;最近vim-airline有所更新,&lt;a href=&quot;http://vim.spf13.com&quot;&gt;spf13-vim&lt;/a&gt;内的代码着色插件提示缺失,下面我们手动修复一下.&lt;/p&gt;
 
 &lt;p&gt;ps:使用spf13-vim需要with lua的vim依赖,请如下安装:&lt;/p&gt;
@@ -655,7 +655,7 @@ arc upgrade //Required
 			</item>
 		
 			<item>
-				<title>Oh My Fish下架后的选择</title>
+				<title>Oh my fish下架后的选择</title>
         <description>&lt;p&gt;今天oh-my-fish因为license问题github上的repo被删除了,不知道以后会不会获得更新..于是今天我替换到了&lt;a href=&quot;https://github.com/fisherman/fisherman&quot;&gt;fisherman&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;ps:貌似举报oh-my-fish问题的就是fisherman的作者…&lt;/p&gt;
