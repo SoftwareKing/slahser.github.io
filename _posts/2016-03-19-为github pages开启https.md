@@ -12,7 +12,9 @@
 - 免费的cdn
 - 其他的kcloudsec插件,比如定期的快照,防xss等等.
 
-按如下链接填入前两阶信息,会生成两段dns解析配置 
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-19%20at%2018.16.35.png?imageView2/2/h/600)
+
+进入上方链接填入前两阶信息,会生成两段dns解析配置 
 
 如下图新建两条解析记录
 
