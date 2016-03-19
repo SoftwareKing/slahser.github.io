@@ -53,8 +53,9 @@
   <div class="post-date">
     <time>04 Mar 2016</time>
   </div>
-  <p>前端项目的mock server改天介绍,今天写下基于<a href="https://github.com/dreamhead/moco">moco</a>的简易mock server搭建.
-<img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png" alt="" /></p>
+  <p>前端项目的mock server改天介绍,今天写下基于<a href="https://github.com/dreamhead/moco">moco</a>的简易mock server搭建.</p>
+
+<p><img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png" alt="" /></p>
 
 <h3 id="intro">intro</h3>
 
@@ -72,8 +73,9 @@
 <p>简洁搭建如下:</p>
 
 <ul>
-  <li>下载<a href="https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar">moco-runner-0.10.2-standalone.jar</a></li>
-  <li>编写配置文件**.json置于同级目录(实例tt.json)</li>
+  <li>OSX下可以 <code class="highlighter-rouge">brew install moco</code></li>
+  <li>或者下载<a href="https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar">moco-runner-0.10.2-standalone.jar</a></li>
+  <li>编写配置文件**.json置于某处(实例tt.json)</li>
 </ul>
 
 <p>文件中需要编写request/response对,具体配置项可以看<a href="https://github.com/dreamhead/moco/blob/master/moco-doc/apis.md">这里</a></p>
@@ -172,7 +174,7 @@
   <li>
     <p>启动runner:</p>
 
-    <p><code class="highlighter-rouge">java -jar moco-runner-&lt;version&gt;-standalone.jar http -p 9999[其他端口也ok] -c tt.json</code></p>
+    <p><code class="highlighter-rouge">java -jar moco-runner-&lt;version&gt;-standalone.jar http -p [port-like-9999] -c [json-path-like-tt.json]</code></p>
   </li>
 </ul>
 
@@ -181,9 +183,10 @@
 </blockquote>
 
 <ul>
-  <li>访问host:port/配置 路径进行访问. 
-enjoy it!</li>
+  <li>访问host:port/配置 路径进行访问.</li>
 </ul>
+
+<p>enjoy it!</p>
 
 <p>for Sa6r1na.</p>
 
