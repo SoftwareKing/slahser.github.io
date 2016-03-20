@@ -19,9 +19,9 @@ markdown:           kramdown
 # Navigation
 nav:
   - name:           "booklist"
-    href:           "https://www.slahser.com/booklist"
+    href:           "/booklist"
   - name:           "about"
-    href:           "https://www.slahser.com/about"
+    href:           "/about"
 
 # Sass
 sass:
