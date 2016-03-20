@@ -44,3 +44,9 @@ defaults:
 
 gems:
   - jekyll-seo-tag
+
+comments:
+    provider : duoshuo
+    duoshuo : 
+    short_name : s1ahs3r
+    
