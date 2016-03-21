@@ -6,6 +6,52 @@
 		<atom:link href="https://www.slahser.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>可视化请求客户端paw与network utility x</title>
+        <description>
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-21%20at%2002.54.27.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;paw&quot;&gt;paw&lt;/h3&gt;
+
+&lt;p&gt;paw是一款功能强大的http请求客户端,基本功能配合插件几乎可以覆盖日常开发的所有需求.&lt;/p&gt;
+
+&lt;p&gt;功能包括但不限于&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文件保存重复请求&lt;/li&gt;
+  &lt;li&gt;rest api&lt;/li&gt;
+  &lt;li&gt;基本请求&lt;/li&gt;
+  &lt;li&gt;OAUTH&lt;/li&gt;
+  &lt;li&gt;设置proxy&lt;/li&gt;
+  &lt;li&gt;设置cookie&lt;/li&gt;
+  &lt;li&gt;多种可供选择的加密算法&lt;/li&gt;
+  &lt;li&gt;证书导入&lt;/li&gt;
+  &lt;li&gt;符合人类操作习惯的visual界面.&lt;/li&gt;
+  &lt;li&gt;多种插件可以拓展(代码生成/随机参数等)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;下面是官方与我的相关介绍
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-21%20at%2002.55.29.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-21%20at%2002.34.48.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;随机的请求验证参数&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-21%20at%2002.56.27.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;network-utility-x&quot;&gt;network utility x&lt;/h3&gt;
+
+&lt;p&gt;一张长图表示我的诚意,简单方便的把网络代理商的界面挪到你电脑上,可以很方便的ping/whois/dig等等.&lt;/p&gt;
+
+&lt;p&gt;ps:长图制作工具是ImageJoiner.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/ImageJoiner-2016-03-21%20at%2002.47.12.png?imageView2/2/h/1500&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Sun, 20 Mar 2016 00:00:00 +0800</pubDate>
+				<link>https://www.slahser.com/2016/03/20/%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AF%B7%E6%B1%82%E5%AE%A2%E6%88%B7%E7%AB%AFPAW%E4%B8%8Enetwork-utility-x/</link>
+				<guid isPermaLink="true">https://www.slahser.com/2016/03/20/%E5%8F%AF%E8%A7%86%E5%8C%96%E8%AF%B7%E6%B1%82%E5%AE%A2%E6%88%B7%E7%AB%AFPAW%E4%B8%8Enetwork-utility-x/</guid>
+			</item>
+		
+			<item>
 				<title>关于支持https的cdn</title>
         <description>&lt;p&gt;书接上文,给博客开启了https之后发现了诸多问题,最起码google fonts的360反代已经不好用了.&lt;/p&gt;
 
@@ -117,12 +163,7 @@
 &lt;ul&gt;
   &lt;li&gt;博客的url要调整&lt;/li&gt;
   &lt;li&gt;样式文件中&lt;code class=&quot;highlighter-rouge&quot;&gt;//&lt;/code&gt;形式简写的部分,某些必要的要加上协议&lt;code class=&quot;highlighter-rouge&quot;&gt;[http/https]://&lt;/code&gt; .&lt;/li&gt;
-  &lt;li&gt;页面底纹两种方案
-    &lt;ul&gt;
-      &lt;li&gt;换成base64方式&lt;/li&gt;
-      &lt;li&gt;换成支持https的图床&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;页面底纹两种方案:换成base64方式/换成支持https的图床&lt;/li&gt;
   &lt;li&gt;目前发现国内的google fonts镜像在启用https之后,会访问不到.而360的反代不支持https,所以我启用了&lt;a href=&quot;https://cdn.geekzu.org&quot;&gt;极客族的cdn&lt;/a&gt;,请从博文列表搜索相关查看.&lt;/li&gt;
 &lt;/ul&gt;
 
