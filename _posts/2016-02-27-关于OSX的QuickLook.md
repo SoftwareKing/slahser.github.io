@@ -13,6 +13,6 @@ OSX上QuickLook功能就是空格键的预览,一个按键可以预览
 - ~/Library/Quick Look
 - /Library/Quick Look
 
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-02-28%20at%2000.49.06.png?imageView2/2/h/600)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-28%20at%2000.49.06.png?imageView2/2/h/600)
 
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-02-28%20at%2000.48.46.png?imageView2/2/h/600)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-28%20at%2000.48.46.png?imageView2/2/h/600)

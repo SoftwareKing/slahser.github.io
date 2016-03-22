@@ -8,7 +8,7 @@ ps:使用spf13-vim需要with lua的vim依赖,请如下安装:
 
 `  vim ~/.vimrc.bundles `
 
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-02-09%20at%2023.03.18.png?imageView2/2/h/600)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-09%20at%2023.03.18.png?imageView2/2/h/600)
 
 如图修改121,122行.
 
