@@ -115,7 +115,8 @@ moco当初吸引我在github上点出star就是因为它的优点:
   `java -jar moco-runner-<version>-standalone.jar http -p [port-like-9999] -c [json-path-like-tt.json]`
 
  > 配置后台运行,在上条命令后加上 & 符号即可.
-
+ > 想在后台运行时打印日志,在上条命令后加上 nohup 即可.
+ 
 * 访问host:port/配置 路径进行访问. 
 
 enjoy it!
