@@ -18,8 +18,8 @@ $ butterfly
 如下命令`--host`填 
 
 - `localhost` 本地运行
-- 0.0.0.0 本地/公网
-- ip 公网 
+- `0.0.0.0` 本地/公网
+- `ip` 公网 
 
 ```
 $ git clone https://github.com/paradoxxxzero/butterfly.git
