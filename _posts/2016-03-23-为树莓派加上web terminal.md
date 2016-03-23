@@ -41,5 +41,6 @@ $ cd /etc/systemd/system
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/687474703a2f2f70.gif?imageView2/2/h/600)
 
-> 其他功能比如主题设置,session时间调整自行探索. 
+> 其他功能比如主题设置,session时间调整自行探索.  
+> 
 > ps:我对web terminal的认识开始于github上一个star,而对web terminal彻底绝望是在我使用[蚂蚁金融云](https://www.cloud.alipay.com)的时候,体验催人泪下.
