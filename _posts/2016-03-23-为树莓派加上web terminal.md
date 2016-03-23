@@ -2,7 +2,8 @@
 
 我对web terminal的认识开始于github上一个python项目,而对web terminal彻底绝望是在我使用[蚂蚁金融云](https://www.cloud.alipay.com)的时候,体验催人泪下.
 
-今天介绍一下如何为树莓派或者任何主机添加web terminal
+今天介绍一下如何为树莓派或者任何主机添加web terminal 
+
 [butterfly项目主页](https://github.com/paradoxxxzero/butterfly)  
 
 ### 安装:
@@ -15,7 +16,8 @@ $ butterfly
 树莓派上安装可能会提示一些依赖编译不过,需要先手动解决一下简介依赖,stackoverflow可破.
 
 ### 作为server运行
-如下命令`--host`填
+如下命令`--host`填 
+
 - `localhost` 本地运行
 - 0.0.0.0 本地/公网
 - ip 公网 
