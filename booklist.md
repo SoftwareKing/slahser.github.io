@@ -6,6 +6,8 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>java8函数式编程
 - <span style="color: green">[o]</span>第一本docker书
 - <span style="color: green">[o]</span>写给大忙人看的java se 8
+- <span style="color: red">[x]</span>scala程序设计
+- <span style="color: red">[x]</span>java性能权威指南
 - <span style="color: green">[o]</span>maven实战
 - <span style="color: green">[o]</span>spring技术内幕
 - <span style="color: red">[x]</span>swift ios 应用开发实战
@@ -13,6 +15,8 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>java虚拟机精讲
 - <span style="color: green">[o]</span>深入理解scala
 - <span style="color: green">[o]</span>java特种兵
+- <span style="color: red">[x]</span>分布式服务框架原理与实战
+- <span style="color: red">[x]</span>hadoop实战
 - <span style="color: green">[o]</span>图解tcp/ip
 - <span style="color: green">[o]</span>nosql精粹
 - <span style="color: green">[o]</span>快学scala
@@ -36,13 +40,10 @@ permalink: /booklist/
 - <span style="color: gold">[~]</span>java 技术手册
 - <span style="color: red">[x]</span>大型分布式网站架构设计与实战
 - <span style="color: green">[o]</span>java并发编程的艺术
-- <span style="color: red">[x]</span>java高并发程序设计
-- <span style="color: red">[x]</span>分布式服务框架原理与实战
-- <span style="color: red">[x]</span>hadoop实战
+- <span style="color: gold">[~]</span>java高并发程序设计
 - <span style="color: red">[x]</span>linux内核设计的艺术
-- <span style="color: red">[x]</span>mongodb实战
 - <span style="color: red">[x]</span>ruby元编程
-- <span style="color: green">[o]</span>编写高质量代码:改善python程序的91个建议
+- <span style="color: gold">[~]</span>编写高质量代码:改善python程序的91个建议
 - <span style="color: red">[x]</span>深入理解bootstrap
 - <span style="color: green">[o]</span>编写高质量代码:改善java程序的151个建议
 - <span style="color: green">[o]</span>spring技术内幕
@@ -54,10 +55,12 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>nodejs开发指南
 - <span style="color: green">[o]</span>java编程思想
 - <span style="color: green">[o]</span>java并发编程实践
+- <span style="color: red">[x]</span>mongodb实战
 - <span style="color: green">[o]</span>scala by example
 - <span style="color: green">[o]</span>akka in action
 - <span style="color: green">[o]</span>spring in action
 - <span style="color: red">[x]</span>build a swift app
 - <span style="color: red">[x]</span>learn ios design
 - <span style="color: green">[o]</span>写给大家看的设计书
+
 
