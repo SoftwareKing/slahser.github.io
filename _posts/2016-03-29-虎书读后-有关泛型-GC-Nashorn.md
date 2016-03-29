@@ -6,7 +6,8 @@
 List someThings = getSomething();
 List<String> strings = (List<String>) someThings;
 ``` 
--- - --
+-- - -- 
+
 ### 协变与逆变 
 
 臭名昭著的`<Scala编程>`中译本彻底把这段讲到让人困惑. 
@@ -30,7 +31,8 @@ List<? super String> objects =new ArrayList<Object>(); //逆变
 ```
 public static <T extends Comparable<? super T>> T min(T[] a)
 ``` 
--- - --
+-- - -- 
+
 ### GC算法与VisualVM使用 
 
 
