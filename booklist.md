@@ -37,7 +37,7 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>mysql必知必会
 - <span style="color: green">[o]</span>编程之法
 - <span style="color: green">[o]</span>programming in scala
-- <span style="color: gold">[~]</span>java 技术手册
+- <span style="color: green">[o]</span>java 技术手册
 - <span style="color: red">[x]</span>大型分布式网站架构设计与实战
 - <span style="color: green">[o]</span>java并发编程的艺术
 - <span style="color: gold">[~]</span>java高并发程序设计
