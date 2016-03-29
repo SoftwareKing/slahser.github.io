@@ -1,20 +1,20 @@
 >这本书过于基础,不适宜购买
 
-1.通过类型擦除来保证以下代码的兼容性: 
+### 通过类型擦除来保证以下代码的兼容性: 
 
 ```
 List someThings = getSomething();
 List<String> strings = (List<String>) someThings;
 ``` 
 
-2.协变与逆变 
+### 协变与逆变 
 
 臭名昭著的`<Scala编程>`中译本彻底把这段讲到让人困惑. 
 
 ```
-List<?> objects =new ArrayList<String>();//让容器类型具有父子关系
-List<? extends Object> objects =new ArrayList<String>();//协变
-List<? super String> objects =new ArrayList<Object>();//逆变
+List<?> objects =new ArrayList<String>(); //让容器类型具有父子关系
+List<? extends Object> objects =new ArrayList<String>(); //协变
+List<? super String> objects =new ArrayList<Object>(); //逆变
 ```
 俗话说得好 
 
@@ -31,16 +31,83 @@ List<? super String> objects =new ArrayList<Object>();//逆变
 public static <T extends Comparable<? super T>> T min(T[] a)
 ``` 
 
-3.GC算法与VisualVM使用 
+### GC算法与VisualVM使用 
 
 我们都知道常用GC root有几下几种： 
 
-- Class - 由system classloader加载的对象，这些类是不能够被回收的，他们以静态字段的方式持有其它对象。  
-
-    - 通过自定义的类加载器加载的类，除非相应的java.lang.Class实例以其它的某种方式成为roots，否则它们并不是roots.
+- Class - 由system classloader加载的对象，这些类是不能够被回收的，他们以静态字段的方式持有其它对象(自定义的类加载器加载的类并不是)
 - Thread - 活着的线程
 - Stack Local - Java方法的local变量或参数
 - Monitor Used - 用于同步的monitor对象
+
+我们又知道内存管理方式的两种方式: 
+
+- 基于引用计数:需要局部信息,基本的形态就是让每个被管理的对象与一个引用计数器关联在一起.通常GC不是基于引用计数,因为有循环引用，引用计数就会出问题。
+- 基于trace(根搜索):需要全局信息,基于引用的可到达性来判断对象的生死.但是内存越紧张的时候tracing GC的效率反而越低.
+
+我们还知道什么时候进行垃圾回收: 
+
+- 给对象赋予了null,再没有调用过
+- 给对象赋予了新值,也就是新的内存空间.那么堆上的空间将被回收.
+- 只有软弱虚引用指向的对象将被回收
+
+标记清除最简易模型:  
+
+分配表维护着heap内对象与数组的引用,当heap内存不够分配发生gc时: 
+
+- 将表内所有对象置为死亡.
+- 由gc root开始检查对象可达与否,将可达部分置为存活,直至迭代结束.
+- 在此迭代分配表,回收死亡部分内存,并删除表内对象.
+
+为了避免应用运行时修改对象,gc程序需要互斥存取整个heap.此过程叫Stop-the-world. 
+先暂停所有应用线程->垃圾回收->恢复线程.
+暂停的时机叫做安全点(safepoint),通常为循环开始处或者调用起始时等等.
+
+优化并发版本就是大名鼎鼎的CMS (concurrent mark & sweep).
+
+下面介绍一下VisualVM与其他GC算法(复制/分代): 
+
+我们通过Visual VM手动触发一下GC
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_53.png?imageView2/2/h/600)
+
+图中可见是调用了System.gc(),eden内进行了清理与紧凑,可是却并没有产生到s1的复制过程.
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_55.png?imageView2/2/h/600)
+下面我们看到eden内对象达到临界点
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_17_05.png?imageView2/2/h/600)
+
+heap分配失败,进行gc
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_19_35.png?imageView2/2/h/600)
+
+算法过程：
+1. Eden+S0可分配新生对象；
+2. 对Eden+S0进行垃圾收集，存活对象复制到S1。清理Eden+S0。一次新生代GC结束。
+3. Eden+S1可分配新生对象；
+4. 对Eden+S1进行垃圾收集，存活对象复制到S0。清理Eden+S1。二次新生代GC结束。
+5. goto 1。
+
+标记-紧凑（Mark-Compact）
+算法过程：
+1. 标记：标记可回收对象（垃圾对象）和存活对象。
+2. 紧凑（也称“整理”）：将所有存活对象向内存开始部位移动，称为内存紧凑（相当于碎片整理）。完毕后，清理剩余内存空间。
+
+**Eden/S0/S1 新生代**
+8:1:1 (设定方法：-XX:SurvivorRatio=8)
+S0/S1是大小相当的两个区域，共同组成Survivor区。
+新生对象在Eden/S0或者Eden/S1中分配，Eden区的对象量达到一个阈值后，发生一次新生代GC。
+
+**Old 老年代**
+每个对象有“对象年龄计数器”。对象由Eden收集到Survivor区后，年龄+1。进行新生代GC后，年龄+1。依次，当年龄>=15后进入老年代。
+最大年龄阈值设定：-XX:MaxTenuringThreshold。
+
+动态年龄：如果在Survivor中所有相同年龄对象占用了空间的一半多，大于等于上述年龄的对象直接进入老年代。
+
+大对象（比如大的数组）直接进入老年代。
+阈值设定：-XX:PretenureSizeThreshold。
+
+**Perm 永久代**
+用于存放不变对象，如类、方法、字符串等。
+Java7把驻留字符串（intentd string）放到了老年代区。
+
 
 
 
