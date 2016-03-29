@@ -76,7 +76,7 @@ public static <T extends Comparable<? super T>> T min(T[] a)
 我们通过Visual VM手动触发一下GC
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_53.png?imageView2/2/h/600)
 
-图中可见是调用了System.gc(),eden内进行了清理与紧凑,可是却并没有产生到s1的复制过程.
+图中可见是调用了System.gc(),eden(伊甸园)内进行了清理与紧凑,可是却并没有产生到s1的复制过程.
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_55.png?imageView2/2/h/600)
 下面我们看到eden内对象达到临界点
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_17_05.png?imageView2/2/h/600)
