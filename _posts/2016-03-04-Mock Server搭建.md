@@ -25,84 +25,72 @@ moco当初吸引我在github上点出star就是因为它的优点:
 示例内容(一个网站的手撕鬼子模拟):
 
 ```json
-[                                                                                                                                                    
-    {                                                                                                                                                
-    "request" :                                                                                                                                      
-        {                                                                                                                                            
-        "uri" : "/system/resource/creategjjcheckimg.jsp",                                                                                            
-        "queries" :                                                                                                                                  
-            {                                                                                                                                        
-            "random" : "2"                                                                                                                           
-            }                                                                                                                                        
-        },                                                                                                                                           
-    "response" :                                                                                                                                     
-        {                                                                                                                                            
-        "status" : 200,                                                                                                                              
-        "file" : "vc.png"                                                                                                                            
-        }                                                                                                                                            
-    },                                                                                                                                               
-    {                                                                                                                                                
-    "request" :                                                                                                                                      
-        {                                                                                                                                            
-        "uri" : "/gjjcx_dl.jsp",                                                                                                                     
-        "queries" :                                                                                                                                  
-            {                                                                                                                                        
-            "urltype" : "tree.TreeTempUrl",                                                                                                          
-            "wbtreeid" : "1172"                                                                                                                      
-            }                                                                                                                                        
-        },                                                                                                                                           
-    "response" :                                                                                                                                     
-        {                                                                                                                                            
-        "status" : 200,                                                                                                                              
-        "text" : "已登录"                                                                                                                               
-        }                                                                                                                                            
-    },                         
-    {                                                                                                                       
-    "request" :                                                                                                             
-        {                                                                                                                   
-        "uri" : "/gjjcx_gjjxxcx.jsp",                                                                                       
-        "queries" :                                                                                                         
-            {                                                                                                               
-            "urltype" : "tree.TreeTempUrl",                                                                                 
-            "wbtreeid" : "1178"                                                                                             
-            }                                                                                                               
-        },                                                                                                                  
-    "response" :                                                                                                            
-        {                                                                                                                   
-        "status" : 200,                                                                                                     
-        "file" :                                                                                                            
-           {                                                                                                                
-            "name" : "xian1.response",                                                                                      
-            "charset" : "UTF-8"                                                                                             
-            }                                                                                                               
-        }                                                                                                                   
-    },                                                                                                                      
-    {                                                                                                                       
-    "request" :                                                                                                             
-        {                                                                                                                   
-        "uri" : "/gjjcx_gjjmxcx.jsp",                                                                                       
-        "queries" :                                                                                                         
-            {                                                                                                               
-            "urltype" : "tree.TreeTempUrl",                                                                                 
-            "wbtreeid" : "1177"                                                                                             
-            }                                                                                                               
-        },                                                                                                                  
-    "response" :                                                                                                            
-        { 
-        "headers":                                                                                                          
-            {                                                                                                               
-              "content-type" : "text/html"                                                                                  
-            },                                                                                                              
-        "status" : 200,                                                                                                     
-        "file" :                                                                                                            
-           {                                                                                                                
-            "name" : "xian2.response",                                                                                      
-            "charset" : "UTF-8"                                                                                             
-            }                                                                                                               
-        }                                                                                                                   
-    }                                                                                                                       
+[
+    {
+        "request": {
+            "uri": "/system/resource/creategjjcheckimg.jsp", 
+            "queries": {
+                "random": "2"
+            }
+        }, 
+        "response": {
+            "status": 200, 
+            "file": "vc.png"
+        }
+    }, 
+    {
+        "request": {
+            "uri": "/gjjcx_dl.jsp", 
+            "queries": {
+                "urltype": "tree.TreeTempUrl", 
+                "wbtreeid": "1172"
+            }
+        }, 
+        "response": {
+            "latency": {
+                "duration": 1, 
+                "unit": "second"
+            }, 
+            "status": 200, 
+            "text": "已登录"
+        }
+    }, 
+    {
+        "request": {
+            "uri": "/gjjcx_gjjxxcx.jsp", 
+            "queries": {
+                "urltype": "tree.TreeTempUrl", 
+                "wbtreeid": "1178"
+            }
+        }, 
+        "response": {
+            "status": 200, 
+            "file": {
+                "name": "xian1.response", 
+                "charset": "UTF-8"
+            }
+        }
+    }, 
+    {
+        "request": {
+            "uri": "/gjjcx_gjjmxcx.jsp", 
+            "queries": {
+                "urltype": "tree.TreeTempUrl", 
+                "wbtreeid": "1177"
+            }
+        }, 
+        "response": {
+            "headers": {
+                "content-type": "text/html"
+            }, 
+            "status": 200, 
+            "file": {
+                "name": "xian2.response", 
+                "charset": "UTF-8"
+            }
+        }
+    }
 ]  
-      
 ```
 
 * 放置非必要资源文件于统计目录,供request/response内容过大设置文件content或者返回attachment/image内容时使用.
