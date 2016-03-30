@@ -30,11 +30,11 @@ $ python butterfly.server.py --host=[myhost] --port=57575 --nosecure
 ### 作为linux service运行
 
 ```sh
-$ cd /etc/systemd/system
-# curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.service
-# curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.socket
-# systemctl enable butterfly.socket
-# systemctl start butterfly.socket
+cd /etc/systemd/system
+curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.service
+curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.socket
+systemctl enable butterfly.socket
+systemctl start butterfly.socket
 ``` 
 
 ### 效果图 
