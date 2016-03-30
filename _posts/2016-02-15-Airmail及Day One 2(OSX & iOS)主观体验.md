@@ -17,7 +17,7 @@
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2001.48.49.png?imageView2/2/h/600)
 
-简评: 前者完爆了后者.
+简评: 前者完爆了后者. 
 
 ###Airmail
 
@@ -34,7 +34,7 @@
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.51.48.png?imageView2/2/h/300)
 
-所有邮箱配置可以从iCloud同步,任何地方配置过就不再需要重新配置,即使你重装/换设备.
+所有邮箱配置可以从iCloud同步,任何地方配置过就不再需要重新配置,即使你重装/换设备. 
 
 ###Day One 2 
 
