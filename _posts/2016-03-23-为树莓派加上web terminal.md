@@ -5,7 +5,7 @@
 [butterfly项目主页](https://github.com/paradoxxxzero/butterfly)  
 
 ### 安装:
-```
+```sh
 $ pip install butterfly
 $ pip install libsass  # If you want to use themes
 $ butterfly
@@ -21,7 +21,7 @@ $ butterfly
 - `0.0.0.0` 本地/公网
 - `ip` 公网 
 
-```
+```sh
 $ git clone https://github.com/paradoxxxzero/butterfly.git
 $ cd butterfly
 $ python butterfly.server.py --host=[myhost] --port=57575 --nosecure
@@ -29,7 +29,7 @@ $ python butterfly.server.py --host=[myhost] --port=57575 --nosecure
 
 ### 作为linux service运行
 
-```
+```sh
 $ cd /etc/systemd/system
 # curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.service
 # curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.socket
