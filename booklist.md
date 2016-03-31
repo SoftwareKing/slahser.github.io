@@ -62,5 +62,8 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>build a swift app
 - <span style="color: red">[x]</span>learn ios design
 - <span style="color: green">[o]</span>写给大家看的设计书
+- <span style="color: red">[x]</span>实现领域驱动设计
+- <span style="color: red">[x]</span>PostgresQL即学即用
+- <span style="color: red">[x]</span>Spark机器学习
 
 
