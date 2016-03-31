@@ -12,7 +12,8 @@
 
 >Surge与SS二者均需单独购买
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.51.24.png?imageView2/2/h/100)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.51.24.png?imageView2/2/h/100) 
+
 ### install 
 
 进入Surge for iOS -> More -> 摇一摇手机 -> Surge for Mac ->输入 step1 的[链接](http://surge.run/Surge-Mac.zip)下载app 
@@ -21,16 +22,22 @@
 
 ### config
 
-Mac上编写配置文件`vim ~/.surge.conf`,内容如文末尾所示
-打开 Network->advanced->proxies 勾选如图所示http与https代理,填入`127.0.0.1:6152`
-在同一页面下方bypass列表填入`*.local, 169.254/16, 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost`
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.54.51.png?imageView2/2/h/400)
+Mac上编写配置文件`vim ~/.surge.conf`,内容如文末尾所示 
+
+打开 Network->advanced->proxies 勾选如图所示http与https代理,填入`127.0.0.1:6152` 
+
+在同一页面下方bypass列表填入`*.local, 169.254/16, 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost` 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.54.51.png?imageView2/2/h/400) 
+
 ### usage 
 
-打开Surge.app ,勾选DIRECT是本机直连,其他选项为普通海外代理/ShadowSocks代理等等.
+打开Surge.app ,勾选DIRECT是本机直连,其他选项为普通海外代理/ShadowSocks代理等等. 
 
-速度虽然不如ybb快但是也够用了:
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2013.32.32.png?imageView2/2/h/400)
+速度虽然不如ybb快但是也够用了: 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2013.32.32.png?imageView2/2/h/400) 
+
 done.
 
 osx 上配置文件模板如下: 
