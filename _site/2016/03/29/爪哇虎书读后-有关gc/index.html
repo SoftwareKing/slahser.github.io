@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>爪哇虎书读后 有关gc</title>
+  <link rel="stylesheet" href="//fonts.useso.com/css?family=Source+Sans+Pro:300,300i,600">
+  <link rel="stylesheet" href="/style.css">
+  <!-- Begin Jekyll SEO tag v1.3.1 -->
+<title>爪哇虎书读后 有关gc - Coup de Grace</title>
+<meta property="og:title" content="爪哇虎书读后 有关gc" />
+<meta name="description" content="  这本书过于基础,不适合购买 " />
+<meta property='og:description' content="  这本书过于基础,不适合购买 " />
+<link rel="canonical" href="http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3gc/" />
+<meta property='og:url' content='http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3gc/' />
+<meta property="og:site_name" content="Coup de Grace" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2016-03-29T00:00:00+08:00" />
+<link rel="next" href="http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3%E6%B3%9B%E5%9E%8B-%E5%8D%8F%E5%8F%98-%E9%80%86%E5%8F%98/" title="爪哇虎书读后 有关泛型 协变 逆变" />
+<link rel="prev" href="http://www.slahser.com/2016/03/28/%E5%AF%B9LaunchPad%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/" title="对launchpad的一些操作" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@S1ahs3r" />
+<meta name="twitter:title" content="爪哇虎书读后 有关gc - Coup de Grace" />
+<meta name="twitter:description" content="  这本书过于基础,不适合购买 " />
+<meta name="twitter:creator" content="@S1ahs3r" />
+<script type="application/ld+json">
+  {
+    "@context" : "http://schema.org",
+
+
+    "@type" : "BlogPosting",
+
+    "headline": "爪哇虎书读后 有关gc",
+
+    "datePublished": "2016-03-29T00:00:00+08:00",
+
+    "description": "  这本书过于基础,不适合购买 ",
+
+
+    "url" : "http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3gc/"
+  }
+</script>
+<!-- End Jekyll SEO tag -->
+</head>
+<body>
+  <div class="container">
+    <header class="masthead">
+  <h1 class="masthead-title--small">
+    <a href="/">Coup de Grace</a>
+  </h1>
+</header>
+<div class="content post">
+  <h1 class="post-title">爪哇虎书读后 有关gc</h1>
+  <div class="post-date">
+    <time>29 Mar 2016</time>
+  </div>
+  <blockquote>
+  <p>这本书过于基础,不适合购买 
+<img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/tiger.jpeg?imageView2/2/h/200" alt="" /></p>
+</blockquote>
+
+<p>我们都知道<strong>常用GC root有几下几种</strong>;</p>
+
+<ul>
+  <li>Class - 由system classloader加载的对象,这些类是不能够被回收的,他们以静态字段的方式持有其它对象(自定义的类加载器加载的类并不是)</li>
+  <li>Thread - 活着的线程</li>
+  <li>Stack Local - Java方法的local变量或参数</li>
+  <li>Monitor Used - 用于同步的monitor对象</li>
+</ul>
+
+<hr />
+
+<p>我们又知道<strong>内存管理方式的两种方式</strong>:</p>
+
+<ul>
+  <li>基于引用计数:需要局部信息,基本的形态就是让每个被管理的对象与一个引用计数器关联在一起.通常GC不是基于引用计数,因为有循环引用,引用计数就会出问题.</li>
+  <li>基于trace(根搜索):需要全局信息,基于引用的可到达性来判断对象的生死.但是内存越紧张的时候tracing GC的效率反而越低.</li>
+</ul>
+
+<hr />
+
+<p>我们还知道<strong>对什么进行垃圾回收</strong>:</p>
+
+<ul>
+  <li>给对象赋予了null,再没有调用过</li>
+  <li>给对象赋予了新值,也就是新的内存空间.那么堆上的空间将被回收.</li>
+  <li>只有软弱虚引用指向的对象将被回收</li>
+</ul>
+
+<hr />
+
+<p>我们后来知道<strong>HotSpot VM中GC的分类</strong>:</p>
+
+<ol>
+  <li>Partial GC：并不收集整个GC堆的模式
+    <ul>
+      <li>Young GC:只收集young gen的GC</li>
+      <li>Old GC:只收集old gen的GC.只有CMS的concurrent collection是这个模式</li>
+      <li>Mixed GC:收集整个young gen以及部分old gen的GC.只有G1有这个模式</li>
+    </ul>
+  </li>
+  <li>Full GC:收集整个堆,包括young gen、old gen、perm gen(如果存在的话)等所有部分的模式</li>
+</ol>
+
+<hr />
+
+<p>我们早晚要知道<strong>GC的触发条件</strong>:</p>
+
+<ol>
+  <li>
+    <p>young GC:<br />
+ 当young gen中的eden区分配满的时候触发.</p>
+
+    <blockquote>
+      <p>注意young GC中有部分存活对象会晋升到old gen,所以young GC后old gen的占用量通常会有所升高</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>full GC:</p>
+    <ul>
+      <li>当准备要触发一次young GC时,如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大,则不会触发young GC而是转为触发full GC</li>
+    </ul>
+
+    <blockquote>
+      <p>因为HotSpot VM的GC里,除了CMS的concurrent collection之外,其它能收集old gen的GC都会同时收集整个GC堆,包括young gen,所以不需要事先触发一次单独的young GC</p>
+    </blockquote>
+
+    <ul>
+      <li>有perm gen的话,要在perm gen分配空间但已经没有足够空间时,也要触发一次full GC</li>
+      <li>System.gc()、heap dump带GC,默认也是触发full GC.</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p>并发GC的触发条件就不太一样.
+以CMS GC为例,它主要是定时去检查old gen的使用量,当使用量超过了触发比例就会启动一次CMS GC,对old gen做并发收集.</p>
+</blockquote>
+
+<hr />
+
+<p><strong>标记-清除最简易模型</strong>:</p>
+
+<p>分配表维护着heap内对象与数组的引用,当heap内存不够分配发生gc时:</p>
+
+<ul>
+  <li>将表内所有对象置为死亡.</li>
+  <li>由gc root开始检查对象可达与否,将可达部分置为存活,直至迭代结束.</li>
+  <li>在此迭代分配表,回收死亡部分内存,并删除表内对象.</li>
+</ul>
+
+<p>为了避免应用运行时修改对象,gc程序需要互斥存取整个heap.此过程叫<strong>Stop-the-world</strong>.</p>
+
+<p>该过程先暂停所有应用线程-&gt;垃圾回收-&gt;恢复线程.</p>
+
+<p>暂停的时机叫做安全点(safepoint),通常为循环开始处或者调用起始时等等.</p>
+
+<blockquote>
+  <p>优化并发版本就是大名鼎鼎的CMS (concurrent mark &amp; sweep).</p>
+</blockquote>
+
+<hr />
+
+<p>下面介绍一下<strong>VisualVM与其他GC算法(复制/分代)</strong>:</p>
+
+<p>我们通过Visual VM手动触发一下GC
+<img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_53.png?imageView2/2/h/600" alt="" /></p>
+
+<p>图中可见是调用了System.gc(),eden(伊甸园)内进行了清理与紧凑,可是却并没有产生到s1的复制过程.
+<img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_55.png?imageView2/2/h/600" alt="" />
+下面我们看到eden内对象达到临界点
+<img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_17_05.png?imageView2/2/h/600" alt="" /></p>
+
+<p>heap分配失败,进行gc
+<img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_19_35.png?imageView2/2/h/600" alt="" /></p>
+
+<hr />
+
+<p><strong>复制(Copy)</strong>算法过程:</p>
+
+<ol>
+  <li>Eden+S0可分配新生对象</li>
+  <li>对Eden+S0进行垃圾收集,存活对象复制到S1.清理Eden+S0.一次新生代GC结束.</li>
+  <li>Eden+S1可分配新生对象</li>
+  <li>对Eden+S1进行垃圾收集,存活对象复制到S0.清理Eden+S1.二次新生代GC结束.</li>
+  <li>goto 1.</li>
+</ol>
+
+<p><strong>标记-紧凑(Mark-Compact)</strong>算法过程:</p>
+
+<ol>
+  <li>标记;标记可回收对象(垃圾对象)和存活对象.</li>
+  <li>紧凑;将所有存活对象向内存开始部位移动,称为内存紧凑.完毕后,清理剩余内存空间.</li>
+</ol>
+
+<hr />
+
+<p><strong>Eden/S0/S1 新生代</strong></p>
+
+<p>8:1:1 (设定方法;-XX:SurvivorRatio=8)</p>
+
+<p>S0/S1是大小相当的两个区域,共同组成Survivor区</p>
+
+<p>新生对象在Eden/S0或者Eden/S1中分配,Eden区的对象量达到一个阈值后,发生一次新生代GC.</p>
+
+<p><strong>Old 老年代</strong></p>
+
+<p>每个对象有”对象年龄计数器”</p>
+
+<ul>
+  <li>对象由Eden收集到Survivor区后,年龄+1.</li>
+  <li>进行新生代GC后,年龄+1.依次,当年龄&gt;=15后进入老年代</li>
+</ul>
+
+<p>最大年龄阈值设定;-XX:MaxTenuringThreshold</p>
+
+<p>动态年龄;如果在Survivor中所有相同年龄对象占用了空间的一半多,大于等于上述年龄的对象直接进入老年代</p>
+
+<p>大对象(比如大的数组)直接进入老年代.
+阈值设定;-XX:PretenureSizeThreshold.</p>
+
+<p><strong>Perm 永久代</strong></p>
+
+<p>用于存放不变对象,如类、方法、字符串等.
+Java7把驻留字符串(intentd string)放到了老年代区.</p>
+
+<p>java8中取消了下图中的perm永久代,换为meta space本地内存.这样就吞掉了OOM产生的情况.</p>
+
+<p><img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/JFNF7r.png%21web.png" alt="" /></p>
+
+<p>相对应的intellij idea配置见下图</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">-Xms512m</span>
+<span class="err">-Xmx2048m</span>
+
+<span class="err">-</span><span class="py">XX</span><span class="p">:</span><span class="s">PermSize=512m</span>
+<span class="err">-</span><span class="py">XX</span><span class="p">:</span><span class="s">MaxPermSize=1024m</span>
+
+<span class="err">-</span><span class="py">XX</span><span class="p">:</span><span class="s">MetaspaceSize=512m</span>
+<span class="err">-</span><span class="py">XX</span><span class="p">:</span><span class="s">MaxMetaspaceSize=1024m</span>
+
+<span class="err">-</span><span class="py">XX</span><span class="p">:</span><span class="s">ReservedCodeCacheSize=512m</span>
+<span class="err">-</span><span class="py">XX</span><span class="p">:</span><span class="s">+UseCompressedOops</span>
+
+<span class="err">-server</span>
+</code></pre>
+</div>
+<p><img src="http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_47_35__2_.png?imageView2/2/h/600" alt="" /></p>
+
+
+</div>
+  </div>
+</body>
+</html>

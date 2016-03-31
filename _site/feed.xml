@@ -6,6 +6,757 @@
 		<atom:link href="http://www.slahser.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>新浪微博与github的一些小东西</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;新浪微博的操作快捷键&lt;/h3&gt;
+
+&lt;p&gt;一图胜千言&lt;/p&gt;
+
+&lt;p&gt;shift+/打开帮助页.基本操作逻辑维持在单词首字母上.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2000.27.47.png?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;githubmirco-plan&quot;&gt;Github的mirco plan快到期了&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-31_at_01_02_32.png?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;翻了翻两年前的私有项目,比之前能写了很多,这就够了.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;不续费了不续费了.穷.&lt;/p&gt;
+</description>
+				<pubDate>Thu, 31 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/31/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E4%B8%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E4%B8%9C%E8%A5%BF/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/31/%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A%E4%B8%8Egithub%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E4%B8%9C%E8%A5%BF/</guid>
+			</item>
+		
+			<item>
+				<title>Osx上的surge与ss</title>
+        <description>&lt;h3 id=&quot;intro&quot;&gt;intro&lt;/h3&gt;
+
+&lt;p&gt;接近两年的日子里我一直在用ybb.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.40.40.png?imageView2/2/h/100&quot; alt=&quot;&quot; /&gt;
+在系统中开启了一个SOCKS5代理,代理全局,同时支持shell环境与ssh的代理&lt;/p&gt;
+
+&lt;p&gt;稳定,好吃不贵.&lt;/p&gt;
+
+&lt;p&gt;不过目前已经停止注册,我也只是在停止注册前给自己跟老婆买了两份,一直续费至今.&lt;/p&gt;
+
+&lt;p&gt;最近买挂耳咖啡,店家赠送了几十G的SS流量,索性拿出之前的Surge for Mac Beta操作一番.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Surge与SS二者均需单独购买&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.51.24.png?imageView2/2/h/100&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;install&quot;&gt;install&lt;/h3&gt;
+
+&lt;p&gt;进入Surge for iOS -&amp;gt; More -&amp;gt; 摇一摇手机 -&amp;gt; Surge for Mac -&amp;gt;输入 step1 的&lt;a href=&quot;http://surge.run/Surge-Mac.zip&quot;&gt;链接&lt;/a&gt;下载app&lt;/p&gt;
+
+&lt;p&gt;打开mac上Surge.app,而后点击手机Surge for Mac页面的step4进行激活&lt;/p&gt;
+
+&lt;h3 id=&quot;config&quot;&gt;config&lt;/h3&gt;
+
+&lt;p&gt;Mac上编写配置文件&lt;code class=&quot;highlighter-rouge&quot;&gt;vim ~/.surge.conf&lt;/code&gt;,内容如文末所示&lt;/p&gt;
+
+&lt;p&gt;打开 Network-&amp;gt;advanced-&amp;gt;proxies 勾选如图所示http与https代理,填入&lt;code class=&quot;highlighter-rouge&quot;&gt;127.0.0.1:6152&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;在同一页面下方bypass列表填入&lt;code class=&quot;highlighter-rouge&quot;&gt;*.local, 169.254/16, 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.54.51.png?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;usage&quot;&gt;usage&lt;/h3&gt;
+
+&lt;p&gt;打开Surge.app ,勾选DIRECT是本机直连,其他选项为普通海外代理/ShadowSocks代理等等.&lt;/p&gt;
+
+&lt;p&gt;速度虽然不如ybb快但是也够用了:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2013.32.32.png?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;done.&lt;/p&gt;
+
+&lt;p&gt;osx 上配置文件模板如下:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;[General]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;loglevel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;notify&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;skip-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;proxy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12,127.0.0.0/24&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;bypass-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;tun&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12,127.0.0.0/24&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;DNS&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;OVERRIDE&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;dns-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;223.6.6.6,223.5.5.5,114.114.114.114,114.114.115.115&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;[Proxy]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Proxy = http,$IP,$PORT,$USERNAME,$PASSWORD
+# Proxy = https,$IP,$PORT,$USERNAME,$PASSWORD
+# Proxy = socks,$IP,$PORT,$USERNAME,$PASSWORD
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Shadowsocks 配置，代理方式一定要是 custom
+# Proxy = custom,$IP,$PORT,$METHOD,$PASSWORD,$MODULE_URL 
+# 
+# 可用配置文件 http://proxy.sofi.sh/surge.conf
+# 代理需要 Shadowsocks 的一个模块，这里我放一个 http://proxy.sofi.sh/SSEncrypt.module
+&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;DIRECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;direct&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;HTTP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;http,$IP,$PORT,$USERNAME,$PASSWORD&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;HTTPS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;https,$IP,$PORT,$USERNAME,$PASSWORD&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;SOCKS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;socks,$IP,$PORT,$USERNAME,$PASSWORD&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;SS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;custom,$IP,$PORT,$METHOD,$PASSWORD,$MODULE_URL&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;[Proxy&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Group]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;Proxy&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;select,DIRECT,HTTP,HTTPS,SOCKS,SS&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;[Rule]&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;REJECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;RULES&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;BLOCK&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;SOME&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;ADS&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,icloud-analysis.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,x.jd.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,sax.sina.cn,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,tanx.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ads.genieessp.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ad.unimhk.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cpro.baidustatic.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,m.simaba.taobao.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ads.yahoo.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ib.adnxs.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,i-mobile.co.jp,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,g.doubleclick.net,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,adinfuse.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,admob.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,adwhirl.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,appads.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,inmobi.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,smartadserver.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,adsage.cn,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,duomeng.cn,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,duomeng.net,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,duomeng.org,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,googeadsserving.cn,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,guomob.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,immob.cn,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,mobads.baidu.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,mobads-logs.baidu.com,REJECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,tapjoyads.com,REJECT&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;CN&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cn,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,jd.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,yhd.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,58cdn.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,qunarzz.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,avosapps.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,mob.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,same.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,toutiao.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,zaih.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,lantouzi.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,smzdm.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,126.net,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,163.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,alicdn.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,amap.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,bdimg.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,bdstatic.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cnbeta.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cnzz.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,douban.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,gtimg.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,hao123.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,haosou.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ifeng.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,iqiyi.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,netease.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,qhimg.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,qq.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,sogou.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,sohu.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,soso.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,suning.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,tmall.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,tudou.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,weibo.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,youku.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,xunlei.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,zhihu.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,huofu.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,5wei.com,DIRECT&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;DOMAIN-KEYWORD,alipay,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-KEYWORD,taobao,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-KEYWORD,baidu,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-KEYWORD,360buy,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-KEYWORD,baidu,DIRECT&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Apple&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,appldnld.apple.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,adcdownload.apple.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,lcdn-registration.apple.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,swcdn.apple.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,phobos.apple.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ls.apple.com,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,icloud.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,instagram.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,twimg.com,Proxy,force-remote-dns&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,kenengba.com,Proxy,force-remote-dns&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,apple.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,amazonaws.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,android.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,angularjs.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,appspot.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,akamaihd.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,amazon.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,bit.ly,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,bitbucket.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,blog.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,blogcdn.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,blogger.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,blogsmithmedia.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,box.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,bloomberg.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,chromium.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cl.ly,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cloudfront.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cloudflare.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,cocoapods.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,crashlytics.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,dribbble.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,dropbox.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,dropboxstatic.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,dropboxusercontent.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,docker.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,duckduckgo.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,digicert.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,dnsimple.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,edgecastcdn.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,engadget.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,eurekavpt.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,fb.me,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,fbcdn.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,fc2.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,feedburner.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,fabric.io,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,flickr.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,fastly.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ggpht.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,github.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,github.io,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,githubusercontent.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,golang.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,goo.gl,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,gstatic.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,godaddy.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,gravatar.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,imageshack.us,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,imgur.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,jshint.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ift.tt,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,itunes.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,j.mp,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,kat.cr,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,linode.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,linkedin.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,licdn.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,lithium.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,megaupload.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,mobile01.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,modmyi.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,mzstatic.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,nytimes.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,name.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,openvpn.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,openwrt.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ow.ly,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,pinboard.in,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,Proxyl-images-amazon.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,Proxytatic.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,stackoverflow.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,staticflickr.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,squarespace.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,symcd.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,symcb.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,symauth.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ubnt.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,t.co,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,thepiratebay.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,tumblr.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,twimg.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,twitch.tv,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,twitter.com,Proxy,force-remote-dns&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wikipedia.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wikipedia.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wikimedia.org,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wordpress.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wsj.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wsj.net,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,wp.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,vimeo.com,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,youtu.be,Proxy&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;DOMAIN-SUFFIX,ytimg.com,Proxy&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;LAN&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,192.168.0.0/16,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,10.0.0.0/8,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,172.16.0.0/12,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,127.0.0.0/8,DIRECT&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;Telegram&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,91.108.56.0/22,Proxy,no-resolve&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,91.108.4.0/22,Proxy,no-resolve&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,109.239.140.0/24,Proxy,no-resolve&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;IP-CIDR,149.154.160.0/20,Proxy,no-resolve&lt;/span&gt;
+
+
+&lt;span class=&quot;err&quot;&gt;GEOIP,CN,DIRECT&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;FINAL,Proxy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+				<pubDate>Thu, 31 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/31/osx%E4%B8%8A%E7%9A%84Surge%E4%B8%8ESS/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/31/osx%E4%B8%8A%E7%9A%84Surge%E4%B8%8ESS/</guid>
+			</item>
+		
+			<item>
+				<title>爪哇虎书读后 有关nashorn</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;这本书过于基础,不适合购买
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/tiger.jpeg?imageView2/2/h/200&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;近些日子的工作恰巧有些crack的部分,涉及到java程序中调用一些js进行操作.&lt;/p&gt;
+
+&lt;p&gt;jdk8中更新了新一代的js引擎:Nashorn. 提供了些许语法糖与REPL和较大的性能提升,支持以类node的形式编写应用并运行在jvm上.&lt;/p&gt;
+
+&lt;p&gt;不过这些目前还用不到,按下不表.&lt;/p&gt;
+
+&lt;p&gt;我们用实例来示范一下简单的java内js函数调用,来&lt;strong&gt;实现一次字符串的加密&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;ScriptEngineManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ScriptEngineManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ScriptEngine&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;manager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getEngineByName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;JavaScript&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;//ScriptEngine engine = manager.getEngineByName(&quot;Nashorn&quot;);&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; 
+    &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;eval&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBufferedReader&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Paths&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/path/to/encrypt.js&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;StandardCharsets&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;UTF_8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Invocable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Invocable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;engine&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;invokeFunction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;encrypt&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;str_u_want_encrypt&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ScriptException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NoSuchMethodException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;加密module各显神通~&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+				<pubDate>Wed, 30 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/30/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3Nashorn/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/30/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3Nashorn/</guid>
+			</item>
+		
+			<item>
+				<title>爪哇虎书读后 有关泛型 协变 逆变</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;这本书过于基础,不适合购买
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/tiger.jpeg?imageView2/2/h/200&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;通过类型擦除来保证以下代码的兼容性:&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;someThings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getSomething&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;someThings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;协变与逆变&lt;/h3&gt;
+
+&lt;p&gt;臭名昭著的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;Scala编程&amp;gt;&lt;/code&gt;中译本彻底把这段讲到让人困惑.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//让容器类型具有父子关系&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//协变&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;objects&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//逆变&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;俗话说得好&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Producer Extends ,Consumer Super.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;把方法视为一等公民时,则一个方法的定义同时具有生产者与消费者的身份&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;面向输出生产-&amp;gt;使用extends-&amp;gt;返回值协变-&amp;gt;向上转型&lt;/li&gt;
+  &lt;li&gt;面向输入消费-&amp;gt;使用super-&amp;gt;参数逆变-&amp;gt;方法重载&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;反映到泛型里,恰似&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;java 核心编程&amp;gt;&lt;/code&gt;里的这一句&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Comparable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;?&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+
+</description>
+				<pubDate>Tue, 29 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3%E6%B3%9B%E5%9E%8B-%E5%8D%8F%E5%8F%98-%E9%80%86%E5%8F%98/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3%E6%B3%9B%E5%9E%8B-%E5%8D%8F%E5%8F%98-%E9%80%86%E5%8F%98/</guid>
+			</item>
+		
+			<item>
+				<title>爪哇虎书读后 有关gc</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;这本书过于基础,不适合购买 
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/tiger.jpeg?imageView2/2/h/200&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;我们都知道&lt;strong&gt;常用GC root有几下几种&lt;/strong&gt;;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Class - 由system classloader加载的对象,这些类是不能够被回收的,他们以静态字段的方式持有其它对象(自定义的类加载器加载的类并不是)&lt;/li&gt;
+  &lt;li&gt;Thread - 活着的线程&lt;/li&gt;
+  &lt;li&gt;Stack Local - Java方法的local变量或参数&lt;/li&gt;
+  &lt;li&gt;Monitor Used - 用于同步的monitor对象&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我们又知道&lt;strong&gt;内存管理方式的两种方式&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;基于引用计数:需要局部信息,基本的形态就是让每个被管理的对象与一个引用计数器关联在一起.通常GC不是基于引用计数,因为有循环引用,引用计数就会出问题.&lt;/li&gt;
+  &lt;li&gt;基于trace(根搜索):需要全局信息,基于引用的可到达性来判断对象的生死.但是内存越紧张的时候tracing GC的效率反而越低.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我们还知道&lt;strong&gt;对什么进行垃圾回收&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;给对象赋予了null,再没有调用过&lt;/li&gt;
+  &lt;li&gt;给对象赋予了新值,也就是新的内存空间.那么堆上的空间将被回收.&lt;/li&gt;
+  &lt;li&gt;只有软弱虚引用指向的对象将被回收&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我们后来知道&lt;strong&gt;HotSpot VM中GC的分类&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Partial GC：并不收集整个GC堆的模式
+    &lt;ul&gt;
+      &lt;li&gt;Young GC:只收集young gen的GC&lt;/li&gt;
+      &lt;li&gt;Old GC:只收集old gen的GC.只有CMS的concurrent collection是这个模式&lt;/li&gt;
+      &lt;li&gt;Mixed GC:收集整个young gen以及部分old gen的GC.只有G1有这个模式&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Full GC:收集整个堆,包括young gen、old gen、perm gen(如果存在的话)等所有部分的模式&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;我们早晚要知道&lt;strong&gt;GC的触发条件&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;young GC:&lt;br /&gt;
+ 当young gen中的eden区分配满的时候触发.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;注意young GC中有部分存活对象会晋升到old gen,所以young GC后old gen的占用量通常会有所升高&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;full GC:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;当准备要触发一次young GC时,如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大,则不会触发young GC而是转为触发full GC&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;因为HotSpot VM的GC里,除了CMS的concurrent collection之外,其它能收集old gen的GC都会同时收集整个GC堆,包括young gen,所以不需要事先触发一次单独的young GC&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;有perm gen的话,要在perm gen分配空间但已经没有足够空间时,也要触发一次full GC&lt;/li&gt;
+      &lt;li&gt;System.gc()、heap dump带GC,默认也是触发full GC.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;并发GC的触发条件就不太一样.
+以CMS GC为例,它主要是定时去检查old gen的使用量,当使用量超过了触发比例就会启动一次CMS GC,对old gen做并发收集.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;标记-清除最简易模型&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;分配表维护着heap内对象与数组的引用,当heap内存不够分配发生gc时:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;将表内所有对象置为死亡.&lt;/li&gt;
+  &lt;li&gt;由gc root开始检查对象可达与否,将可达部分置为存活,直至迭代结束.&lt;/li&gt;
+  &lt;li&gt;在此迭代分配表,回收死亡部分内存,并删除表内对象.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;为了避免应用运行时修改对象,gc程序需要互斥存取整个heap.此过程叫&lt;strong&gt;Stop-the-world&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;该过程先暂停所有应用线程-&amp;gt;垃圾回收-&amp;gt;恢复线程.&lt;/p&gt;
+
+&lt;p&gt;暂停的时机叫做安全点(safepoint),通常为循环开始处或者调用起始时等等.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;优化并发版本就是大名鼎鼎的CMS (concurrent mark &amp;amp; sweep).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;下面介绍一下&lt;strong&gt;VisualVM与其他GC算法(复制/分代)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;p&gt;我们通过Visual VM手动触发一下GC
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_53.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;图中可见是调用了System.gc(),eden(伊甸园)内进行了清理与紧凑,可是却并没有产生到s1的复制过程.
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_13_55.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;
+下面我们看到eden内对象达到临界点
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_17_05.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;heap分配失败,进行gc
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_19_35.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;复制(Copy)&lt;/strong&gt;算法过程:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Eden+S0可分配新生对象&lt;/li&gt;
+  &lt;li&gt;对Eden+S0进行垃圾收集,存活对象复制到S1.清理Eden+S0.一次新生代GC结束.&lt;/li&gt;
+  &lt;li&gt;Eden+S1可分配新生对象&lt;/li&gt;
+  &lt;li&gt;对Eden+S1进行垃圾收集,存活对象复制到S0.清理Eden+S1.二次新生代GC结束.&lt;/li&gt;
+  &lt;li&gt;goto 1.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;标记-紧凑(Mark-Compact)&lt;/strong&gt;算法过程:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;标记;标记可回收对象(垃圾对象)和存活对象.&lt;/li&gt;
+  &lt;li&gt;紧凑;将所有存活对象向内存开始部位移动,称为内存紧凑.完毕后,清理剩余内存空间.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Eden/S0/S1 新生代&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;8:1:1 (设定方法;-XX:SurvivorRatio=8)&lt;/p&gt;
+
+&lt;p&gt;S0/S1是大小相当的两个区域,共同组成Survivor区&lt;/p&gt;
+
+&lt;p&gt;新生对象在Eden/S0或者Eden/S1中分配,Eden区的对象量达到一个阈值后,发生一次新生代GC.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Old 老年代&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;每个对象有”对象年龄计数器”&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对象由Eden收集到Survivor区后,年龄+1.&lt;/li&gt;
+  &lt;li&gt;进行新生代GC后,年龄+1.依次,当年龄&amp;gt;=15后进入老年代&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最大年龄阈值设定;-XX:MaxTenuringThreshold&lt;/p&gt;
+
+&lt;p&gt;动态年龄;如果在Survivor中所有相同年龄对象占用了空间的一半多,大于等于上述年龄的对象直接进入老年代&lt;/p&gt;
+
+&lt;p&gt;大对象(比如大的数组)直接进入老年代.
+阈值设定;-XX:PretenureSizeThreshold.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perm 永久代&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;用于存放不变对象,如类、方法、字符串等.
+Java7把驻留字符串(intentd string)放到了老年代区.&lt;/p&gt;
+
+&lt;p&gt;java8中取消了下图中的perm永久代,换为meta space本地内存.这样就吞掉了OOM产生的情况.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/JFNF7r.png%21web.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;相对应的intellij idea配置见下图&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;-Xms512m&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;-Xmx2048m&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;XX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;PermSize=512m&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;XX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;MaxPermSize=1024m&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;XX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;MetaspaceSize=512m&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;XX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;MaxMetaspaceSize=1024m&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;XX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ReservedCodeCacheSize=512m&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;XX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;+UseCompressedOops&lt;/span&gt;
+
+&lt;span class=&quot;err&quot;&gt;-server&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen_Shot_2016-03-29_at_15_47_35__2_.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+</description>
+				<pubDate>Tue, 29 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3gc/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/29/%E7%88%AA%E5%93%87%E8%99%8E%E4%B9%A6%E8%AF%BB%E5%90%8E-%E6%9C%89%E5%85%B3gc/</guid>
+			</item>
+		
+			<item>
+				<title>对launchpad的一些操作</title>
+        <description>&lt;p&gt;本文部分是转帖,来自&lt;a href=&quot;http://sspai.com/33299&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;调整LaunchPad图表大小(行列数)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defaults write com.apple.dock springboard-columns -int 列数
+defaults write com.apple.dock springboard-rows -int 行数
+defaults write com.apple.dock ResetLaunchPad -bool TRUE
+killall Dock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-28%20at%2019.47.02.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;附赠调整透明度&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defaults write com.apple.dock springboard-blur-radius -int 模糊度;
+killall Dock
+模糊度为0~255
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;重申一下,如果参加OSX内测遇到图标残留的情况&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;defaults write com.apple.dock ResetLaunchPad -bool &lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;killall Dock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+				<pubDate>Mon, 28 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/28/%E5%AF%B9LaunchPad%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/28/%E5%AF%B9LaunchPad%E7%9A%84%E4%B8%80%E4%BA%9B%E6%93%8D%E4%BD%9C/</guid>
+			</item>
+		
+			<item>
+				<title>我的博客作图在用什么</title>
+        <description>
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/imageholder.png?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ps: 以下软件部分收费,别问我要破解,App Store可以买.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;图床&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.qiniu.com&quot;&gt;七牛&lt;/a&gt;, 全站静态存储.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;压缩与裁剪&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;七牛 api &lt;code class=&quot;highlighter-rouge&quot;&gt;?imageView2/2/h/600&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;PP Duck&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;截图&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;command+shift+4+space
+command+shift+3
+command+shift+4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;图片标注&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;腾讯出品 &lt;a href=&quot;https://itunes.apple.com/cn/app/jie-tu-jietu/id1059334054?l=en&amp;amp;mt=12&quot;&gt;JieTu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;印象笔记出品 &lt;a href=&quot;http://skitch.com&quot;&gt;Skitch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;长图制作&lt;/h3&gt;
+&lt;p&gt;ImageJoiner&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;图片编辑&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;ArcSoft Photo+&lt;/li&gt;
+  &lt;li&gt;OSX Preview&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gif&quot;&gt;gif制作&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;GIF Brewery 3&lt;/li&gt;
+  &lt;li&gt;Licacap&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;网站扒图&lt;/h3&gt;
+&lt;p&gt;SiteSucker&lt;/p&gt;
+
+</description>
+				<pubDate>Wed, 23 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/23/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BD%9C%E5%9B%BE%E5%9C%A8%E7%94%A8%E4%BB%80%E4%B9%88/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/23/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E4%BD%9C%E5%9B%BE%E5%9C%A8%E7%94%A8%E4%BB%80%E4%B9%88/</guid>
+			</item>
+		
+			<item>
+				<title>为树莓派加上web terminal</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-23%20at%2020.47.50.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;今天介绍一下如何为树莓派或者任何主机添加web terminal&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/paradoxxxzero/butterfly&quot;&gt;butterfly项目主页&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;安装:&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pip install butterfly
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pip install libsass  &lt;span class=&quot;c&quot;&gt;# If you want to use themes&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;butterfly
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;依terminal提示访问url&lt;/p&gt;
+
+&lt;p&gt;树莓派上安装可能会提示一些依赖编译不过,需要先手动解决一下间接依赖,stackoverflow可破.&lt;/p&gt;
+
+&lt;h3 id=&quot;server&quot;&gt;作为server运行&lt;/h3&gt;
+&lt;p&gt;如下命令&lt;code class=&quot;highlighter-rouge&quot;&gt;--host&lt;/code&gt;填&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;localhost&lt;/code&gt; 本地运行&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;0.0.0.0&lt;/code&gt; 本地/公网&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ip&lt;/code&gt; 公网&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;git clone https://github.com/paradoxxxzero/butterfly.git
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;butterfly
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;python butterfly.server.py --host&lt;span class=&quot;o&quot;&gt;=[&lt;/span&gt;myhost] --port&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;57575 --nosecure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;linux-service&quot;&gt;作为linux service运行&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /etc/systemd/system
+&lt;span class=&quot;c&quot;&gt;# curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.service&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# curl -O https://raw.githubusercontent.com/paradoxxxzero/butterfly/master/butterfly.socket&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# systemctl enable butterfly.socket&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# systemctl start butterfly.socket&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;效果图&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/687474703a2f2f70.gif?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;其他功能比如主题设置,session时间调整自行探索.&lt;/p&gt;
+
+  &lt;p&gt;ps:我对web terminal的认识开始于github上一个star,而对web terminal彻底绝望是在我使用&lt;a href=&quot;https://www.cloud.alipay.com&quot;&gt;蚂蚁金融云&lt;/a&gt;的时候,体验催人泪下.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+				<pubDate>Wed, 23 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/23/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8A%A0%E4%B8%8Aweb-terminal/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/23/%E4%B8%BA%E6%A0%91%E8%8E%93%E6%B4%BE%E5%8A%A0%E4%B8%8Aweb-terminal/</guid>
+			</item>
+		
+			<item>
 				<title>可视化请求客户端paw与network utility x</title>
         <description>
 &lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-21%20at%2002.54.27.png?imageView2/2/h/600&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
@@ -77,51 +828,51 @@
 
 &lt;h3 id=&quot;section-2&quot;&gt;谷歌字体&lt;/h3&gt;
 
-&lt;p&gt;源地址：//fonts.googleapis.com&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;//fonts.googleapis.com&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：//fonts.geekzu.org&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;//fonts.geekzu.org&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-3&quot;&gt;谷歌前端库&lt;/h3&gt;
 
-&lt;p&gt;源地址：//ajax.googleapis.com&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;//ajax.googleapis.com &lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：http://fdn.geekzu.org/ajax&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://fdn.geekzu.org/ajax &lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：//sdn.geekzu.org/ajax&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;//sdn.geekzu.org/ajax&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-4&quot;&gt;谷歌字体文件&lt;/h3&gt;
 
-&lt;p&gt;源地址：//fonts.gstatic.com&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;//fonts.gstatic.com &lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：http://fdn.geekzu.org/g-fonts&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://fdn.geekzu.org/g-fonts &lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：//sdn.geekzu.org/g-fonts&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;//sdn.geekzu.org/g-fonts&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;section-5&quot;&gt;谷歌字体文件&lt;/h3&gt;
 
-&lt;p&gt;源地址：//themes.googleusercontent.com&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;//themes.googleusercontent.com&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：http://fdn.geekzu.org/g-themes&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://fdn.geekzu.org/g-themes&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：//sdn.geekzu.org/g-themes&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;//sdn.geekzu.org/g-themes&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;gravatar&quot;&gt;Gravatar全球头像&lt;/h3&gt;
 
-&lt;p&gt;源地址：http://www.gravatar.com/avatar&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://www.gravatar.com/avatar&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;源地址：http://0.gravatar.com/avatar&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://0.gravatar.com/avatar&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;源地址：http://1.gravartar.com/avatar&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://1.gravartar.com/avatar&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;源地址：http://2.gravartar.com/avatar&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://2.gravartar.com/avatar&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：http://fdn.geekzu.org/avatar&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;http://fdn.geekzu.org/avatar &lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;gravatarssl&quot;&gt;Gravatar全球头像SSL版&lt;/h3&gt;
 
-&lt;p&gt;源地址：//secure.gravatar.com/avatar&lt;/p&gt;
+&lt;p&gt;源地址：&lt;code class=&quot;highlighter-rouge&quot;&gt;//secure.gravatar.com/avatar&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;替换为：//sdn.geekzu.org/avatar&lt;/p&gt;
+&lt;p&gt;替换为：&lt;code class=&quot;highlighter-rouge&quot;&gt;//sdn.geekzu.org/avatar&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;捐助链接在&lt;a href=&quot;http://cdn.geekzu.org/donate.html&quot;&gt;这里&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -193,6 +944,29 @@
 			</item>
 		
 			<item>
+				<title>写给大家看的设计书读后</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;烫金全彩的全书看下来只有四点,十分好看
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/foryoudesign.jpeg?imageView2/2/h/200&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;亲密-&amp;gt;组件的归类&lt;/li&gt;
+  &lt;li&gt;对齐-&amp;gt;边距的控制&lt;/li&gt;
+  &lt;li&gt;重复-&amp;gt;group间的重复&lt;/li&gt;
+  &lt;li&gt;对比-&amp;gt;局部的冲突&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;其余就是字体与图片的选择.&lt;/p&gt;
+
+&lt;p&gt;无他,但手熟尔.&lt;/p&gt;
+</description>
+				<pubDate>Mon, 07 Mar 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/03/07/%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9C%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%A6%E8%AF%BB%E5%90%8E/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/03/07/%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9C%8B%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B9%A6%E8%AF%BB%E5%90%8E/</guid>
+			</item>
+		
+			<item>
 				<title>Mock server搭建</title>
         <description>&lt;p&gt;前端项目的mock server改天介绍,今天写下基于&lt;a href=&quot;https://github.com/dreamhead/moco&quot;&gt;moco&lt;/a&gt;的简易mock server搭建.&lt;/p&gt;
 
@@ -223,85 +997,73 @@
 
 &lt;p&gt;示例内容(一个网站的手撕鬼子模拟):&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[                                                                                                                                                    
-    {                                                                                                                                                
-    &quot;request&quot; :                                                                                                                                      
-        {                                                                                                                                            
-        &quot;uri&quot; : &quot;/system/resource/creategjjcheckimg.jsp&quot;,                                                                                            
-        &quot;queries&quot; :                                                                                                                                  
-            {                                                                                                                                        
-            &quot;random&quot; : &quot;2&quot;                                                                                                                           
-            }                                                                                                                                        
-        },                                                                                                                                           
-    &quot;response&quot; :                                                                                                                                     
-        {                                                                                                                                            
-        &quot;status&quot; : 200,                                                                                                                              
-        &quot;file&quot; : &quot;vc.png&quot;                                                                                                                            
-        }                                                                                                                                            
-    },                                                                                                                                               
-    {                                                                                                                                                
-    &quot;request&quot; :                                                                                                                                      
-        {                                                                                                                                            
-        &quot;uri&quot; : &quot;/gjjcx_dl.jsp&quot;,                                                                                                                     
-        &quot;queries&quot; :                                                                                                                                  
-            {                                                                                                                                        
-            &quot;urltype&quot; : &quot;tree.TreeTempUrl&quot;,                                                                                                          
-            &quot;wbtreeid&quot; : &quot;1172&quot;                                                                                                                      
-            }                                                                                                                                        
-        },                                                                                                                                           
-    &quot;response&quot; :                                                                                                                                     
-        {                                                                                                                                            
-        &quot;status&quot; : 200,                                                                                                                              
-        &quot;text&quot; : &quot;已登录&quot;                                                                                                                               
-        }                                                                                                                                            
-    },                         
-    {                                                                                                                       
-    &quot;request&quot; :                                                                                                             
-        {                                                                                                                   
-        &quot;uri&quot; : &quot;/gjjcx_gjjxxcx.jsp&quot;,                                                                                       
-        &quot;queries&quot; :                                                                                                         
-            {                                                                                                               
-            &quot;urltype&quot; : &quot;tree.TreeTempUrl&quot;,                                                                                 
-            &quot;wbtreeid&quot; : &quot;1178&quot;                                                                                             
-            }                                                                                                               
-        },                                                                                                                  
-    &quot;response&quot; :                                                                                                            
-        {                                                                                                                   
-        &quot;status&quot; : 200,                                                                                                     
-        &quot;file&quot; :                                                                                                            
-           {                                                                                                                
-            &quot;name&quot; : &quot;xian1.response&quot;,                                                                                      
-            &quot;charset&quot; : &quot;UTF-8&quot;                                                                                             
-            }                                                                                                               
-        }                                                                                                                   
-    },                                                                                                                      
-    {                                                                                                                       
-    &quot;request&quot; :                                                                                                             
-        {                                                                                                                   
-        &quot;uri&quot; : &quot;/gjjcx_gjjmxcx.jsp&quot;,                                                                                       
-        &quot;queries&quot; :                                                                                                         
-            {                                                                                                               
-            &quot;urltype&quot; : &quot;tree.TreeTempUrl&quot;,                                                                                 
-            &quot;wbtreeid&quot; : &quot;1177&quot;                                                                                             
-            }                                                                                                               
-        },                                                                                                                  
-    &quot;response&quot; :                                                                                                            
-        { 
-        &quot;headers&quot;:                                                                                                          
-            {                                                                                                               
-              &quot;content-type&quot; : &quot;text/html&quot;                                                                                  
-            },                                                                                                              
-        &quot;status&quot; : 200,                                                                                                     
-        &quot;file&quot; :                                                                                                            
-           {                                                                                                                
-            &quot;name&quot; : &quot;xian2.response&quot;,                                                                                      
-            &quot;charset&quot; : &quot;UTF-8&quot;                                                                                             
-            }                                                                                                               
-        }                                                                                                                   
-    }                                                                                                                       
-]  
-      
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;uri&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/system/resource/creategjjcheckimg.jsp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;queries&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;random&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;response&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;file&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vc.png&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;uri&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/gjjcx_dl.jsp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;queries&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;urltype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tree.TreeTempUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;wbtreeid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1172&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;response&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;latency&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;duration&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;unit&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;second&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;已登录&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;uri&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/gjjcx_gjjxxcx.jsp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;queries&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;urltype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tree.TreeTempUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;wbtreeid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1178&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;response&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;file&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;xian1.response&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;charset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;uri&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/gjjcx_gjjmxcx.jsp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;queries&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;urltype&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tree.TreeTempUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;wbtreeid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1177&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+        &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;response&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;headers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;content-type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;text/html&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+            &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;file&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;xian2.response&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; 
+                &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;charset&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
 &lt;ul&gt;
@@ -320,7 +1082,8 @@
 &lt;/ul&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;配置后台运行,在上条命令后加上 &amp;amp; 符号即可.&lt;/p&gt;
+  &lt;p&gt;配置后台运行,在上条命令后加上 &amp;amp; 符号即可.
+想在后台运行时打印日志,在上条命令后加上 nohup 即可.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;ul&gt;
@@ -368,12 +1131,13 @@
 
 &lt;p&gt;硬件:树莓派,几代无所谓,系统不能是Raspberry OS lite.&lt;/p&gt;
 
-&lt;p&gt;翻墙执行以下
-&lt;code class=&quot;highlighter-rouge&quot;&gt;
-wget --content-disposition https://cayenne.mydevices.com/dl/sy9i322rmo
+&lt;p&gt;翻墙执行以下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget --content-disposition https://cayenne.mydevices.com/dl/sy9i322rmo
 sudo sh rpi_sy9i322rmo.sh
-&lt;/code&gt;
-会经历大概几分钟的安装,之后树莓派会重启.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;会经历大概几分钟的安装,之后树莓派会重启.&lt;/p&gt;
 
 &lt;p&gt;网页会随时同步安装状态,整个安装过程大概十分钟.&lt;/p&gt;
 
@@ -429,13 +1193,12 @@ arc help
 
 &lt;p&gt;第二种:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install node
+&lt;pre&gt;&lt;code class=&quot;language-sj&quot;&gt;brew install node
 npm install -g arcanist
 arc help
 arc upgrade //Required
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h3 id=&quot;section-1&quot;&gt;注册&lt;/h3&gt;
 
@@ -728,13 +1491,13 @@ fisher install &amp;lt;自己选个主题吧&amp;gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/sjl/z-fish&quot;&gt;z-fish&lt;/a&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# INSTALL:
-#   * put something like this in your  config.fish:
-#     . /path/to/z.fish
-#   * put something like this in your fish_prompt function:
-#       z --add &quot;$PWD&quot;
-#   * cd around for a while to build up the db
-#   * PROFIT!!
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# INSTALL:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   * put something like this in your  config.fish:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#     . /path/to/z.fish&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   * put something like this in your fish_prompt function:&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#       z --add &quot;$PWD&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   * cd around for a while to build up the db&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#   * PROFIT!!&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
