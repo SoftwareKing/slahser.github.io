@@ -1,6 +1,7 @@
 ### intro 
 
-接近两年的日子里我一直在用ybb. 
+接近两年的日子里我一直在用ybb.  
+
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.40.40.png?imageView2/2/h/100)
 在系统中开启了一个SOCKS5代理,代理全局,同时支持shell环境与ssh的代理 
  
