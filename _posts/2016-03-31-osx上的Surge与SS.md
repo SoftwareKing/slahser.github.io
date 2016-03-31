@@ -23,7 +23,7 @@
 
 ### config
 
-Mac上编写配置文件`vim ~/.surge.conf`,内容如文末尾所示 
+Mac上编写配置文件`vim ~/.surge.conf`,内容如文末所示 
 
 打开 Network->advanced->proxies 勾选如图所示http与https代理,填入`127.0.0.1:6152` 
 
