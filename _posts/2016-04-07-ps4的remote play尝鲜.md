@@ -1,7 +1,9 @@
 昨晚ps4推送了3.50版本的固件,新增了人物离线状态与远程遥控的功能. 
 
-mac客户端在[这里](https://remoteplay.dl.playstation.net/remoteplay/lang/jp/index.html)下载
-### ps4的准备
+mac客户端在[这里](https://remoteplay.dl.playstation.net/remoteplay/lang/jp/index.html)下载 
+
+### ps4的准备 
+
 1. 启用遥控操作。选择（设定）＞［遥控操作连接设定］，在[启用遥控操作]的方框打勾。
 2. 将主机认证为常用PS4™主机。选择（设定）＞［PlayStation™Network/账号管理］＞［认证为常用PS4］＞［认证］。
 3. 若要在PS4™为待命模式时开始遥控操作，选择（设定）＞[省电设定］＞［设定待命模式里的功能］，在［与互联网保持连接］及［设为可通过网络启动PS4的电源］的方框打勾。 
