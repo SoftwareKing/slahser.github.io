@@ -8,9 +8,11 @@ mac客户端在[这里](https://remoteplay.dl.playstation.net/remoteplay/lang/jp
 2. 将主机认证为常用PS4™主机。选择（设定）＞［PlayStation™Network/账号管理］＞［认证为常用PS4］＞［认证］。
 3. 若要在PS4™为待命模式时开始遥控操作，选择（设定）＞[省电设定］＞［设定待命模式里的功能］，在［与互联网保持连接］及［设为可通过网络启动PS4的电源］的方框打勾。 
 
-手柄插入mac稍适识别,暂时官网并没有推荐用蓝牙进行连接
+手柄插入mac稍适识别,暂时官网并没有推荐用蓝牙进行连接,在这里推荐一个可以蓝牙连接mac并且对手柄键位进行调试的工具 
 
-mac端截图 
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-07%20at%2014.39.24.png?imageView2/2/h/100)
+
+remote play mac端截图 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3709.JPG?imageView2/2/h/400)
 
 mac上的画面  
