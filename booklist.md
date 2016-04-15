@@ -19,6 +19,9 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>hadoop实战
 - <span style="color: green">[o]</span>图解tcp/ip
 - <span style="color: green">[o]</span>nosql精粹
+- <span style="color: red">[x]</span>架构探险
+- <span style="color: red">[x]</span>微服务结构与实践
+- <span style="color: gold">[~]</span>Storm企业级应用:实战运维与调优
 - <span style="color: green">[o]</span>快学scala
 - <span style="color: green">[o]</span>实战java虚拟机
 - <span style="color: gold">[~]</span>大规模分布式存储系统原理解析与架构实战
@@ -34,6 +37,7 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>大话数据结构
 - <span style="color: green">[o]</span>大话软件测试
 - <span style="color: green">[o]</span>编程之美
+- <span style="color: green">[o]</span>Spring实战
 - <span style="color: green">[o]</span>mysql必知必会
 - <span style="color: green">[o]</span>编程之法
 - <span style="color: green">[o]</span>programming in scala
@@ -65,5 +69,6 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>实现领域驱动设计
 - <span style="color: red">[x]</span>PostgresQL即学即用
 - <span style="color: red">[x]</span>Spark机器学习
+
 
 
