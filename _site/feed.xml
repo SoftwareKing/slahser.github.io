@@ -6,6 +6,427 @@
 		<atom:link href="http://www.slahser.com/feed.xml" rel="self" type="application/rss+xml" />
 		
 			<item>
+				<title>日志监控平台搭建 关于flume Kafka Elk</title>
+        <description>&lt;p&gt;最近需要搭建一套日志监控平台,参考了新浪与美团的一些东西.现在实录一下搭建与优化调整的过程&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;目前把这几件放在一起的文档还不够多,其中相当一部分因为elk的升级配置也已经不能用了,更多的是单机版的配置,完全没有参考性.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;架构图&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-21%20at%2021.44.09.png?imageView2/2/h/200&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;硬件配置&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;本机 ubuntu 14.04&lt;/li&gt;
+  &lt;li&gt;线上 centos 6.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;host&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;本地搭建&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;线上环境&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;c1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1core 1g&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4core 8g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;c2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1core 1g&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4core 8g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;c3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1core 1g&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4core 8g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;c4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2core 4g&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8core 32g&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;c5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2core 4g&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4core 32g&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;搭建&lt;/h2&gt;
+
+&lt;h3 id=&quot;basic&quot;&gt;basic&lt;/h3&gt;
+
+&lt;p&gt;新机器修改root密码&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo passwd&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;创建用户&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useradd cluster
+passwd cluster
+chmod +w /etc/sudoers
+vim  /etc/sudoers
+cluster &lt;span class=&quot;nv&quot;&gt;ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=(&lt;/span&gt;root&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;NOPASSWD:ALL 
+chmod -w /etc/sudoers
+mkdir /home/cluster
+mkdir /home/stack
+chmod 777 /home/cluster
+chmod 777 /home/stack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;以上部分/home/stack用于存储所需所有tar.gz包
+/home/cluster作为所有软件的安装目录
+而后创建cluster目录下data目录,用于存放各组件配置,日志,数据
+scp推荐工具ZOC7&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;同步各个机器的hosts&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;127.0.0.1 localhost 
+10.1.12.25 c1
+10.1.12.23 c2
+10.1.12.24 c3
+10.1.12.27 c4
+10.1.12.28 c5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;分发各机器的rsa公钥&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh-keygen
+cat ~/.ssh/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys
+chmod 700 ~/.ssh/authorized_keys 
+chmod 600 -R ~/.ssh/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;各机器profile设置&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;tar -zxvf 
+sudo vim /etc/profile
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/cluster/jdk
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ZK_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/cluster/zookeeper
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KAFKA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/cluster/kafka
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SCALA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/cluster/scala
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;:&lt;span class=&quot;nv&quot;&gt;$JAVA_HOME&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$ZK_HOME&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$KAFKA_HOME&lt;/span&gt;/bin:&lt;span class=&quot;nv&quot;&gt;$SCALA_HOME&lt;/span&gt;/bin   
+替换系统默认java
+sudo update-alternatives --install /usr/bin/java java /home/cluster/jdk/jre/bin/java 301 
+sudo update-alternatives --config java 
+java -version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;前三台机器的cluster目录树&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;drwxr-xr-x  4 root    root    4096  4月 20 14:34 data/
+drwxr-xr-x  8 uucp        143 4096  3月 21 13:13 jdk/
+drwxr-xr-x  7 root    root    4096  4月 20 14:30 kafka/
+drwxrwxr-x  6 cluster cluster 4096  3月  4 23:30 scala/
+drwxr-xr-x 10 zy      zy      4096  4月 20 14:13 zookeeper/  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;后两台机器的cluster目录树&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;drwxr-xr-x  4 zy      root    4096  4月 21 17:23 data/
+drwxrwxrwx  7 zy      root    4096  4月 21 15:07 elasticsearch/
+drwxr-xr-x  8 zy          143 4096  3月 21 13:13 jdk/
+drwxr-xr-x 10 zy      staff   4096  3月 29 06:46 kibana/
+drwxr-xr-x  5 zy      root    4096  4月 21 18:06 logstash/  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;开发环境下关闭防火墙&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;chkconfig  iptables off 或者
+ufw disable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;非ubuntu机器关闭SELinux&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;修改 /etc/selinux/config 文件，将其中的 SELINUX=enforcing 改为 SELINUX=disabled
+selinux默认ubuntu不安装,iptables默认也是全开放的.可以用getenforce和iptables -L命令查看下两个组件的状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;同步各机器时区&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;zookeeper&quot;&gt;zookeeper配置&lt;/h3&gt;
+
+&lt;p&gt;修改conf目录下模板配置为zoo.cfg&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;tickTime&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;2000&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;initLimit&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;syncLimit&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;dataDir&lt;/span&gt;=/&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;clientPort&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;= &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2888&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;3888&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;= &lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2888&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;3888&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;= &lt;span class=&quot;n&quot;&gt;c3&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2888&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;3888&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;而后&lt;/p&gt;
+
+&lt;p&gt;在配置的dataDir目录下创建一个myid文件，里面写入一个0-255之间的一个随意数字，每个zk上这个文件的数字要是不一样的，这些数字应该是从1开始，依次写每个服务器。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;文件中序号要与dn节点下的zk配置序号一直，如：server.1=c1:2888:3888，那么dn1节点下的myid配置文件应该写上1&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;各节点启动:&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/zkServer.sh start&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;查看节点状态与leader与否&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/zkServer.sh status&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;查看java进程&lt;code class=&quot;highlighter-rouge&quot;&gt;jps&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;kafka&quot;&gt;kafka配置&lt;/h3&gt;
+
+&lt;p&gt;配置目录下&lt;/p&gt;
+
+&lt;p&gt;zookeeper.properties&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;dataDir&lt;/span&gt;=/&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;clientPort&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;maxClientCnxns&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;server.properties&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;############### Server Basics ###############
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;broker&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;############# Socket Server Settings #############
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;listeners&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;PLAINTEXT&lt;/span&gt;://:&lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;network&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;send&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;102400&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;receive&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;buffer&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;102400&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;socket&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;max&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;104857600&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;##############Log Basics ##############
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;dirs&lt;/span&gt;=/&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;kafka&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;partitions&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;recovery&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;threads&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;per&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;dir&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;############ Log Retention Policy ###############
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;retention&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;hours&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;168&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;segment&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;bytes&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;1073741824&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;retention&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;check&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;interval&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ms&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;300000&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;############## Zookeeper ###############
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;localhost&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;timeout&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ms&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;6000&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;producer.properties&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;############### Producer Basics ##############
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metadata&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;broker&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;,&lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;,&lt;span class=&quot;n&quot;&gt;c3&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;9092&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;producer&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;sync&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;compression&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;codec&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;none&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;serializer&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;kafka&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;serializer&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;DefaultEncoder&lt;/span&gt;    
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;consumer.properties&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;,&lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;,&lt;span class=&quot;n&quot;&gt;c3&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;connection&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;timeout&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ms&lt;/span&gt;=&lt;span class=&quot;m&quot;&gt;6000&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;consumer&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;启动&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/kafka-server-start.sh config/server.properties &amp;amp; &lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;依然jps&lt;code class=&quot;highlighter-rouge&quot;&gt;jps&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;测试&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;本部分的分片partitions有待调整,分布式的logstash需要分片的消息,否则会出现消息顺序错误&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;leader上执行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/kafka-topics.sh --zookeeper c1:2181,c2:2181,c3:2181 --topic tt_topic --replication-factor 3 --partitions 1 --create
+bin/kafka-topics.sh --zookeeper c1:2181,c2:2181,c3:2181 --topic tt_topic --describe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;leader消息发送&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/kafka-console-producer.sh --broker-list c1:9092,c2:9092,c3:9092 --topic tt_topic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;从者消息消费&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;kafka&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;console&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;consumer&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; --&lt;span class=&quot;n&quot;&gt;zookeeper&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c1&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;,&lt;span class=&quot;n&quot;&gt;c2&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt;,&lt;span class=&quot;n&quot;&gt;c3&lt;/span&gt;:&lt;span class=&quot;m&quot;&gt;2181&lt;/span&gt; --&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;-&lt;span class=&quot;n&quot;&gt;beginning&lt;/span&gt; --&lt;span class=&quot;n&quot;&gt;topic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tt_topic&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;elasticsearch&quot;&gt;elasticsearch配置&lt;/h3&gt;
+
+&lt;p&gt;修改es文件夹所属用户组 &lt;code class=&quot;highlighter-rouge&quot;&gt;chown -R cluster /home/cluster/elaticsearch&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;es配置&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;n&quot;&gt;elasticsearch&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;: &lt;span class=&quot;n&quot;&gt;c4&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;: /&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;elasticsearch&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;logs&lt;/span&gt;: /&lt;span class=&quot;n&quot;&gt;home&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;cluster&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;elasticsearch&lt;/span&gt;/&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;bootstrap&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;mlockall&lt;/span&gt;: &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;network&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;12&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;27&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;9200&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;discovery&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;zen&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;ping&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;unicast&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;hosts&lt;/span&gt;: [&lt;span class=&quot;s2&quot;&gt;&quot;c4&quot;&lt;/span&gt;, &lt;span class=&quot;s2&quot;&gt;&quot;c5&quot;&lt;/span&gt;]
+&lt;span class=&quot;n&quot;&gt;discovery&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;zen&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;minimum_master_nodes&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;安装插件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; bin/plugin install mobz/elasticsearch-head
+ bin/plugin install lmenezes/elasticsearch-kopf
+ bin/plugin install lukas-vlcek/bigdesk
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;bin/elasticsearch -d&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;状态查看&lt;code class=&quot;highlighter-rouge&quot;&gt;http://10.1.12.27:9200/_plugin/head/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;kibana&quot;&gt;kibana配置&lt;/h3&gt;
+
+&lt;p&gt;基本设置需要修改的部分&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;port&lt;/span&gt;: &lt;span class=&quot;m&quot;&gt;5601&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;c4&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;elasticsearch&lt;/span&gt;.&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;http://c4:9200&quot;&lt;/span&gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;访问&lt;code class=&quot;highlighter-rouge&quot;&gt;http://10.1.12.27:5601&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;logstash&quot;&gt;logstash配置&lt;/h3&gt;
+
+&lt;p&gt;修改ruby源,修改Gemfile文件&lt;code class=&quot;highlighter-rouge&quot;&gt;https://ruby.taobao.org&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;安装插件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/logstash-plugin install logstash-input-kafka
+bin/logstash-plugin install logstash-output-elasticsearch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;新建kafka-logstash-es.conf&lt;/p&gt;
+
+&lt;p&gt;置于cluster/data/logstash/conf目录下&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt; {
+    &lt;span class=&quot;n&quot;&gt;kafka&lt;/span&gt; {
+        &lt;span class=&quot;n&quot;&gt;zk_connect&lt;/span&gt; =&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;c1:2181,c2:2181,c3:2181&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;group_id&lt;/span&gt; =&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;cluster-consumer-group&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;topic_id&lt;/span&gt; =&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;tt_topic&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;reset_beginning&lt;/span&gt; =&amp;gt; &lt;span class=&quot;n&quot;&gt;false&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;consumer_threads&lt;/span&gt; =&amp;gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;  
+        &lt;span class=&quot;n&quot;&gt;decorate_events&lt;/span&gt; =&amp;gt; &lt;span class=&quot;n&quot;&gt;true&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;codec&lt;/span&gt; =&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;
+        }
+    }
+&lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; {
+    &lt;span class=&quot;n&quot;&gt;elasticsearch&lt;/span&gt; {
+        &lt;span class=&quot;n&quot;&gt;hosts&lt;/span&gt; =&amp;gt; [&lt;span class=&quot;s2&quot;&gt;&quot;c4:9200&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;c5:9200&quot;&lt;/span&gt;]
+        &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt; =&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;logstash-%{type}-%{+YYYY.MM.dd}&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;workers&lt;/span&gt; =&amp;gt; &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;codec&lt;/span&gt; =&amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;json&quot;&lt;/span&gt;
+		  }
+	 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;测试配置文件&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bin/logstash -f /home/cluster/data/logstash/conf/kafka-logstash-es.conf --configtest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;运行&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nohup bin/logstash -f /home/cluster/data/logstash/conf/kafka-logstash-es.conf  &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;想要使用多个 logstash 端协同消费同一个 topic 的话，那么需要把两个或是多个 logstash 消费端配置成相同的 group_id 和 topic_id&lt;/p&gt;
+
+  &lt;p&gt;但是前提是要把相应的 topic 分多个 partitions (区)，多个消费者消费是无法保证消息的消费顺序性的&lt;/p&gt;
+
+  &lt;p&gt;查看后台任务 jobs&lt;/p&gt;
+
+  &lt;p&gt;杀掉后台任务 kill %number&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+				<pubDate>Thu, 21 Apr 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/04/21/%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA-%E5%85%B3%E4%BA%8EFlume-Kafka-ELK/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/04/21/%E6%97%A5%E5%BF%97%E7%9B%91%E6%8E%A7%E5%B9%B3%E5%8F%B0%E6%90%AD%E5%BB%BA-%E5%85%B3%E4%BA%8EFlume-Kafka-ELK/</guid>
+			</item>
+		
+			<item>
+				<title>Ps4的remote play尝鲜与一些其他小玩意儿</title>
+        <description>&lt;p&gt;昨晚ps4推送了3.50版本的固件,新增了人物离线状态与远程遥控的功能.&lt;/p&gt;
+
+&lt;p&gt;mac客户端在&lt;a href=&quot;https://remoteplay.dl.playstation.net/remoteplay/lang/jp/index.html&quot;&gt;这里&lt;/a&gt;下载&lt;/p&gt;
+
+&lt;h3 id=&quot;ps4&quot;&gt;ps4的准备&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;启用遥控操作。选择（设定）＞［遥控操作连接设定］，在[启用遥控操作]的方框打勾。&lt;/li&gt;
+  &lt;li&gt;将主机认证为常用PS4™主机。选择（设定）＞［PlayStation™Network/账号管理］＞［认证为常用PS4］＞［认证］。&lt;/li&gt;
+  &lt;li&gt;若要在PS4™为待命模式时开始遥控操作，选择（设定）＞[省电设定］＞［设定待命模式里的功能］，在［与互联网保持连接］及［设为可通过网络启动PS4的电源］的方框打勾。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;手柄插入mac稍适识别,暂时官网并没有推荐用蓝牙进行连接,在这里推荐一个可以蓝牙连接mac并且对手柄键位进行调试的工具&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-07%20at%2014.39.24.png?imageView2/2/h/100&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;remote play mac端截图 
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3709.JPG?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;mac上的画面&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3710.JPG?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;手柄控制mac显示,电视上显示会同步进行,这时你可以切换信号源,把电视让给老婆看电视,而自己抱着电脑玩对帧数要求不是太高的游戏&lt;/p&gt;
+
+&lt;p&gt;帧数相关取决于网速,跟mac硬件配置关系并不大,实测帧数在mbp跟mba上差不多.&lt;/p&gt;
+
+&lt;p&gt;调整显示分辨率的相关设置在mac客户端中.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3694.JPG?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;小番外&lt;/h3&gt;
+
+&lt;p&gt;几个月前随手众筹了一个小米的小音箱,最近突然众筹成功发货给我了,还是蛮惊喜的,样子漂亮,一体性可以的.&lt;/p&gt;
+
+&lt;p&gt;唯一遗憾的一点就是….我已经提前买了其他的音箱了.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3706.JPG?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;
+&lt;img src=&quot;http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3704.JPG?imageView2/2/h/400&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+</description>
+				<pubDate>Thu, 07 Apr 2016 00:00:00 +0800</pubDate>
+				<link>http://www.slahser.com/2016/04/07/ps4%E7%9A%84remote-play%E5%B0%9D%E9%B2%9C%E4%B8%8E%E4%B8%80%E4%BA%9B%E5%85%B6%E4%BB%96%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/</link>
+				<guid isPermaLink="true">http://www.slahser.com/2016/04/07/ps4%E7%9A%84remote-play%E5%B0%9D%E9%B2%9C%E4%B8%8E%E4%B8%80%E4%BA%9B%E5%85%B6%E4%BB%96%E5%B0%8F%E7%8E%A9%E6%84%8F%E5%84%BF/</guid>
+			</item>
+		
+			<item>
 				<title>新浪微博与github的一些小东西</title>
         <description>&lt;h3 id=&quot;section&quot;&gt;新浪微博的操作快捷键&lt;/h3&gt;
 
