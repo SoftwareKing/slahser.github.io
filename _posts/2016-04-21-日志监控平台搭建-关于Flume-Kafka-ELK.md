@@ -47,9 +47,12 @@ chmod 777 /home/cluster
 chmod 777 /home/stack
 ```  
 
-> 以上部分/home/stack用于存储所需所有tar.gz包
-> /home/cluster作为所有软件的安装目录
-> 而后创建cluster目录下data目录,用于存放各组件配置,日志,数据
+> 以上部分/home/stack用于存储所需所有tar.gz包 
+> 
+> /home/cluster作为所有软件的安装目录 
+> 
+> 而后创建cluster目录下data目录,用于存放各组件配置,日志,数据 
+> 
 > scp推荐工具ZOC7 
 
 同步各个机器的hosts  
@@ -114,7 +117,7 @@ ufw disable
 非ubuntu机器关闭SELinux 
 
 ```
-修改 /etc/selinux/config 文件，将其中的 SELINUX=enforcing 改为 SELINUX=disabled
+修改 /etc/selinux/config，将 SELINUX=enforcing 改为 SELINUX=disabled
 selinux默认ubuntu不安装,iptables默认也是全开放的.可以用getenforce和iptables -L命令查看下两个组件的状态
 ```
 
