@@ -8,7 +8,7 @@
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-21%20at%2021.44.09.png?imageView2/2/h/200)
 
-## 硬件配置  
+## 软硬件配置  
 
 - 本机 ubuntu 14.04
 - 线上 centos 6.5
@@ -20,6 +20,11 @@
 | c3     | 1core 1g | 4core 8g |
 | c4     | 2core 4g | 8core 32g |
 | c5     | 2core 4g | 4core 32g |
+
+
+|  c1 |   c2 | c3   | c4 |   c5 |
+| :-----: |:--------:| :-----:|:--------:| :-----:|
+| jdk+scala+zk+kafka  | 同左 | 同左 | jdk+es+logstash+kibana | jdk+es |
 
 ## 搭建 
 
