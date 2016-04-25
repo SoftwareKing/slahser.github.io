@@ -329,4 +329,51 @@ nohup bin/logstash -f /home/cluster/data/logstash/conf/kafka-logstash-es.conf  &
 > 
 > 查看后台任务 jobs 
 > 
-> 杀掉后台任务 kill %number
+> 杀掉后台任务 kill %number 
+
+### flume配置 
+
+- 确定jdk
+- 上传stack
+- 同步hosts
+
+flume-env.sh 
+
+```shell
+export JAVA_HOME
+```
+
+flume-kafka.properties 
+
+```properties
+ag1.sources=src1
+ag1.sinks=sink1
+ag1.channels=chn1
+
+ag1.sources.src1.type = exec
+ag1.sources.src1.shell = /bin/bash -c
+ag1.sources.src1.command = tail -F /Users/Slahser/Documents/repository/stree/tt/tt.log
+ag1.sources.src1.channels = chn1
+
+ag1.channels.chn1.type = memory
+ag1.channels.chn1.capacity = 1000
+ag1.channels.chn1.transactionCapacity = 100
+
+
+ag1.sinks.sink1.type = org.apache.flume.sink.kafka.KafkaSink
+ag1.sinks.sink1.topic = tt_topic
+ag1.sinks.sink1.brokerList = shuli1:9092:shuli2:9092:shuli2:9092
+ag1.sinks.sink1.channel = chn1
+```
+
+启动 
+
+```
+bin/flume-ng agent -n ag1  -c conf -f conf/flume-kafka.properties
+```
+
+
+
+
+
+
