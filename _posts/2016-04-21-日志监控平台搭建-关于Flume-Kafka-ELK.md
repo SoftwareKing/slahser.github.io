@@ -235,7 +235,8 @@ bin/kafka-console-consumer.sh --zookeeper c1:2181,c2:2181,c3:2181 --from-beginni
 
 ### elasticsearch配置 
 
-修改es文件夹所属用户组 `chown -R cluster /home/cluster/elaticsearch`
+修改es文件夹所属用户组 `chown -R cluster /home/cluster/elasticsearch`
+修改data文件夹所属用户组 `chown -R cluster /home/cluster/data`
 
 es配置 
 
