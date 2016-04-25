@@ -272,7 +272,9 @@ server.port: 5601
 server.host: "c4"
 elasticsearch.url: "http://c4:9200"  
 ```
-访问`http://10.1.12.27:5601`
+
+- 启动`nohup bin/kibana &`
+- 访问`http://10.1.12.27:5601`
 
 ### logstash配置
 
