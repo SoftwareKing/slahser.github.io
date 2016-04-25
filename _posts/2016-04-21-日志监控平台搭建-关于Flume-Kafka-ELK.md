@@ -352,7 +352,7 @@ ag1.channels=chn1
 
 ag1.sources.src1.type = exec
 ag1.sources.src1.shell = /bin/bash -c
-ag1.sources.src1.command = tail -F /Users/Slahser/Documents/repository/stree/tt/tt.log
+ag1.sources.src1.command = tail -F tt.log
 ag1.sources.src1.channels = chn1
 
 ag1.channels.chn1.type = memory
@@ -362,7 +362,7 @@ ag1.channels.chn1.transactionCapacity = 100
 
 ag1.sinks.sink1.type = org.apache.flume.sink.kafka.KafkaSink
 ag1.sinks.sink1.topic = tt_topic
-ag1.sinks.sink1.brokerList = shuli1:9092:shuli2:9092:shuli2:9092
+ag1.sinks.sink1.brokerList = c1:9092:c2:9092:c2:9092
 ag1.sinks.sink1.channel = chn1
 ```
 
