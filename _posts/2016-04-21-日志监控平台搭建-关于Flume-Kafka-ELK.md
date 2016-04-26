@@ -111,7 +111,7 @@ drwxr-xr-x  5 zy      root    4096  4月 21 18:06 logstash/
 开发环境下关闭防火墙 
 
 ```shell
-chkconfig  iptables off 或者
+chkconfig  iptables off && service iptables status或者
 ufw disable
 ```
 非ubuntu机器关闭SELinux 
@@ -207,7 +207,7 @@ zookeeper.connection.timeout.ms=6000
 group.id=cluster-consumer-group 
 ```
 
-- 启动`bin/kafka-server-start.sh config/server.properties & `
+- 启动`nohup bin/kafka-server-start.sh config/server.properties & `
 - 依然jps`jps`
 
 测试 
@@ -217,7 +217,7 @@ group.id=cluster-consumer-group
 leader上执行 
 
 ```shell
-bin/kafka-topics.sh --zookeeper c1:2181,c2:2181,c3:2181 --topic tt_topic --replication-factor 3 --partitions 1 --create
+bin/kafka-topics.sh --zookeeper c1:2181,c2:2181,c3:2181 --topic tt_topic --replication-factor 3 --partitions 3 --create
 bin/kafka-topics.sh --zookeeper c1:2181,c2:2181,c3:2181 --topic tt_topic --describe
 ``` 
 
@@ -246,6 +246,7 @@ node.name: c4
 path.data: /home/cluster/data/elasticsearch/data
 path.logs: /home/cluster/data/elasticsearch/log
 bootstrap.mlockall: true
+//这行一定要填ip
 network.host: 10.1.12.27
 http.port: 9200
 discovery.zen.ping.unicast.hosts: ["c4", "c5"]
@@ -299,7 +300,7 @@ input {
         reset_beginning => false 
         consumer_threads => 5  
         decorate_events => true 
-        codec => "json"
+        codec => "plain"
         }
     }
 output {
