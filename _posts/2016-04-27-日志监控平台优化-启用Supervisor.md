@@ -24,7 +24,7 @@ python
 ```
 echo_supervisord_conf > /etc/supervisord.conf
 vim /etc/supervisord.conf
-修改最后一行
+修改最后一行: vim->G
     [include]
     files = /etc/supervisor/conf.d/*.conf 
 mkdir /etc/supervisor/conf.d
@@ -60,6 +60,30 @@ user = root
 log_stdout=ture
 log_stderr=true
 logfile=/home/cluster/data/logstash/log/logstash.log
+
+[program:flume]
+command=/home/stack/flume/bin/flume-ng agent -n ag1  -c conf -f /home/stack/flume/conf/flume-kafka.properties
+autostart = false     
+startsecs = 5        
+autorestart = true   
+startretries = 3     
+user = root
+
+[program:zookeeper]
+command=/home/cluster/zookeeper/bin/zkServer.sh start
+autostart = true     
+startsecs = 5        
+autorestart = true   
+startretries = 3     
+user = root
+
+[program:kafka]
+command=/home/cluster/kafka/bin/kafka-server-start.sh /home/cluster/kafka/config/server.properties
+autostart = false     
+startsecs = 5        
+autorestart = true   
+startretries = 3     
+user = root
 ```
 
 ## 启动  

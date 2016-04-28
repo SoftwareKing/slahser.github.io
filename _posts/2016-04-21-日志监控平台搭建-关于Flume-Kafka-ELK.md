@@ -306,7 +306,7 @@ input {
 output {
     elasticsearch {
         hosts => ["c4:9200","c5:9200"]
-        index => "logstash-%{type}-%{+YYYY.MM.dd}"
+        index => "logstash-log-%{+YYYY.MM.dd}"
         workers => 5
         codec => "json"
 		  }
@@ -342,12 +342,13 @@ flume-env.sh
 
 ```shell
 export JAVA_HOME
+export JAVA_OPTS
 ```
 
 flume-kafka.properties 
 
 ```properties
-ag1.sources=src1
+ag1.sources=src1 src2
 ag1.sinks=sink1
 ag1.channels=chn1
 
@@ -356,7 +357,13 @@ ag1.sources.src1.shell = /bin/bash -c
 ag1.sources.src1.command = tail -F tt.log
 ag1.sources.src1.channels = chn1
 
+ag1.sources.src2.type = exec
+ag1.sources.src2.shell = /bin/bash -c
+ag1.sources.src2.command = tail -F tt.log
+ag1.sources.src2.channels = chn1
+
 ag1.channels.chn1.type = memory
+agent.channels.chn1.keep-alive = 60  
 ag1.channels.chn1.capacity = 1000
 ag1.channels.chn1.transactionCapacity = 100
 
