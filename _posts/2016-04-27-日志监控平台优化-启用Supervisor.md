@@ -118,3 +118,7 @@ supervisorctl reread
 supervisorctl update
 ``` 
 
+
+## 效果 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-27%20at%2013.35.13.png?imageView2/2/h/200)
