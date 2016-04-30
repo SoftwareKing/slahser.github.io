@@ -380,7 +380,17 @@ ag1.sinks.sink1.channel = chn1
 bin/flume-ng agent -n ag1  -c conf -f conf/flume-kafka.properties
 ```
 
+### 初步成果 
 
+初步成果如图,我们成功把22台机器的agent安好,获得了应用集群上的置顶日志内容,后续的优化包括 
+
+- 性能
+- 日志filter
+- 存储/压缩/备份
+- visualize与dashboard配置
+- 更多可视化插件安装 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-30%20at%2015.58.57.png?imageView2/2/h/600)
 
 
 
