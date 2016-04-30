@@ -341,8 +341,8 @@ nohup bin/logstash -f /home/cluster/data/logstash/conf/kafka-logstash-es.conf  &
 flume-env.sh 
 
 ```shell
-export JAVA_HOME
-export JAVA_OPTS
+export JAVA_HOME=/opt/software/java 
+export JAVA_OPTS="-Xms1024m -Xmx2048m" 
 ```
 
 flume-kafka.properties 
