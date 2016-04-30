@@ -382,7 +382,7 @@ bin/flume-ng agent -n ag1  -c conf -f conf/flume-kafka.properties
 
 ### 初步成果 
 
-初步成果如图,我们成功把22台机器的agent安好,获得了应用集群上的置顶日志内容,后续的优化包括 
+初步成果如图,我们成功把22台机器的agent安好,获得了应用集群上的指定日志内容,后续的优化包括 
 
 - 性能
 - 日志filter

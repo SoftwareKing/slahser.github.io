@@ -84,7 +84,9 @@ startsecs = 5
 autorestart = true   
 startretries = 3     
 user = root
-```
+``` 
+
+我们这里要注意,像elasticsearch这种启动方式自带deamon进程的形式,最好利用`bin/elasticsearch -d` 启动,不要使用Supervisor管理,否则supervisor> status 会提示：BACKOFF  Exited too quickly.
 
 ## 启动  
 
@@ -118,6 +120,9 @@ supervisorctl reread
 supervisorctl update
 ``` 
 
+## web管理界面
+
+将/etc/supervisord.conf中[inet_http_server]部分做相应配置，在supervisorctl中reload即可启动web管理界面,聊胜于无吧. 
 
 ## 效果 
 
