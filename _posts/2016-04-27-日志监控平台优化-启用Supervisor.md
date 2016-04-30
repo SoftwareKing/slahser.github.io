@@ -6,7 +6,7 @@ nohup启动起来的应用切换了shell就看不到jobs了,总是搞得心惊�
 
 centos6.5 
 
-```
+```shell
 pip install在我这儿老是出依赖相关的错
 yum install python-setuptools 
 easy_install supervisor
@@ -14,14 +14,14 @@ easy_install supervisor
 
 测试 
 
-```
+```shell
 python
 >>>  import supervisor
 ``` 
 
 ## 配置 
 
-```
+```shell
 echo_supervisord_conf > /etc/supervisord.conf
 vim /etc/supervisord.conf
 修改最后一行: vim->G
@@ -33,7 +33,7 @@ vim tt.conf
 
 tt.conf 
 
-```
+```conf
 [program:elasticsearch]
 command=/home/cluster/elasticsearch/bin/elasticsearch
 autostart = true     ; 在 supervisord 启动的时候也自动启动
