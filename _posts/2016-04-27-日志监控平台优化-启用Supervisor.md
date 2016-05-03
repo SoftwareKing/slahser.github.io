@@ -92,7 +92,7 @@ user = root
 
 ## 启动  
 
-```
+```shell
 启动服务
 supervisord -c /etc/supervisord.conf
 启动客户端
@@ -103,7 +103,7 @@ supervisorctl reload
 
 ## 使用 
 
-```
+```shell
 supervisorctl -c /etc/supervisord.conf
 以上命令进入客户端shell
 status    # 查看程序状态

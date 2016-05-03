@@ -57,7 +57,7 @@ chmod 777 /home/stack
 
 同步各个机器的hosts  
 
-```shell
+```conf
 127.0.0.1 localhost 
 10.1.12.25 c1
 10.1.12.23 c2
