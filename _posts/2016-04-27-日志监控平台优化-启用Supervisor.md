@@ -36,11 +36,13 @@ tt.conf
 ```conf
 [program:elasticsearch]
 command=/home/cluster/elasticsearch/bin/elasticsearch
+environment=HOME="/home/cluster",USER="cluster"  ;进行用户目录的配置
+user = cluster       ; 用哪个用户启动
 autostart = true     ; 在 supervisord 启动的时候也自动启动
 startsecs = 5        ; 启动 5 秒后没有异常退出，就当作已经正常启动了
 autorestart = true   ; 程序异常退出后自动重启
 startretries = 3     ; 启动失败自动重试次数，默认是 3
-user = cluster       ; 用哪个用户启动
+
 
 [program:kibana]
 command=/home/cluster/kibana/bin/kibana
