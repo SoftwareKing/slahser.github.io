@@ -89,7 +89,8 @@ startretries = 3
 user = root
 ``` 
 
-> 我们这里要注意,像elasticsearch这种启动方式自带deamon进程的形式,最好利用`bin/elasticsearch -d` 启动,不要使用Supervisor管理,否则supervisor> status 会提示：BACKOFF  Exited too quickly.
+> 我们这里要注意,像elasticsearch这种启动方式自带deamon进程的形式,最好利用`bin/elasticsearch -d` 启动,不要使用Supervisor管理,否则supervisor> status 会提示：BACKOFF  Exited too quickly. 
+> 个人觉得es跟zk不太适合使用supervisor进行管理,查了一下其他有人用deamontools也会遇到问题. 
 
 ## 启动  
 
