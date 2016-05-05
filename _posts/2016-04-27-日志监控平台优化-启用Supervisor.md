@@ -8,6 +8,7 @@ centos6.5
 
 ```shell
 pip install //在我这儿老是出依赖相关的错
+pip install supervisor -i http://pypi.v2ex.com/simple   //暂且fix一下网络问题
 yum install python-setuptools 
 easy_install supervisor
 ```  
