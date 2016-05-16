@@ -323,7 +323,52 @@ bin/logstash -f /home/cluster/data/logstash/conf/kafka-logstash-es.conf --config
 
 ```shell
 nohup bin/logstash -f /home/cluster/data/logstash/conf/kafka-logstash-es.conf  &
+``` 
+
+这个平台搭建的后期我遇见了新的需求,对flume的定制需求越来越多,如果你不想面对这种情况,那么可以这样: 
+
+```shell 
+bin/logstash-plugin install logstash-input-log4j 
+bin/logstash-plugin install logstash-output-kafka
 ```
+
+把flume的部分替换成使用logstash来进行: 
+
+```conf
+input{
+    log4j {
+        mode => "server"
+        host => "[c1/c2/c3]"
+        port => 4560
+    }
+}
+
+output{
+    kafka {
+        bootstrap_servers => "c1:9092,c2:9092,c3:9092"
+        topic_id => "tt_topic"
+        workers => 5
+        codec => "plain"
+    }
+}
+``` 
+
+同样在log4j中配置新的SocketAppender指向挂在logstash集群前的负载均衡. 
+
+```
+<appender name="LOGSTASH-APPENDER" class="org.apache.log4j.net.SocketAppender">
+    <param name="remoteHost" value="lb1" />
+    <param name="port" value="4560" />
+    <param name="Threshold" value="INFO" />
+    <param name="ReconnectionDelay" value="1000" />
+    <param name="LocationInfo" value="true" />
+    <layout class="org.apache.log4j.PatternLayout">
+        <param name="ConversionPattern" value="%-d{yyyy-MM-dd HH:mm:ss}-[%p]-[%l]-%m%n" />
+    </layout>
+  </appender>
+``` 
+
+
 > 想要使用多个 logstash 端协同消费同一个 topic 的话，那么需要把两个或是多个 logstash 消费端配置成相同的 group_id 和 topic_id 
 > 
 > 但是前提是要把相应的 topic 分多个 partitions (区)，多个消费者消费是无法保证消息的消费顺序性的 
