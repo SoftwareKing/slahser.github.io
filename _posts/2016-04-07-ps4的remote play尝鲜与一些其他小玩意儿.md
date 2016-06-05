@@ -13,26 +13,30 @@ mac客户端在[这里](https://remoteplay.dl.playstation.net/remoteplay/lang/jp
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-07%20at%2014.39.24.png?imageView2/2/h/100)
 
 remote play mac端截图 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3709.JPG?imageView2/2/h/400)
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3709.JPG?imageView2/2/h/300) 
 
 mac上的画面  
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3710.JPG?imageView2/2/h/400)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3710.JPG?imageView2/2/h/400) 
 
 手柄控制mac显示,电视上显示会同步进行,这时你可以切换信号源,把电视让给老婆看电视,而自己抱着电脑玩对帧数要求不是太高的游戏  
 
 帧数相关取决于网速,跟mac硬件配置关系并不大,实测帧数在mbp跟mba上差不多.  
 
-调整显示分辨率的相关设置在mac客户端中.
+调整显示分辨率的相关设置在mac客户端中. 
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3694.JPG?imageView2/2/h/400)
 
 
-### 小番外 
+### 小番外  
 
-几个月前随手众筹了一个小米的小音箱,最近突然众筹成功发货给我了,还是蛮惊喜的,样子漂亮,一体性可以的. 
+几个月前随手众筹了一个小米的小音箱,最近突然众筹成功发货给我了,还是蛮惊喜的,样子漂亮,一体性可以的.  
 
-唯一遗憾的一点就是....我已经提前买了其他的音箱了. 
+唯一遗憾的一点就是....我已经提前买了其他的音箱了.  
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3706.JPG?imageView2/2/h/400)
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3704.JPG?imageView2/2/h/400)
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3706.JPG?imageView2/2/h/300) 
+
+![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_3704.JPG?imageView2/2/h/300) 
+
+done. 
