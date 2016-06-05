@@ -47,10 +47,6 @@
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/ttttttt00002.png?imageView2/2/h/400) 
 
-新建页面 
-
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-16%20at%2000.39.59.png?imageView2/2/h/400) 
-
 日记日历 
 
 ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/IMG_2989.PNG?imageView2/2/h/300) 
