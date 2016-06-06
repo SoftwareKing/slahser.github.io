@@ -69,6 +69,11 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>实现领域驱动设计
 - <span style="color: red">[x]</span>PostgresQL即学即用
 - <span style="color: red">[x]</span>Spark机器学习
-
-
+- <span style="color: red">[x]</span>Python自动化运维：技术与最佳实践
+- <span style="color: red">[x]</span>深入理解Android自动化测试
+- <span style="color: red">[x]</span>Ansible自动化运维：技术与最佳实践
+- <span style="color: red">[x]</span>大规模分布式系统架构与设计实战
+- <span style="color: red">[x]</span>ZooKeeper：分布式过程协同技术详解
+- <span style="color: red">[x]</span>ELK stack 权威指南
+- <span style="color: red">[x]</span>Spark：原理、机制及应用 
 
