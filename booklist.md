@@ -7,7 +7,7 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>第一本docker书
 - <span style="color: green">[o]</span>写给大忙人看的java se 8
 - <span style="color: red">[x]</span>scala程序设计
-- <span style="color: red">[x]</span>java性能权威指南
+- <span style="color: gold">[~]</span>java性能权威指南
 - <span style="color: green">[o]</span>maven实战
 - <span style="color: green">[o]</span>spring技术内幕
 - <span style="color: red">[x]</span>swift ios 应用开发实战
@@ -19,8 +19,8 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>hadoop实战
 - <span style="color: green">[o]</span>图解tcp/ip
 - <span style="color: green">[o]</span>nosql精粹
-- <span style="color: red">[x]</span>架构探险
-- <span style="color: gold">[~]</span>微服务结构与实践
+- <span style="color: green">[o]</span>架构探险
+- <span style="color: green">[o]</span>微服务结构与实践
 - <span style="color: gold">[~]</span>Storm企业级应用:实战运维与调优
 - <span style="color: green">[o]</span>快学scala
 - <span style="color: green">[o]</span>实战java虚拟机
@@ -44,7 +44,7 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>java 技术手册
 - <span style="color: green">[o]</span>大型分布式网站架构设计与实战
 - <span style="color: green">[o]</span>java并发编程的艺术
-- <span style="color: gold">[~]</span>实战java高并发程序设计
+- <span style="color: green">[o]</span>实战java高并发程序设计
 - <span style="color: red">[x]</span>linux内核设计的艺术
 - <span style="color: red">[x]</span>ruby元编程
 - <span style="color: gold">[~]</span>编写高质量代码:改善python程序的91个建议
@@ -74,7 +74,7 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>Ansible自动化运维：技术与最佳实践
 - <span style="color: red">[x]</span>大规模分布式系统架构与设计实战
 - <span style="color: red">[x]</span>ZooKeeper：分布式过程协同技术详解
-- <span style="color: red">[x]</span>ELK stack 权威指南
+- <span style="color: green">[o]</span>ELK stack 权威指南
 - <span style="color: red">[x]</span>Spark：原理、机制及应用 
-- <span style="color: red">[x]</span>干净的数据 数据清洗入门与实践 
+- <span style="color: red">[~]</span>干净的数据 数据清洗入门与实践 
 - <span style="color: red">[x]</span>CSS揭秘 
