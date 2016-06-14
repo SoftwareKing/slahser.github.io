@@ -1,6 +1,6 @@
 ![2016-06-14_Screen Shot 2016-06-14 at 20.56.27.png](https://o4dyfn0ef.qnssl.com/image/2016-06-14_Screen%20Shot%202016-06-14%20at%2020.56.27.png?imageView2/2/h/180) 
 
-[halik](https://meet.halik.io/homepage/)是一个idea插件,接下来我尽量用语言描述.对这个感兴趣的肯定会按一个玩玩看的,我就不截些图占版面了.   
+[halik](https://meet.halik.io/homepage/)是一个idea插件,接下来我尽量用语言描述.对这个感兴趣的肯定会装一个玩玩看的,我就不截些图占版面了.   
 
 安装后点击run with halik可以在本机启动一个server,点击进去是一个在线debug界面. 
 
