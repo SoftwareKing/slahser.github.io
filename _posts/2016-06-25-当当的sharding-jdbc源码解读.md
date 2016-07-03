@@ -42,7 +42,7 @@ public final class ShardingContext {
 
 适当的注释了一下. 
 
-那么`SQLRouteEngine`内含的内容就是下一节的部分了,内含着SQ路由与解析相关的内容. 
+那么`SQLRouteEngine`内含的内容就是下一节的部分了,内含着SQL路由与解析相关的内容. 
 
 ## SQL解析/路由 
 
@@ -52,9 +52,7 @@ public SQLRouteResult route(final String logicSql, final List<Object> parameters
 }
 ``` 
 
-那么接收到一条原始SQL第一步就是进行解析,市面上我了解的解析引擎有`JSqlParser`和`Druid`,想必其他连接池也自己做了一套吧. 
-
-sharding-jdbc用的是后者. 
+接收到一条原始SQL第一步就是进行解析,市面上我了解的解析引擎有`JSqlParser`和`Druid`,sharding-jdbc用的是后者. 
 
 ![2016-07-03_parse.png](https://o4dyfn0ef.qnssl.com/image/2016-07-03_parse.png?imageView2/2/h/300) 
 
