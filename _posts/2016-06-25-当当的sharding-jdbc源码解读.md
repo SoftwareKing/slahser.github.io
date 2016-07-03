@@ -68,22 +68,7 @@ public SQLRouteResult route(final String logicSql, final List<Object> parameters
 
 路由的部分将SQL与DataSource绑定在执行单元中,完成依照配置分库分表的核心功能. 
 
-```java
-private SQLRouteResult routeSQL(final SQLParsedResult parsedResult) {
-    SQLRouteResult result = new SQLRouteResult(parsedResult.getRouteContext().getSqlStatementType(), parsedResult.getMergeContext());
-    for (ConditionContext each : parsedResult.getConditionContexts()) {
-        result.getExecutionUnits().addAll(routeSQL(each, Sets.newLinkedHashSet(Collections2.transform(parsedResult.getRouteContext().getTables(), new Function<Table, String>() {
-            @Override
-            public String apply(final Table input) {
-                return input.getName();
-            }
-        })), parsedResult.getRouteContext().getSqlBuilder(), parsedResult.getRouteContext().getSqlStatementType()));
-    }
-    return result;
-}
-```  
-
-获取执行单元的部分则是依照策略来进行,这部分解释起来不那么容易,因为我也没怎么看~. 
+获取执行单元的部分则是依照策略来进行,这部分解释起来不那么容易,因为我也没怎么看. 
 
 > 这里照着使用文档看看实际就能理解了.至于为什么我没写出来,谁知道呢. 
 
