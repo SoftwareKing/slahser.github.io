@@ -19,9 +19,6 @@
 </head>
 
 <body>
-  <div class="container">
-    {{ content }}
-  </div>
   <!--instant click-->
   <script src="https://xxxxx.qnssl.com/instantclick/instantclick.min.js" data-no-instant></script>
   <script data-no-instant>
