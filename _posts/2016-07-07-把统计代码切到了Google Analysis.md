@@ -20,7 +20,7 @@
 
 <body>
   <!--instant click-->
-  <script src="https://xxxxx.qnssl.com/instantclick/instantclick.min.js" data-no-instant></script>
+  <script src="/instantclick.min.js" data-no-instant></script>
   <script data-no-instant>
     InstantClick.on('change', function(isInitialLoad) {
     if (isInitialLoad === false) {
