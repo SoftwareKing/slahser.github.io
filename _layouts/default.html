@@ -27,12 +27,23 @@
 
     ga('create', 'UA-80416374-1', 'auto');
     ga('send', 'pageview');
-
     </script>
 </head>
 <body>
   <div class="container">
     {{ content }}
   </div>
+  <!--instant click-->
+  <!--<script src="http://staticfile.qnssl.com/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>-->
+  <script src="https://o4dyfn0ef.qnssl.com/instantclick/instantclick.min.js" data-no-instant></script>
+  <script data-no-instant>
+    InstantClick.on('change', function(isInitialLoad) {
+    if (isInitialLoad === false) {
+        if (typeof ga !== 'undefined')  // support google analytics
+            ga('send', 'pageview', location.pathname + location.search);
+      }
+    });
+    InstantClick.init();
+    </script>
 </body>
 </html>
