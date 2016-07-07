@@ -2,7 +2,7 @@
 
 接近两年的日子里我一直在用ybb.  
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.40.40.png?imageView2/2/h/100) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-31%20at%2014.40.40.png?imageView2/2/h/100) 
 
 在系统中开启了一个SOCKS5代理,代理全局,同时支持shell环境与ssh的代理 
  
@@ -14,7 +14,7 @@
 
 >Surge与SS二者均需单独购买
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.51.24.png?imageView2/2/h/100) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-31%20at%2014.51.24.png?imageView2/2/h/100) 
 
 ### install 
 
@@ -30,7 +30,7 @@ Mac上编写配置文件`vim ~/.surge.conf`,内容如文末所示
 
 在同一页面下方bypass列表填入`*.local, 169.254/16, 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost` 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2014.54.51.png?imageView2/2/h/300) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-31%20at%2014.54.51.png?imageView2/2/h/300) 
 
 ### usage 
 
@@ -38,7 +38,7 @@ Mac上编写配置文件`vim ~/.surge.conf`,内容如文末所示
 
 速度虽然不如ybb快但是也够用了: 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-31%20at%2013.32.32.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-31%20at%2013.32.32.png?imageView2/2/h/400) 
 
 done. 
 

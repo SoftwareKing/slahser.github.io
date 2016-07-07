@@ -12,7 +12,7 @@ SwitchHosts! 的数据文件在 `~/.SwitchHosts` 目录下，其中 `~/.SwitchHo
 - 缺点:你可能看着Monitor里面进程不太爽.
 - 可以改进的点:如果有人维护开源的Host列表就好了.
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-02-28%20at%2000.23.59.png?imageView2/2/h/600)
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-02-28%20at%2000.23.59.png?imageView2/2/h/600)
 
 ### AppleDNS 
 
@@ -21,4 +21,4 @@ SwitchHosts! 的数据文件在 `~/.SwitchHosts` 目录下，其中 `~/.SwitchHo
 [AppleDNS](https://github.com/gongjianhui/AppleDNS)来自网友的黑科技,浙江地区请下载我的配置文件导入SwitchHost!就行了. 
 
 
-[AppleDNS配置文件](http://7xqjx7.com1.z0.glb.clouddn.com/file/switchhost.json) 
+[AppleDNS配置文件](https://o4dyfn0ef.qnssl.com/file/switchhost.json) 

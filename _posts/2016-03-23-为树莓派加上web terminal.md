@@ -1,4 +1,4 @@
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-23%20at%2020.47.50.png?imageView2/2/h/600)  
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-23%20at%2020.47.50.png?imageView2/2/h/600)  
 
 今天介绍一下如何为树莓派或者任何主机添加web terminal 
 
@@ -42,7 +42,7 @@ $ cd /etc/systemd/system
 
 ### 效果图 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/687474703a2f2f70.gif?imageView2/2/h/600) 
+![](https://o4dyfn0ef.qnssl.com/image/687474703a2f2f70.gif?imageView2/2/h/600) 
 
 > 其他功能比如主题设置,session时间调整自行探索.  
 > 

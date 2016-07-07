@@ -6,7 +6,7 @@
 
 ## 架构图 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-21%20at%2021.44.09.png?imageView2/2/h/200)
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-04-21%20at%2021.44.09.png?imageView2/2/h/200)
 
 ## 软硬件配置  
 
@@ -435,7 +435,7 @@ bin/flume-ng agent -n ag1  -c conf -f conf/flume-kafka.properties
 - visualize与dashboard配置
 - 更多可视化插件安装 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-04-30%20at%2015.58.57.png?imageView2/2/h/600)
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-04-30%20at%2015.58.57.png?imageView2/2/h/600)
 
 
 

@@ -10,7 +10,7 @@ defaults write com.apple.dock ResetLaunchPad -bool TRUE
 killall Dock
 ``` 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-28%20at%2019.47.02.png?imageView2/2/h/400)
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-28%20at%2019.47.02.png?imageView2/2/h/400)
 
 ### 调整透明度 
 

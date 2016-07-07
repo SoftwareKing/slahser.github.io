@@ -1,6 +1,6 @@
 前端项目的mock server改天介绍,今天写下基于[moco](https://github.com/dreamhead/moco)的简易mock server搭建. 
 
-![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png?imageView2/2/h/200) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png?imageView2/2/h/200) 
 
 ### intro 
 
@@ -95,7 +95,7 @@ moco当初吸引我在github上点出star就是因为它的优点:
 * 放置非必要资源文件于统计目录,供request/response内容过大设置文件content或者返回attachment/image内容时使用. 
 
  目录结构如图: 
- ![](http://7xqjx7.com1.z0.glb.clouddn.com/image/Screen%20Shot%202016-03-05%20at%2000.23.25.png?imageView2/2/h/200) 
+ ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-05%20at%2000.23.25.png?imageView2/2/h/200) 
 
 * 启动runner: 
 
