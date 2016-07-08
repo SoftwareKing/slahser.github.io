@@ -1,6 +1,6 @@
 之前我也不知道是出于什么想法,一直用的是百度统计...想了又想干脆上谷歌全家桶算了. 
 
-测试Google Analysis生效与否的工具:[Google tag assistant](https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk) 
+测试Google Analytics生效与否的工具:[Google tag assistant](https://chrome.google.com/webstore/detail/tag-assistant-by-google/kejbdjndbnbjgmefkgdddjlbokphdefk) 
 
 接入流程顺着点就可以了 
 
@@ -12,7 +12,7 @@
 
 ```html
 <head>
-  <!--google analysis-->
+  <!--google analytics-->
     <script>
        GA相关
     </script>
