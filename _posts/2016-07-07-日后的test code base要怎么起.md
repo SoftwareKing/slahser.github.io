@@ -58,6 +58,8 @@ TestNG是自带`@DataProvider`的数据源配置的,可以自行实现数据源�
 @Source("xxxx.csv")
 ``` 
 
+> 更浮夸一点的直接拿数据表做数据源它也实现了,自行看看咯 
+
 那么我们可以把这部分的接口测试也接入到上一节的UT中. 
 
 ## Travis CI/Circle CI 
