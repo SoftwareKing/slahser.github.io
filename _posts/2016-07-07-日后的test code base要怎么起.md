@@ -30,7 +30,7 @@
 >
 > mock部分同理. 
   
-![2016-07-08_Screen Shot 2016-07-08 at 23.34.49.png](https://o4dyfn0ef.qnssl.com/image/2016-07-08_Screen%20Shot%202016-07-08%20at%2023.34.49.png?imageView2/2/h/600) 
+![2016-07-08_Screen Shot 2016-07-08 at 23.34.49.png](https://o4dyfn0ef.qnssl.com/image/2016-07-08_Screen%20Shot%202016-07-08%20at%2023.34.49.png?imageView2/2/h/500) 
 
 几点: 
 
