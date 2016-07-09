@@ -149,13 +149,13 @@ gitflow模型
 - 根据profile来判断是否需要mock生效.
 - 根据以上3种调用方式来具体实现,xml/annotation形式随意
 - 根据访问ip绑定导流的实现也挺好的,成本低的话就完全暴露也没关系. 
-- 代码实现可以分发后用PowerMock配合Moco的java api而不是standalone jar来快速生成. 
+- 代码实现可以分发后用PowerMock配合Moco的[java api](https://github.com/dreamhead/moco/tree/master/moco-doc)而不是standalone jar来快速生成. 
 
 > 总之没机器就低成本搞,有机器就涉及复杂一点.思路还是蛮清晰的. 
 
 可以优化的点是直接用Swagger生成API文档来给需求方参考用法,省时省力. 
 
-![2016-07-10_Screen Shot 2016-07-09 at 23.50.49.png](https://o4dyfn0ef.qnssl.com/image/2016-07-10_Screen%20Shot%202016-07-09%20at%2023.50.49.png?imageView2/2/h/300) 
+![2016-07-10_Screen Shot 2016-07-09 at 23.50.49.png](https://o4dyfn0ef.qnssl.com/image/2016-07-10_Screen%20Shot%202016-07-09%20at%2023.50.49.png?imageView2/2/h/160) 
 
 
 ## App/UI自动化 
