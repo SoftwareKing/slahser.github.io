@@ -126,6 +126,8 @@ gitflow模型
 
 科学点的套路:将被合并方merge到合并方解决冲突,再merge回去.  
 
+> 另外这里有官方的[github flow](https://guides.github.com/introduction/flow/)教程. 
+
 ## App/UI自动化 
 
 
