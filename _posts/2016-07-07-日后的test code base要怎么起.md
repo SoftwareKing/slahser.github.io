@@ -8,8 +8,8 @@
 - 数据驱动的接口测试
 - Travis CI/Circle CI
 - git flow简述
-- App/UI自动化
 - 从Mock Server到Mock平台
+- App/UI自动化
 - 从测试到线上
 
 优先级从上到下,有一部分我也在摸索,随缘更新,随时太监. 
@@ -127,6 +127,36 @@ gitflow模型
 科学点的套路:将被合并方merge到合并方解决冲突,再merge回去.  
 
 > 另外这里有官方的[github flow](https://guides.github.com/introduction/flow/)教程. 
+
+## Mock server 
+
+很久以前我们写了[Mock Server搭建](http://www.slahser.com/2016/03/04/Mock-Server搭建/)这篇,实际完全体形态不应该是这样的. 
+
+`功能`来讲参考美团的[Mock Server实战](http://tech.meituan.com/mock-server-in-action.html)我觉得没问题. 
+
+![2016-07-10_Screen Shot 2016-07-10 at 00.00.38.png](https://o4dyfn0ef.qnssl.com/image/2016-07-10_Screen%20Shot%202016-07-10%20at%2000.00.38.png?imageView2/2/h/300) 
+
+我们事先的过程中大概要考虑这几种调用方式: 
+
+- Rest服务
+- Rpc服务
+- Socket形式
+
+实现的话,规则配置与mock访问分开为两块是应该的. 
+
+那么我们可以 
+
+- 根据profile来判断是否需要mock生效.
+- 根据以上3种调用方式来具体实现,xml/annotation形式随意
+- 根据访问ip绑定导流的实现也挺好的,成本低的话就完全暴露也没关系. 
+- 代码实现可以分发后用PowerMock配合Moco的java api而不是standalone jar来快速生成. 
+
+> 总之没机器就低成本搞,有机器就涉及复杂一点.思路还是蛮清晰的. 
+
+可以优化的点是直接用Swagger生成API文档来给需求方参考用法,省时省力. 
+
+![2016-07-10_Screen Shot 2016-07-09 at 23.50.49.png](https://o4dyfn0ef.qnssl.com/image/2016-07-10_Screen%20Shot%202016-07-09%20at%2023.50.49.png?imageView2/2/h/300) 
+
 
 ## App/UI自动化 
 
