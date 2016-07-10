@@ -5,6 +5,8 @@ permalink: /booklist/
 
 - <span style="color: green">[o]</span>java8函数式编程
 - <span style="color: green">[o]</span>第一本docker书
+- <span style="color: green">[o]</span>ELK stack 权威指南
+- <span style="color: red">[x]</span>Spark：原理、机制及应用
 - <span style="color: green">[o]</span>写给大忙人看的java se 8
 - <span style="color: red">[x]</span>scala程序设计
 - <span style="color: gold">[~]</span>java性能权威指南
@@ -14,10 +16,14 @@ permalink: /booklist/
 - <span style="color: gold">[~]</span>redis设计与实现
 - <span style="color: green">[o]</span>java虚拟机精讲
 - <span style="color: green">[o]</span>深入理解scala
+- <span style="color: red">[x]</span>Docker生产环境实践指南
+- <span style="color: red">[x]</span>Spring Boot实战
 - <span style="color: green">[o]</span>java特种兵
 - <span style="color: green">[o]</span>分布式服务框架原理与实战
 - <span style="color: red">[x]</span>hadoop实战
 - <span style="color: green">[o]</span>图解tcp/ip
+- <span style="color: red">[x]</span>Learning ELK Stack 中文版
+- <span style="color: red">[x]</span>大型网站技术架构 核心原理与案例分析
 - <span style="color: green">[o]</span>nosql精粹
 - <span style="color: green">[o]</span>架构探险
 - <span style="color: green">[o]</span>微服务结构与实践
@@ -58,6 +64,8 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>node入门
 - <span style="color: green">[o]</span>nodejs开发指南
 - <span style="color: green">[o]</span>java编程思想
+- <span style="color: red">[x]</span>Spark机器学习
+- <span style="color: red">[x]</span>Python自动化运维：技术与最佳实践
 - <span style="color: green">[o]</span>java并发编程实践
 - <span style="color: red">[x]</span>mongodb实战
 - <span style="color: green">[o]</span>scala by example
@@ -68,15 +76,14 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>写给大家看的设计书
 - <span style="color: red">[x]</span>实现领域驱动设计
 - <span style="color: red">[x]</span>PostgresQL即学即用
-- <span style="color: red">[x]</span>Spark机器学习
-- <span style="color: red">[x]</span>Python自动化运维：技术与最佳实践
+
 - <span style="color: red">[x]</span>深入理解Android自动化测试
 - <span style="color: red">[x]</span>Ansible自动化运维：技术与最佳实践
-- <span style="color: gold">[~]</span>大规模分布式系统架构与设计实战
+- <span style="color: green">[o]</span>大规模分布式系统架构与设计实战
 - <span style="color: gold">[~]</span>ZooKeeper：分布式过程协同技术详解
-- <span style="color: green">[o]</span>ELK stack 权威指南
-- <span style="color: red">[x]</span>Spark：原理、机制及应用 
+ 
 - <span style="color: gold">[~]</span>干净的数据 数据清洗入门与实践 
 - <span style="color: red">[x]</span>CSS揭秘 
 - <span style="color: gold">[~]</span>selenium2 python 自动化测试实战
-- <span style="color: gold">[~]</span>企业级Java EE架构设计精深实战
+- <span style="color: green">[o]</span>企业级Java EE架构设计精深实战
+
