@@ -165,7 +165,13 @@ gitflow模型
 择日继续. 
 
 
+## 从测试到线上 
 
+思路记载 
+
+或许会看一下[otto](https://github.com/hashicorp/otto)这种的思路? 
+
+其实这一节能复刻出来大公司的流程就不错了. 
 
 
 
