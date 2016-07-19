@@ -355,7 +355,7 @@ output{
 
 同样在log4j中配置新的SocketAppender指向挂在logstash集群前的负载均衡. 
 
-```
+```xml
 <appender name="LOGSTASH-APPENDER" class="org.apache.log4j.net.SocketAppender">
     <param name="remoteHost" value="lb1" />
     <param name="port" value="4560" />
