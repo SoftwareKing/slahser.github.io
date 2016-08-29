@@ -209,10 +209,8 @@ public class RedisConfig {
 @Aspect
 @Component
 public class ServiceMonitor {
-
     @Autowired
     private CounterService counterService;
-
     @Autowired
     private GaugeService gaugeService;
 
@@ -265,7 +263,7 @@ public class TtServiceTest {
     @Test
     public void getListTest() {
         // RemoteService has been injected into the reverser bean
-given(this.mapper.selectAll()).willReturn(Lists.<CardInfo>newArrayList());
+    given(this.mapper.selectAll()).willReturn(Lists.newArrayList());
         List list = ttService.getPageList();
         assertThat(list.size()).isEqualTo(0);
     }
