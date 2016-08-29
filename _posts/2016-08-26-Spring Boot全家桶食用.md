@@ -21,7 +21,7 @@
 
 ## 多Module的Spring Boot项目搭建 
 
-正常的部分没有区别,parent啊,modules啊,relativePath啊,managementa啊都照常. 
+正常的部分没有区别,parent啊,modules啊,relativePath啊,management啊都照常. 
 
 打包的部分随着module数增多就开始不对劲起来,本来期待`mvn spring-boot:repackage`来生成fat jar,但后来只能`mvnpa`来完成打包. 
 
@@ -167,7 +167,7 @@ public class RedisConfig {
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(getFastJsonJsonRedisSerializer());
         template.setHashKeySerializer(new StringRedisSerializer());
-        template.setHashValueSerializer(getFastJsonJsonRedisSerializer());
+    template.setHashValueSerializer(getFastJsonJsonRedisSerializer());
         template.afterPropertiesSet();
         return template;
     }
@@ -201,7 +201,7 @@ public class RedisConfig {
 
 自定义以上health/metrics也比较简易,参照文档即可,主要思路是把上下文中关注部分注入,来进行参考. 
 
-![2016-08-29_Screen_Shot_2016-08-21_at_14.36.15.png](https://o4dyfn0ef.qnssl.com/image/2016-08-29_Screen_Shot_2016-08-21_at_14.36.15.png?imageView2/2/h/400) 
+![2016-08-29_Screen_Shot_2016-08-21_at_14.28.53.png](https://o4dyfn0ef.qnssl.com/image/2016-08-29_Screen_Shot_2016-08-21_at_14.28.53.png?imageView2/2/h/400) 
 
 更有累加器与程序耗时统计服务供使用,比如: 
 
@@ -222,11 +222,11 @@ public class ServiceMonitor {
     }
 
     @Around("execution(* com.xxx.*.*(..))")
-    public void latencyService(ProceedingJoinPoint pjp) throws Throwable {
+    public void latencyService(ProceedingJoinPoint pjp) {
         long start = System.currentTimeMillis();
         pjp.proceed();
         long end = System.currentTimeMillis();
-        gaugeService.submit(pjp.getSignature().toString(), end - start);
+        gaugeService.submit(pjp.getSignature().toString(), end-start);
     }
 }
 ``` 
@@ -265,7 +265,7 @@ public class TtServiceTest {
     @Test
     public void getListTest() {
         // RemoteService has been injected into the reverser bean
-        given(this.mapper.selectAll()).willReturn(Lists.<CardInfo>newArrayList());
+given(this.mapper.selectAll()).willReturn(Lists.<CardInfo>newArrayList());
         List list = ttService.getPageList();
         assertThat(list.size()).isEqualTo(0);
     }
@@ -291,7 +291,8 @@ public class TtServiceTest {
 1. 引入上面的代码生成依赖
 2. 添加如下配置
 3. 在controller方法上增加@ApiOperation
-4. done. 
+4. 访问http://host/swagger-ui.html
+5. done.  
 
 ```java 
 @Configuration
@@ -303,7 +304,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.xxx.controller"))
+        .apis(RequestHandlerSelectors.basePackage("com.xxx.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
