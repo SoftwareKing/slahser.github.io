@@ -9,6 +9,7 @@
 - 技术栈引入
 - 打包部署 with docker
 - 健康检查与指标度量
+- 日志
 - 测试
 - 文档生成 with swagger 
 - 微服务
@@ -18,6 +19,8 @@
 > BUG: spring-boot-dev-tools现在是自带bug,不建议引入. 
 
 那我做了一次系统重设计的分享,具体的Slide在[这里](http://slides.com/slahser/nirvana/fullscreen). 
+
+- - - - -- 
 
 ## 多Module的Spring Boot项目搭建 
 
@@ -43,11 +46,15 @@
 </plugin>
 ```
 
+- - - - -- 
+
 ## 配置方式变更 
 
 这部分就是随便找个Spring Changelog就可以了解了. 
 
 主要是把所有xml文件平移进了java Config.我认为Condition Annotation算是很显著的好处,另外避免大家乱抄配置. 
+
+- - - - -- 
 
 ## 技术栈引入 
 
@@ -176,6 +183,8 @@ public class RedisConfig {
 
 > 虽然我知道fastJson有坑,但是同事比较习惯这个.. 
 
+- - - - -- 
+
 ## 打包部署 
 
 几种方式: 
@@ -233,6 +242,87 @@ public class ServiceMonitor {
 
 ![2016-08-29_Screen_Shot_2016-08-21_at_14.36.15.png](https://o4dyfn0ef.qnssl.com/image/2016-08-29_Screen_Shot_2016-08-21_at_14.36.15.png?imageView2/2/h/400) 
 
+- - - - -- 
+
+## 日志 
+
+因为logback的变量定义我看的舒服,所以这次完整的配置我放上来,支持分module输出文件,不同环境不同输出策略等等. 
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <jmxConfigurator/>
+    <contextName>nirvana-server</contextName>
+
+    <springProfile name="prod">
+        <property name="BIZ_LOG_FILE" value="../log/biz.log"/>
+        <property name="CORE_LOG_FILE" value="../log/core.log"/>
+        <property name="COMMON_LOG_FILE" value="../log/common.log"/>
+
+        <property name="ROLLING_BIZ_LOG_FILE" value="../log/biz.%d{yyyy-MM-dd}.log"/>
+        <property name="ROLLING_CORE_LOG_FILE" value="../log/core.%d{yyyy-MM-dd}.log"/>
+        <property name="ROLLING_COMMON_LOG_FILE" value="../log/common.%d{yyyy-MM-dd}.log"/>
+
+        <appender name="MODULE_BIZ_FILE"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${BIZ_LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${ROLLING_BIZ_LOG_FILE}</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+        </appender>
+
+        <appender name="MODULE_CORE_FILE"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${CORE_LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${ROLLING_CORE_LOG_FILE}</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+        </appender>
+
+        <appender name="MODULE_COMMON_FILE"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <encoder>
+                <pattern>${FILE_LOG_PATTERN}</pattern>
+            </encoder>
+            <file>${COMMON_LOG_FILE}</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${ROLLING_COMMON_LOG_FILE}</fileNamePattern>
+                <maxHistory>30</maxHistory>
+            </rollingPolicy>
+        </appender>
+
+        <!-- 是否继承additivity="false"-->
+        <logger name="com.xxx.biz" level="INFO" >
+            <appender-ref ref="MODULE_BIZ_FILE" />
+        </logger>
+        <logger name="com.xxx.core" level="INFO" >
+            <appender-ref ref="MODULE_CORE_FILE" />
+        </logger>
+        <logger name="com.xxx.common" level="INFO">
+            <appender-ref ref="MODULE_COMMON_FILE" />
+        </logger>
+    </springProfile>
+
+    <!--<springProperty scope="context" name="fluentHost" source="myapp.fluentd.host" defaultValue="localhost"/>-->
+    <!--<appender name="FLUENT" class="ch.qos.logback.more.appenders.DataFluentAppender">-->
+        <!--<remoteHost>${fluentHost}</remoteHost>-->
+    <!--</appender>-->
+</configuration>
+``` 
+
+> 当然,后续的日志收集系统窝也会认真弄一弄. 
+
+- - - - -- 
+
 ## 测试 
 
 参考之前的`sharding-jdbc`终于搞了一次比较满意的test base. 
@@ -273,6 +363,8 @@ public class TtServiceTest {
 > 以上程序是Spring Boot1.4的新写法. 之前的版本可能不太兼容,因为官方也在不断的更新复合注解.. 
 
 > 覆盖率的生成有传统的Cobertura,那这部分我还没实践,也就先不写出来了. 
+
+- - - - -- 
 
 ## 文档生成 
 
@@ -323,6 +415,8 @@ public class SwaggerConfig {
 ![image_2016-08-29_Screen_Shot_2016-08-22_at_00-1.05.17.png](https://o4dyfn0ef.qnssl.com/image/image_2016-08-29_Screen_Shot_2016-08-22_at_00-1.05.17.png?imageView2/2/h/400)
 
 ![2016-08-29_Screen_Shot_2016-08-22_at_00.05.41.png](https://o4dyfn0ef.qnssl.com/image/2016-08-29_Screen_Shot_2016-08-22_at_00.05.41.png?imageView2/2/h/400) 
+
+- - - - -- 
 
 ## 微服务 
 
