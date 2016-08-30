@@ -2,6 +2,8 @@
 
 > 一般是随手搜不到的. 
 
+- - - - -- 
+
 ## 接入activiti配置 
 
 在网上我还没有搜索到boot+mybatis+activiti的科学运行方式,我fix了一下: 
@@ -43,11 +45,17 @@ public class ActivitiConfig {
 
 所以官方给的模板配置并不是全部,对starter感兴趣可以自己去翻一下.  
 
+- - - - -- 
+
 ## 类型转换错误 
 
 上述项目我们引入了Mapper3与dev-tools,这导致每次启动线程可以很显著的看到线程名带着restart字样. 
 
 而后使用selectOne()方法时出现ClassCast相关错误,一定是classloader不同导致,查阅issue发现dev-tools有bug,弃用解决. 
+
+> 你说它在selectAll()时候就不重现..懒得看了
+
+- - - - -- 
 
 ##  Test Suite与多Module 
 
