@@ -63,6 +63,30 @@ public class ActivitiConfig {
 
 后续会把Gitlab CI配一下持续集成起来. 
 
+- - - - -- 
+
+## activiti rest的安全设置 
+
+因为历史遗留,权限验证目前项目里是shiro. 
+
+查看了依赖树activiti res依赖了spring security并触发了在activiti basic starter中的Condition. 
+
+这就导致多了一层乱七八糟的权限验证. 
+
+翻了一下官方文档,尽管rest starter已经释出,但是文档完全没有更新,rest访问还是依赖@RestController. 
+
+于是尝试autoConfig里面exclude掉相关设置,结果问题重重,官方forum里回答也都是含糊其辞,失望... 
+
+那解决办法: 
+
+- 弃用starter,使用activiti-spring方式继续使用
+- 弃用activiti rest,按照官方使用@RestController 来使用. 
+
+诸君自取. 
+
+- - - - -- 
+
+
 
 
 
