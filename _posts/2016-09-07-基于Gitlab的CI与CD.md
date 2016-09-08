@@ -4,12 +4,10 @@
 
 最近需要实践一下Gitlab based的CI与CD 
 
-- 持续集成在先,先把写好的模块化单元测试跑起来
+- 持续集成在先,先把写好的模块化单元测试跑起来 
 - 持续交付在后,通过PR生成镜像到私服 
 
 > Gitlab 8.0以后的版本自带CI,不需要到Services里面去启用了. 
-
-> 如何找到Runenr/文档什么的我就不说了,大家都很忙. 
 
 - - - - -- 
 
@@ -46,7 +44,7 @@ docker exec -it gitlab-runner gitlab-runner register
 
 下面是我的脚本 
 
-```yaml
+```
 image: maven:3-jdk-7
 
 before_script:
@@ -74,7 +72,7 @@ it:
 
 after_script:
   - mvn clean
-```
+``` 
 
 ## 工程里如何配合 
 
@@ -132,7 +130,6 @@ after_script:
 - maven-surefire-plugin : 自动化单元测试
 - maven-failsafe-plugin : 自动化集成测试 
 
-> 各自的文档各位受累自己去看. 
 
 ## 遇到什么问题 
 
@@ -175,8 +172,8 @@ CMD ["mvn"]
 那么修改如下来利用重复镜像与maven配置和repo:   
 
 ```
-\[runners.docker\]
-    volumes = ["/cache","/root/m2:/root/.m2"]
+[runners.docker]
+    volumes = ["/cache","/root/.m2:/root/.m2"]
     pull_policy = "if-not-present"
 ```
 
