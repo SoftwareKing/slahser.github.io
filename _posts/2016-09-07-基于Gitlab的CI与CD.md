@@ -18,7 +18,7 @@
 3. `mkdir -p /srv/gitlab-runner/config`
 4. `docker pull gitlab/gitlab/gitlab-runner`
 
-## 运行 
+## 运行Runner  
 
 ```sh
 docker run -d --name gitlab-runner --restart always \
@@ -27,7 +27,7 @@ docker run -d --name gitlab-runner --restart always \
   gitlab/gitlab-runner:latest
 ``` 
 
-> 这条命令用来解决SELinux问题,直接关闭SELinux好了. 
+> 这条命令用来解决SELinux问题,直接关闭SELinux也行实际. 
 
 ## 注册到gitlab 
 
@@ -38,7 +38,7 @@ docker exec -it gitlab-runner gitlab-runner register
 - executor选docker来启用`docker-in-docker`模式 
 - image写maven:3-jdk-7 
 
-## 写脚本 
+## 写yml脚本 
 
 到`http://yourgitlab/ci/lint`检测自己的脚本是否科学. 
 
@@ -74,7 +74,7 @@ after_script:
   - mvn clean
 ``` 
 
-## 工程里如何配合 
+## 工程里如何配置  
 
 插件是如下三个: 
 
@@ -130,6 +130,11 @@ after_script:
 - maven-surefire-plugin : 自动化单元测试
 - maven-failsafe-plugin : 自动化集成测试 
 
+对RD的基本要求: 
+
+- 集成测试复合插件规定,IT形式
+- 单元测试不需要外部启动,全部mock,db_mock用hsqldb
+- 运行时启动测试全部加上@Ignore避开持续集成  
 
 ## 遇到什么问题 
 
@@ -201,7 +206,7 @@ stages:
     - ut
     - it
     - build_image
-    - push_iamge
+    - push_image
     - deploy
 ```
 
