@@ -191,11 +191,27 @@ CMD ["mvn"]
 
 这部分也可以通过`docker logs`命令来看到,不过这样方便点对吧~ 
 
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-08-Screen%20Shot%202016-09-08%20at%2016.52.56.png?imageView2/2/h/400) 
+
+持续集成阶段拓扑,后续应该什么样? 
+
+```
+stages: 
+    - install 
+    - ut
+    - it
+    - build_image
+    - push_iamge
+    - deploy
+```
+
+大概是这样的规划
+
 那么持续集成的部分结束 
 
 - - - - --  
 
-持续交付择日继续~ 
+持续交付择日继续 
 
 
 
