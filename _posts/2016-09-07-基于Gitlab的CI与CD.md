@@ -11,6 +11,8 @@
 
 > 如何找到Runenr/文档什么的我就不说了,大家都很忙. 
 
+- - - - -- 
+
 ## 准备工作 
 
 1. 安装Docker
@@ -20,7 +22,7 @@
 
 ## 运行 
 
-```
+```sh
 docker run -d --name gitlab-runner --restart always \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v /srv/gitlab-runner/config:/etc/gitlab-runner:Z \
@@ -44,7 +46,7 @@ docker exec -it gitlab-runner gitlab-runner register
 
 下面是我的脚本 
 
-```yml
+```yaml
 image: maven:3-jdk-7
 
 before_script:
@@ -78,7 +80,7 @@ after_script:
 
 插件是如下三个: 
 
-```
+```xml
 <plugins>
     <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -165,9 +167,7 @@ CMD ["mvn"]
 
 换言之,将自己的`settings.xml`置入宿主机的`/root/.m2`即可解决问题. 
 
-```xml
 那么索性将jar包下载地址放入/root/.m2,这样只需要挂载一个目录 
-``` 
 
 我们在准备工作里的`/srv/gitlab-runner/config`派上了用处,里面在运行初始化配置后会生成
 `config.toml` 
@@ -175,7 +175,7 @@ CMD ["mvn"]
 那么修改如下来利用重复镜像与maven配置和repo:   
 
 ```
-[runners.docker]
+\[runners.docker\]
     volumes = ["/cache","/root/m2:/root/.m2"]
     pull_policy = "if-not-present"
 ```
@@ -194,7 +194,11 @@ CMD ["mvn"]
 
 这部分也可以通过`docker logs`命令来看到,不过这样方便点对吧~ 
 
-done. 
+那么持续集成的部分结束 
+
+- - - - --  
+
+持续交付择日继续~ 
 
 
 
