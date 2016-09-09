@@ -218,5 +218,21 @@ stages:
 
 持续交付择日继续 
 
+## 添加构建状态徽标 
+
+在CI/CD pipline选项里面看得到添加代码 
+
+我目前是这么写的
+
+```
+## 构建状态
+- master [![build status](http://yourgitlab/group/project/badges/master/build.svg)](http://yourgitlab/group/projec/commits/master)
+- develop [![build status](http://yourgitlab/group/projec/badges/develop/build.svg)](http://yourgitlab/group/projec/commits/develop)
+```
+
+配合git flow,可以很清晰看到主要分支状态 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-09-Screen%20Shot%202016-09-09%20at%2012.27.54.png?imageView2/2/h/200) 
+
 
 
