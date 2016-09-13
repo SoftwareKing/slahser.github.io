@@ -28,6 +28,8 @@ vim yourproject/.git/config
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-13-Screen%20Shot%202016-09-13%20at%2023.11.30.png?imageView2/2/h/400) 
 
+当然了,初心不变,两个库的ctivity图是一起更新的. 
+
 另外的好处是可以被Baidu Spider爬到了,也不知道算是好还是坏. 
 
 done. 
