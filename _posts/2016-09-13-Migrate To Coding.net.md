@@ -32,7 +32,7 @@ vim yourproject/.git/config
 
 当然了,初心不变,两个库的Activity图是一起更新的. 
 
-另外的好处是可以被Baidu Spider爬到了 
+另外的好处是可以被Baidu Spider爬到了.  
 
 > 反代或者DaoCloud这种暂时不考虑,写博客就是要简单便捷才能坚持下去,不想再折腾了. 
 
