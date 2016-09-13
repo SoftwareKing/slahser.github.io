@@ -1,8 +1,10 @@
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-13-d257631f59976b1fa0845c5aac413147.png?imageView2/2/h/200) 
+
 很久以前出于对Github Avtivity图的虚荣感,我的博客是架设在Github Pages上的. 
 
 直到...  
 
-直到今晚一时兴起,把项目的pushUrl设置成了两个仓库,同步更新两个仓库进行渲染. 
+直到今晚一时兴起,把项目的pushUrl设置成了国内国外两个仓库,同步更新两个仓库进行渲染. 
 
 ```
 vim yourproject/.git/config
