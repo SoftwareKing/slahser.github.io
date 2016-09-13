@@ -24,7 +24,7 @@ vim yourproject/.git/config
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-13-Screen%20Shot%202016-09-13%20at%2023.08.50.png?imageView2/2/h/400) 
 
-最新的测速也是一片绿,页面全部秒开,爽:  
+最新的测速也是一片绿,配合预加载页面全部秒开,爽:  
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-13-Screen%20Shot%202016-09-13%20at%2023.11.30.png?imageView2/2/h/400) 
 
