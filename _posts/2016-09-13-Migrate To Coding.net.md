@@ -32,6 +32,8 @@ vim yourproject/.git/config
 
 另外的好处是可以被Baidu Spider爬到了,也不知道算是好还是坏. 
 
+> 反代或者DaoCloud这种暂时不考虑,写博客就是要简单便捷才能坚持下去,不想再折腾了. 
+
 done. 
 
 
