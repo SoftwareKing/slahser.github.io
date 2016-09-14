@@ -198,6 +198,29 @@ CMD ["mvn"]
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-08-Screen%20Shot%202016-09-08%20at%2016.52.56.png?imageView2/2/h/400) 
 
+## 添加构建状态徽标 
+
+在CI/CD pipline选项里面看得到添加代码 
+
+我目前是这么写的
+
+```
+## 构建状态
+- master [![build status](http://yourgitlab/group/project/badges/master/build.svg)](http://yourgitlab/group/projec/commits/master)
+- develop [![build status](http://yourgitlab/group/projec/badges/develop/build.svg)](http://yourgitlab/group/projec/commits/develop)
+```
+
+配合git flow,可以很清晰看到主要分支状态 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-09-Screen%20Shot%202016-09-09%20at%2012.27.54.png?imageView2/2/h/200) 
+
+## 可以优化的点 
+
+- on_failure的时候应该把单元测试与集成测试的report取出来发邮件,这个以后要加上
+- 听群里大兄弟说docker-maven插件可以直接把镜像推到registry,那么持续交付的流程就可以变一下了.不一定需要hook做操作. 
+
+- - - - --  
+
 持续集成阶段拓扑,后续应该什么样? 
 
 ```
@@ -214,25 +237,7 @@ stages:
 
 那么持续集成的部分结束 
 
-- - - - --  
-
 持续交付择日继续 
-
-## 添加构建状态徽标 
-
-在CI/CD pipline选项里面看得到添加代码 
-
-我目前是这么写的
-
-```
-## 构建状态
-- master [![build status](http://yourgitlab/group/project/badges/master/build.svg)](http://yourgitlab/group/projec/commits/master)
-- develop [![build status](http://yourgitlab/group/projec/badges/develop/build.svg)](http://yourgitlab/group/projec/commits/develop)
-```
-
-配合git flow,可以很清晰看到主要分支状态 
-
-![](https://o4dyfn0ef.qnssl.com/image/2016-09-09-Screen%20Shot%202016-09-09%20at%2012.27.54.png?imageView2/2/h/200) 
 
 
 
