@@ -15,8 +15,11 @@
 
 1. 安装Docker
 2. 安装[Runner - Docker](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/docker.md) : 出于安全与效率原因. 
-3. `mkdir -p /srv/gitlab-runner/config`
-4. `docker pull gitlab/gitlab/gitlab-runner`
+
+```
+mkdir -p /srv/gitlab-runner/config
+docker pull gitlab/gitlab-runner
+```
 
 ## 运行Runner  
 
