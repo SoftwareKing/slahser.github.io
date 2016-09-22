@@ -172,6 +172,12 @@ CMD ["mvn"]
 
 那么索性将jar包下载地址放入/root/.m2,这样只需要挂载一个目录 
 
+也就是修改settings.xml 
+
+```xml
+ <localRepository>/root/.m2</localRepository>
+```
+
 我们在准备工作里的`/srv/gitlab-runner/config`派上了用处,里面在运行初始化配置后会生成
 `config.toml` 
 
