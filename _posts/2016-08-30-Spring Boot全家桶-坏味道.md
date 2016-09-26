@@ -86,6 +86,35 @@ public class ActivitiConfig {
 
 - - - - -- 
 
+## @Value注入属性 
+
+最近听到不少反馈说运行时实例化的bean直接@Value拿不到值. 
+
+之前测试了在Configuration里面直接这么做是不行的,需要放到参数中直接来初始化bean属性. 
+
+这个暂时挂在这里,改天验证下. 
+
+- - - - --- 
+
+## 插件的repackage 
+
+多module下的这段儿我一直没成功过,生成可执行jar也是用`<configuration>里的<executable>`搞定. 
+
+```
+<execution>
+    <goals>
+        <goal>repackage</goal>
+    </goals>
+    <configuration>
+        <classifier>exec</classifier>
+    </configuration>
+</execution>
+```
+
+> 另外如果你用了surfire和failsafe的话,那么这个插件的pre-integration-test这一对儿命令就是个笑话. 
+
+- - - - --- 
+
 
 
 
