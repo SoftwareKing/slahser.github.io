@@ -21,11 +21,11 @@
 |  山泽网线(硬) |  供网(二选一) | 7  | 1m |  [京东](https://item.jd.com/1342012.html) |
 |  网线(面条) |  供网(二选一) | 7+1  | 0.3m+3m |  [淘宝](https://item.taobao.com/item.htm?id=524834724330)  |
 |  Orico usb插座 |  供电与供电增强 | 1 | 4口双标usb |  [京东](https://item.jd.com/1204035.html)  |
-|  小米路由器 | ,非必须,备份,后台查看设备ip | 1  | R2D |  [天猫](https://detail.tmall.com/item.htm?id=520022432667)  |
-| 炬为USB功率检测表 | 非必须,检测供电 | 1 | .. |  [京东](https://item.jd.com/10181415101.html)  |
-|  mini显示器 |  非必须 | 1  | 量力而行 |  [京东](https://item.jd.com/1677218256.html)  |
-|  HDMI线 | 非必须 | 1 | .. | [京东](https://item.jd.com/2238360.html) |
-| 显示器支架 | 非必须 | 1  | .. | [京东](https://item.jd.com/1696644500.html)  |
+|  小米路由器 | ,非必需,备份,后台查看设备ip | 1  | R2D |  [天猫](https://detail.tmall.com/item.htm?id=520022432667)  |
+| 炬为USB功率检测表 | 非必需,检测供电 | 1 | .. |  [京东](https://item.jd.com/10181415101.html)  |
+|  mini显示器 |  非必需 | 1  | 量力而行 |  [京东](https://item.jd.com/1677218256.html)  |
+|  HDMI线 | 非必需 | 1 | .. | [京东](https://item.jd.com/2238360.html) |
+| 显示器支架 | 非必需 | 1  | .. | [京东](https://item.jd.com/1696644500.html)  |
 
 > 我对玩路由器没兴趣,所以挑了个省心的,开了Time Machine,后台还可以直接查看设备ip,没兴趣搞openwrt那些的话强烈推荐. 
 
