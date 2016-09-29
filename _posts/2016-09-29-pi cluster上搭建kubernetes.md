@@ -4,6 +4,8 @@
 
 > 文中命令大部分可以用ansible同步执行.  
 
+- - - - -- 
+
 ## 烧录存储卡 
 
 访问[flash工具](https://github.com/hypriot/flash)了解用途
@@ -11,6 +13,8 @@
 ```
 flash -n [youthostname] https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
 ```
+
+- - - - -- 
 
 ## ip查询 & 本机hosts添加
 
@@ -54,12 +58,16 @@ ansible_ssh_pass=hypriot
 ansible pis -m ping -o
 ```
 
+- - - - -- 
+
 ## 同步公钥免密码 
 
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub pirate@[youthostname] 
 with password 'hypriot'
 ```
+
+- - - - -- 
 
 ## 开启root用户 
 
@@ -71,6 +79,8 @@ PermitRootLogin yes
 Control + X -> Y -> Enter
 reboot
 ```
+
+- - - - -- 
 
 ## 修改镜像源
 
@@ -87,12 +97,16 @@ apt-get update
 apt-get install -y vim
 ``` 
 
+- - - - -- 
+
 ## 修改dns 
 
 ```shell
 vim /etc/resolv.conf
 nameserver 8.8.8.8 
 ```
+
+- - - - -- 
 
 ## kubernetes相关 
 
