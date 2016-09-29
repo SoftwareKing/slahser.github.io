@@ -141,8 +141,8 @@ kube-config install
 所以如下可以解决问题 
 
 ```shell 
-docker pull index.tenxcloud.com/google_containers/etcd-arm
-docker pull index.alauda.cn/googlecontainer/etcd-arm
+docker pull index.tenxcloud.com/google_containers/etcd-arm:2.2.5
+docker pull index.alauda.cn/googlecontainer/etcd-arm:2.2.5
 ``` 
 
 但是我不放心,还是想搭建个私服打tag留住这两个镜像.  
