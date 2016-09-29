@@ -10,7 +10,7 @@
 | :-----: |:--------:| :-----:|:--------:| :-----:|
 | Stack Clear Case Box  | 用于组装树莓派集群 | 1 | 7 layer | [美亚](https://www.amazon.com/dp/B01D916RNK?tag=55haitao92099-20) |
 |  树莓派 | 本体 | 7   | rpi3 |  [京东](https://item.jd.com/1646034971.html)  |
-|  闪迪存储卡 | .. | 7  | 量力而行,又大又快最好 |  [京东](https://item.jd.com/1875992.html)  |
+|  闪迪存储卡 | .. | 7  | 量力而行 |  [京东](https://item.jd.com/1875992.html)  |
 |  散热铝片 | pi发热不小 | 7  | 一对儿 |  [京东](https://item.jd.com/1658787086.html)  |
 |  Orico供电hub |  供电 | 1  | 独立供电1拖9 | [天猫](https://detail.tmall.com/item.htm?id=36946468199)  |
 |  Netgear交换机 |  供网 | 1  | 8口千兆 | [天猫](https://detail.tmall.com/item.htm?id=15969953775) |
