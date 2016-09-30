@@ -4,12 +4,14 @@
 
 - pull速度.
 - 传统/官方的Registry搭建方式没有使用nginx,通用性和稳定性都有问题. 
-- 使用compose增强可维护性. 
+- 使用Compose增强可维护性. 
 - 说不定他们网站哪天倒闭了呢.
+
+> 本文暂时不考虑`harbor`或者`portus`这种大型私服管理工具. 
 
 - - - - --- 
 
-## 更换树莓派上docker mirror 
+## 更换mirror 
 
 这里我是用了[Daocloud的Mirror](https://dashboard.daocloud.io)来加速官方镜像下载.  
 
@@ -21,15 +23,18 @@ vim /etc/default/docker
 --registry-mirror=http://[yours].m.daocloud.io
 # 而后重启docker
 ```
+
+> 本步骤与本篇无关,可选. 
+
 - - - - --- 
 
 ## 搭建Registry 
 
+如下几种简易搭建方式,我们选择第三种:  
+
 - 使用--insecure-rgistry=xxxx:5000
 - 官方文档直接启动registry:2
-- 配合nginx来使用
-
-我们选择第三种. 
+- 配合nginx来使用 
 
 ### 同步hosts 
 
@@ -71,6 +76,11 @@ vim ~/Documents/repository/compose/registry/nginx/registry.conf
 nginx配置文件registry.conf: 
 
 ```
+upstream docker-registry {
+  server registry:5000;
+}
+
+server {
   listen 443;
   server_name index.slahser.com;
 
@@ -101,11 +111,6 @@ nginx配置文件registry.conf:
 ``` 
 
 compose配置文件docker-compose.yaml
-
-```
-cd ~/Documents/repository/compose/registry
-vim docker-compose.yaml
-``` 
 
 ``` 
 nginx:
