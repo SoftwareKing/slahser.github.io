@@ -100,15 +100,6 @@ apt-get install -y vim
 
 - - - - -- 
 
-## 修改dns 
-
-```shell
-vim /etc/resolv.conf
-nameserver 8.8.8.8 
-```
-
-- - - - -- 
-
 ## k8s安装 
 
 可以看一下[kubernetes-on-arm](https://github.com/luxas/kubernetes-on-arm)  
@@ -156,4 +147,12 @@ docker pull index.alauda.cn/googlecontainer/etcd-arm:2.2.5
 
 - - - - -- 
 
-## 
+- - - - -- 
+
+## 修改dns 
+
+```shell
+vim /etc/resolv.conf
+nameserver 119.29.29.29
+``` 
+
