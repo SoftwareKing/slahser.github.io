@@ -150,3 +150,9 @@ docker pull index.alauda.cn/googlecontainer/etcd-arm:2.2.5
 - - - - --- 
 
 ## 搭建私服 
+
+详见[这里](http://www.slahser.com/2016/09/29/pi-cluster上配套简易Registry/) 
+
+- - - - -- 
+
+## 
