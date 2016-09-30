@@ -74,9 +74,10 @@ with password 'hypriot'
 ```shell
 sudo passwd root
 sudo passwd --unlock root
-nano /etc/ssh/sshd_config # 当然了,其他修改也是在这里,比如密码重置,端口设置
+sudo nano /etc/ssh/sshd_config # 当然了,其他修改也是在这里,比如密码重置,端口设置
 PermitRootLogin yes
 Control + X -> Y -> Enter
+su -
 reboot
 ```
 
