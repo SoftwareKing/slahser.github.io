@@ -116,7 +116,7 @@ server {
 
 compose配置文件docker-compose.yaml
 
-``` 
+```yaml 
 nginx:
     container_name : nginx
     image : nginx:1.11.4
