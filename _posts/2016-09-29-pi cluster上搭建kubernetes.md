@@ -121,11 +121,7 @@ kube-config install
 
 这当然是我大清特色了. 
 
-> 不过令我惊讶的是我机器上的Socks5代理跟http代理都无法访问Google Container Registry...  
-
-于是昨晚我四点多悻悻睡去. 
-
-第二天上午换了个脑子找到国内的两家良心Docker云,比DaoCloud强到不知道哪儿去了. 
+于是找到国内的两家良心Docker云,比DaoCloud强到不知道哪儿去了. 
 
 - [时速云hub](https://hub.tenxcloud.com)
 - [灵雀云hub](https://hub.alauda.cn)
