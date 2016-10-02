@@ -28,7 +28,7 @@ vim /etc/supervisord.conf
 // 修改最后一行: vim->shift+G
     [include]
     files = /etc/supervisor/conf.d/*.conf 
-mkdir /etc/supervisor/conf.d
+mkdir -p /etc/supervisor/conf.d
 vim tt.conf
 ```
 
