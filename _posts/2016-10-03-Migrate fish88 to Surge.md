@@ -24,6 +24,8 @@ set -Ux https_proxy http://127.0.0.1:6152
 set -Ux socks_proxy http://127.0.0.1:6153
 ``` 
 
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-03-Screen%20Shot%202016-10-03%20at%2018.33.29.png?imageView2/2/h/300) 
+
 ## App 
 
 1. 取消fish88内开机启动,系统网络设置权限. 
