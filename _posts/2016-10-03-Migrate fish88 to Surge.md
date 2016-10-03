@@ -1,4 +1,4 @@
-![](https://o4dyfn0ef.qnssl.com/image/2016-10-03-Screen%20Shot%202016-10-03%20at%2018.19.04.png?imageView2/2/h/200)  
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-03-Screen%20Shot%202016-10-03%20at%2018.19.04.png?imageView2/2/h/150)  
 
 ## 原因 
 
