@@ -37,10 +37,22 @@
 
 ## 晒图 
 
-改天再晒
-
 ![2016-07-19_IMG_0353.JPG](https://o4dyfn0ef.qnssl.com/image/2016-07-19_IMG_0353.JPG?imageView2/2/h/400) 
 
-![2016-07-19_IMG_0354.JPG](https://o4dyfn0ef.qnssl.com/image/2016-07-19_IMG_0354.JPG?imageView2/2/h/400)
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0647.JPG?imageView2/2/h/400) 
 
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0643.JPG?imageView2/2/h/400) 
 
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0645.JPG?imageView2/2/h/400) 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0644.JPG?imageView2/2/h/400) 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0648.JPG?imageView2/2/h/400) 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0649.JPG?imageView2/2/h/400) 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-04-IMG_0650.JPG?imageView2/2/h/400) 
+
+> 现在上面跑着SwarmKit与爬虫平台. 
+
+done. 
