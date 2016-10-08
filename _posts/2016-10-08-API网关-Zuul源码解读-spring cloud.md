@@ -70,20 +70,55 @@ Spring Cloud更新频繁得很,版本号是根据字母排序确定稳定性的.
 
 从这份java config中可以拿到Simple模式下所有bean. 
 
-- zuulFeature 告知actuator监控当前模式:Simple/Discovery
-- ZuulProperties 配置文件内容,`zuul.ignoredServices`/`zuul.routes`形式,其中后者对应着这样的内部类定义`ZuulRoute`. 
-- ServerProperties 配置文件内容
-- RouteLocator 解析`ZuulProperties`来获取路由表,命中路由表等等内容.内部悄然把配置中ZuulRoute转化成自己抽象的`Route` 
-- ZuulController 通过继承`ServletWrappingController`接管了上文[](http://www.slahser.com/2016/10/06/API网关-Zuul源码解读-netflix/))定义的ZuulServlet.
-- ZuulHandlerMapping 响应器模式,其实目前就是把所有路径的请求导入到ZuulController上.另外的功效是当觉察RouteLocator路由表变更,则更新自己dirty状态,重新注册所有Route到ZuulController. 
-- ZuulRefreshListener Simple模式下注册`RoutesRefreshedEvent`,Endpoint模式下又添加了`HeartbeatEvent`. 
-- 另外就是些`ZuulFilter`子类,我们后续一个一个来说. 
+#### zuulFeature 
+
+告知actuator监控当前模式:Simple/Discovery 
+
+
+#### ZuulProperties 
+
+配置文件内容 
+
+```
+zuul.ignoredServices
+zuul.routes
+
+zuul:
+  ignored-services:
+  routes:
+``` 
+
+其中routes对应着内部类定义`ZuulRoute`.  
+
+#### ServerProperties 
+
+配置文件内容.  
+
+#### RouteLocator 
+
+解析`ZuulProperties`来获取路由表,命中路由表等等内容. 
+
+内部悄然把配置中ZuulRoute转化成自己抽象的`Route`.  
+
+#### ZuulController 
+
+通过继承`ServletWrappingController`接管了上文[](http://www.slahser.com/2016/10/06/API网关-Zuul源码解读-netflix/))定义的ZuulServlet. 
+
+#### ZuulHandlerMapping 
+
+响应器模式,其实目前就是把所有路径的请求导入到ZuulController上.另外的功效是当觉察RouteLocator路由表变更,则更新自己dirty状态,重新注册所有Route到ZuulController. 
+
+#### ZuulRefreshListener 
+
+Simple模式下注册`RoutesRefreshedEvent`,Endpoint模式下又添加了`HeartbeatEvent`. 
+
+另外就是些`ZuulFilter`子类,我们后续一个一个来说. 
 
 可以看到Simple模式下并没有什么内容,主要内容就是: 
 
 - 解析配置文件
 - 维护路由表并监听变化
-- 将请求都导向ZuulController去历经filters
+- [x] 将请求都导向ZuulController去历经filters
 
 ### org.springframework.cloud.netflix.zuul.ZuulProxyConfiguration 
 
