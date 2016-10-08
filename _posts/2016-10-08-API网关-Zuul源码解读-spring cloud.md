@@ -59,9 +59,9 @@ Spring Cloud更新频繁得很,版本号是根据字母排序确定稳定性的.
 
 ### @EnableZuulProxy与@EnableZuulServer 
 
-因为启用一个zuul服务是在太简单,配合eureka的情况下一个反代网关只需要几行代码就搭建完成了..
+启用一个zuul服务实在太简单,配合eureka的情况一个反代网关只需要几行代码就搭建完成了. 
 
-- @EnableZuulServer - 不带有反代功能的网关,只支持基本的route与filter系统.
+- @EnableZuulServer - 普通网关,只支持基本的route与filter.
 - @EnableZuulProxy - 配合上服务发现与熔断开关的上面这位增强版,具有反向代理功能. 
 
 我们先从不带reverse proxy功能的网关看起. 
@@ -90,15 +90,13 @@ zuul:
 
 其中routes对应着内部类定义`ZuulRoute`.  
 
-#### ServerProperties 
-
-配置文件内容.  
-
 #### RouteLocator 
 
 解析`ZuulProperties`来获取路由表,命中路由表等等内容. 
 
 内部悄然把配置中ZuulRoute转化成自己抽象的`Route`.  
+
+> 获取server.*下的servletPrefix就不表了. 
 
 #### ZuulController 
 
@@ -106,15 +104,18 @@ zuul:
 
 #### ZuulHandlerMapping 
 
-响应器模式,其实目前就是把所有路径的请求导入到ZuulController上.另外的功效是当觉察RouteLocator路由表变更,则更新自己dirty状态,重新注册所有Route到ZuulController. 
+响应器模式,其实目前就是把所有路径的请求导入到ZuulController上. 
+
+另外的功效是当觉察RouteLocator路由表变更,则更新自己dirty状态,重新注册所有Route到ZuulController. 
 
 #### ZuulRefreshListener 
 
-Simple模式下注册`RoutesRefreshedEvent`,Endpoint模式下又添加了`HeartbeatEvent`. 
+- Simple模式下注册`RoutesRefreshedEvent`,
+- Endpoint模式下又添加了`HeartbeatEvent`. 
 
-另外就是些`ZuulFilter`子类,我们后续一个一个来说. 
+另外就是些`ZuulFilter`子类,我们后续逐个来说. 
 
-可以看到Simple模式下并没有什么内容,主要内容就是: 
+可以看到Simple模式下并没有什么内容,主要就是: 
 
 - 解析配置文件
 - 维护路由表并监听变化
