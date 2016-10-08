@@ -118,7 +118,7 @@ Simple模式下注册`RoutesRefreshedEvent`,Endpoint模式下又添加了`Heartb
 
 - 解析配置文件
 - 维护路由表并监听变化
-- [x] 将请求都导向ZuulController去历经filters
+- 将请求都导向ZuulController去历经filters
 
 ### org.springframework.cloud.netflix.zuul.ZuulProxyConfiguration 
 
