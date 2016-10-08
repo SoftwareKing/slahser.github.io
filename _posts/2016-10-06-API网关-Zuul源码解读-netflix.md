@@ -146,6 +146,9 @@ ctx.addFilterExecutionSummary(filterName, ExecutionStatus.FAILED.name(), execTim
 
 Spring Cloud另外写了一份来接入这份filter系统.而并非`zuul-netflix`. 
 
+篇幅会很长干脆挪到[这里](http://www.slahser.com/2016/10/08/API网关-Zuul源码解读-spring-cloud/)分开写好了. 
+
+done. 
 
 
 
