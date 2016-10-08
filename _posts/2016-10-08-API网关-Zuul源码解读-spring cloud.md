@@ -44,6 +44,55 @@ Spring Cloud更新频繁得很,版本号是根据字母排序确定稳定性的.
 
 - - - - -- 
 
-## Spring-Cloud-Netflix--Core实现 
+## Spring-Cloud-Netflix-Core实现 
+
+本文是接着[上篇](http://www.slahser.com/2016/10/06/API网关-Zuul源码解读-netflix/)来进行食用的. 
+
+阅读本篇需要懂起码的Spring Boot auto-configure原理.起码翻一翻: 
+
+- Meta Annotation与Composed Annotation
+- ConfigurationProperties
+- Conditional Annotation
+- ConfigurationSelector
+
+> 随着版本的更迭,处理请求的一些配置慢慢外移到了server配置上,具体可以看`org.springframework.boot.autoconfigure.web.ServerProperties`
+
+### @EnableZuulProxy与@EnableZuulServer 
+
+因为启用一个zuul服务是在太简单,配合eureka的情况下一个反代网关只需要几行代码就搭建完成了..
+
+- @EnableZuulServer - 不带有反代功能的网关,只支持基本的route与filter系统.
+- @EnableZuulProxy - 配合上服务发现与熔断开关的上面这位增强版,具有反向代理功能. 
+
+我们先从不带reverse proxy功能的网关看起. 
+
+### org.springframework.cloud.netflix.zuul.ZuulConfiguration 
+
+从这份java config中可以拿到Simple模式下所有bean. 
+
+- zuulFeature 告知actuator监控当前模式:Simple/Discovery
+- ZuulProperties 配置文件内容,`zuul.ignoredServices`/`zuul.routes`形式,其中后者对应着这样的内部类定义`ZuulRoute`. 
+- ServerProperties 配置文件内容
+- RouteLocator 解析`ZuulProperties`来获取路由表,命中路由表等等内容.内部悄然把配置中ZuulRoute转化成自己抽象的`Route` 
+- ZuulController 通过继承`ServletWrappingController`接管了上文[](http://www.slahser.com/2016/10/06/API网关-Zuul源码解读-netflix/))定义的ZuulServlet.
+- ZuulHandlerMapping 响应器模式,其实目前就是把所有路径的请求导入到ZuulController上.另外的功效是当觉察RouteLocator路由表变更,则更新自己dirty状态,重新注册所有Route到ZuulController. 
+- ZuulRefreshListener Simple模式下注册`RoutesRefreshedEvent`,Endpoint模式下又添加了`HeartbeatEvent`. 
+- 另外就是些`ZuulFilter`子类,我们后续一个一个来说. 
+
+可以看到Simple模式下并没有什么内容,主要内容就是: 
+
+- 解析配置文件
+- 维护路由表并监听变化
+- 将请求都导向ZuulController去历经filters
+
+### org.springframework.cloud.netflix.zuul.ZuulProxyConfiguration 
+
+现在切换到Discovery模式. 
+
+
+
+
+
+
 
 

@@ -64,7 +64,7 @@ Spring Cloud更新频繁得很,版本号是根据字母排序确定稳定性的.
 
 那么有filter就有Wrapper,就有Request实现,看过Spring Session实现就知道这是必然的. 
 
-- service() - 调用init将req,res置入上下文.获取并标记上下文此req已经通过进入zuul引擎
+- service() - 调用init将req,res置入上下文.获取并标记上下文此session已经通过进入zuul引擎
 - init() - 注册一个ZuulRunner用于call起filter
 - 通过ZuulRunner调用流程: pre/route/post/error
 
