@@ -139,6 +139,13 @@ ctx.addFilterExecutionSummary(filterName, ExecutionStatus.FAILED.name(), execTim
 
 那这块几个例子就是groovy目录下`com.netflix.zuul.filters`里的内容. 
 
+- - - - -- 
+
+## 总结 
+
+Netflix-Core里面只是提供了一个filter系统,提供了pre/route/post/error的filterType标准. 
+
+具体的调用部分还是要看各家实现. 
 
 --------- 
 
