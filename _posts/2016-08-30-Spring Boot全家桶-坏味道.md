@@ -117,9 +117,13 @@ public class ActivitiConfig {
 
 ## 文件上传的一些 
 
-这个不是spring boot的坏味道了,文件上传时如果同时传递json数据与multipart到mvc 
+这个不是spring boot的坏味道了,同事开发时候遇到.我又没碰见过,做下笔记. 
+
+文件上传时如果同时传递json数据与multipart到mvc.  
 
 那么`Content-Type:Mixed`,同时由于ajax生成的bondary切割字段应该是不带引号的形式,出处来自RFC的标准. 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-24-Screen%20Shot%202016-10-24%20at%2013.39.08.png?imageView2/2/h/400) 
 
 - - - - --- 
 
