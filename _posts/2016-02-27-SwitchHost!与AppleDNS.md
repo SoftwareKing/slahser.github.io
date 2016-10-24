@@ -25,3 +25,5 @@ SwitchHosts! 的数据文件在 `~/.SwitchHosts` 目录下，其中 `~/.SwitchHo
 [AppleDNS配置文件](https://o4dyfn0ef.qnssl.com/file/switchhost.json) 
 
 > 大半年后更新,换上Surge与自建SS之后,这个DNS也就不再使用了. 
+
+done. 
