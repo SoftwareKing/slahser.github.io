@@ -1,7 +1,3 @@
-前情提要: 
-
-最近微博上大批装逼犯开始喷Airmail for ios,真想不明白用个App居然能用出来戾气... 
-
 这两款软件我都是重度用户,双端我都有购买.感想就是不够精致但绝对够用,痛点给你解决的明明白白的,痒点还能搔一搔的. 
 
 ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-02-16%20at%2001.38.38.png?imageView2/2/h/300)
@@ -15,9 +11,7 @@
 
 ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-02-16%20at%2001.48.49.png?imageView2/2/h/300)
 
-简评: 前者完爆了后者. 
-
-###Airmail
+### Airmail
 
 不同邮箱可以用不同颜色标识 
 ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%20207616-02-16%20at%2000.59.06.png?imageView2/2/h/600)
@@ -54,6 +48,5 @@
 地图记忆,偶尔不准. 
 
 ![](https://o4dyfn0ef.qnssl.com/image/IMG_2990.PNG?imageView2/2/h/300) 
-
 
 done.

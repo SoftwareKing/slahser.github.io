@@ -1,5 +1,5 @@
 
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-21%20at%2002.54.27.png?imageView2/2/h/600) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-21%20at%2002.54.27.png?imageView2/2/h/400) 
 
 ### paw 
 

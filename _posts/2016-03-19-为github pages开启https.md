@@ -1,4 +1,4 @@
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-19%20at%2018.16.27.png?imageView2/2/h/600) 
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-19%20at%2018.16.27.png?imageView2/2/h/400) 
 
 昨天我接到了一封邮件.一名叫 @nubela 的小伙子在邮件里极尽诱惑,描述可以为我的博客开启Let's encrypt,并且具有一些其他dashboard功能. 
 

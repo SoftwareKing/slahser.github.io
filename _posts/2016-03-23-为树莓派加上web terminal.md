@@ -1,4 +1,4 @@
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-23%20at%2020.47.50.png?imageView2/2/h/600)  
+![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-23%20at%2020.47.50.png?imageView2/2/h/200)  
 
 今天介绍一下如何为树莓派或者任何主机添加web terminal 
 

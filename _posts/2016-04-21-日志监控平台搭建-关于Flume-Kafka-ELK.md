@@ -4,7 +4,7 @@
 
 >优化的部分将等待项目与新平台正式上线在另一篇文章写出
 
-## 架构图 
+## 拓扑图 
 
 ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-04-21%20at%2021.44.09.png?imageView2/2/h/200)
 

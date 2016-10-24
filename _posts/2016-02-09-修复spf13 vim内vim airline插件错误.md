@@ -16,4 +16,6 @@ ps:使用spf13-vim需要with lua的vim依赖,请如下安装:
 
 ` curl http://j.mp/spf13-vim3 -L -o - | sh `
 
+> 大半年后更新: 如今我换上了nvim使用至今.. 
+
 done.

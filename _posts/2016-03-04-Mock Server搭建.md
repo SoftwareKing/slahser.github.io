@@ -1,6 +1,6 @@
-前端项目的mock server改天介绍,今天写下基于[moco](https://github.com/dreamhead/moco)的简易mock server搭建. 
-
 ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png?imageView2/2/h/200) 
+
+前端项目的mock server改天介绍,今天写下基于[moco](https://github.com/dreamhead/moco)的简易mock server搭建. 
 
 ### intro 
 
