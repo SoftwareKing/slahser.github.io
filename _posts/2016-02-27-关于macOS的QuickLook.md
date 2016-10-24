@@ -1,4 +1,4 @@
-OSX上QuickLook功能就是空格键的预览,一个按键可以预览 
+macOS上QuickLook功能就是空格键的预览,一个按键可以预览 
 
 - 图片大小
 - csv内容
