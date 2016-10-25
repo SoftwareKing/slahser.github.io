@@ -100,7 +100,7 @@ zuul:
 
 #### ZuulController 
 
-通过继承`ServletWrappingController`接管了上文[](http://www.slahser.com/2016/10/06/API网关-Zuul源码解读-netflix/))定义的ZuulServlet. 
+通过继承`ServletWrappingController`接管了[上文](http://www.slahser.com/2016/10/06/API网关-Zuul源码解读-netflix/)定义的ZuulServlet. 
 
 #### ZuulHandlerMapping 
 
@@ -110,8 +110,8 @@ zuul:
 
 #### ZuulRefreshListener 
 
-- Simple模式下注册`RoutesRefreshedEvent`,
-- Endpoint模式下又添加了`HeartbeatEvent`. 
+- Simple模式下注册`RoutesRefreshedEvent`
+- Endpoint模式下又添加了`HeartbeatEvent` 
 
 另外就是些`ZuulFilter`子类,我们后续逐个来说. 
 
@@ -124,6 +124,54 @@ zuul:
 ### org.springframework.cloud.netflix.zuul.ZuulProxyConfiguration 
 
 现在切换到Discovery模式. 
+
+继承了上文的`ZuulConfiguration`,新增了服务与实例等概念,如下: 
+
+#### DiscoveryClientRouteLocator  
+
+`DiscoveryClient`肩负着从Eureka中获取服务列表,获取对应实例的功能.由于是Eureka中的功能,我们按下不表.  
+
+> Eureka!文明6啊. 
+
+而后将path与上文的ZuulRoute通过`DiscoveryClientRouteLocator.locateRoutes()`的对应在一起. 
+
+具体过程大概是这样的: 
+
+1. 将上文SimpleRouteLocator中解析出来的Route列表灌入内部的LinkedHashMap
+2. 抽取Route自带的serviceId,将其作为key,形成一个`staticServices`的map
+3. 遍历DiscoveryClient拿到的serviceId列表,匹配正则形式定义的serviceId并将对应的ZuulRoute与之对应
+4. 调整LinkedHashMap内路由顺序,将/**挪到最后
+5. 微调map内容,将key值加上/或者自定义prefix
+
+#### zuulFeature 
+
+依然是将Zuul标识为Discovery模式. 
+
+#### httpclient 
+
+读取下列配置autoconfig一些Ribbon客户端来使用: 
+
+- zuul.ribbon.okhttp.enabled
+- zuul.ribbon.restclient.enabled
+- zuul.ribbon.httpclient.enabled
+
+用处就是客户端负载均衡咯. 
+
+#### ZuulDiscoveryRefreshListener 
+
+依然是注册了这么个ApplicationEvent来触发上文中的dirty状态. 
+
+### org.springframework.cloud.netflix.zuul.filters 
+
+按下不表按了有几天了,感觉棺材板都按不住了... 
+
+
+
+
+
+
+
+
 
 
 
