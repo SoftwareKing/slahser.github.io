@@ -188,9 +188,9 @@ private void initialize() {
 	this.httpClient = newClient();
 	SOCKET_TIMEOUT.addCallback(this.clientloader);
 	CONNECTION_TIMEOUT.addCallback(this.clientloader);
-    new Timer("SimpleHostRoutingFilter.connectionManagerTimer", true).schedule(() -> {
-    		if (SimpleHostRoutingFilter.this.connectionManager == null) return;
-    		SimpleHostRoutingFilter.this.connectionManager.closeExpiredConnections();
+    new Timer("tt", true).schedule(() -> {
+    		if (this.connectionManager == null) return;
+    		this.connectionManager.closeExpiredConnections();
     }, 30000, 5000);
 }
 ```
@@ -199,19 +199,19 @@ private void initialize() {
 
 ```java
 private final Runnable clientloader = () -> {
-		SimpleHostRoutingFilter.this.httpClient.close();
-		SimpleHostRoutingFilter.this.httpClient = newClient();
+		this.httpClient.close();
+		this.httpClient = newClient();
 };
 ``` 
 
 其他就比较传统了,ConnectionManager/SSLContext之类的.只是这个绑定callback的方式是第一次见: 
 
 ```java
-private static final DynamicIntProperty SOCKET_TIMEOUT = DynamicPropertyFactory
+DynamicIntProperty SOCKET_TIMEOUT = DynamicPropertyFactory
 		.getInstance()
 		.getIntProperty(ZuulConstants.ZUUL_HOST_SOCKET_TIMEOUT_MILLIS, 10000);
 
-private static final DynamicIntProperty CONNECTION_TIMEOUT = DynamicPropertyFactory
+DynamicIntProperty CONNECTION_TIMEOUT = DynamicPropertyFactory
 		.getInstance()
 		.getIntProperty(ZuulConstants.ZUUL_HOST_CONNECT_TIMEOUT_MILLIS, 2000);
 ``` 
@@ -260,14 +260,15 @@ private static final DynamicIntProperty CONNECTION_TIMEOUT = DynamicPropertyFact
 5. writeResponse() 
 
 ```java
-private void writeResponse(InputStream zin, OutputStream out) throws Exception {
+private void writeResponse(InputStream zin, OutputStream out) {
 	byte[] bytes = new byte[INITIAL_STREAM_BUFFER_SIZE.get()];
 	int bytesRead = -1;
 	while ((bytesRead = zin.read(bytes)) != -1) {
 		out.write(bytes, 0, bytesRead);
 		out.flush();
 		// doubles buffer size if previous read filled it
-		if (bytesRead == bytes.length) bytes = new byte[bytes.length * 2];
+		if (bytesRead == bytes.length) 
+            bytes = new byte[bytes.length * 2];
 	}
 }
 ```
