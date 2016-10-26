@@ -209,11 +209,11 @@ private final Runnable clientloader = () -> {
 ```java
 DynamicIntProperty SOCKET_TIMEOUT = DynamicPropertyFactory
 		.getInstance()
-		.getIntProperty(ZuulConstants.ZUUL_HOST_SOCKET_TIMEOUT_MILLIS, 10000);
+		.getIntProperty(Constants.SOCKET_TIMEOUT_MILLIS, 10000);
 
 DynamicIntProperty CONNECTION_TIMEOUT = DynamicPropertyFactory
 		.getInstance()
-		.getIntProperty(ZuulConstants.ZUUL_HOST_CONNECT_TIMEOUT_MILLIS, 2000);
+		.getIntProperty(Constants.CONNECT_TIMEOUT_MILLIS, 2000);
 ``` 
 
 内容来自Netflix,这次没兴趣看了. 
