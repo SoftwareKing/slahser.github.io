@@ -121,6 +121,8 @@ zuul:
 - 维护路由表并监听变化
 - 将请求都导向ZuulController去历经filters
 
+- - - - --- 
+
 ### org.springframework.cloud.netflix.zuul.ZuulProxyConfiguration 
 
 现在切换到Discovery模式. 
@@ -161,9 +163,85 @@ zuul:
 
 依然是注册了这么个ApplicationEvent来触发上文中的dirty状态. 
 
+- - - - --- 
+
+### 遗漏 
+
+#### org.springframework.cloud.netflix.zuul.filters.Route 
+
+Spring Cloud 的抽象,看看就好. 
+
+就是上文`RouteLocator`潜移默化转换的部分. 
+
+#### org.springframework.cloud.netflix.zuul.ZuulFilterInitializer
+
+实现`ServletContextListener`,servlet内容来自tomcat惊了我... 
+
+实现了生命周期相关,不过目前还没有用到.还在开发中. 
+
+- - - - --- 
+
 ### org.springframework.cloud.netflix.zuul.filters 
 
-按下不表按了有几天了,感觉棺材板都按不住了... 
+这块按下不表按了有几天了,感觉棺材板都按不住了... 
+
+所有的filer系列都是继承`ZuulFilter`,上一篇netfilx我们也说了,该抽象类具有如下部分: 
+
+- type
+- shouldFilter
+- run
+- order
+- [x] disable
+
+那么接下来的部分也是分成pre/route/post三类,以及一些暂时我能想到的filter功能实现思路. 
+
+#### DebugFilter
+
+- pre
+- order=1 
+
+请求中含有`zuul.debug.parameter=true`时生效,将很久以前的`RequestContext`
+
+- ctx.setDebugRouting(true);
+- ctx.setDebugRequest(true);
+
+当时我们看源码时候没解释这块,其实就是放到Map里面这样一个kv对用作标识. 
+
+#### FormBodyWrapperFilter 
+
+- pre
+- order=-1 
+
+当Content-Type是`org.springframework.http.MediaType`中的`multipart`常量类型是生效. 
+
+效果大概可以这么形容,无论如何都将上下文中`ZuulRequestHeaders`的`content-type`设置成了带文件类型+boundary的形式. 
+
+具体过程是: 
+
+1. 获取上下文中HttpServletRequest
+2. 判断类型,使用FormBodyRequestWrapper封装旧的HttpServletRequestWrapper
+3. 封装过程中重新构造contentData,拆出请求内可能存在的多个文件.
+4. 将上一步拆开的文件headers平铺到spring抽象的HttpEntity中
+5. 在wrapper中抽出contentType. 
+
+#### PreDecorationFilter 
+
+- pre
+- order=5
+
+当一个请求没有没转发过且并没有显式指定serviceId时生效. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
