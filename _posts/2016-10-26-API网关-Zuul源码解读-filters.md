@@ -46,17 +46,15 @@ Spring Cloud更新频繁得很,版本号是根据字母排序确定稳定性的.
 
 ## 内置的filters 
 
-以下部分只是简单了解了一下这块filter系统,方便我们日后debug,因为可预见的就有性能问题.
+> 前提:我并不觉得这块他们实现的有多好,真上生产肯定也要定制一下. 
 
-可调节的部分多得很,也可以通过zuul配置取消以下内置filter的enable. 
+> 可调节的部分多得很,也可以通过zuul配置取消以下内置filter的enable. 
 
 另外就是我会写一点能想得到的filter功能实现. 
 
 ### org.springframework.cloud.netflix.zuul.filters 
 
-> 前提:我并不觉得这块他们实现的有多好,真上生产肯定也要有自己调节的部分. 
-
-> 另外就是大家都是在操作这个RequestContext,debug时候watch它就可以解决相当多的问题了. 
+> 大家都是在操作这个RequestContext,debug时候watch它就可以解决相当多的问题了. 
 
 这块按下不表按了有几天了,感觉棺材板都按不住了... 
 
