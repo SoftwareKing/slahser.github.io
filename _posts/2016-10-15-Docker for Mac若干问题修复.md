@@ -1,4 +1,4 @@
-![](https://o4dyfn0ef.qnssl.com/image/2016-10-27-d8bd14c13243d94bf8bf7c90f250cb73.jpg?imageView2/2/h/300) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-10-27-Screen%20Shot%202016-10-27%20at%2016.35.54.png?imageView2/2/h/300) 
 
 Docker for Mac一直小问题不断,直到今天实在有点block工作了,索性集中解决一下. 
 
