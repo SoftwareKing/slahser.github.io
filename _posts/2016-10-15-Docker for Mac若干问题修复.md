@@ -30,7 +30,7 @@ mac的话经过几次的升级已经完全不支持这样的方式.
 解决方案: 
 
 - 使用带端口的--insecure-registry
-- 切换到Beta Channel
+- 切换到Beta Channel,并且将证书安装到Keychains
  
 - - - - --- 
 
