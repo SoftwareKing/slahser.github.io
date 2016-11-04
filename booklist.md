@@ -93,4 +93,10 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>Paas实现与运维管理
 - <span style="color: red">[x]</span>SaltStack运维实战
 - <span style="color: red">[x]</span>Zabbix监控系统
-
+- <span style="color: gold">[~]</span>MySQL技术内幕
+- <span style="color: red">[x]</span>腾讯Android自动化测试实战
+- <span style="color: red">[x]</span>领取驱动设计
+- <span style="color: red">[x]</span>Linux集群和自动化运维
+- <span style="color: red">[x]</span>java程序员修炼之道
+- <span style="color: gold">[~]</span>零成本实现Web性能测试
+- <span style="color: red">[x]</span>自己动手写java虚拟机
