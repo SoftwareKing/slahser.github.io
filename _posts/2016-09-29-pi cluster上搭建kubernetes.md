@@ -11,7 +11,7 @@
 访问[flash工具](https://github.com/hypriot/flash)了解用途
 
 ```
-flash -n [youthostname] https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.zip
+flash -n [youthostname] https://github.com/hypriot/image-builder-rpi/releases/download/v1.1.0/hypriotos-rpi-v1.1.0.img.zip
 ```
 
 - - - - -- 
@@ -19,20 +19,19 @@ flash -n [youthostname] https://downloads.hypriot.com/hypriotos-rpi-v1.0.0.img.z
 ## ip查询 & 本机hosts添加
 
 - 通过小米路由器后台查看所有机器ip
-- ping rpi3-1.local 
 
 本机hosts添加: 
 
 ```shell
 vim /etc/hosts 
 # raspberry
-192.168.31.222 rpi2-1
-192.168.31.104 rpi3-1
-192.168.31.130 rpi3-2
-192.168.31.228 rpi3-3
-192.168.31.126 rpi3-4
-192.168.31.132 rpi3-5
-192.168.31.127 rpi3-6
+192.168.31.222 rpi2.node
+192.168.31.104 rpi3.node1
+192.168.31.130 rpi3.node2
+192.168.31.228 rpi3.node3
+192.168.31.126 rpi3.node4
+192.168.31.132 rpi3.node5
+192.168.31.127 rpi3.node6
 ``` 
 
 ansible hosts添加: 
@@ -71,6 +70,8 @@ with password 'hypriot'
 
 ## 开启root用户 
 
+> 本步骤不推荐
+
 ```shell
 sudo passwd root
 sudo passwd --unlock root
@@ -97,6 +98,13 @@ deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-f
 apt-get update
 apt-get install -y vim
 ``` 
+
+当然也可以ansible执行
+
+```
+echo "deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib" > /etc/apt/sources.list  
+echo "deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib" >> /etc/apt/sources.list 
+```
 
 - - - - -- 
 

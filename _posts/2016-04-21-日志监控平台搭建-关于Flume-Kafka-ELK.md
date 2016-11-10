@@ -112,7 +112,8 @@ drwxr-xr-x  5 zy      root    4096  4月 21 18:06 logstash/
 
 ```shell
 chkconfig  iptables off && service iptables status或者
-ufw disable
+ufw disable或者
+systemctl stop firewalld.service && systemctl disable firewalld.service && setenforce 0
 ```
 非ubuntu机器关闭SELinux 
 
@@ -124,7 +125,8 @@ selinux默认ubuntu不安装,iptables默认也是全开放的.可以用getenforc
 同步各机器时区 
 
 ```shell
-cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime或者
+ntpdate cn.pool.ntp.org
 ```
 
 ### zookeeper配置 
