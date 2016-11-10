@@ -212,7 +212,7 @@ kubectl get pods --all-namespaces
 kubectl describe svc kubernetes-dashboard --namespace=kube-system
 ``` 
 
-![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2018.28.52.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2019.04.35.png?imageView2/2/h/400) 
 
 啊,生命的大和谐... 
 
