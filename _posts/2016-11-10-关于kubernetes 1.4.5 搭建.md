@@ -41,7 +41,7 @@ echo "192.168.6.53 prod.node3" >> /etc/hosts
 
 ### 安全相关 
 
-```
+```shell 
 # 关闭防火墙
 sudo systemctl stop firewalld.service
 sudo systemctl disable firewalld.service
@@ -85,7 +85,6 @@ EOF
 ```shell
 sudo yum makecache
 sudo yum install -y docker-engine git socat kubelet kubeadm kubectl kubernetes-cni ebtables
-
 ```
 
 - - - - -- 
@@ -95,7 +94,7 @@ sudo yum install -y docker-engine git socat kubelet kubeadm kubectl kubernetes-c
 ```shell
 sudo systemctl enable docker.service
 sudo systemctl start docker
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://297b9bde.m.daocloud.io
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://[你的token].m.daocloud.io
 sudo systemctl restart docker
 ```
 
@@ -151,13 +150,13 @@ systemctl enable kubelet
 systemctl start kubelet
 ``` 
 
-master节点操作 
+kubeadm在master节点操作 
 
 `kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.5`
 
 产生的这条数据kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51 要保存好,无法重现
 
-slave节点操作
+kubeadm在slave节点操作
 
 `kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51`
 
@@ -179,7 +178,9 @@ kubectl create -f weave-kube.yaml
 
 `kubectl get pods --all-namespaces`
 
-![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2018.52.28.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2018.52.28.png) 
+
+> 上面这张图我特意没放压缩,列位可以new tab打开来看大图 
 
 那么目前的管控工作只能在master上执行,如果想其他节点控制kube操作: 
 
@@ -213,7 +214,7 @@ kubectl describe svc kubernetes-dashboard --namespace=kube-system
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2018.28.52.png?imageView2/2/h/400) 
 
-啊,生命的大团结...
+啊,生命的大和谐... 
 
 done. 
 
