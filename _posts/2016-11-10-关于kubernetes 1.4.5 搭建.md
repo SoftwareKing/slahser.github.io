@@ -212,7 +212,7 @@ kubectl --kubeconfig ./admin.conf get nodes
 kubectl create -f kubernetes-dashboard.yaml
 # 可以看到dashboard已经在运行了
 kubectl get pods --all-namespaces
-# 查看dashboard外网访问端口NodePort
+# 查看dashboard外网访问端口NodePort,30000–32767
 kubectl describe svc kubernetes-dashboard --namespace=kube-system
 ``` 
 
