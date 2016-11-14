@@ -73,6 +73,16 @@ gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker/yum/gpg
 EOF
 
 # 网友k8s rpm镜像
+tee /etc/yum.repos.d/mritd.repo << EOF
+[mritdrepo]
+name=Mritd Repository
+baseurl=https://rpm.mritd.me/centos/7/x86_64
+enabled=1
+gpgcheck=1
+gpgkey=https://cdn.mritd.me/keys/rpm.public.key
+EOF
+
+# 另一个 
 cat <<EOF> /etc/yum.repos.d/k8s.repo
 [kubelet]
 name=kubelet
@@ -116,6 +126,8 @@ for imageName in ${images[@]} ; do
   docker rmi jicki/$imageName
 done
 ```
+
+> 前面加上index.docker.io/使用daocloud的mirror也ok. 
 
 或者稳扎稳打一步一步pull->tag->rmi...限于网速这次我是这么干的. 
 
@@ -180,7 +192,7 @@ kubectl create -f weave-kube.yaml
 
 等待一会儿后查看网络状态,直至所有kube-system相关组件都就绪
 
-`kubectl get pods --all-namespaces`
+`kubectl get po --all-namespaces`
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2018.52.28.png) 
 
@@ -215,6 +227,10 @@ kubectl get pods --all-namespaces
 # 查看dashboard外网访问端口NodePort,30000–32767
 kubectl describe svc kubernetes-dashboard --namespace=kube-system
 ``` 
+
+> 这步注意的是创建了一个deploy一个svc,想彻底删除dashboard的话需要清理干净.  
+
+> `kubectl delete deploy,service,rc,pod -l app=kubernetes-dashboard --namespace=kube-system`
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2019.04.35.png?imageView2/2/h/400) 
 
