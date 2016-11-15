@@ -132,19 +132,44 @@ done
 或者稳扎稳打一步一步pull->tag->rmi...限于网速这次我是这么干的. 
 
 ```shell
-docker pull jicki/kube-proxy-amd64:v1.4.5
-docker pull jicki/kube-scheduler-amd64:v1.4.5
-docker pull jicki/kube-controller-manager-amd64:v1.4.5
-docker pull jicki/kube-apiserver-amd64:v1.4.5
+docker pull index.docker.io/jicki/kube-proxy-amd64:v1.4.5
+docker pull index.docker.io/jicki/kube-scheduler-amd64:v1.4.5
+docker pull index.docker.io/jicki/kube-controller-manager-amd64:v1.4.5
+docker pull index.docker.io/jicki/kube-apiserver-amd64:v1.4.5
+docker pull index.docker.io/jicki/kube-discovery-amd64:1.0
+docker pull index.docker.io/jicki/kubedns-amd64:1.7
+docker pull index.docker.io/jicki/etcd-amd64:2.2.5
+docker pull index.docker.io/jicki/kube-dnsmasq-amd64:1.3
+docker pull index.docker.io/jicki/exechealthz-amd64:1.1
+docker pull index.docker.io/jicki/pause-amd64:3.0
+docker pull index.docker.io/jicki/kubernetes-dashboard-amd64:v1.4.1
 
-docker pull jicki/kube-discovery-amd64:1.0
-docker pull jicki/kubedns-amd64:1.7
-docker pull jicki/etcd-amd64:2.2.5
-docker pull jicki/kube-dnsmasq-amd64:1.3
-docker pull jicki/exechealthz-amd64:1.1
-docker pull jicki/pause-amd64:3.0
-# 这个已经有新版了
-docker pull jicki/kubernetes-dashboard-amd64:v1.4.1
+docker pull index.docker.io/weaveworks/weave-kube:1.8.0
+
+
+docker tag jicki/kube-proxy-amd64:v1.4.5 gcr.io/google_containers/kube-proxy-amd64:v1.4.5
+docker tag jicki/kube-scheduler-amd64:v1.4.5 gcr.io/google_containers/kube-scheduler-amd64:v1.4.5
+docker tag jicki/kube-controller-manager-amd64:v1.4.5 gcr.io/google_containers/kube-controller-manager-amd64:v1.4.5
+docker tag jicki/kube-apiserver-amd64:v1.4.5 gcr.io/google_containers/kube-apiserver-amd64:v1.4.5
+docker tag jicki/kube-discovery-amd64:1.0 gcr.io/google_containers/kube-discovery-amd64:1.0
+docker tag jicki/kubedns-amd64:1.7 gcr.io/google_containers/kubedns-amd64:1.7
+docker tag jicki/etcd-amd64:2.2.5 gcr.io/google_containers/etcd-amd64:2.2.5
+docker tag jicki/kube-dnsmasq-amd64:1.3 gcr.io/google_containers/kube-dnsmasq-amd64:1.3
+docker tag jicki/exechealthz-amd64:1.1 gcr.io/google_containers/exechealthz-amd64:1.1
+docker tag jicki/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
+docker tag jicki/kubernetes-dashboard-amd64:v1.4.1 gcr.io/google_containers/kubernetes-dashboard-amd64:v1.4.1
+
+docker rmi index.docker.io/jicki/kube-proxy-amd64:v1.4.5
+docker rmi index.docker.io/jicki/kube-scheduler-amd64:v1.4.5
+docker rmi index.docker.io/jicki/kube-controller-manager-amd64:v1.4.5
+docker rmi index.docker.io/jicki/kube-apiserver-amd64:v1.4.5
+docker rmi index.docker.io/jicki/kube-discovery-amd64:1.0
+docker rmi index.docker.io/jicki/kubedns-amd64:1.7
+docker rmi index.docker.io/jicki/etcd-amd64:2.2.5
+docker rmi index.docker.io/jicki/kube-dnsmasq-amd64:1.3
+docker rmi index.docker.io/jicki/exechealthz-amd64:1.1
+docker rmi index.docker.io/jicki/pause-amd64:3.0
+docker rmi index.docker.io/jicki/kubernetes-dashboard-amd64:v1.4.1
 ```
 
 
