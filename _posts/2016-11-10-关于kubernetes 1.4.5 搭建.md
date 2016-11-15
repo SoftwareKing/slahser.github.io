@@ -127,24 +127,22 @@ for imageName in ${images[@]} ; do
 done
 ```
 
-> 前面加上index.docker.io/使用daocloud的mirror也ok. 
-
 或者稳扎稳打一步一步pull->tag->rmi...限于网速这次我是这么干的. 
 
 ```shell
-docker pull index.docker.io/jicki/kube-proxy-amd64:v1.4.5
-docker pull index.docker.io/jicki/kube-scheduler-amd64:v1.4.5
-docker pull index.docker.io/jicki/kube-controller-manager-amd64:v1.4.5
-docker pull index.docker.io/jicki/kube-apiserver-amd64:v1.4.5
-docker pull index.docker.io/jicki/kube-discovery-amd64:1.0
-docker pull index.docker.io/jicki/kubedns-amd64:1.7
-docker pull index.docker.io/jicki/etcd-amd64:2.2.5
-docker pull index.docker.io/jicki/kube-dnsmasq-amd64:1.3
-docker pull index.docker.io/jicki/exechealthz-amd64:1.1
-docker pull index.docker.io/jicki/pause-amd64:3.0
-docker pull index.docker.io/jicki/kubernetes-dashboard-amd64:v1.4.1
+docker pull jicki/kube-proxy-amd64:v1.4.5
+docker pull jicki/kube-scheduler-amd64:v1.4.5
+docker pull jicki/kube-controller-manager-amd64:v1.4.5
+docker pull jicki/kube-apiserver-amd64:v1.4.5
+docker pull jicki/kube-discovery-amd64:1.0
+docker pull jicki/kubedns-amd64:1.7
+docker pull jicki/etcd-amd64:2.2.5
+docker pull jicki/kube-dnsmasq-amd64:1.3
+docker pull jicki/exechealthz-amd64:1.1
+docker pull jicki/pause-amd64:3.0
+docker pull jicki/kubernetes-dashboard-amd64:v1.4.1
 
-docker pull index.docker.io/weaveworks/weave-kube:1.8.0
+docker pull weaveworks/weave-kube:1.8.0
 
 
 docker tag jicki/kube-proxy-amd64:v1.4.5 gcr.io/google_containers/kube-proxy-amd64:v1.4.5
@@ -159,17 +157,17 @@ docker tag jicki/exechealthz-amd64:1.1 gcr.io/google_containers/exechealthz-amd6
 docker tag jicki/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
 docker tag jicki/kubernetes-dashboard-amd64:v1.4.1 gcr.io/google_containers/kubernetes-dashboard-amd64:v1.4.1
 
-docker rmi index.docker.io/jicki/kube-proxy-amd64:v1.4.5
-docker rmi index.docker.io/jicki/kube-scheduler-amd64:v1.4.5
-docker rmi index.docker.io/jicki/kube-controller-manager-amd64:v1.4.5
-docker rmi index.docker.io/jicki/kube-apiserver-amd64:v1.4.5
-docker rmi index.docker.io/jicki/kube-discovery-amd64:1.0
-docker rmi index.docker.io/jicki/kubedns-amd64:1.7
-docker rmi index.docker.io/jicki/etcd-amd64:2.2.5
-docker rmi index.docker.io/jicki/kube-dnsmasq-amd64:1.3
-docker rmi index.docker.io/jicki/exechealthz-amd64:1.1
-docker rmi index.docker.io/jicki/pause-amd64:3.0
-docker rmi index.docker.io/jicki/kubernetes-dashboard-amd64:v1.4.1
+docker rmi jicki/kube-proxy-amd64:v1.4.5
+docker rmi jicki/kube-scheduler-amd64:v1.4.5
+docker rmi jicki/kube-controller-manager-amd64:v1.4.5
+docker rmi jicki/kube-apiserver-amd64:v1.4.5
+docker rmi jicki/kube-discovery-amd64:1.0
+docker rmi jicki/kubedns-amd64:1.7
+docker rmi jicki/etcd-amd64:2.2.5
+docker rmi jicki/kube-dnsmasq-amd64:1.3
+docker rmi jicki/exechealthz-amd64:1.1
+docker rmi jicki/pause-amd64:3.0
+docker rmi jicki/kubernetes-dashboard-amd64:v1.4.1
 ```
 
 
@@ -255,7 +253,7 @@ kubectl describe svc kubernetes-dashboard --namespace=kube-system
 
 > 这步注意的是创建了一个deploy一个svc,想彻底删除dashboard的话需要清理干净.  
 
-> `kubectl delete deploy,service,rc,pod -l app=kubernetes-dashboard --namespace=kube-system`
+> `kubectl delete deploy,svc,rc,pod -l app=kubernetes-dashboard --namespace=kube-system`
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2019.04.35.png?imageView2/2/h/400) 
 
