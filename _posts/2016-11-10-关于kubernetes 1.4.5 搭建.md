@@ -1,3 +1,5 @@
+![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-Unknown.png?imageView2/2/h/400)
+
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2012.26.11.png?imageView2/2/h/200) 
 
 这篇文章基本上算是全文转载,内容来自[这里](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)和[这里](http://www.xf80.com/2016/10/31/kubernetes-update-1.4.5) 
