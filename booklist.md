@@ -100,3 +100,4 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>java程序员修炼之道
 - <span style="color: gold">[~]</span>零成本实现Web性能测试
 - <span style="color: red">[x]</span>自己动手写java虚拟机
+- <span style="color: green">[o]</span>Kubernetes权威指南
