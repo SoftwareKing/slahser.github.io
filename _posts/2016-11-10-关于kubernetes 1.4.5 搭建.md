@@ -24,22 +24,10 @@
 
 ### 修改host相关 
 
-可以这样 
-
 ```shell
 echo "dev.node1" > /etc/hostname
 sysctl kernel.hostname=dev.node1
 ```
-
-也可以这样 
-
-`hostnamectl --static set-hostname hostname`
-
-```shell
-echo "192.168.6.51 prod.node1" >> /etc/hosts
-echo "192.168.6.52 prod.node2" >> /etc/hosts
-echo "192.168.6.53 prod.node3" >> /etc/hosts
-``` 
 
 - - - - -- 
 
@@ -49,7 +37,7 @@ echo "192.168.6.53 prod.node3" >> /etc/hosts
 # 关闭防火墙
 sudo systemctl stop firewalld.service
 sudo systemctl disable firewalld.service
-# 关闭selinu
+# 关闭selinux
 setenforce 0
 ```
 
@@ -72,17 +60,7 @@ gpgcheck=1
 gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker/yum/gpg
 EOF
 
-# 网友k8s rpm镜像
-tee /etc/yum.repos.d/mritd.repo << EOF
-[mritdrepo]
-name=Mritd Repository
-baseurl=https://rpm.mritd.me/centos/7/x86_64
-enabled=1
-gpgcheck=1
-gpgkey=https://cdn.mritd.me/keys/rpm.public.key
-EOF
-
-# 另一个 
+# 网友k8s镜像 
 cat <<EOF> /etc/yum.repos.d/k8s.repo
 [kubelet]
 name=kubelet
@@ -92,13 +70,15 @@ gpgcheck=0
 EOF
 ```
 
+> 这部分有修改,请看[k8s 后日谈源与镜像]()
+
 - - - - -- 
 
 ### 安装一些有的没的 
 
 ```shell
 sudo yum makecache
-sudo yum install -y docker-engine git socat kubelet kubeadm kubectl kubernetes-cni ebtables
+sudo yum install -y docker-engine git socat ebtables kubelet kubeadm kubectl kubernetes-cni 
 ```
 
 - - - - -- 
@@ -129,48 +109,6 @@ done
 
 或者稳扎稳打一步一步pull->tag->rmi...限于网速这次我是这么干的. 
 
-```shell
-docker pull jicki/kube-proxy-amd64:v1.4.5
-docker pull jicki/kube-scheduler-amd64:v1.4.5
-docker pull jicki/kube-controller-manager-amd64:v1.4.5
-docker pull jicki/kube-apiserver-amd64:v1.4.5
-docker pull jicki/kube-discovery-amd64:1.0
-docker pull jicki/kubedns-amd64:1.7
-docker pull jicki/etcd-amd64:2.2.5
-docker pull jicki/kube-dnsmasq-amd64:1.3
-docker pull jicki/exechealthz-amd64:1.1
-docker pull jicki/pause-amd64:3.0
-docker pull jicki/kubernetes-dashboard-amd64:v1.4.1
-
-docker pull weaveworks/weave-kube:1.8.0
-
-
-docker tag jicki/kube-proxy-amd64:v1.4.5 gcr.io/google_containers/kube-proxy-amd64:v1.4.5
-docker tag jicki/kube-scheduler-amd64:v1.4.5 gcr.io/google_containers/kube-scheduler-amd64:v1.4.5
-docker tag jicki/kube-controller-manager-amd64:v1.4.5 gcr.io/google_containers/kube-controller-manager-amd64:v1.4.5
-docker tag jicki/kube-apiserver-amd64:v1.4.5 gcr.io/google_containers/kube-apiserver-amd64:v1.4.5
-docker tag jicki/kube-discovery-amd64:1.0 gcr.io/google_containers/kube-discovery-amd64:1.0
-docker tag jicki/kubedns-amd64:1.7 gcr.io/google_containers/kubedns-amd64:1.7
-docker tag jicki/etcd-amd64:2.2.5 gcr.io/google_containers/etcd-amd64:2.2.5
-docker tag jicki/kube-dnsmasq-amd64:1.3 gcr.io/google_containers/kube-dnsmasq-amd64:1.3
-docker tag jicki/exechealthz-amd64:1.1 gcr.io/google_containers/exechealthz-amd64:1.1
-docker tag jicki/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0
-docker tag jicki/kubernetes-dashboard-amd64:v1.4.1 gcr.io/google_containers/kubernetes-dashboard-amd64:v1.4.1
-
-docker rmi jicki/kube-proxy-amd64:v1.4.5
-docker rmi jicki/kube-scheduler-amd64:v1.4.5
-docker rmi jicki/kube-controller-manager-amd64:v1.4.5
-docker rmi jicki/kube-apiserver-amd64:v1.4.5
-docker rmi jicki/kube-discovery-amd64:1.0
-docker rmi jicki/kubedns-amd64:1.7
-docker rmi jicki/etcd-amd64:2.2.5
-docker rmi jicki/kube-dnsmasq-amd64:1.3
-docker rmi jicki/exechealthz-amd64:1.1
-docker rmi jicki/pause-amd64:3.0
-docker rmi jicki/kubernetes-dashboard-amd64:v1.4.1
-```
-
-
 ### k8s安装 - 基本 
 
 执行teardown,目的是清理/etc/kubernetes文件夹内容等等.. 
@@ -193,9 +131,9 @@ kubeadm在master节点操作
 
 `kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.5`
 
-产生的这条数据kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51 要保存好,无法重现
+产生的这条数据kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51
 
-kubeadm在slave节点操作
+kubeadm在minion节点操作
 
 `kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51`
 
@@ -221,17 +159,7 @@ kubectl create -f weave-kube.yaml
 
 > 上面这张图我特意没放压缩,列位可以new tab打开来看大图 
 
-那么目前的管控工作只能在master上执行,如果想其他节点控制kube操作: 
-
-```shell
-# 备份master节点的 配置文件
-/etc/kubernetes/admin.conf
-# 保存至 其他电脑, 通过执行配置文件控制集群
-kubectl --kubeconfig ./admin.conf get nodes
-``` 
-
 ### k8s安装 - 配置dashboard
-
 
 依然是本地下载
 
@@ -246,7 +174,7 @@ kubectl --kubeconfig ./admin.conf get nodes
 ```shell 
 kubectl create -f kubernetes-dashboard.yaml
 # 可以看到dashboard已经在运行了
-kubectl get pods --all-namespaces
+kubectl get po --all-namespaces
 # 查看dashboard外网访问端口NodePort,30000–32767
 kubectl describe svc kubernetes-dashboard --namespace=kube-system
 ``` 
