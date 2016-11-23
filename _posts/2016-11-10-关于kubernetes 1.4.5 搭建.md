@@ -1,10 +1,8 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2012.26.11.png?imageView2/2/h/200) 
 
-这篇文章基本上算是全文转载,内容来自[这里](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)和[这里](http://www.xf80.com/2016/10/31/kubernetes-update-1.4.5) 
+这篇文章基本上算是部分转载,内容来自[这里](https://mritd.me/2016/10/29/set-up-kubernetes-cluster-by-kubeadm/)和[这里](http://www.xf80.com/2016/10/31/kubernetes-update-1.4.5) 
 
-这两位大兄弟的博客风格为何如此相似,内容也差不多...,不过内容都挺好的. 
-
-我实践了一番,可行. 
+中间穿插了私服与问题解决等相关内容. 
 
 > 最近明显感觉到k8sonarm的作者不太上心..不过也促成了kubernetes本身在HypriotOS上的表现更好了. 
 
@@ -70,7 +68,7 @@ gpgcheck=0
 EOF
 ```
 
-> 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)
+> 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)中rpm的部分. 
 
 - - - - -- 
 
@@ -94,7 +92,7 @@ sudo systemctl restart docker
 
 - - - - -- 
 
-### gcr镜像下载 
+### 镜像下载 
 
 > 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)私服部分 
 
@@ -108,6 +106,18 @@ for imageName in ${images[@]} ; do
   docker rmi registry.yourcompany.com/$imageName
 done
 ``` 
+
+另行准备其他镜像: 
+
+```shell
+images=(weaveworks/weave-kube:1.8.0 kubernetes/heapster_grafana:v2.6.0 kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6)
+for imageName in ${images[@]} ; do
+  docker pull registry.yourcompany.com/$imageName
+  docker tag registry.yourcompany.com/$imageName $imageName
+  docker rmi registry.yourcompany.com/$imageName
+done
+``` 
+
 
 ### k8s安装 - 基本 
 
@@ -165,7 +175,7 @@ kubectl create -f weave-kube.yaml
 
 `wget https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml -O kubernetes-dashboard.yaml`
 
-修改里面内容将镜像版本改为v1.4.1 并且将拉取策略改为`IfNotPresent`
+修改里面内容将镜像版本改为v1.4.1 并且将拉取策略改为`IfNotPresent`或者`Never`. 
 
 > 修改为你能下到的版本,另外这个拉取策略,如果你看过我的[基于Gitlab与Docker的CI](http://www.slahser.com/2016/09/07/基于Gitlab与Docker的CI/)的话一定明白...  
 
