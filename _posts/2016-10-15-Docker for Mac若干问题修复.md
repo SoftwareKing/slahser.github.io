@@ -7,6 +7,7 @@ Docker for Mac一直小问题不断,直到今天实在有点block工作了,索�
 - 证书问题,提示X509
 - 代理问题
 - Compose端口占用问题
+- 越来越大的占用
 
 截止今天为止,Docker for Mac的
 
@@ -83,6 +84,23 @@ ps:
 - 确认机器上不存在apache 
 
 - - - - --- 
+
+## 越来越大的占用 
+
+在[这里](https://github.com/docker/for-mac/issues/371)就能看到这个issue. 
+
+的确是bug. 
+
+这样清一下吧. 
+
+```
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+docker volume rm $(docker volume ls |awk '{print $2}')
+rm -rf ~/Library/Containers/com.docker.docker/Data/*
+```
+
+- - - - -- 
 
 done . 
 
