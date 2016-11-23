@@ -124,11 +124,19 @@ done
 执行teardown,目的是清理/etc/kubernetes文件夹内容等等.. 
 
 ```shell
+kubeadm reset
+```
+
+或者
+
+```shell
 systemctl stop kubelet;
 docker rm -f -v $(docker ps -q);
 find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v;
 rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
 ``` 
+
+> 坑爹的是它会停止所有目前正在运行的容器. 
 
 启动kubelet 
 
