@@ -70,7 +70,7 @@ gpgcheck=0
 EOF
 ```
 
-> 这部分有修改,请看[k8s 后日谈源与镜像]()
+> 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)
 
 - - - - -- 
 
@@ -96,18 +96,18 @@ sudo systemctl restart docker
 
 ### gcr镜像下载 
 
+> 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)私服部分 
+
 批量执行一下
 
 ```shell
 images=(kube-proxy-amd64:v1.4.5 kube-scheduler-amd64:v1.4.5 kube-controller-manager-amd64:v1.4.5 kube-apiserver-amd64:v1.4.5 kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.4.1)
 for imageName in ${images[@]} ; do
-  docker pull jicki/$imageName
-  docker tag jicki/$imageName gcr.io/google_containers/$imageName
-  docker rmi jicki/$imageName
+  docker pull registry.yourcompany.com/$imageName
+  docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
+  docker rmi registry.yourcompany.com/$imageName
 done
-```
-
-或者稳扎稳打一步一步pull->tag->rmi...限于网速这次我是这么干的. 
+``` 
 
 ### k8s安装 - 基本 
 
