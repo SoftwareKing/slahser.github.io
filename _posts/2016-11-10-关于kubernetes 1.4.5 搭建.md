@@ -141,6 +141,8 @@ kubeadm在master节点操作
 
 `kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.5`
 
+> 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
+
 产生的这条数据kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51
 
 kubeadm在minion节点操作
