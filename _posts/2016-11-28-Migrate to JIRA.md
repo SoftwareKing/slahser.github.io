@@ -1,12 +1,14 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-28-Screen%20Shot%202016-11-28%20at%2023.08.41.png?imageView2/2/h/300) 
 
-感觉我已经俨然变成了自身Migrate工程师了... 
+感觉我已经俨然变成了资深Migrate工程师了. 
 
-最近恰巧单位办公软件处在事故频出的阶段...在修复了禅道一个莫名其妙的问题之后,老大决定尝试一下我搭建好的JIRA跟Confluence. 
+最近恰巧单位办公软件处在事故频出的阶段. 
 
-毕竟禅道和石墨文档太不好用了.. 
+在修复了禅道一个莫名其妙的问题之后,老大决定尝试一下我搭建好的JIRA跟Confluence. 
 
-> 今儿看了民工精髓跟团队技术栈的出入导致离职,架构师空降果然是很难很有话语权 
+毕竟禅道和石墨文档太不好用了. 
+
+> 今儿看了民工精髓跟团队技术栈的出入导致离职,架构师空降果然是很难较土著有话语权 
 
 > 需要的是老大的信任与肯定,当然推技术栈要一遍一遍测试并且读源码,做好吵架准备. 
 
@@ -79,7 +81,7 @@
 5. 初始化,一切都选择自定义.并且将Confluence连接置JIRA同步用户. 
 6. 前者替换atlassian-extras-3.1.2
 7. 后者替换atlassian-extras-decoder-v2-3.2
-8. 这两个jar目标地址是`/opt/atlassian/[jira/confluence]/confluence/WEB-INF/lib/`
+8. 这两个jar目标地址是`/opt/atlassian/[which]/confluence/WEB-INF/lib/`
 9. jira中manage add-on ,上传JIRA Core-7.2.1-language-pack-zh_CN
 10. done. 
 
