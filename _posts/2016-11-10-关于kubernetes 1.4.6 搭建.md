@@ -110,7 +110,7 @@ done
 另行准备其他镜像: 
 
 ```shell
-images=(weaveworks/weave-kube:1.8.1 weaveworks/weave-npc:1.8.1 kubernetes/heapster_grafana:v2.6.0 kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6)
+images=(weaveworks/weave-kube:1.8.1 weaveworks/weave-npc:1.8.1 kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName $imageName
@@ -147,7 +147,7 @@ systemctl start kubelet
 
 kubeadm在master节点操作 
 
-`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.5`
+`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.6`
 
 > 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
 
@@ -185,7 +185,7 @@ kubectl create -f weave-kube.yaml
 
 `wget https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml -O kubernetes-dashboard.yaml`
 
-修改里面内容将镜像版本改为v1.4.1 并且将拉取策略改为`IfNotPresent`或者`Never`. 
+修改里面内容将镜像版本改为v1.4.2 并且将拉取策略改为`IfNotPresent`或者`Never`. 
 
 > 修改为你能下到的版本,另外这个拉取策略,如果你看过我的[基于Gitlab与Docker的CI](http://www.slahser.com/2016/09/07/基于Gitlab与Docker的CI/)的话一定明白...  
 
