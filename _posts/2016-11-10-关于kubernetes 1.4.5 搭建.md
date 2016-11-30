@@ -99,7 +99,7 @@ sudo systemctl restart docker
 批量执行一下
 
 ```shell
-images=(kube-proxy-amd64:v1.4.5 kube-scheduler-amd64:v1.4.5 kube-controller-manager-amd64:v1.4.5 kube-apiserver-amd64:v1.4.5 kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.4.1)
+images=(kube-proxy-amd64:v1.4.5 kube-scheduler-amd64:v1.4.5 kube-controller-manager-amd64:v1.4.5 kube-apiserver-amd64:v1.4.5 kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.4.1 heapster_grafana:v3.1.1)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
@@ -110,7 +110,7 @@ done
 另行准备其他镜像: 
 
 ```shell
-images=(weaveworks/weave-kube:1.8.0 kubernetes/heapster_grafana:v2.6.0 kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6)
+images=(weaveworks/weave-kube:1.8.1 weaveworks/weave-npc:1.8.1 kubernetes/heapster_grafana:v2.6.0 kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName $imageName
