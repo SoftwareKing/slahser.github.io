@@ -23,8 +23,14 @@
 ### 修改host相关 
 
 ```shell
+# 修改hostname
 echo "dev.node1" > /etc/hostname
 sysctl kernel.hostname=dev.node1
+# 同步hosts
+echo "192.168.6.51 dev.node1" >> /etc/hosts
+echo "192.168.6.52 dev.node2" >> /etc/hosts
+echo "192.168.6.53 dev.node3" >> /etc/hosts
+echo "192.168.6.xx registry.yourcompany.com" >> /etc/hosts
 ```
 
 - - - - -- 
@@ -57,15 +63,6 @@ enabled=1
 gpgcheck=1
 gpgkey=https://mirrors.tuna.tsinghua.edu.cn/docker/yum/gpg
 EOF
-
-# 网友k8s镜像 
-cat <<EOF> /etc/yum.repos.d/k8s.repo
-[kubelet]
-name=kubelet
-baseurl=http://files.rm-rf.ca/rpms/kubelet/
-enabled=1
-gpgcheck=0
-EOF
 ```
 
 > 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)中rpm的部分. 
@@ -76,7 +73,7 @@ EOF
 
 ```shell
 sudo yum makecache
-sudo yum install -y docker-engine git socat ebtables kubelet kubeadm kubectl kubernetes-cni 
+sudo yum install -y docker-engine git socat ebtables  
 ```
 
 - - - - -- 
@@ -92,14 +89,44 @@ sudo systemctl restart docker
 
 - - - - -- 
 
+### 外部etcd集群安装 
+
+[这里](https://github.com/coreos/etcd/releases) 下一个新版release. 
+
+1. 复制`etcd`与`etcdctl`到`/usr/local/bin`
+2. 在个节点上分别执行下方初始化命令
+3. 数据存储就是在文件夹内`cluset.name`中
+
+```shell
+etcd --name dev.node1 --initial-advertise-peer-urls http://192.168.6.51:2380 \
+  --listen-peer-urls http://192.168.6.51:2380 \
+  --listen-client-urls http://192.168.6.51:2379,http://127.0.0.1:2379 \
+  --advertise-client-urls http://192.168.6.51:2379 \
+  --initial-cluster-token my-etcd-cluster \
+  --initial-cluster dev.node1=http://192.168.6.51:2380,dev.node2=http://192.168.6.52:2380,dev.node3=http://192.168.6.53:2380 \
+  --initial-cluster-state new &
+```
+
+这里是示例作用,目前kubeadm有bug,不支持master节点上运行etcd 
+
+会无法通过端口检查.可以采取将etcd集群放在master之外. 
+
+> 推荐etcd是3,5,7个节点,日后加入节点可以翻阅官方文档就是了. 
+
+> 另外后续添加外部etcd endpoints的部分一般都是逗号分隔. 
+
+- - - - -- 
+
 ### 镜像下载 
 
 > 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)私服部分 
 
-批量执行一下
+版本来自上文. 
+
+#### 基础镜像 
 
 ```shell
-images=(kube-proxy-amd64:v1.4.5 kube-scheduler-amd64:v1.4.5 kube-controller-manager-amd64:v1.4.5 kube-apiserver-amd64:v1.4.5 kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.4.1 heapster_grafana:v3.1.1)
+images=(kube-proxy-amd64:v1.4.6 kube-scheduler-amd64:v1.4.6 kube-controller-manager-amd64:v1.4.6 kube-apiserver-amd64:v1.4.6)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
@@ -107,10 +134,22 @@ for imageName in ${images[@]} ; do
 done
 ``` 
 
-另行准备其他镜像: 
+#### 扩展部分 
 
 ```shell
-images=(weaveworks/weave-kube:1.8.1 weaveworks/weave-npc:1.8.1 kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6)
+images=(kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.5.0 heapster_grafana:v3.1.1)
+for imageName in ${images[@]} ; do
+  docker pull registry.yourcompany.com/$imageName
+  docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
+  docker rmi registry.yourcompany.com/$imageName
+done
+```
+
+
+#### heapster与calico 
+
+```shell
+images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName $imageName
@@ -118,8 +157,15 @@ for imageName in ${images[@]} ; do
 done
 ``` 
 
+#### 奇怪的遗漏部分 
 
-### k8s安装 - 基本 
+```shell
+docker pull registry.yourcompany.com/calico/node:v0.23.0
+docker tag registry.yourcompany.com/calico/node:v0.23.0 quay.io/calico/node:v0.23.0
+docker rmi registry.yourcompany.com/calico/node:v0.23.0
+``` 
+
+### kubeadm  
 
 执行teardown,目的是清理/etc/kubernetes文件夹内容等等.. 
 
@@ -136,7 +182,7 @@ find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xar
 rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
 ``` 
 
-> 坑爹的是它会停止所有目前正在运行的容器. 
+> 它会停止所有目前正在运行的容器. 
 
 启动kubelet 
 
@@ -147,9 +193,11 @@ systemctl start kubelet
 
 kubeadm在master节点操作 
 
-`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.6`
+`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.6 --external-etcd-endpoints http://192.168.6.51:2380,http://192.168.6.52:2380,http://192.168.6.53:2380`
 
 > 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
+
+> 更多的kubeadm文档可以看[这里](http://kubernetes.io/docs/admin/kubeadm/) 
 
 产生的这条数据kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51
 
@@ -158,43 +206,32 @@ kubeadm在minion节点操作
 `kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51`
 
 
-### k8s安装 - 创建网络 
+### Calico  
 
-本地下载再上传到master,观察内部weave-kube镜像版本 
+[这里](http://blog.dataman-inc.com/shurenyun-docker-133/)有各种网络框架的对比,就是传说中CNM与CNI之争.. 
 
-`wget https://git.io/weave-kube -O weave-kube.yaml`
+我们直接选择性能比较好的Calico,接入文档在[这里](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/). 
 
-master节点操作
+我们使用[calico.yaml](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/calico.yaml)这个文件. 
 
-```
-docker pull weaveworks/weave-kube:1.8.0
-kubectl create -f weave-kube.yaml
-```
+其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
 
-等待一会儿后查看网络状态,直至所有kube-system相关组件都就绪
+依然是修改`etcd_endpoints:http://192.168.6.51:2380,http://192.168.6.52:2380,http://192.168.6.53:2380`
 
-`kubectl get po --all-namespaces`
-
-![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2018.52.28.png) 
-
-> 上面这张图我特意没放压缩,列位可以new tab打开来看大图 
+而后在 kubeadm init 之后`kubectl create -f`. 
 
 ### k8s安装 - 配置dashboard
 
-依然是本地下载
+yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml) 
 
-`wget https://rawgit.com/kubernetes/dashboard/master/src/deploy/kubernetes-dashboard.yaml -O kubernetes-dashboard.yaml`
+也可以wget下载[这个](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml)
 
-修改里面内容将镜像版本改为v1.4.2 并且将拉取策略改为`IfNotPresent`或者`Never`. 
+将拉取策略改为`IfNotPresent`或者`Never`. 
 
 > 修改为你能下到的版本,另外这个拉取策略,如果你看过我的[基于Gitlab与Docker的CI](http://www.slahser.com/2016/09/07/基于Gitlab与Docker的CI/)的话一定明白...  
 
-而后上传到主节点
-
 ```shell 
 kubectl create -f kubernetes-dashboard.yaml
-# 可以看到dashboard已经在运行了
-kubectl get po --all-namespaces
 # 查看dashboard外网访问端口NodePort,30000–32767
 kubectl describe svc kubernetes-dashboard --namespace=kube-system
 ``` 
