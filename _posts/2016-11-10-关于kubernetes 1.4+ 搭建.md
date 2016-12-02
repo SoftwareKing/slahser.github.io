@@ -74,6 +74,8 @@ EOF
 ```shell
 sudo yum makecache
 sudo yum install -y docker-engine git socat ebtables  
+# 源于镜像中下载好的rpm,不清理直接升级安装也行实际..  
+rpm -ivh *.rpm
 ```
 
 - - - - -- 
@@ -114,6 +116,12 @@ etcd --name dev.node1 --initial-advertise-peer-urls http://192.168.6.51:2380 \
 > 推荐etcd是3,5,7个节点,日后加入节点可以翻阅官方文档就是了. 
 
 > 另外后续添加外部etcd endpoints的部分一般都是逗号分隔. 
+
+实际用下来etcd3系列的集群还不如docker中单点稳定... 
+
+想使用外部集群可以yum安装旧版本并且编辑/etc/etcd/etcd.conf文件来生成集群 
+
+或者舍弃这一步先使用master上单点etcd进行元数据存储. 
 
 - - - - -- 
 
@@ -193,32 +201,27 @@ systemctl start kubelet
 
 kubeadm在master节点操作 
 
-`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.6 --external-etcd-endpoints http://192.168.6.51:2380,http://192.168.6.52:2380,http://192.168.6.53:2380`
+`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.6 --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints http://192.168.6.51:2380,http://192.168.6.52:2380,http://192.168.6.53:2380`
 
 > 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
 
 > 更多的kubeadm文档可以看[这里](http://kubernetes.io/docs/admin/kubeadm/) 
 
-产生的这条数据kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51
-
-kubeadm在minion节点操作
+在执行完下一步网络创建之后,再kubeadm在minion节点操作
 
 `kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51`
 
-
-### Calico  
+### Flannel   
 
 [这里](http://blog.dataman-inc.com/shurenyun-docker-133/)有各种网络框架的对比,就是传说中CNM与CNI之争.. 
 
-我们直接选择性能比较好的Calico,接入文档在[这里](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/). 
+我们直接选择比较方便的Flannel,接入文档在[这里](https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml). 
 
-我们使用[calico.yaml](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/calico.yaml)这个文件. 
+也可以直接下载[kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)这个文件. 
 
 其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
 
-依然是修改`etcd_endpoints:http://192.168.6.51:2380,http://192.168.6.52:2380,http://192.168.6.53:2380`
-
-而后在 kubeadm init 之后`kubectl create -f`. 
+在 kubeadm init 之后`kubectl create -f`. 
 
 ### k8s安装 - 配置dashboard
 
