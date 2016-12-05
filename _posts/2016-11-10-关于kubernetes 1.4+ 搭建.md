@@ -89,6 +89,8 @@ curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://[你的t
 sudo systemctl restart docker
 ```
 
+> 这步Optional 
+
 - - - - -- 
 
 ### 外部etcd集群安装 
@@ -113,15 +115,9 @@ etcd --name dev.node1 --initial-advertise-peer-urls http://192.168.6.51:2380 \
 
 会无法通过端口检查.可以采取将etcd集群放在master之外. 
 
-> 推荐etcd是3,5,7个节点,日后加入节点可以翻阅官方文档就是了. 
+> 这步可选,初期不建议折腾. 
 
-> 另外后续添加外部etcd endpoints的部分一般都是逗号分隔. 
-
-实际用下来etcd3系列的集群还不如docker中单点稳定... 
-
-想使用外部集群可以yum安装旧版本并且编辑/etc/etcd/etcd.conf文件来生成集群 
-
-或者舍弃这一步先使用master上单点etcd进行元数据存储. 
+> 另外仔细阅读文档会发现参数都是逗号分隔的. 
 
 - - - - -- 
 
@@ -134,7 +130,7 @@ etcd --name dev.node1 --initial-advertise-peer-urls http://192.168.6.51:2380 \
 #### 基础镜像 
 
 ```shell
-images=(kube-proxy-amd64:v1.4.6 kube-scheduler-amd64:v1.4.6 kube-controller-manager-amd64:v1.4.6 kube-apiserver-amd64:v1.4.6)
+images=(kube-proxy-amd64:v1.5.0-beta.2 kube-scheduler-amd64:v1.5.0-beta.2 kube-controller-manager-amd64:v1.5.0-beta.2 kube-apiserver-amd64:v1.5.0-beta.2)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
@@ -145,7 +141,7 @@ done
 #### 扩展部分 
 
 ```shell
-images=(kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.5.0 heapster_grafana:v3.1.1)
+images=(kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.5.0 heapster_grafana:v3.1.1 etcd:2.2.1)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
@@ -157,7 +153,7 @@ done
 #### heapster与calico 
 
 ```shell
-images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3)
+images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3 calico/ctl:v0.23.0)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName $imageName
@@ -165,7 +161,7 @@ for imageName in ${images[@]} ; do
 done
 ``` 
 
-#### 奇怪的遗漏部分 
+#### 遗漏部分 
 
 ```shell
 docker pull registry.yourcompany.com/calico/node:v0.23.0
@@ -201,23 +197,30 @@ systemctl start kubelet
 
 kubeadm在master节点操作 
 
-`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.4.6 --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints http://192.168.6.51:2380,http://192.168.6.52:2380,http://192.168.6.53:2380`
+`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.5.0-beta.2 --external-etcd-endpoints xxx,xxx`
 
 > 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
 
 > 更多的kubeadm文档可以看[这里](http://kubernetes.io/docs/admin/kubeadm/) 
 
-在执行完下一步网络创建之后,再kubeadm在minion节点操作
+`在执行完下一步网络创建之后`,再用kubeadm在minion节点操作
 
-`kubeadm join --token=6cd5f8.2ca419916fb17bb3 192.168.6.51`
+`kubeadm join --token=xxx 192.168.6.51`
 
-### Flannel   
+### Calico    
 
 [这里](http://blog.dataman-inc.com/shurenyun-docker-133/)有各种网络框架的对比,就是传说中CNM与CNI之争.. 
 
-我们直接选择比较方便的Flannel,接入文档在[这里](https://github.com/coreos/flannel/blob/master/Documentation/kube-flannel.yml). 
+我们直接选择比较强势的Calico,优点的话是
 
-也可以直接下载[kube-flannel.yml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)这个文件. 
+- 比较好做网络策略,进行隔离
+- 性能好,测试下来比Weave吊好几百倍 
+
+但是我又不是做Caas...再说吧. 
+
+的确是因为Weave我压测下来数字太难看了才切换到Calico的.  
+
+来自[Calico文档](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/)的[这个文件](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml). 
 
 其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
 
@@ -229,7 +232,7 @@ yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/
 
 也可以wget下载[这个](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml)
 
-将拉取策略改为`IfNotPresent`或者`Never`. 
+将拉取策略改为`IfNotPresent`. 
 
 > 修改为你能下到的版本,另外这个拉取策略,如果你看过我的[基于Gitlab与Docker的CI](http://www.slahser.com/2016/09/07/基于Gitlab与Docker的CI/)的话一定明白...  
 
@@ -241,7 +244,7 @@ kubectl describe svc kubernetes-dashboard --namespace=kube-system
 
 > 这步注意的是创建了一个deploy一个svc,想彻底删除dashboard的话需要清理干净.  
 
-> `kubectl delete deploy,svc,rc,pod -l app=kubernetes-dashboard --namespace=kube-system`
+> `kubectl delete deploy,svc,rc,po -l app=kubernetes-dashboard --namespace=kube-system`
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2019.04.35.png?imageView2/2/h/400) 
 
