@@ -43,4 +43,4 @@ defaults:
       layout:       "post"
 
 gems:
-  - jekyll-seo-tag
+  # - jekyll-seo-tag
