@@ -1,14 +1,12 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2012.26.11.png?imageView2/2/h/200) 
 
-这篇文章基本上算是部分转载,内容来自[这里](https://mritd.me/)和[这里](http://hustcat.github.io) 
+这篇文章部分转载,内容来自[这里](https://mritd.me/)和[这里](http://hustcat.github.io) 
 
-中间穿插了私服与问题解决等相关内容. 
+中间穿插了其他相关内容若干. 
 
 > 最近明显感觉到k8sonarm的作者不太上心..不过也促成了kubernetes本身在HypriotOS上的表现更好了. 
 
-> 我当然也会在树莓派上复刻这一套. 
-
-那么first,我有这样的三台机器: 
+那么首先,我有这样的三台机器: 
 
 | 内网ip |  hostname | 
 | :-----: |:--------:| 
@@ -20,7 +18,7 @@
 
 - - - - -- 
 
-### 修改host相关 
+## 修改host相关 
 
 ```shell
 # 修改hostname
@@ -35,7 +33,7 @@ echo "192.168.6.xx registry.yourcompany.com" >> /etc/hosts
 
 - - - - -- 
 
-### 安全相关 
+## 安全相关 
 
 ```shell 
 # 关闭防火墙
@@ -47,7 +45,7 @@ setenforce 0
 
 - - - - -- 
 
-### 系统组件准备 
+## 系统组件准备 
 
 ```shell
 # 切换yum源
@@ -67,35 +65,21 @@ EOF
 
 > 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)中rpm的部分. 
 
-- - - - -- 
-
-### 安装一些有的没的 
-
 ```shell
 sudo yum makecache
 sudo yum install -y docker-engine git socat ebtables  
 # 源于镜像中下载好的rpm,不清理直接升级安装也行实际..  
 rpm -ivh *.rpm
+
+systemctl enable docker.service
+systemctl start docker
 ```
 
 - - - - -- 
 
-### 切换docker mirror 
+## 清理旧环境 
 
-```shell
-sudo systemctl enable docker.service
-sudo systemctl start docker
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://[你的token].m.daocloud.io
-sudo systemctl restart docker
-```
-
-> 这步Optional 
-
-- - - - -- 
-
-### 清理旧环境 
-
-#### 执行teardown 
+### 执行teardown 
 
 `kubectl reset`或者 
 
@@ -106,7 +90,7 @@ find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xar
 rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
 ```
 
-#### remove旧yum  
+### remove旧yum  
 
 ```
 yum remove kubelet kubeadm kubectl kubernetes-cni
@@ -115,7 +99,7 @@ rpm -qa | grep kube
 rpm -e --nodeps [component]
 ```
 
-#### 清理cni配置残余 
+### 清理cni配置残余 
 
 这步很多人忘掉,导致切换网络方案时候一直cni错误. 
 
@@ -127,7 +111,7 @@ rpm -e --nodeps [component]
 
 在`kubeadm init`与`kubeadm join`前我们手动清空掉`/etc/cni/net.d`,所有节点上的残余. 
 
-#### 清理网卡 
+### 清理网卡 
 
 ```
 ip link delete cni0 
@@ -137,7 +121,7 @@ ip link delete virbr0
 
 类似的该删除就删除. 
 
-#### 清理iptables 
+### 清理iptables 
 
 ```
 iptables -L -n
@@ -153,7 +137,7 @@ iptables -t nat -Z
 
 - - - - -- 
 
-### 外部etcd集群安装 
+## 外部etcd集群安装 
 
 [这里](https://github.com/coreos/etcd/releases) 下一个新版release. 
 
@@ -175,19 +159,17 @@ etcd --name dev.node1 --initial-advertise-peer-urls http://192.168.6.51:2380 \
 
 会无法通过端口检查.可以采取将etcd集群放在master之外. 
 
-> 这步可选,初期不建议折腾. 
-
-> 另外仔细阅读文档会发现参数都是逗号分隔的. 
+> 这步Optional. 
 
 - - - - -- 
 
-### 镜像下载 
+## 镜像下载 
 
 > 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)私服部分 
 
 版本来自上文. 
 
-#### 基础镜像 
+### 基础镜像 
 
 ```shell
 images=(kube-proxy-amd64:v1.5.0-beta.2 kube-scheduler-amd64:v1.5.0-beta.2 kube-controller-manager-amd64:v1.5.0-beta.2 kube-apiserver-amd64:v1.5.0-beta.2)
@@ -198,7 +180,7 @@ for imageName in ${images[@]} ; do
 done
 ``` 
 
-#### 扩展部分 
+### 扩展部分 
 
 ```shell
 images=(kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.5.0 heapster_grafana:v3.1.1 etcd:2.2.1)
@@ -209,7 +191,7 @@ for imageName in ${images[@]} ; do
 done
 ```
 
-#### heapster与calico 
+### heapster与calico 
 
 ```shell
 images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3 calico/ctl:v0.23.0)
@@ -220,7 +202,7 @@ for imageName in ${images[@]} ; do
 done
 ``` 
 
-#### 遗漏部分 
+### 遗漏部分 
 
 ```shell
 docker pull registry.yourcompany.com/calico/node:v0.23.0
@@ -230,7 +212,7 @@ docker rmi registry.yourcompany.com/calico/node:v0.23.0
 
 - - - - -- 
 
-### kubeadm  
+## kubeadm  
 
 执行teardown,目的是清理/etc/kubernetes文件夹内容等等.. 
 
@@ -270,7 +252,9 @@ kubeadm在master节点操作
 
 - - - - -- 
 
-### 网络创建 - Calico    
+## 网络创建 
+
+### Calico    
 
 [这里](http://blog.dataman-inc.com/shurenyun-docker-133/)有各种网络框架的对比,就是传说中CNM与CNI之争.. 
 
@@ -291,7 +275,7 @@ kubeadm在master节点操作
 
 - - - - -- 
 
-### 网络创建 - Flannel 
+### Flannel 
 
 那么[Flannel的yaml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
 
@@ -300,11 +284,9 @@ kubeadm在master节点操作
 执行完这一步ifconfig能看到网卡cni0
 如果依然是vxlan的话会看到另一张flannel.1的网卡创建
 
-
-
 - - - - -- 
 
-### k8s安装 - 配置dashboard
+## dashboard
 
 yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml) 
 
