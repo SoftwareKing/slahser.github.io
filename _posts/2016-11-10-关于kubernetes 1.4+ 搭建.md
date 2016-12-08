@@ -22,8 +22,7 @@
 
 ```shell
 # 修改hostname
-echo "dev.node1" > /etc/hostname
-sysctl kernel.hostname=dev.node1
+hostnamectl set-hostname dev.node1
 # 同步hosts
 echo "192.168.6.51 dev.node1" >> /etc/hosts
 echo "192.168.6.52 dev.node2" >> /etc/hosts
@@ -116,7 +115,6 @@ rpm -e --nodeps [component]
 ```
 ip link delete cni0 
 ip link delete flannel.1
-ip link delete virbr0 
 ```
 
 类似的该删除就删除. 

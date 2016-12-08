@@ -87,6 +87,14 @@ ps:
 
 ## 越来越大的占用 
 
+更新: 
+
+```
+docker run --rm --privileged --pid=host justincormack/debian nsenter -t 1 -m -n fstrim /var
+```
+
+之前的版本: 
+
 在[这里](https://github.com/docker/for-mac/issues/371)就能看到这个issue. 
 
 的确是bug. 
