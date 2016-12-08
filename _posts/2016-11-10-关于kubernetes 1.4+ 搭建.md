@@ -1,10 +1,6 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2012.26.11.png?imageView2/2/h/200) 
 
-这篇文章部分转载,内容来自[这里](https://mritd.me/)和[这里](http://hustcat.github.io) 
-
-中间穿插了其他相关内容若干. 
-
-> 最近明显感觉到k8sonarm的作者不太上心..不过也促成了kubernetes本身在HypriotOS上的表现更好了. 
+> 最近明显感觉到k8s-on-arm的作者不太上心..不过也促成了kubernetes本身在HypriotOS上的表现更好了. 
 
 那么首先,我有这样的三台机器: 
 
@@ -189,10 +185,10 @@ for imageName in ${images[@]} ; do
 done
 ```
 
-### heapster与calico 
+### add-on  
 
 ```shell
-images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3 calico/ctl:v0.23.0)
+images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3 calico/ctl:v0.23.0 weaveworks/weave-npc:1.8.1 weaveworks/weave-kube:1.8.1)
 for imageName in ${images[@]} ; do
   docker pull registry.yourcompany.com/$imageName
   docker tag registry.yourcompany.com/$imageName $imageName
@@ -203,9 +199,12 @@ done
 ### 遗漏部分 
 
 ```shell
-docker pull registry.yourcompany.com/calico/node:v0.23.0
-docker tag registry.yourcompany.com/calico/node:v0.23.0 quay.io/calico/node:v0.23.0
-docker rmi registry.yourcompany.com/calico/node:v0.23.0
+images=(calico/node:v0.23.0 flannel-git:v0.6.1-28-g5dde68d-amd64)
+for imageName in ${images[@]} ; do
+  docker pull registry.gogen.com/$imageName
+  docker tag registry.gogen.com/$imageName quay.io/$imageName
+  docker rmi registry.gogen.com/$imageName
+done
 ``` 
 
 - - - - -- 
@@ -250,26 +249,32 @@ kubeadm在master节点操作
 
 - - - - -- 
 
-## 网络创建 
+## 网络创建
+
+网络方案对比可以参考[这里](https://seanzhau.com/blog/post/seanzhau/d35e8ffeafe4) 和[这里](http://blog.dataman-inc.com/shurenyun-docker-133/). 
+
+各种网络框架的对比,传说中CNM与CNI之争..  
+
+### Weave 
+
+虽然我压测下来Weave表现并不好,但是下面这两种高性能方案的DNS问题我暂时没有搞定.  
+
+所以暂时选型Weave,在其他方面找回一点性能,另外两种作为探索. 
+
+yml来自[这里](https://git.io/weave-kube),修改拉取策略. 
+
+而你的机器上会多出来无数的网卡,伴随着服务的增多. 
 
 ### Calico    
 
-[这里](http://blog.dataman-inc.com/shurenyun-docker-133/)有各种网络框架的对比,就是传说中CNM与CNI之争.. 
-
-我们直接选择比较强势的Calico,优点的话是
+优点: 
 
 - 比较好做网络策略,进行隔离
-- 性能好,测试下来比Weave吊好几百倍 
+- 性能好  
 
-但是我又不是做Caas...再说吧. 
-
-的确是因为Weave我压测下来数字太难看了才切换到Calico的.  
-
-来自[Calico文档](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/)的[这个文件](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml). 
+yml来自[Calico文档](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/)的[这个文件](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml). 
 
 其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
-
-在 kubeadm init 之后`kubectl create -f`. 
 
 - - - - -- 
 
@@ -277,7 +282,7 @@ kubeadm在master节点操作
 
 那么[Flannel的yaml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
 
-修改为host-gw
+Backend修改为host-gw
 
 执行完这一步ifconfig能看到网卡cni0
 如果依然是vxlan的话会看到另一张flannel.1的网卡创建
@@ -297,16 +302,24 @@ yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/
 ```shell 
 kubectl create -f kubernetes-dashboard.yaml
 # 查看dashboard外网访问端口NodePort,30000–32767
-kubectl describe svc kubernetes-dashboard --namespace=kube-system
+kubectl describe svc kubernetes-dashboard -n kube-system
 ``` 
 
 > 这步注意的是创建了一个deploy一个svc,想彻底删除dashboard的话需要清理干净.  
 
-> `kubectl delete deploy,svc,rc,po -l app=kubernetes-dashboard --namespace=kube-system`
+> `kubectl delete deploy,svc,rc,po -l app=kubernetes-dashboard -n kube-system`
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-10-Screen%20Shot%202016-11-10%20at%2019.04.35.png?imageView2/2/h/400) 
 
 啊,生命的大和谐... 
+
+## 参考 
+
+这篇文章参考了一些内容,来自: 
+
+- [1](http://hustcat.github.io)  
+- [2](https://seanzhau.com/blog/seanzhau)
+- [3](https://mritd.me/)
 
 done. 
 
