@@ -93,6 +93,43 @@ sudo systemctl restart docker
 
 - - - - -- 
 
+### 清理旧环境 
+
+#### 执行teardown 
+
+`kubectl reset`或者 
+
+```shell
+systemctl stop kubelet;
+docker rm -f -v $(docker ps -q);
+find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v;
+rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
+```
+
+#### remove旧yum  
+
+```
+yum remove kubelet kubeadm kubectl kubernetes-cni
+# 或者卸载之前手动安装的 
+rpm -qa | grep kube 
+rpm -e --nodeps [component]
+```
+
+#### 清理cni配置残余 
+
+这步很多人忘掉,导致切换网络方案时候一直cni错误. 
+
+来源依然是[这里](https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml) 
+
+其中`/etc/systemd/system/kubelet.service.d/10-kubeadm.conf` 
+
+我们看到kubelet的启动参数,`kubeadm reset`是不会清理cni配置的. 
+
+在`kubeadm init`与`kubeadm join`前我们手动清空掉`/etc/cni/net.d`,所有节点上的残余. 
+
+
+- - - - -- 
+
 ### 外部etcd集群安装 
 
 [这里](https://github.com/coreos/etcd/releases) 下一个新版release. 
