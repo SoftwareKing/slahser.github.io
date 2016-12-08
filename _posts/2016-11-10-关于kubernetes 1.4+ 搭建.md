@@ -149,7 +149,6 @@ for imageName in ${images[@]} ; do
 done
 ```
 
-
 #### heapster与calico 
 
 ```shell
@@ -168,6 +167,8 @@ docker pull registry.yourcompany.com/calico/node:v0.23.0
 docker tag registry.yourcompany.com/calico/node:v0.23.0 quay.io/calico/node:v0.23.0
 docker rmi registry.yourcompany.com/calico/node:v0.23.0
 ``` 
+
+- - - - -- 
 
 ### kubeadm  
 
@@ -197,7 +198,7 @@ systemctl start kubelet
 
 kubeadm在master节点操作 
 
-`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.5.0-beta.2 --external-etcd-endpoints xxx,xxx`
+`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.5.0-beta.2 --token=xxxxxx.xxxxxxxxxxxxxxxx --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints xxx,xxx`
 
 > 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
 
@@ -205,9 +206,11 @@ kubeadm在master节点操作
 
 `在执行完下一步网络创建之后`,再用kubeadm在minion节点操作
 
-`kubeadm join --token=xxx 192.168.6.51`
+`kubeadm join --token=xxxxxx.xxxxxxxxxxxxxxxx 192.168.6.51`
 
-### Calico    
+- - - - -- 
+
+### 网络创建 - Calico    
 
 [这里](http://blog.dataman-inc.com/shurenyun-docker-133/)有各种网络框架的对比,就是传说中CNM与CNI之争.. 
 
@@ -225,6 +228,21 @@ kubeadm在master节点操作
 其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
 
 在 kubeadm init 之后`kubectl create -f`. 
+
+- - - - -- 
+
+### 网络创建 - Flannel 
+
+那么[Flannel的yaml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
+
+修改为host-gw
+
+执行完这一步ifconfig能看到网卡cni0
+如果依然是vxlan的话会看到另一张flannel.1的网卡创建
+
+
+
+- - - - -- 
 
 ### k8s安装 - 配置dashboard
 
