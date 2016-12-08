@@ -127,6 +127,29 @@ rpm -e --nodeps [component]
 
 在`kubeadm init`与`kubeadm join`前我们手动清空掉`/etc/cni/net.d`,所有节点上的残余. 
 
+#### 清理网卡 
+
+```
+ip link delete cni0 
+ip link delete flannel.1
+ip link delete virbr0 
+```
+
+类似的该删除就删除. 
+
+#### 清理iptables 
+
+```
+iptables -L -n
+iptables -t nat -S 
+
+iptables -F
+iptables -X
+iptables -Z
+iptables -t nat -F
+iptables -t nat -X
+iptables -t nat -Z
+``` 
 
 - - - - -- 
 
