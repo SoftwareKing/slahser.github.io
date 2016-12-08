@@ -1,49 +1,13 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-kube7-logo.png?imageView2/2/h/200) 
 
-[上次](http://www.slahser.com/2016/11/10/关于kubernetes-1.4.6-搭建/)我们搭建了一套 k8s 环境. 
+那么对于资源的监控,比较流行的选型有两种: 
 
-本期内容: 
+- Heaspter+Influxdb+Grafana
+- Prometheus 
 
-- 技术名词实战版
-- heapster 资源可视化
+两者当然都要尝试一下才进行选型确定,那么本篇是前者的试验. 
 
-- - - - -- 
-
-## 技术名词 
-
-运行` kubectl get --help `可以看到一大串抽象与定义,如下: 
-
-我将初见可以理解的部分中文写在了后面 
-
-其他的比如磁盘挂载, nginx ingress 等到更多探索再写出. 
-
-
-* clusters (valid only for federation apiservers) - 集群
-* componentstatuses (aka 'cs') - 组件健康度 
-* configmaps (aka 'cm')
-* daemonsets (aka 'ds')
-* deployments (aka 'deploy') - 带有当前pod创建状态的rc,驱动rs进行pod创建管理,可以看到进度与版本
-* events (aka 'ev') 事件记录,也就是系统内的log
-* endpoints (aka 'ep') - ip:port 组成的端点
-* horizontalpodautoscalers (aka 'hpa') - pod的横向自动扩容,依据是cpu/qps等等
-* ingress (aka 'ing') - 将 NodePort 暴露的负载均衡口子
-* jobs
-* limitranges (aka 'limits')
-* nodes (aka 'no') - 实体机器
-* namespaces (aka 'ns') - 命名空间,用来隔离. 默认 default, 组件在 kube-system 中
-* petsets (alpha feature, may be unstable) - 有状态的pod,比如mysql,比如es. 有着固定的hostname,volume与启动顺序
-* pods (aka 'po') - 抽象
-* persistentvolumes (aka 'pv') - 独立于pod外的数据存储,可以外接glusterfs,ceph层网络存储
-* persistentvolumeclaims (aka 'pvc') - 用于pv资源的组件
-* quota
-* resourcequotas (aka 'quota')
-* replicasets (aka 'rs') - 支持集合label选择的rc,通常与deploy一起使用
-* replicationcontrollers (aka 'rc') - 期望情形的定义,定义pod的运行状态
-* secrets
-* serviceaccounts (aka 'sa')
-* services (aka 'svc') - pod 的聚合
-
-- - - - -- 
+> 看了下release note,Grafana4已经支持告警了. 
 
 ## Heapster  
 
@@ -148,6 +112,7 @@ grafana dashboard 配置纷繁复杂,我这一期肯定不会在这上面耽误�
 
 基本上简单的数据图/表应该也能顺藤摸瓜搞个出来. 
 
-- - - - -- 
+
+- - - - --- 
 
 done. 

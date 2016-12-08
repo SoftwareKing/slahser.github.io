@@ -67,7 +67,7 @@ sudo yum install -y docker-engine git socat ebtables
 rpm -ivh *.rpm
 
 systemctl enable docker.service
-systemctl start docker
+systemctl start docker.service
 ```
 
 - - - - -- 
@@ -320,6 +320,7 @@ kubectl describe svc kubernetes-dashboard -n kube-system
 - [1](http://hustcat.github.io)  
 - [2](https://seanzhau.com/blog/seanzhau)
 - [3](https://mritd.me/)
+- [4](http://www.cnblogs.com/openxxs/)
 
 done. 
 
