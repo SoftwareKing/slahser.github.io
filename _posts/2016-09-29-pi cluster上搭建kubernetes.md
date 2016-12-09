@@ -147,9 +147,7 @@ docker pull index.alauda.cn/googlecontainer/etcd-arm:2.2.5
 
 ## 搭建私服 
 
-详见[这里](http://www.slahser.com/2016/09/29/pi-cluster上配套简易Registry/) 
-
-- - - - -- 
+详见[这里](https://www.slahser.com/2016/09/29/pi-cluster上配套简易Registry/) 
 
 - - - - -- 
 
@@ -159,4 +157,9 @@ docker pull index.alauda.cn/googlecontainer/etcd-arm:2.2.5
 vim /etc/resolv.conf
 nameserver 119.29.29.29
 ``` 
+
+- - - - --- 
+
+后续可以看[这里](https://www.slahser.com/2016/11/10/关于kubernetes-1.4+-搭建/). 
+
 

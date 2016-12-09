@@ -1,6 +1,6 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2015.00.30.png?imageView2/2/h/200)
 
-很久很久以前我们写了[为树莓派加上web terminal](http://www.slahser.com/2016/03/23/为树莓派加上web-terminal/) 
+很久很久以前我们写了[为树莓派加上web terminal](https://www.slahser.com/2016/03/23/为树莓派加上web-terminal/) 
 
 这个[teleport项目](https://github.com/gravitational/teleport)提供了新的SSH管理思路.
 

@@ -1,6 +1,6 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-30-Screen%20Shot%202016-09-30%20at%2015.01.59.png?imageView2/2/h/200) 
 
-书接[上文](http://www.slahser.com/2016/09/29/pi-cluster上搭建kubernetes/),我们遇到了GFW无法下载gcr.io的镜像,而后遇到了国内容器云的事儿. 
+书接[上文](https://www.slahser.com/2016/09/29/pi-cluster上搭建kubernetes/),我们遇到了GFW无法下载gcr.io的镜像,而后遇到了国内容器云的事儿. 
 
 解决问题: 
 
