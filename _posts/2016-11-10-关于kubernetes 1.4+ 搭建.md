@@ -14,28 +14,13 @@
 
 - - - - -- 
 
-## 修改host相关 
-
-```shell
-# 修改hostname
-hostnamectl set-hostname dev.node1
-# 同步hosts
-echo "192.168.6.51 dev.node1" >> /etc/hosts
-echo "192.168.6.52 dev.node2" >> /etc/hosts
-echo "192.168.6.53 dev.node3" >> /etc/hosts
-echo "192.168.6.xx registry.yourcompany.com" >> /etc/hosts
-```
-
-- - - - -- 
-
-## 安全相关 
+## 检查系统信息 
 
 ```shell 
-# 关闭防火墙
-sudo systemctl stop firewalld.service
-sudo systemctl disable firewalld.service
-# 关闭selinux
-setenforce 0
+# 7.2
+cat /etc/system-release
+# 3.10
+uname -r
 ```
 
 - - - - -- 
@@ -62,7 +47,9 @@ EOF
 
 ```shell
 sudo yum makecache
-sudo yum install -y docker-engine git socat ebtables  
+sudo yum update -y
+sudo yum install -y epel-release
+sudo yum install -y docker-engine git socat ebtables vim sshpass lrzsz wget telnet bind-utils htop iotop iftop iptraf tofrodos lsof iperf traceroute git policycoreutils-python bash-completion net-tools iptables-services bridge-utils 
 # 源于镜像中下载好的rpm,不清理直接升级安装也行实际..  
 rpm -ivh *.rpm
 
@@ -72,11 +59,48 @@ systemctl start docker.service
 
 - - - - -- 
 
+## 修改host相关 
+
+```shell
+# 修改hostname
+hostnamectl set-hostname dev.node1
+# 同步hosts
+echo "192.168.6.51 dev.node1" >> /etc/hosts
+echo "192.168.6.52 dev.node2" >> /etc/hosts
+echo "192.168.6.53 dev.node3" >> /etc/hosts
+echo "192.168.6.xx registry.yourcompany.com" >> /etc/hosts
+``` 
+
+- - - - -- 
+
+## 安全相关 
+
+```shell 
+# 关闭防火墙
+sudo systemctl stop firewalld.service
+sudo systemctl disable firewalld.service
+# 关闭selinux
+setenforce 0
+``` 
+
+- - - - -- 
+
+## 私服搭建 
+
+参考[pi-cluster上配套Registry](http://www.slahser.com/2016/09/29/pi-cluster上配套Registry/)来搭建一个. 
+
+1. 那么我们保存证书 /cert/registry.yourcompany.com.crt 出来. 
+2. 分发到所有k8s节点上`/etc/docker/certs.d/registry.yourcompany.com/`中. 
+3. 同时所有节点同步hosts `echo 'xx.xx.xx.xx registry.yourcompany.com' >> /etc/hosts`
+4. 测试 `curl -k https://registry.yourcompany.com/v2/`
+
+- - - - -- 
+
 ## 清理旧环境 
 
 ### 执行teardown 
 
-`kubectl reset`或者 
+`kubeadm reset`或者 
 
 ```shell
 systemctl stop kubelet;
@@ -275,6 +299,14 @@ yml来自[这里](https://git.io/weave-kube),修改拉取策略.
 yml来自[Calico文档](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/)的[这个文件](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml). 
 
 其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
+
+经过这个同学的[issue](https://github.com/Slahser/slahser.github.io/issues/1)提醒,我发现可能有以下几种解决方案: 
+
+- Calico降级至1.5
+- 完成文档中最后的Configure Kubernetes部分
+- 安装在Host上,启用Kubeadm
+
+总之不会为难死...先看一下Weave在实体机上的压测结果. 
 
 - - - - -- 
 
