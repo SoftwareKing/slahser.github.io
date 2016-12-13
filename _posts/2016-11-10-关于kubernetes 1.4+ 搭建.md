@@ -118,6 +118,12 @@ rpm -qa | grep kube
 rpm -e --nodeps [component]
 ```
 
+### 清理容器文件 
+
+```
+/var/lib/docker/containers 
+``` 
+
 ### 清理cni配置残余 
 
 这步很多人忘掉,导致切换网络方案时候一直cni错误. 
