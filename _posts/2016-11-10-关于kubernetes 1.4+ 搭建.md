@@ -128,6 +128,8 @@ rpm -e --nodeps [component]
 
 这步很多人忘掉,导致切换网络方案时候一直cni错误. 
 
+> 更新: 可以看到[这里](https://github.com/kubernetes/kubeadm/blob/master/CHANGELOG.md),有计划更新kubeadm reset的表现,将cni清理加入进来了. 
+
 来源依然是[这里](https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml) 
 
 其中`/etc/systemd/system/kubelet.service.d/10-kubeadm.conf` 
@@ -141,6 +143,8 @@ rpm -e --nodeps [component]
 ```
 ip link delete cni0 
 ip link delete flannel.1
+ip link delete weave
+...
 ```
 
 类似的该删除就删除. 
