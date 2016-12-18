@@ -2,6 +2,24 @@
 
 > 最近明显感觉到k8s-on-arm的作者不太上心..不过也促成了kubernetes本身在HypriotOS上的表现更好了. 
 
+折腾一个月来感触颇多,总之多看源码多翻issue吧,方案也进入了试运行的阶段,不再追新. 
+
+以下是k8s生态的一些快捷链接 
+
+我隔几天就要翻,姑且拿来备忘: 
+
+- [Kubernetes-Github](https://github.com/kubernetes)
+- [k8s-release](https://github.com/kubernetes/release) - 手动编译
+- [kubeadm changelog](https://github.com/kubernetes/kubeadm/blob/master/CHANGELOG.md)
+- [Google rpm repo](https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml)
+- [gcr.io registry](https://console.cloud.google.com/kubernetes/images/list?location=GLOBAL&project=google-containers)
+- [Heapster yaml](https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb)
+
+
+- - - - -- 
+
+## 硬件环境 
+
 那么首先,我有这样的三台机器: 
 
 | 内网ip |  hostname | 
@@ -9,8 +27,6 @@
 | 192.168.6.51 | dev.node1 | 
 | 192.168.6.52 | dev.node2 | 
 | 192.168.6.53 | dev.node3 | 
-
-配置条件: 暂时联网而后断网. 
 
 - - - - -- 
 
@@ -70,6 +86,19 @@ echo "192.168.6.52 dev.node2" >> /etc/hosts
 echo "192.168.6.53 dev.node3" >> /etc/hosts
 echo "192.168.6.xx registry.yourcompany.com" >> /etc/hosts
 ``` 
+ 
+- - - - - 
+
+## 修改环境变量 
+
+因为1.5开始的kubeadm支持了设置环境变量,所以再也不用tag来tag去了. 
+
+感谢阿里云的[PR](https://github.com/kubernetes/kubernetes/pull/35948). 
+
+```shell
+echo "KUBE_REPO_PREFIX=registry.yourcompany.com" >> /etc/profile
+source /etc/profile 
+``` 
 
 - - - - -- 
 
@@ -100,14 +129,9 @@ setenforce 0
 
 ### 执行teardown 
 
-`kubeadm reset`或者 
+`kubeadm reset` 
 
-```shell
-systemctl stop kubelet;
-docker rm -f -v $(docker ps -q);
-find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v;
-rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
-```
+> 这步在安装完kubelet后执行一次
 
 ### remove旧yum  
 
@@ -129,14 +153,6 @@ rpm -e --nodeps [component]
 这步很多人忘掉,导致切换网络方案时候一直cni错误. 
 
 > 更新: 可以看到[这里](https://github.com/kubernetes/kubeadm/blob/master/CHANGELOG.md),有计划更新kubeadm reset的表现,将cni清理加入进来了. 
-
-来源依然是[这里](https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml) 
-
-其中`/etc/systemd/system/kubelet.service.d/10-kubeadm.conf` 
-
-我们看到kubelet的启动参数,`kubeadm reset`是不会清理cni配置的. 
-
-在`kubeadm init`与`kubeadm join`前我们手动清空掉`/etc/cni/net.d`,所有节点上的残余. 
 
 ### 清理网卡 
 
@@ -169,77 +185,61 @@ iptables -t nat -Z
 
 [这里](https://github.com/coreos/etcd/releases) 下一个新版release. 
 
-1. 复制`etcd`与`etcdctl`到`/usr/local/bin`
-2. 在个节点上分别执行下方初始化命令
-3. 数据存储就是在文件夹内`cluset.name`中
-
-```shell
-etcd --name dev.node1 --initial-advertise-peer-urls http://192.168.6.51:2380 \
-  --listen-peer-urls http://192.168.6.51:2380 \
-  --listen-client-urls http://192.168.6.51:2379,http://127.0.0.1:2379 \
-  --advertise-client-urls http://192.168.6.51:2379 \
-  --initial-cluster-token my-etcd-cluster \
-  --initial-cluster dev.node1=http://192.168.6.51:2380,dev.node2=http://192.168.6.52:2380,dev.node3=http://192.168.6.53:2380 \
-  --initial-cluster-state new &
-```
-
-这里是示例作用,目前kubeadm有bug,不支持master节点上运行etcd 
-
-会无法通过端口检查.可以采取将etcd集群放在master之外. 
-
-> 这步Optional. 
+> 这步Optional.我的docker内etcd还算稳定.  
 
 - - - - -- 
 
 ## 镜像下载 
 
-> 这部分有修改,请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)私服部分 
+> 版本请看[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)私服部分 
 
-版本来自上文. 
+因为1.5+的版本支持了自定义kubeadm仓库地址 
+
+所以以下的部分相比2016.12之前方便了大概几十倍.   
 
 ### 基础镜像 
 
-```shell
-images=(kube-proxy-amd64:v1.5.0-beta.2 kube-scheduler-amd64:v1.5.0-beta.2 kube-controller-manager-amd64:v1.5.0-beta.2 kube-apiserver-amd64:v1.5.0-beta.2)
-for imageName in ${images[@]} ; do
-  docker pull registry.yourcompany.com/$imageName
-  docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
-  docker rmi registry.yourcompany.com/$imageName
-done
-``` 
+
+- kube-proxy-amd64:v1.5.1 
+- kube-scheduler-amd64:v1.5.1 
+- kube-controller-manager-amd64:v1.5.1 
+- kube-apiserver-amd64:v1.5.1
+
+> 本部分设置环境变量 
 
 ### 扩展部分 
 
-```shell
-images=(kube-discovery-amd64:1.0 kubedns-amd64:1.7 etcd-amd64:2.2.5 kube-dnsmasq-amd64:1.3 exechealthz-amd64:1.1 pause-amd64:3.0 kubernetes-dashboard-amd64:v1.5.0 heapster_grafana:v3.1.1 etcd:2.2.1)
-for imageName in ${images[@]} ; do
-  docker pull registry.yourcompany.com/$imageName
-  docker tag registry.yourcompany.com/$imageName gcr.io/google_containers/$imageName
-  docker rmi registry.yourcompany.com/$imageName
-done
-```
+- kube-discovery-amd64:1.0 
+- kubedns-amd64:1.9 
+- etcd-amd64:3.0.14-kubeadm 
+- kube-dnsmasq-amd64:1.4 
+- exechealthz-amd64:1.2 
+- dnsmasq-metrics-amd64:1.0 
+- pause-amd64:3.0 
 
-### add-on  
+> 本部分设置环境变量 
 
-```shell
-images=(kubernetes/heapster:canary kubernetes/heapster_influxdb:v0.6 calico/kube-policy-controller:v0.4.0 calico/cni:v1.4.3 calico/ctl:v0.23.0 weaveworks/weave-npc:1.8.1 weaveworks/weave-kube:1.8.1)
-for imageName in ${images[@]} ; do
-  docker pull registry.yourcompany.com/$imageName
-  docker tag registry.yourcompany.com/$imageName $imageName
-  docker rmi registry.yourcompany.com/$imageName
-done
-``` 
+### 网络组件 
 
-### 遗漏部分 
+- etcd:2.2.1
+- calico/kube-policy-controller:v0.4.0
+- calico/cni:v1.4.3
+- calico/ctl:v0.23.0
+- calico/node:v0.23.0
+- weaveworks/weave-npc:1.8.2
+- weaveworks/weave-kube:1.8.2
+- flannel-git:v0.6.1-28-g5dde68d-amd64
 
-```shell
-images=(calico/node:v0.23.0 flannel-git:v0.6.1-28-g5dde68d-amd64)
-for imageName in ${images[@]} ; do
-  docker pull registry.gogen.com/$imageName
-  docker tag registry.gogen.com/$imageName quay.io/$imageName
-  docker rmi registry.gogen.com/$imageName
-done
-``` 
+> 本部分修改yaml文件 
+ 
+### 可视化组件 
+
+- kubernetes-dashboard-amd64:v1.5.0
+- heapster_grafana:v3.1.1 
+- kubernetes/heapster:canary
+- kubernetes/heapster_influxdb:v0.6
+
+> 本部分修改yaml文件 
 
 - - - - -- 
 
@@ -250,15 +250,6 @@ done
 ```shell
 kubeadm reset
 ```
-
-或者
-
-```shell
-systemctl stop kubelet;
-docker rm -f -v $(docker ps -q);
-find /var/lib/kubelet | xargs -n 1 findmnt -n -t tmpfs -o TARGET -T | uniq | xargs -r umount -v;
-rm -r -f /etc/kubernetes /var/lib/kubelet /var/lib/etcd;
-``` 
 
 > 它会停止所有目前正在运行的容器. 
 
@@ -271,7 +262,7 @@ systemctl start kubelet
 
 kubeadm在master节点操作 
 
-`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.5.0-beta.2 --token=xxxxxx.xxxxxxxxxxxxxxxx --pod-network-cidr 10.244.0.0/16 --external-etcd-endpoints xxx,xxx`
+`kubeadm init --api-advertise-addresses=192.168.6.51 --use-kubernetes-version v1.5.1 --token=xxxxxx.xxxxxxxxxxxxxxxx --external-etcd-endpoints xxx,xxx`
 
 > 这里要指定版本,否则那四个核心组件与永远是1.4.4..  
 
@@ -285,9 +276,18 @@ kubeadm在master节点操作
 
 ## 网络创建
 
-网络方案对比可以参考[这里](https://seanzhau.com/blog/post/seanzhau/d35e8ffeafe4) 和[这里](http://blog.dataman-inc.com/shurenyun-docker-133/). 
+网络方案对比可以参考[这里](https://seanzhau.com/blog/post/seanzhau/d35e8ffeafe4)和[这里](http://blog.dataman-inc.com/shurenyun-docker-133/),传说中CNM与CNI之争..  
 
-各种网络框架的对比,传说中CNM与CNI之争..  
+> 修改yaml的image地址添加私服地址. 
+
+### Calico  
+
+优点: 
+
+- 比较好做网络策略,进行隔离
+- 性能好  
+
+yml来自[Calico文档](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/)的[这个文件](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml). 
 
 ### Weave 
 
@@ -299,27 +299,6 @@ yml来自[这里](https://git.io/weave-kube),修改拉取策略.
 
 而你的机器上会多出来无数的网卡,伴随着服务的增多. 
 
-### Calico    
-
-优点: 
-
-- 比较好做网络策略,进行隔离
-- 性能好  
-
-yml来自[Calico文档](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/)的[这个文件](http://docs.projectcalico.org/v1.6/getting-started/kubernetes/installation/hosted/kubeadm/calico.yaml). 
-
-其中镜像我们可以看镜像篇,或者直接看这个yml内容进行准备. 
-
-经过这个同学的[issue](https://github.com/Slahser/slahser.github.io/issues/1)提醒,我发现可能有以下几种解决方案: 
-
-- Calico降级至1.5
-- 完成文档中最后的Configure Kubernetes部分
-- 安装在Host上,启用Kubeadm
-
-总之不会为难死...先看一下Weave在实体机上的压测结果. 
-
-- - - - -- 
-
 ### Flannel 
 
 那么[Flannel的yaml](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml)
@@ -329,15 +308,19 @@ Backend修改为host-gw
 执行完这一步ifconfig能看到网卡cni0
 如果依然是vxlan的话会看到另一张flannel.1的网卡创建
 
+### 配置后检查 
+
+检查`node<->pod<->pod<->node`的连通性. 
+
+`docker exec -it [cid] /bin/sh`来ping. 
+
 - - - - -- 
 
-## dashboard
+## Dashboard
 
-yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml) 
+yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml),也可以wget下载[这个](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml)
 
-也可以wget下载[这个](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml)
-
-将拉取策略改为`IfNotPresent`. 
+修改image地址添加私服. 
 
 > 修改为你能下到的版本,另外这个拉取策略,如果你看过我的[基于Gitlab与Docker的CI](http://www.slahser.com/2016/09/07/基于Gitlab与Docker的CI/)的话一定明白...  
 

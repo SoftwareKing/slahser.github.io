@@ -2,12 +2,12 @@
 
 那么对于资源的监控,比较流行的选型有两种: 
 
-- Heaspter+Influxdb+Grafana
+- Heaspter + Influxdb + Grafana
 - Prometheus 
 
 两者当然都要尝试一下才进行选型确定,那么本篇是前者的试验. 
 
-> 看了下release note,Grafana4已经支持告警了. 
+> 看了下release note,Grafana 4已经支持告警了. 
 
 ## Heapster  
 
@@ -16,11 +16,7 @@
 ```shell
 git clone https://github.com/kubernetes/heapster.git
 cd heapster
-# 不要偷懒只在 master 上提前 pull 镜像,因为 pod 可能被 scheduler 分配到其他 node 上. 
-docker pull gcr.io/google_containers/heapster_grafana:v3.1.1
-docker pull kubernetes/heapster:canary
-docker pull kubernetes/heapster_influxdb:v0.6
-# create 之前还是提前 pull 镜像&修改拉取策略吧
+# 修改yaml,添加registry
 kubectl create -f deploy/kube-config/influxdb/
 ``` 
 
