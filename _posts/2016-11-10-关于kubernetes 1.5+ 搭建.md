@@ -6,15 +6,16 @@
 
 以下是k8s生态的一些快捷链接 
 
-我隔几天就要翻,姑且拿来备忘: 
+我每隔几天就要翻,姑且拿来备忘: 
 
 - [Kubernetes-Github](https://github.com/kubernetes)
+- [组件文档](http://kubernetes.io/docs/user-guide/annotations/)
+- [配置教程](http://kubernetes.io/docs/user-guide/simple-nginx/)
 - [k8s-release](https://github.com/kubernetes/release) - 手动编译
 - [kubeadm changelog](https://github.com/kubernetes/kubeadm/blob/master/CHANGELOG.md)
 - [Google rpm repo](https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml)
 - [gcr.io registry](https://console.cloud.google.com/kubernetes/images/list?location=GLOBAL&project=google-containers)
-- [Heapster yaml](https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb)
-
+- [Heapster yaml](https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb) 
 
 - - - - -- 
 
@@ -133,7 +134,7 @@ setenforce 0
 
 > 这步在安装完kubelet后执行一次
 
-### remove旧yum  
+### 清理旧yum  
 
 ```
 yum remove kubelet kubeadm kubectl kubernetes-cni
@@ -152,7 +153,7 @@ rpm -e --nodeps [component]
 
 这步很多人忘掉,导致切换网络方案时候一直cni错误. 
 
-> 更新: 可以看到[这里](https://github.com/kubernetes/kubeadm/blob/master/CHANGELOG.md),有计划更新kubeadm reset的表现,将cni清理加入进来了. 
+> 更新: 可以看到[这里](https://github.com/kubernetes/kubeadm/blob/master/CHANGELOG.md),更新了kubeadm reset的表现,将cni清理加入进来了. 
 
 ### 清理网卡 
 
@@ -321,8 +322,6 @@ Backend修改为host-gw
 yaml内容源码在[这里](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml),也可以wget下载[这个](https://github.com/kubernetes/dashboard/blob/master/src/deploy/kubernetes-dashboard.yaml)
 
 修改image地址添加私服. 
-
-> 修改为你能下到的版本,另外这个拉取策略,如果你看过我的[基于Gitlab与Docker的CI](http://www.slahser.com/2016/09/07/基于Gitlab与Docker的CI/)的话一定明白...  
 
 ```shell 
 kubectl create -f kubernetes-dashboard.yaml
