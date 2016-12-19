@@ -61,11 +61,11 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>深入理解java7
 - <span style="color: green">[o]</span>深入java虚拟机
 - <span style="color: green">[o]</span>深入理解java虚拟机
-- <span style="color: red">[x]</span>node入门
+- <span style="color: green">[o]</span>node入门
 - <span style="color: green">[o]</span>nodejs开发指南
 - <span style="color: green">[o]</span>java编程思想
 - <span style="color: red">[x]</span>Spark机器学习
-- <span style="color: red">[x]</span>Python自动化运维：技术与最佳实践
+- <span style="color: gold">[~]</span>Python自动化运维：技术与最佳实践
 - <span style="color: green">[o]</span>java并发编程实践
 - <span style="color: red">[x]</span>mongodb实战
 - <span style="color: green">[o]</span>scala by example
@@ -101,3 +101,9 @@ permalink: /booklist/
 - <span style="color: gold">[~]</span>零成本实现Web性能测试
 - <span style="color: red">[x]</span>自己动手写java虚拟机
 - <span style="color: green">[o]</span>Kubernetes权威指南
+- <span style="color: green">[o]</span>有效的单元测试
+- <span style="color: red">[x]</span>DevOps实践
+- <span style="color: red">[x]</span>Java 8实战
+- <span style="color: red">[x]</span>Linux大棚命令百篇（上）
+- <span style="color: red">[x]</span>Linux大棚命令百篇（下）
+- <span style="color: gold">[~]</span>Go语言编程
