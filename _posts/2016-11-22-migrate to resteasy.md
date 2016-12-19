@@ -5,7 +5,7 @@
 - Jersey - Sun家的,Spring Cloud中默认的就是Jersey
 - Resteasy -JBoss家的,口碑极佳 
 
-压测下来Undertow+Resteasy的表现真是好的过分...内网调用如果要是rest方式,那么首选这两个. 
+压测下来Undertow + Resteasy的表现真是好的过分...内网调用如果要是rest方式,那么首选这两个. 
 
 同时也留了三个小口子可以供以后优化,毕竟优化要分批的来嘛. 
 
