@@ -89,7 +89,7 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>Android开发进阶 从小工到专家
 - <span style="color: gold">[~]</span>Activiti实战
 - <span style="color: red">[x]</span>机器学习
-- <span style="color: gold">[~]</span>大数据日知录
+- <span style="color: green">[o]</span>大数据日知录
 - <span style="color: red">[x]</span>Paas实现与运维管理
 - <span style="color: red">[x]</span>SaltStack运维实战
 - <span style="color: red">[x]</span>Zabbix监控系统
