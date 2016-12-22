@@ -6,7 +6,7 @@
 
 传统的mock server我们要写个war包放入容器中启动或者启动一个node server.每当发生改动还需要进行重启. 
 
-moco当初吸引我在github上点出star就是因为它的优点: 
+moco的优点: 
 
 - 可繁可简,简易形式启动仅需启动一个jar包与一个配置文件 
 - 热部署,修改配置文件无需重启应用,更新配置速度可观. 
@@ -17,7 +17,7 @@ moco当初吸引我在github上点出star就是因为它的优点:
 
 * OSX下可以 `brew install moco`
 * 或者下载[moco-runner-0.10.2-standalone.jar](https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar) 
-* 编写配置文件**.json置于某处(实例tt.json)  
+* 编写配置文件**.json置于某处(例tt.json)  
 
 文件中需要编写request/response对,具体配置项可以看[这里](https://github.com/dreamhead/moco/blob/master/moco-doc/apis.md) 
 
@@ -92,14 +92,15 @@ moco当初吸引我在github上点出star就是因为它的优点:
 ]  
 ``` 
 
-* 放置非必要资源文件于统计目录,供request/response内容过大设置文件content或者返回attachment/image内容时使用. 
+* 放置非必要资源文件于同一目录,供request/response内容过大设置文件content或者返回attachment/image内容时使用. 
 
  目录结构如图: 
+
  ![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-05%20at%2000.23.25.png?imageView2/2/h/200) 
 
 * 启动runner: 
 
-  `java -jar moco-runner-<version>-standalone.jar http -p [port-like-9999] -c [json-path-like-tt.json]`
+  `java -jar moco-runner-<version>-standalone.jar http -p [port] -c [json-path]`
 
  > 配置后台运行,在上条命令后加上 & 符号即可.
  > 想在后台运行时打印日志,在上条命令后加上 nohup 即可.

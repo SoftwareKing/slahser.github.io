@@ -3,7 +3,7 @@
 那么对于资源的监控,比较流行的选型有两种: 
 
 - Heaspter + Influxdb + Grafana
-- Prometheus 
+- Prometheus + Alarmmanager + Grafana
 
 两者当然都要尝试一下才进行选型确定,那么本篇是前者的试验. 
 
@@ -108,6 +108,7 @@ grafana dashboard 配置纷繁复杂,我这一期肯定不会在这上面耽误�
 
 基本上简单的数据图/表应该也能顺藤摸瓜搞个出来. 
 
+另外[这里](https://grafana.net/dashboards)有很多现成的图表,可供参考. 
 
 - - - - --- 
 
