@@ -54,7 +54,9 @@ docker-compose up -d
 
 ```shell
 sudo gitlab-rake gitlab:backup:create
-```
+``` 
+
+默认的备份目录在`/var/opt/gitlab/backups` 
 
 - - - - -- 
 
