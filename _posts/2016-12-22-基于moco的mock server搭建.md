@@ -10,7 +10,7 @@
 - [usage](https://github.com/dreamhead/moco/blob/master/moco-doc/usage.md)
 - [apis](https://github.com/dreamhead/moco/blob/master/moco-doc/apis.md) 
 
-> 2016-12 最近更新了Rest请求的模拟部分 
+> 年初写就,到年末更新了Rest请求的模拟部分 
 
 > 我最近也打算给moco套一个jsoneditor的壳子. 
 
@@ -20,9 +20,11 @@
 
 传统的mock server我们要写个war包放入容器中启动或者启动一个node server.每当发生改动还需要进行重启. 
 
+要么就是贪多嚼不烂,想着包揽反代,测试套件等内容. 
+
 moco的优点: 
 
-- 可繁可简,简易形式启动仅需启动一个jar包与一个配置文件 
+- 可繁可简,简易形式启动仅需启动一个jar包与一个json  
 - 热部署,修改配置文件无需重启应用,更新配置速度可观. 
 - 支持协议较为完整
 
@@ -34,7 +36,7 @@ moco的优点:
 
 * OSX下可以 `brew install moco`
 * 或者下载[moco-runner-0.11.0-standalone.jar](https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.11.0/moco-runner-0.11.0-standalone.jar) 
-* 编写配置文件**.json置于某处(例tt.json)  
+* 编写**.json置于某处(例tt.json)  
 
 文件中需要编写request/response对,具体配置项可以看[这里](https://github.com/dreamhead/moco/blob/master/moco-doc/apis.md) 
 
