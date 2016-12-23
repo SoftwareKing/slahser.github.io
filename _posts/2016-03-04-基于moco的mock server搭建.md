@@ -1,4 +1,4 @@
-![](https://o4dyfn0ef.qnssl.com/image/Screen%20Shot%202016-03-06%20at%2012.10.33.png?imageView2/2/h/200) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-12-23-DukeChoice-960x90-lm.png?imageView2/2/h/200) 
 
 [项目地址](https://github.com/dreamhead/moco)
 
