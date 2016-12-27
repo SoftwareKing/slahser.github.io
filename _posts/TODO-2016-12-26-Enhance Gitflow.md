@@ -7,7 +7,9 @@
 
 我们熟知的gitflow是下图这样的. 
 
-单位里的各位貌似是没有test就没有安全感的样子.所以姑且多了一条test分支. 
+单位里的各位貌似是没有test就没有安全感的样子. 
+
+所以姑且多了一条test分支.起到一部分gitflow模型里release的作用.  
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-12-26-Screen%20Shot%202016-12-26%20at%2016.00.45.png?imageView2/2/h/600) 
 
@@ -24,6 +26,46 @@
 所以在RD不习惯做功能开关的情况下,我们可以 
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-12-26-Screen%20Shot%202016-12-26%20at%2016.05.47.png?imageView2/2/h/600)  
+
+> 请忽略我写错的单词... 
+
+同时CI文件变成如下: 
+
+```
+image: maven:3.3.9-jdk-8
+before_script:
+  - mvn clean
+stages:
+  - install
+  - ut
+  - it
+install:
+  script:
+    - mvn install -Dmaven.test.skip=true
+  stage: install
+  only:
+    - develop
+    - master
+    - test
+ut:
+  script:
+    - mvn test
+  stage: ut
+  only:
+    - develop
+    - master
+    - test
+it:
+  script:
+    - mvn integration-test
+  stage: it
+  only:
+    - develop
+    - master
+    - test
+after_script:
+  - mvn clean
+```
 
 done. 
 
