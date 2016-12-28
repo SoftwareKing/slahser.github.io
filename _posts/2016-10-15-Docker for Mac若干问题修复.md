@@ -8,6 +8,7 @@ Docker for Mac一直小问题不断,直到今天实在有点block工作了,索�
 - 代理问题
 - Compose端口占用问题
 - 越来越大的占用
+- win上的证书问题 
 
 截止今天为止,Docker for Mac的
 
@@ -109,6 +110,21 @@ rm -rf ~/Library/Containers/com.docker.docker/Data/*
 ```
 
 - - - - -- 
+
+## win上的证书问题 
+
+同事在16.12.28问我windows上怎么搞这个...查了半天论坛跟issue. 
+
+可以顺着这串看下来: 
+
+1. [升级或者切到Beta Channel](https://docs.docker.com/docker-for-windows/#custom-registries)
+2. [FAQ](https://docs.docker.com/docker-for-windows/faqs/#how-do-i-add-custom-ca-certificates)
+3. [issue](https://github.com/docker/for-win/issues/48) 
+
+他们这些东西解决思路我看都差不多...就是不断地救火. 
+
+- - - - -- 
+
 
 done . 
 
