@@ -92,6 +92,10 @@ enhance mode要求必须设置dns-override,第一个最好写成实际的内网d
 
 - - - - -- 
 
+## 替代品 
+
+不太想付费的同学可以使用[flora-kit](https://github.com/huacnlee/flora-kit) 
+
 done. 
 
 
