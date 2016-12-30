@@ -121,7 +121,13 @@ rm -rf ~/Library/Containers/com.docker.docker/Data/*
 2. [FAQ](https://docs.docker.com/docker-for-windows/faqs/#how-do-i-add-custom-ca-certificates)
 3. [issue](https://github.com/docker/for-win/issues/48) 
 
-他们这些东西解决思路我看都差不多...就是不断地救火. 
+同事测试的步骤: 
+
+1. 安装证书
+2. 添加`{"registry-mirrors": [],"insecure-registries": ["https://registry.yourcompany.com"]}`到docker设置面板
+3. 重启docker 
+
+Docker这些东西解决思路我看都差不多...就是不断地救火. 
 
 - - - - -- 
 
