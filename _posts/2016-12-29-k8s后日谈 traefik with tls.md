@@ -11,6 +11,8 @@ Traefik扮演的是Ingress抽象中负载均衡器与Ingress Controller的角色
 
 - - - - - 
 
+前文是[k8s后日谈-负载均衡traefik](https://www.slahser.com/2016/11/19/k8s后日谈-负载均衡traefik/). 
+
 内容部分思路来自[这里](https://medium.com/@patrickeasters/using-traefik-with-tls-on-kubernetes-cb67fb43a948#.2u7hhq5my) 
 
 ### 证书签发 
@@ -74,7 +76,7 @@ spec:
           name: traefik-conf
       hostNetwork: true
       containers:
-      - image: registry.gogen.com/traefik:v1.1.1
+      - image: registry.yourcompany.com/traefik:v1.1.1
         name: traefik-ingress-lb
         volumeMounts:
         - mountPath: "/ssl"
