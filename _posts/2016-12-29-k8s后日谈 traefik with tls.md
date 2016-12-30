@@ -105,13 +105,27 @@ spec:
         - --kubernetes
 ``` 
 
-### Infress配置 
-
-不需要变,该是http就是http,没有大碍. 
-
 ### 测试 
 
 依然是`curl -k https:xxx`
+
+### 遗留 
+
+refrence中下面这段我测试了一下没有也没关系. 
+
+希望我日后遇到问题了能想起来这里.  
+
+```
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nirvana-server
+spec:
+  tls:
+    - secretName: traefik-cert
+  rules:
+      ... 
+``` 
 
 - - - - -- 
 
