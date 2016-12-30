@@ -7,7 +7,7 @@
 
 > 我有印象的关于分支管理就开过两三次会,无比痛苦.  
 
-![](https://o4dyfn0ef.qnssl.com/image/2016-12-30-Screen%20Shot%202016-12-30%20at%2015.34.29.png?imageView2/2/h/600) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-12-30-Screen%20Shot%202016-12-30%20at%2015.34.29.png) 
 
 以下部分摘自我在内网Confluence上的内容 
 
