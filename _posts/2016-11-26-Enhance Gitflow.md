@@ -9,6 +9,8 @@
 
 ![](https://o4dyfn0ef.qnssl.com/image/2016-12-30-Screen%20Shot%202016-12-30%20at%2015.34.29.png) 
 
+> 上图我没压缩,列为可以右键新页面查看大图. 
+
 以下部分摘自我在内网Confluence上的内容 
 
 ```
