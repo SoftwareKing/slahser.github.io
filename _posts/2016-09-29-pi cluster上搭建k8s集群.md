@@ -104,45 +104,7 @@ apt-get install -y vim
 ```
 echo "deb http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib" > /etc/apt/sources.list  
 echo "deb-src http://mirrors.tuna.tsinghua.edu.cn/raspbian/raspbian/ jessie main non-free contrib" >> /etc/apt/sources.list 
-```
-
-- - - - -- 
-
-## k8s安装 
-
-可以看一下[kubernetes-on-arm](https://github.com/luxas/kubernetes-on-arm)  
-
-这个项目的作者凭借这个项目加入了kubernetes项目组,他目前也是负责跨平台代码的开发.  
-
-> 安了这个做好心理准备跨版本不兼容更新,也就是说你要重新烧录SD卡才能升级到k8s 1.4.0
-
-```shell
-wget https://github.com/luxas/kubernetes-on-arm/releases/download/v0.8.0/docker-multinode.deb
-dpkg -i docker-multinode.deb
-kube-config install 
-# 时区填写 Asia/Shanghai
-# 开启1G的SWAP
-# 重启虽然在Hypriot上不需要,不过我还是选择重启
-```
-
-重点来了,重启后`kube-config info`会提示你`gcr.io/google_containers/etcd-arm:2.2.5`下不到.  
-
-这当然是我大清特色了. 
-
-于是找到国内的两家良心Docker云,比DaoCloud强到不知道哪儿去了. 
-
-- [时速云hub](https://hub.tenxcloud.com)
-- [灵雀云hub](https://hub.alauda.cn)
-
-所以如下可以解决问题 
-
-```shell 
-docker pull index.tenxcloud.com/google_containers/etcd-arm:2.2.5
-docker pull index.alauda.cn/googlecontainer/etcd-arm:2.2.5
 ``` 
-
-但是我不放心,还是想搭建个私服打tag留住这两个镜像.  
-
 - - - - --- 
 
 ## 搭建私服 
@@ -160,6 +122,15 @@ nameserver 119.29.29.29
 
 - - - - --- 
 
-后续可以看[这里](https://www.slahser.com/2016/11/10/关于kubernetes-1.4+-搭建/). 
+## 集群搭建 
+
+后续可以看[关于kubernetes-1.5+-搭建](https://www.slahser.com/2016/11/10/关于kubernetes-1.5+-搭建/),因为不只是在pi cluster上玩玩而已了. 
+
+将教程内amd64修改为arm64就可以了. 
+
+- - - - - 
+
+done. 
+
 
 

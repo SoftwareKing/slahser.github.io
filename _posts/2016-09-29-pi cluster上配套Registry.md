@@ -1,6 +1,10 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-30-Screen%20Shot%202016-09-30%20at%2015.01.59.png?imageView2/2/h/200) 
 
-书接[上文](https://www.slahser.com/2016/09/29/pi-cluster上搭建kubernetes/),我们遇到了GFW无法下载gcr.io的镜像,而后遇到了国内容器云的事儿. 
+> 2017-01-03 更新 
+
+本文是2016年中时候在树莓派集群上搭建k8s集群时才催生了自建Registry的想法,所以有些内容可能会莫名其妙. 
+
+但是完全不妨碍其他环境Registry的搭建. 
 
 解决问题: 
 
@@ -28,7 +32,7 @@ vim /etc/default/docker
 # 而后重启docker
 ```
 
-> 本步骤与本篇无关,可选. 
+> 本步骤Optional. 
 
 - - - - --- 
 
@@ -54,15 +58,6 @@ openssl genrsa -out index.slahser.com.key 2048
 # 倒数第二步的name设置成index.slahser.com
 openssl req -newkey rsa:4096 -nodes -sha256 -keyout index.slahser.com.key -x509 -days 365 -out index.slahser.com.crt
 ``` 
-
-### 宿主机与客户机证书信任 
-
-```shell
-mkdir -p /etc/docker/certs.d/index.slahser.com
-# ansible copy或者单机cp 
-ansible pis -m copy -a 'src=~/.ssh/index.slahser.com.crt dest=/etc/docker/certs.d/index.slahser.com/'
-cp ~/.ssh/index.slahser.com.crt /etc/docker/certs.d/index.slahser.com/
-```
 
 ### 创建compose环境与配置文件
 
@@ -116,7 +111,7 @@ server {
 
 compose配置文件docker-compose.yaml
 
-```yaml 
+``` 
 nginx:
     container_name : nginx
     image : nginx:1.11.4
@@ -143,7 +138,20 @@ docker-compose up -d
 curl -k https://index.slahser.com/v2/
 ```
 
-- - - - --- 
+- - - - - 
+
+## 客户机证书信任 
+
+```shell
+mkdir -p /etc/docker/certs.d/index.slahser.com
+# ansible copy或者单机cp 
+ansible pis -m copy -a 'src=~/.ssh/index.slahser.com.crt dest=/etc/docker/certs.d/index.slahser.com/'
+cp ~/.ssh/index.slahser.com.crt /etc/docker/certs.d/index.slahser.com/
+```
+
+在不同的平台这一步不太一样,可以查看[Docker-for-Mac若干问题修复](https://www.slahser.com/2016/10/15/Docker-for-Mac若干问题修复/)看下在MacOS与win10下的设置. 
+
+- - - - -- 
 
 ## 怎么打TAG 
 
