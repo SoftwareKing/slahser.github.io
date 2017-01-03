@@ -1,6 +1,6 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-07-Screen%20Shot%202016-09-07%20at%2015.49.25.png?imageView2/2/h/400) 
 
-> G20终于过去了..放了个莫名其妙的假去所谓的景点伤筋动骨了一番.. 
+> G20 终于过去了..放了个莫名其妙的假去所谓的景点伤筋动骨了一番.. 
 
 最近需要实践一下Gitlab based的CI与CD 
 
@@ -14,7 +14,7 @@
 ## 准备工作 
 
 1. 安装Docker
-2. 安装[Runner - Docker](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/docker.md) : 出于安全与效率原因. 
+2. 安装[Runner - Docker](https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/blob/master/docs/install/docker.md). 
 
 ```
 mkdir -p /srv/gitlab-runner/config
@@ -37,7 +37,7 @@ docker exec -it gitlab-runner gitlab-runner register
 ``` 
 
 - executor选docker来启用`docker-in-docker`模式 
-- image写maven:3-jdk-7 
+- image写maven:3.3.9-jdk-8 
 
 ## 写yml脚本 
 
@@ -46,31 +46,34 @@ docker exec -it gitlab-runner gitlab-runner register
 下面是我的脚本 
 
 ```
-image: maven:3-jdk-7
-
+image: maven:3.3.9-jdk-8
 before_script:
   - mvn clean
-
 stages:
   - install
   - ut
   - it
-
 install:
   script:
     - mvn install -Dmaven.test.skip=true
   stage: install
-
+  only:
+    - develop
+    - master
 ut:
   script:
     - mvn test
   stage: ut
-
+  only:
+    - develop
+    - master
 it:
   script:
     - mvn integration-test
   stage: it
-
+  only:
+    - develop
+    - master
 after_script:
   - mvn clean
 ``` 
@@ -139,7 +142,7 @@ after_script:
 
 ## 遇到什么问题 
 
-runner默认的镜像中maven是从中央库拉jar包,这不行!(尔康脸 
+runner默认的镜像中maven是从中央库拉jar包,这不行.  
 
 最开始思路有了点问题,尝试着自建一个mvn镜像push到docker hub,但是查看了maven官方镜像的Dockerfile是下面这样的:  
 
@@ -181,7 +184,7 @@ CMD ["mvn"]
 我们在准备工作里的`/srv/gitlab-runner/config`派上了用处,里面在运行初始化配置后会生成
 `config.toml` 
 
-那么修改如下来利用重复镜像与maven配置和repo:   
+那么修改如下,来利用重复镜像与maven配置和repo:   
 
 ```
 [runners.docker]
@@ -193,17 +196,17 @@ CMD ["mvn"]
 
 ## 成果 
 
-![](https://o4dyfn0ef.qnssl.com/image/2016-09-08-Screen%20Shot%202016-09-08%20at%2015.33.28.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/2017-01-03-Screen%20Shot%202017-01-03%20at%2013.57.59.png?imageView2/2/h/400) 
 
 每次push或者merge request都会触发,这部分可以自行设置. 
 
 另外merge request在持续集成成功之前是无法完成的. 
 
-![](https://o4dyfn0ef.qnssl.com/image/2016-09-08-Screen%20Shot%202016-09-08%20at%2014.50.39.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-08-Screen%20Shot%202016-09-08%20at%2014.50.39.png?imageView2/2/h/300) 
 
-这部分也可以通过`docker logs`命令来看到,不过这样方便点对吧~ 
+这部分也可以通过`docker logs`命令来看到 
 
-![](https://o4dyfn0ef.qnssl.com/image/2016-09-08-Screen%20Shot%202016-09-08%20at%2016.52.56.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/2017-01-03-Screen_Shot_2017-01-03_at_13_58_53.png?imageView2/2/h/400) 
 
 ## 添加构建状态徽标 
 
@@ -224,7 +227,7 @@ CMD ["mvn"]
 ## 可以优化的点 
 
 - on_failure的时候应该把单元测试与集成测试的report取出来发邮件,这个以后要加上
-- 听群里大兄弟说docker-maven插件可以直接把镜像推到registry,那么持续交付的流程就可以变一下了,不一定需要hook做操作. 
+- spotify的docker-maven插件可以直接把镜像推到registry,那么hook触发后就简单了,见下一篇. 
 
 - - - - --  
 
@@ -242,9 +245,18 @@ stages:
 
 大概是这样的规划
 
-那么持续集成的部分结束 
+那么持续集成的部分结束,持续交付择日继续. 
 
-持续交付择日继续 
+> 2017-01-03更新 
+
+上文我的思路没错,不过上了kubernetes之后.最后这一步deploy是不需要的 
+
+我们运行到把镜像push到registry就算CD终止. 
+
+- - - - -- 
+
+done. 
+
 
 
 
