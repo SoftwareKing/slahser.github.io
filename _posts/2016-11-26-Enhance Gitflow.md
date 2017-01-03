@@ -1,7 +1,7 @@
 
 >![](https://o4dyfn0ef.qnssl.com/image/2016-12-26-fasdkfgasuriaubrt.jpeg?imageView2/2/h/200)
 
-本文几经修改,总结下来还是Github上大项目开发这一套流程比较科学. 
+本文几经修改,总结下来还是Github上大项目开发这套流程比较科学. 
 
 > 我有印象的关于分支管理就开过两三次会,无比痛苦.  
 
