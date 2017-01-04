@@ -10,7 +10,7 @@ todo.
 - Traefik
 - K8s
 
-可以看到新技术栈也就Helm,另外Gitlab CI的`when: manual`我也是第一次见,需要熟悉一下场景. 
+可以看到新技术栈也就Helm,另外Gitlab CI的`when: manual`我也是第一次使用,需要熟悉一下场景. 
 
 ![](https://o4dyfn0ef.qnssl.com/image/2017-01-04-1-28fxkqiwUO6sC3C1Z_uCeA.png?imageView2/2/h/400) 
 

@@ -119,9 +119,11 @@ public String uss() {
 我们留下了一点可以优化的部分 
 
 - 既然是rest方式,响应对象可以精简一点,利用一下http状态码也未尝不可
-- 默认序列化是jsckson,我们也可以替换其他provider
+- 默认序列化是jackson,我们也可以替换其他provider
 - restTemplate用起来方便,但是效率有没有这么好呢? 
+- api设计可以参考[这里](https://www.gitbook.com/book/geemus/http-api-design/details)
 
+> 更新: 后续我已经把provider跟restTemplate的serializer都换过了,还没压测. 
 
 
 
