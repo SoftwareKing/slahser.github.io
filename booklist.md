@@ -102,7 +102,7 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>自己动手写java虚拟机
 - <span style="color: green">[o]</span>Kubernetes权威指南
 - <span style="color: green">[o]</span>有效的单元测试
-- <span style="color: red">[x]</span>DevOps实践
+- <span style="color: green">[o]</span>DevOps实践
 - <span style="color: red">[x]</span>Java 8实战
 - <span style="color: red">[x]</span>Linux大棚命令百篇（上）
 - <span style="color: red">[x]</span>Linux大棚命令百篇（下）
