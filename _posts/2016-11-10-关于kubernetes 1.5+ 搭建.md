@@ -16,6 +16,7 @@
 - [Google rpm repo](https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64/repodata/primary.xml)
 - [gcr.io registry](https://console.cloud.google.com/kubernetes/images/list?location=GLOBAL&project=google-containers)
 - [Heapster yaml](https://github.com/kubernetes/heapster/tree/master/deploy/kube-config/influxdb) 
+- [使用Helm的CD流程](https://articles.microservices.com/gitlab-consumer-driven-contracts-helm-and-kubernetes-b7235a60a1cb#.f7hu5pld8)
 
 - - - - -- 
 
