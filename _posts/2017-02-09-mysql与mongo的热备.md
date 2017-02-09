@@ -1,3 +1,5 @@
+![](https://o4dyfn0ef.qnssl.com/image/2017-02-09-Backup-e1450691392717.jpg?imageView2/2/h/400) 
+
 很久以前我们有[关于mysql备份选型与端口转发](https://www.slahser.com/2016/05/03/关于mysql备份选型与端口转发/). 
 
 当时是云数据库的备份,局限很多,如今我们一起将两种数据库都做好备份工作. 
@@ -25,3 +27,4 @@
 - - - - --- 
 
 todo. 
+
