@@ -14,6 +14,8 @@
 
 前些日子看[LinusTechTips](https://www.bilibili.com/video/av8265210/),机械磁碟机定期做全量备份,然后卡车拉往其他城市,听说微软也是这么做的. 
 
+![索尼ODA](https://o4dyfn0ef.qnssl.com/image/2017-02-21-159967437.jpg?imageView2/2/h/300) 
+
 随便聊聊之外剩下的就是参考了最近的Gitlab数据库事故,几层的保障都失效,所以我觉得备份的自动测试也是不可或缺的一环. 
 
 那么 
