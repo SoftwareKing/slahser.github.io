@@ -1,6 +1,8 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-09-07-Screen%20Shot%202016-09-07%20at%2015.49.25.png?imageView2/2/h/400) 
 
-> G20 终于过去了..放了个莫名其妙的假去所谓的景点伤筋动骨了一番.. 
+> 2017-03-24更新,gitlab 9.0.0中这部分功能大家谨慎使用. 
+> 
+> 我回滚到了gitlab/gitlab-runner:v1.10.5才正常工作. 
 
 最近需要实践一下Gitlab based的CI与CD 
 
