@@ -1,16 +1,8 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-21-migrating-gitlab-infrastructur-into-Docker.png?imageView2/2/h/300) 
 
-因为公司错(shi)综(qian)复(ju)杂(keng)的网络环境,测试数据库的迁移到了内网,而nexus跟gitlab-ci-runner在外网. 
+> 2017-03-24更新:经历了一些折腾之后,我并不推荐将gitlab置入docker.  
 
-又迟迟拿不出一个能同时连通内外网的机器,一步一步做吧. 
-
-- 将gitlab迁移到内网
-- 将nexus迁移到意义访问外网&&可以被内网访问的机器
-- 将gitlab-ci-runner迁移到内网环境
-
-正好之前的gitlab是omnibus方式安装的,那么这次干脆运行在docker中好了 
-
-我翻之前的`/etc/gitlab/gitlab.rb`真是受够了..  
+之前的gitlab是omnibus方式安装的,我翻之前的`/etc/gitlab/gitlab.rb`真是受够了..  
 
 - - - - -- 
 
@@ -69,5 +61,7 @@ docker exec -it gitlab sudo -HEu git bundle exec rake gitlab:backup:restore BACK
 备份版本号是备份tar文件的前缀
 
 - - - - -- 
+
+> 本文已经不推荐照做,唯一值得参考的就是几条备份命令了大概. 
 
 done. 
