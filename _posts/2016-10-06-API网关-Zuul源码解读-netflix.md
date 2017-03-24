@@ -9,7 +9,7 @@ Spring Cloud更新频繁得很,版本号是根据字母排序确定稳定性的.
 
 我在[这里](https://spring.io/blog/category/releases)看所有项目的更新进度. 
 
-目前的话
+目前(2016-10-06)的话
 
 - B系列基于Spring Boot 1.3
 - C系列基于Spring Boot 1.4  
