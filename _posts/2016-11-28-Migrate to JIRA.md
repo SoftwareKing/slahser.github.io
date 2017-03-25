@@ -68,6 +68,7 @@
 
 1. 微云中两个bin文件下载
 2. 创建jira库与confluence库,务必`CREATE DATABASE IF NOT EXISTS [yourapp] default charset utf8 COLLATE utf8_bin;`.
+3. 修改`innodb_log_file_size`与`max_allowed_packet`
 3. 将修复过连接参数的mysql驱动置入`/opt/atlassian/[yourapp]/lib`
 4. sudo执行
 5. 初始化,一切都选择自定义.并且将Confluence连接置JIRA同步用户. 
