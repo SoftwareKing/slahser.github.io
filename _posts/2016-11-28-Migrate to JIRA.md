@@ -2,11 +2,7 @@
 
 感觉我已经俨然变成了资深Migrate工程师了. 
 
-最近恰巧单位办公软件处在事故频出的阶段. 
-
-在修复了禅道一个莫名其妙的问题之后,老大决定尝试一下我搭建好的JIRA跟Confluence. 
-
-毕竟禅道和石墨文档太不好用了. 
+最近恰巧单位办公软件处在事故频出的阶段,毕竟禅道和石墨文档太不好用了. 
 
 今天的文章结构: 
 
@@ -71,14 +67,14 @@
 > 因为是Crack的所以我觉得难以启齿..所以放在后面吧. 
 
 1. 微云中两个bin文件下载
-2. 创建jira库与confluence库,utf8_bin.
-3. 将修复过连接参数的mysql驱动置入`/opt/atlassian/jira/lib`
+2. 创建jira库与confluence库,务必`CREATE DATABASE IF NOT EXISTS [yourapp] default charset utf8 COLLATE utf8_bin;`.
+3. 将修复过连接参数的mysql驱动置入`/opt/atlassian/[yourapp]/lib`
 4. sudo执行
 5. 初始化,一切都选择自定义.并且将Confluence连接置JIRA同步用户. 
-6. 前者替换atlassian-extras-3.1.2
-7. 后者替换atlassian-extras-decoder-v2-3.2
-8. 这两个jar目标地址是`/opt/atlassian/[which]/confluence/WEB-INF/lib/`
-9. jira中manage add-on ,上传JIRA Core-7.2.1-language-pack-zh_CN
+6. 前者替换atlassian-extras-3.1.2.jar
+7. 后者替换atlassian-extras-decoder-v2-3.2.jar
+8. 这两个jar目标地址是`/opt/atlassian/[your]/[app]/WEB-INF/lib/`
+9. jira中manage add-on ,上传[语言包](https://translations.atlassian.com/dashboard/dashboard)
 10. done. 
 
 done. 
