@@ -13,7 +13,7 @@
 
 Centos7+的版本一般都自带Glusterfs.  
 
-> rpm -qa | grep gluster查看各个组件 
+> `rpm -qa | grep gluster`查看各个组件 
 > 
 > gluster-lib/common/server/client啊之类的
 
