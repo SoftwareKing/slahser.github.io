@@ -186,13 +186,19 @@ Grafana里面目前还没有mysql相关的面板.
 
 我们的数据源是`prometheus`,repo里的数据源是`Prometheus`. 
 
-另外调几个重要的导入就好了. 
+另外挑几个重要的导入就好了. 
 
 我暂时挑选了: 
 
+- Cross_Server_Graphs
+- Disk_Performance
+- Disk_Space
 - MySQL_Overview
 - MySQL_Replication
-- Cross_Server_Graphs
+- Prometheus
+- Summary_Dashboard
+- System_Overview
+- Trends_Dashboard
 
 修改数据源名称并在Grafana中导入,看情况修改下time range.  
 
@@ -211,8 +217,8 @@ Grafana里面目前还没有mysql相关的面板.
 ![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.15.27.png?imageView2/2/h/400) 
 ![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.16.10.png?imageView2/2/h/400)
 ![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.15.11.png?imageView2/2/h/400)
-
-
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-31%20at%2019.42.11.png?imageView2/2/h/400)
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-31%20at%2019.43.37.png?imageView2/2/h/400)
 - - - - -- 
 enjoy. 
 
