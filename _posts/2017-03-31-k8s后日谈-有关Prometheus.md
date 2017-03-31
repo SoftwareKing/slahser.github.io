@@ -1,5 +1,22 @@
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-26-Screen%20Shot%202017-03-27%20at%2000.02.49.png?imageView2/2/h/300) 
+
+题图为cncf四大金刚吧算是,先后捐献出来的. 
+
+很直接的把如下微服务中关心的部分都给解决了.  
+
+- Tracing
+- Logging
+- Metrics
+
+这边有一篇[Metrics, tracing, and logging](https://peter.bourgon.org/blog/2017/02/21/metrics-tracing-and-logging.html). 
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-26-03.png?imageView2/2/h/400) 
+
+今儿来解决Metrics的事儿. 
 
 > 本文写于2017-03-31,有些东西可能会随着时间变化. 
+
+- - - - -- 
 
 提纲: 
 
