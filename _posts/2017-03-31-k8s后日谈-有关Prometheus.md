@@ -138,7 +138,7 @@ server {
 
 同时如果你没做前文的修改prometheus.yml或者是安装新东西. 
 
-那么你需要到k8s node上
+那么你需要到k8s node上,然后删除prometheus pod来更新配置. 
 
 `kubectl edit configmap/prometheus-core -n monitoring` 
 
@@ -169,7 +169,7 @@ static_configs:
 static_configs:
   - targets: ['33.73.192.15:9104']
     labels:
-      instance: mysql-salve
+      instance: mysql-slave
 ```
 
 - - - - -- 
@@ -206,6 +206,14 @@ Grafana里面目前还没有mysql相关的面板.
 
 - - - - -- 
 
+### 部分截图 
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.15.27.png?imageView2/2/h/400) 
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.16.10.png?imageView2/2/h/400)
+![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.15.11.png?imageView2/2/h/400)
+
+
+- - - - -- 
 enjoy. 
 
 
