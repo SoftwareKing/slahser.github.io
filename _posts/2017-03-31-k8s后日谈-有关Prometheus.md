@@ -210,16 +210,40 @@ Grafana里面目前还没有mysql相关的面板.
 - 更多监控export
 - 数据存储到pvc
 
+另外这两个Grafana App怎么这么眼熟: 
+
+- [percona-percona-app](https://grafana.com/plugins/percona-percona-app)
+- [raintank-kubernetes-app](https://grafana.com/plugins/raintank-kubernetes-app) 
+
 - - - - -- 
 
 ### 部分截图 
 
+尴尬的是数据量大起来这个pod面板特别卡...下次重装时候一定要给大点. 
+
+反正大家是按requests给资源的,不会影响其他分布. 
+
+> 生产环境需要继续join机器了我觉得. 
+
 ![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.15.27.png?imageView2/2/h/400) 
-![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.16.10.png?imageView2/2/h/400)
-![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-30%20at%2023.15.11.png?imageView2/2/h/400)
-![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-31%20at%2019.42.11.png?imageView2/2/h/400)
-![](https://o4dyfn0ef.qnssl.com/image/2017-03-31-Screen%20Shot%202017-03-31%20at%2019.43.37.png?imageView2/2/h/400)
+
+mysql主从同步状态,可以看到一次一次latency的毛尖 
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-04-01-Screen%20Shot%202017-04-01%20at%2014.08.50.png?imageView2/2/h/400)
+
+
+mysql-slave的机器可以看到4点I/O陡增,因为当时在自动备份. 
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-04-01-Screen%20Shot%202017-04-01%20at%2014.10.32.png?imageView2/2/h/400)
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-04-01-Screen%20Shot%202017-04-01%20at%2014.10.57.png?imageView2/2/h/400)
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-04-01-Screen%20Shot%202017-04-01%20at%2014.02.23.png?imageView2/2/h/400) 
+
+![](https://o4dyfn0ef.qnssl.com/image/2017-04-01-Screen%20Shot%202017-04-01%20at%2014.03.11.png?imageView2/2/h/400)
+
 - - - - -- 
+
 enjoy. 
 
 
