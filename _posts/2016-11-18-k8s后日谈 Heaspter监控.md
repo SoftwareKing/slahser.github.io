@@ -7,6 +7,8 @@
 
 两者当然都要尝试一下才进行选型确定,那么本篇是前者的试验. 
 
+> 2017-03更新,因为Heapster的羸弱,所以只安装Heapster来充实面板. 
+> 
 > 看了下release note,Grafana 4已经支持告警了. 
 
 ## Heapster  
@@ -26,34 +28,22 @@ kubectl create -f deploy/kube-config/influxdb/
 - influxdb - db
 - grafana - ui
 
-只是想达到上图效果很简单了,只要部署一个 heapster-svc 上来就够了,但是 metrics 数据也可以被记录到 influxdb 中配合 grafana 进行展现. 
+那么完全版是下图这个样子: 
+
+![](https://o4dyfn0ef.qnssl.com/image/2016-12-01-CA851A29-F5F5-463D-982B-AFB97B5EAB9D.png?imageView2/2/h/400) 
+
+- - - - -- 
+
+### minimal配置  
+
+当然了,随着2017-03我的幡然醒悟,我们只是安装Heapster来充实一下面板. 
 
 ```shell
 kubectl create -f heaspter-deployment.yaml
 kubectl create -f heaspter-service.yaml
 ``` 
 
-那么完全版是下图这个样子: 
-
-![](https://o4dyfn0ef.qnssl.com/image/2016-12-01-CA851A29-F5F5-463D-982B-AFB97B5EAB9D.png?imageView2/2/h/400) 
-
-爽到. 
-
-- - - - -- 
-
-### minimal配置  
-
-```
-# 查看 nodeport
-kubectl describe svc monitoring-grafana --namespace=kube-system
-```
-
-1. 访问 masterip:port 进入 grafana 管理界面,左侧 admin - admin 登陆 
-2. 剩下的什么新建 influxdb 的步骤都不需要了,默认自带一个`http://monitoring-influxdb:8086`
-3. 这个数据源是否靠谱还不确定,因为不知道你是否已经是 dns 生效过,那么 test connection 进行测试. 
-4. 实际上一步换成你的 influsdb-svc 的 ip 也 ok. 
-
-![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-Screen%20Shot%202016-11-15%20at%2017.29.54.png?imageView2/2/h/400) 
+同时删除掉deployment里`--sink`相关的内容. 
 
 - - - - -- 
 
@@ -95,20 +85,6 @@ spec:
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-Screen%20Shot%202016-11-15%20at%2020.11.03.png?imageView2/2/h/400) 
 
 可以通过这个查询界面来看数据结构与数据是否正确落入. 
-
-- - - - -- 
-
-### 图表配置 
-
-[这里](https://github.com/kubernetes/heapster/blob/master/docs/storage-schema.md)是 heaspter 的 metrics 列表. 
-
-grafana dashboard 配置纷繁复杂,我这一期肯定不会在这上面耽误太长时间,应该只是浅尝辄止就是了. 
-
-根据上面列表的具体示意以及 grafana 配置查询语句时的联想功能 
-
-基本上简单的数据图/表应该也能顺藤摸瓜搞个出来. 
-
-另外[这里](https://grafana.net/dashboards)有很多现成的图表,可供参考. 
 
 - - - - --- 
 
