@@ -9,6 +9,8 @@
 
 `efk->存储es数据->做块网络硬盘`. 
 
+> 2017-04 补充 [heketi/heketi](https://github.com/heketi/heketi)也值得关注 
+
 ## 安装Glusterfs 
 
 Centos7+的版本一般都自带Glusterfs.  
