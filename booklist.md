@@ -114,5 +114,7 @@ permalink: /booklist/
 - <span style="color: gold">[~]</span>网络是怎样连接的
 - <span style="color: red">[x]</span>Go语言学习笔记
 - <span style="color: red">[x]</span>算法的乐趣
-- <span style="color: green">[0]</span>七周七并发模型
+- <span style="color: green">[o]</span>七周七并发模型
 - <span style="color: red">[x]</span>Producter 让产品从0到1
+- <span style="color: red">[x]</span>亿级流量网站架构核心技术
+
