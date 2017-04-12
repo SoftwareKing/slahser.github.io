@@ -4,6 +4,11 @@
 
 折腾一个月来感触颇多,总之多看源码多翻issue吧,方案也进入了试运行的阶段,不再追新. 
 
+> 2017-04-12更新 
+> 
+> 就搭建来讲,[follow-me-install-kubernetes-cluster](https://github.com/opsnull/follow-me-install-kubernetes-cluster)比我这里写的要详细科学很多. 
+> 所以日后安装相关就不再更新
+
 以下是k8s生态的一些快捷链接 
 
 我每隔几天就要翻,姑且拿来备忘: 
