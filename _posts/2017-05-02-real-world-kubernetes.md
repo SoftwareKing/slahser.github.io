@@ -152,6 +152,7 @@ vim /etc/profile
 添加 
 export KUBE_REPO_PREFIX=registry.yourcompany.com
 export KUBE_ETCD_IMAGE=registry.yourcompany.com/etcd-amd64:3.0.17
+source /etc/profile 
 
 sudo systemctl daemon-reload
 kubeadm reset
@@ -254,6 +255,44 @@ kubectl apply -f http://docs.projectcalico.org/v2.1/getting-started/kubernetes/i
 - - - - --- 
 
 上面是初步的迅速启动一个集群,那么接下来我们需要将etcd外置并且接入进去. 
+
+因为k8s 1.6开始全面启用etcd v3作为元数据存储 
+
+但是calico暂时还只支持etcd v2的api. 
+
+所以calico暂时还是内部的etcd好了. 
+
+那么kubeadm之前有一个--external-etcd-endpoints的flag 
+
+逐渐废除掉了,现在支持的是这样的形式 
+
+```
+apiVersion: kubeadm.k8s.io/v1alpha1
+kind: MasterConfiguration
+api:
+  advertiseAddress: 192.168.6.95
+  bindPort: 6443
+etcd:
+  endpoints:
+  - http://192.168.6.95:2379
+  - http://192.168.6.90:2379
+  - http://192.168.6.91:2379
+kubernetesVersion: v1.6.2
+token: xxxxxx.xxxxxxxxxxxxxxxx
+```
+
+保存为kubeadm-init.yaml 
+
+`kubeadm init --config kubeadm-init.yaml` 
+
+即可. 
+
+> 后来我的dns遇到了写入etcd集群有问题的情况...不过先调着吧 
+
+- - - - ---- 
+
+done. 
+
 
 
 
