@@ -4,12 +4,12 @@
 
 ```
 外置etcd奇数节点集群,haproxy做vip,搞几个master. 
-master上kube-apiserver,kube-controller-manager-kube-scheduler
+master上kube-apiserver,kube-controller-manager,kube-scheduler
 minion上装上kubelet,kube-proxy
 中间同步一下证书,同步一下kubeconfig认证,组件再RBAC填上SA.
 然后添个dns三件套就完事了
 
-再不就[kargo](https://github.com/kubernetes-incubator/kargo)配一下ansible怎么说也ok了. 
+再不就kargo配一下ansible怎么说也ok了. 
 ```
 
 naive. 
@@ -22,9 +22,9 @@ master的高可用先不做,但是k8s与calico的元数据会外置.
 > 
 > 他们只做了e2e test,绝对没有做手工测试才会产生这种事故. 
 
-k8s版本: [1.6.2](https://share.weiyun.com/ad36abaa3fe91d3ad5cce450d1b40adc) 
-Linux版本: CentOS 7.3.1611
-Linux Kernel: 4.10.13
+- k8s版本: [1.6.2](https://share.weiyun.com/ad36abaa3fe91d3ad5cce450d1b40adc) 
+- Linux版本: CentOS 7.3.1611
+- Linux Kernel: 4.10.13
 
 rpm获取依然是[k8s后日谈 源与镜像](http://www.slahser.com/2016/11/17/K8s后日谈-源与镜像/)中RPM部分获取. 
 
@@ -69,8 +69,7 @@ sudo yum install -y epel-release
 
 # 偶尔yum会卡住,其余情况自行google
 jobs -l 
-
-
+lill -9 
 ```
 
 ### 关闭防火墙  
@@ -134,6 +133,8 @@ yum -ivh *.rpm
 
 ### 调整配置文件 
 
+[kubeadm配置文档](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/admin/kubeadm.md)
+
 ```
 vim /etc/sysconfig/docker
 调整 
@@ -151,8 +152,6 @@ vim /etc/profile
 添加 
 export KUBE_REPO_PREFIX=registry.yourcompany.com
 export KUBE_ETCD_IMAGE=registry.yourcompany.com/etcd-amd64:3.0.17
-# 来源是[kubeadm文档](https://github.com/kubernetes/kubernetes.github.io/blob/master/docs/admin/kubeadm.md)
-
 
 sudo systemctl daemon-reload
 kubeadm reset
@@ -192,24 +191,30 @@ etcd:2.2.1
 
 ### 开始 
 
+[kubeadm文档](https://kubernetes.io/docs/getting-started-guides/kubeadm/)下方可选步骤 
+
 ```
 master 
-
 kubeadm init 
+
 # 也有人喜欢先生成token,然后再指定..
 # kubeadm init --token=xxxxxx.xxxxxxxxxxxxxxxx
+
 sudo cp /etc/kubernetes/admin.conf $HOME/
 sudo chown $(id -u):$(id -g) $HOME/admin.conf
 export KUBECONFIG=$HOME/admin.conf
+
 # 将conf内从拷贝至本机~/.kube/config文件内即可远程访问
-# 参考 [kubeadm文档](https://kubernetes.io/docs/getting-started-guides/kubeadm/)下方可选步骤 
+```
 
-
+```
 minion 
+kubeadm join --token 8ec45a.01782b1b4059a682 192.168.6.95:6443
+
 # 实际这个token可以在master上自己指定
 # 我一般将其设置为xxxxxx.xxxxxxxxxxxxxxxx
-# 我吼拓展就算忘了也没关系,实际它存在-n kube-system下clusterinfo secret的token-map.json中,base64解开就行了. 
-kubeadm join --token 8ec45a.01782b1b4059a682 192.168.6.95:6443
+# 日后拓展就算忘了也没关系
+# 实际它存在-n kube-system下clusterinfo secret的token-map.json中,base64解开就行了. 
 ```
 
 ### 部署calico 
@@ -219,7 +224,7 @@ kubeadm join --token 8ec45a.01782b1b4059a682 192.168.6.95:6443
 ```
 kubectl apply -f http://docs.projectcalico.org/v2.1/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 
-需要手动调整一下image. 
+# 需要手动调整一下image. 
 ```
 
 ### 测试DNS 
