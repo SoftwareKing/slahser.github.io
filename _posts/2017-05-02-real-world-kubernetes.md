@@ -215,7 +215,7 @@ kubeadm join --token 8ec45a.01782b1b4059a682 192.168.6.95:6443
 # 实际这个token可以在master上自己指定
 # 我一般将其设置为xxxxxx.xxxxxxxxxxxxxxxx
 # 日后拓展就算忘了也没关系
-# 实际它存在-n kube-system下clusterinfo secret的token-map.json中,base64解开就行了. 
+# 实际它存在-n kube-system下secret/bootstrap-token
 ```
 
 ### 部署calico 
@@ -289,7 +289,19 @@ token: xxxxxx.xxxxxxxxxxxxxxxx
 
 > 后来我的dns遇到了写入etcd集群有问题的情况...不过先调着吧 
 
+### 另外的tips 
+
+其实iptables并不是老是要清理,但是虚拟网卡需要 
+
+如果机器网络情况切换过,那么calico创建的网卡
+
+`ip link delete tunl0` 
+
+同时在minion节点上,需要这样: 
+
+`docker tag registry.yourcompany.com pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0`
 - - - - ---- 
+
 
 done. 
 
