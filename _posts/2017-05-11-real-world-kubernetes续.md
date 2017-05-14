@@ -72,6 +72,12 @@
 
 > 不太好配置,我也在考虑要不要迁移到 nginx 
 
+我目前的配置文件中将大部分需要暴露的服务都配置了 ingress 
+
+这样管控起来就可以用一台 nginx 代理所有的 traefik 
+
+通过 header 来路由. 
+
 - - - - -- 
 
 ### dns-scale 
@@ -93,6 +99,12 @@
 不在 addon 里的单独的项目版本更新,自带了 rbac 
 
 > v1.6.0带有一个比较严重的 bug, daemonset 里面不显示内容... 
+
+复制kubeconfig 后本机访问一般就是 
+
+`kubectl proxy --address='127.0.0.1' --port=8080 --accept-hosts='^*$'`
+
+访问`localhost:8080/ui`即可. 
 
 - - - - -- 
 
