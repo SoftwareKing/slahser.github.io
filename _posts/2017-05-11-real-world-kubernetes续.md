@@ -118,3 +118,6 @@ curl http://[masterip]:31314/hello
 ```
 
 神奇吧. 
+
+### kubenetic 
+
