@@ -12,7 +12,7 @@
 - 添加了大部分需要暴露服务的 ingress
 - resource 使用进行了调优
 - 相应的存储引擎还没动
-- 操作顺序是起亲手 tuning 过的. 
+- 操作顺序是亲手 tuning 过的. 
 
 > 有些项目内部镜像是写死的,所以使用 private registry 会有问题 
 > 
@@ -174,6 +174,8 @@ curl http://[masterip]:31314/hello
 
 ### linkerd 
 
+打算用它来做些路由,服务隔离之类的部分. 
+
 todo. 
 
 - - - - - 
@@ -195,3 +197,5 @@ todo.
 ### helm 
 
 `brew install kubernetes-helm`
+
+todo. 
