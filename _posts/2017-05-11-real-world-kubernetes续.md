@@ -18,6 +18,22 @@
 > 
 > 这时只能打 tag 来解决了,或者提个 PR. 
 
+- - - - -- 
+
+## 目录 
+
+- calico
+- heapster
+- traefik
+- dns-scale
+- dashboard
+- prometheus
+- redis sentinel
+- fission
+- linkerd
+- kubernetic
+- helm
+
 - - - - --- 
 
 ### calico 
@@ -30,6 +46,10 @@
 
 内置的也是 http 的 etcd,所以没什么可调节的. 
 
+> flannel 对系统很挑. weave 压测坟墓. 
+
+- - - - -- 
+
 ### heapster 
 
 [原地址](https://github.com/kubernetes/heapster/blob/master/deploy/kube-config/standalone/heapster-controller.yaml) 
@@ -37,6 +57,8 @@
 大部分人喜欢这部分用 influxdb 的那个版本,这并不好. 
 
 官方内置了 RBAC. 
+
+- - - - -- 
 
 ### traefik 
 
@@ -48,13 +70,21 @@
 - 接入 prometheus
 - 内存 cpu 申请
 
+> 不太好配置,我也在考虑要不要迁移到 nginx 
+
+- - - - -- 
+
 ### dns-scale 
 
 [原地址](https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/dns-horizontal-autoscaler)
 
 按照集群规模来伸缩 dns 副本数. 
 
-挺有用的项目. 
+挺有用的项目.
+
+> 感兴趣的话可以看一下 coredns, 我个人觉得它跟 flannel 配合好一点.  
+
+- - - - -- 
 
 ### dashboard 
 
@@ -64,6 +94,8 @@
 
 > v1.6.0带有一个比较严重的 bug, daemonset 里面不显示内容... 
 
+- - - - -- 
+
 ### prometheus 
 
 [原地址](https://github.com/giantswarm/kubernetes-prometheus)
@@ -72,6 +104,9 @@
 
 但是作者比较懒,到现在还没有 rbac 支持,我提交了一个 pr 过去. 
 
+> 我完全不喜欢 coreos 的任何项目,包括 prometheus-operator. 
+
+- - - - -- 
 
 ### redis sentinel 
 
@@ -99,6 +134,8 @@
 
 来试试看访问权限. 
 
+> 用起来还 ok, 只是有些劣质国产开源项目并不支持. 
+
 ### fission 
 
 [原地址](https://github.com/fission/fission)
@@ -119,5 +156,30 @@ curl http://[masterip]:31314/hello
 
 神奇吧. 
 
+> 相同的还有 fabric8的那个啥来着. 
+
+- - - - --
+
+### linkerd 
+
+todo. 
+
+- - - - - 
+
 ### kubenetic 
 
+[原地址](https://kubernetic.com)
+ 
+![](https://o4dyfn0ef.qnssl.com/image/2017-05-04-E399F559-E814-4181-85F9-509DC1110BB1.png?imageView2/2/h/300) 
+
+一个桌面客户端,实际就是一个配置 
+
+把 kubeconfig 放到本机的`~/.kube/config` 里 
+
+我一般是直接把 kubeadm 产生的 admin.conf 内容直接复制到本机的. 
+
+- - - - --- 
+
+### helm 
+
+`brew install kubernetes-helm`
