@@ -1,4 +1,5 @@
-![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-kube7-logo.png?imageView2/2/h/200) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2012.26.11.png?imageView2/2/h/200) 
+
 
 最近单位要起一个新的k8s集群,大家说起来搞个k8s集群,都头头是道. 
 

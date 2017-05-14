@@ -1,4 +1,4 @@
-![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-kube7-logo.png?imageView2/2/h/200) 
+![](https://o4dyfn0ef.qnssl.com/image/2016-09-29-Screen%20Shot%202016-09-29%20at%2012.26.11.png?imageView2/2/h/200) 
 
 [上文](https://www.slahser.com/2017/05/02/real-world-kubernetes/)只是基本的集群搭建,里面还什么东西都没有. 
 
