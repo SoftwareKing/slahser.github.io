@@ -1,5 +1,7 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2017-03-26-k8s-glusterfs-scaleway.png?imageView2/2/h/300) 
 
+> 这篇要重新写. 
+
 在分布式存储方面了解的不多,比较倾向于: 
 
 - 块存储 - Glusterfs
