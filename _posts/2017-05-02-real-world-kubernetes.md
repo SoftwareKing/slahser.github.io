@@ -299,7 +299,7 @@ token: xxxxxx.xxxxxxxxxxxxxxxx
 
 同时在minion节点上,需要这样: 
 
-`docker tag registry.yourcompany.com pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0`
+`docker tag registry.yourcompany.com/pause-amd64:3.0 gcr.io/google_containers/pause-amd64:3.0`
 - - - - ---- 
 
 
