@@ -129,7 +129,7 @@
 1. 执行redis1.yaml 等待,查看log
 2. 执行redis2.yaml 等待,查看log
 3. `kubectl scale rc redis --replicas=3 -n storage`
-4. `kubectl scale rc redis-sentinel --replicas=3 -n storag`
+4. `kubectl scale rc redis-sentinel --replicas=3 -n storage`
 5. 等待,查看log
 6. `kubectl delete pods redis-master -n storage`
 

@@ -10,7 +10,7 @@
 - 留出了部署到Kubernetes的环境变量口子 
 
 ```
-FROM java:8-jre-alpine
+FROM anapsix/alpine-java:8_jdk_unlimited
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
 RUN apk update && apk add ca-certificates
 RUN apk add tzdata

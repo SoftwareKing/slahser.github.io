@@ -13,9 +13,12 @@
 
 没错,基本上是所有. 
 
+> 当然了,官方文档在[这里](https://docs.gitlab.com/ce/ci/yaml/README.html). 
+
 - - - - -- 
 
-### 安装Sonarqube 
+### 安装Sonarqube
+ 
 
 依照官网[文档](https://docs.sonarqube.org/display/SONAR/Installing+the+Server)进行安装 
 
