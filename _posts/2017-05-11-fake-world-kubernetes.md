@@ -69,6 +69,7 @@
 - 外置的 toml
 - 接入 prometheus
 - 内存 cpu 申请
+- 我修复了一下官方缺失的 secrets 权限,不过 PR 已经有人提了. 
 
 > 不太好配置,我也在考虑要不要迁移到 nginx 
 
