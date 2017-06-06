@@ -90,6 +90,14 @@ systemctl stop firewalld
 
 > 重启推荐和下一步一起做. 
 
+### 调整时区 
+
+```
+# 网络对时,时区调整 
+timedatectl set-timezone Asia/Shanghai
+ntpdate your-ntp-ip
+```
+
 ### 升级内核 
 
 ```
