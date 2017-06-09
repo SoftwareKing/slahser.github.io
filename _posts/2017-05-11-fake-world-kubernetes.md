@@ -29,6 +29,9 @@
 - dashboard
 - prometheus
 - redis sentinel
+- redis standalone
+- es standalone
+- rabbitmq standalone
 - fission
 - linkerd
 - kubernetic
@@ -149,6 +152,39 @@
 
 > 用起来还 ok, 只是有些劣质国产开源项目并不支持. 
 
+- - - - --
+
+### redis standalone 
+
+单机版本的 redis, 用于开发测试环境. 
+
+版本提升了一下. 
+
+- - - - -- 
+
+### es standalone 
+
+单机版的 es, 用于开发测试环境 
+
+实际最近我逐渐放弃了 ceph 之类的... 
+
+因为精力不够. 
+
+所以生产环境还是实体机集群. 
+
+顺便文件中镜像来自[这里](https://github.com/pires/docker-elasticsearch),作者把环境变量提取出来了. 
+
+> 配置文件里的 init-container 真是学到.. 
+
+- - - - --- 
+
+### rabbitmq standalone 
+
+依然是单机版本的 rabbitmq 供开发测试环境 
+
+开放了大部分的端口,等我们需要STOMP,MQTT 协议的时候估计还要重新折腾. 
+
+- - - - -- 
 ### fission 
 
 [原地址](https://github.com/fission/fission)
