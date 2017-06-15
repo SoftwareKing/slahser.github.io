@@ -8,7 +8,7 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>ELK stack 权威指南
 - <span style="color: red">[x]</span>Spark：原理、机制及应用
 - <span style="color: green">[o]</span>写给大忙人看的java se 8
-- <span style="color: red">[x]</span>scala程序设计
+- <span style="color: green">[o]</span>scala程序设计
 - <span style="color: gold">[~]</span>java性能权威指南
 - <span style="color: green">[o]</span>maven实战
 - <span style="color: green">[o]</span>spring技术内幕
@@ -32,7 +32,7 @@ permalink: /booklist/
 - <span style="color: green">[o]</span>实战java虚拟机
 - <span style="color: red">[x]</span>大规模分布式存储系统原理解析与架构实战
 - <span style="color: green">[o]</span>redis实战
-- <span style="color: red">[x]</span>rabbitmq实战
+- <span style="color: green">[o]</span>rabbitmq实战
 - <span style="color: green">[o]</span>netty权威指南
 - <span style="color: green">[o]</span>flume构建高可用可扩展的海量日志采集系统
 - <span style="color: green">[o]</span>实战gradle
@@ -82,7 +82,7 @@ permalink: /booklist/
 - <span style="color: gold">[~]</span>ZooKeeper：分布式过程协同技术详解
 - <span style="color: green">[o]</span>干净的数据 数据清洗入门与实践 
 - <span style="color: red">[x]</span>CSS揭秘 
-- <span style="color: gold">[~]</span>selenium2 python 自动化测试实战
+- <span style="color: red">[x]</span>selenium2 python 自动化测试实战
 - <span style="color: green">[o]</span>企业级Java EE架构设计精深实战
 - <span style="color: red">[x]</span>Vue.js权威指南
 - <span style="color: red">[x]</span>垃圾回收的算法与实现
@@ -112,9 +112,14 @@ permalink: /booklist/
 - <span style="color: red">[x]</span>分布式系统常用技术及案例分析
 - <span style="color: red">[x]</span>Elasticsearch技术解析与实战
 - <span style="color: gold">[~]</span>网络是怎样连接的
-- <span style="color: red">[x]</span>Go语言学习笔记
+- <span style="color: gold">[~]</span>Go语言学习笔记
 - <span style="color: red">[x]</span>算法的乐趣
 - <span style="color: green">[o]</span>七周七并发模型
 - <span style="color: red">[x]</span>Producter 让产品从0到1
 - <span style="color: red">[x]</span>亿级流量网站架构核心技术
-
+- <span style="color: red">[x]</span>深入分析 javaweb 技术内幕
+- <span style="color: red">[x]</span>网络爬虫全解析
+- <span style="color: red">[x]</span>海盗派测试分析
+- <span style="color: red">[x]</span>架构真经
+- <span style="color: red">[x]</span>测之重器
+- <span style="color: green">[o]</span>聊聊架构
