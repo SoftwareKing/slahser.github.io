@@ -222,6 +222,8 @@ spec:
 
 > 拆一拆就好了. 
 
+对了,本文的镜像来自[这里](https://github.com/rootsongjc/docker-images),从官方自己打包的话需要调整一下外置配置文件就是了. 
+
 ------- 
 
 done. 
