@@ -20,6 +20,7 @@
 - 同一 pod 种放置两个 container 来维持单进程
 - 通过将日志输出到同一个Volume来收集日志
 
+------- 
 
 ### beats 配置文件 
 
@@ -51,7 +52,7 @@ data:
 
 ``` 
 
-官方的配置介绍在[这里](https://www.elastic.co/guide/en/beats/filebeat/5.4/configuring-howto-filebeat.html),后面的部分甚至还有一段在线的 go 代码来 帮你验证是否 pattern. 
+官方的配置介绍在[这里](https://www.elastic.co/guide/en/beats/filebeat/5.4/configuring-howto-filebeat.html),后面的部分甚至还有一段在线的 go 代码来帮你验证是否 pattern. 
 
 上面这份配置文件呢,用 cm 的形式存到了 k8s 里,用来给特定 container 读取. 
 
@@ -218,3 +219,9 @@ spec:
         configMap:
           name: filebeat-config
 ```
+
+> 拆一拆就好了. 
+
+------- 
+
+done. 
