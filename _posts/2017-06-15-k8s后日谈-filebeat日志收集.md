@@ -1,11 +1,9 @@
 ![](https://o4dyfn0ef.qnssl.com/image/2016-11-15-kube7-logo.png?imageView2/2/h/200) 
 
-
 这篇简单分享两块内容: 
 
 - 更换到 deploy + beats后配置文件
 - multiline 相关的点
-
 
 ------- 
 
